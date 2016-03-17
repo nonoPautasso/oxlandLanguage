@@ -16,26 +16,26 @@ namespace Assets.Scripts.InGameMenu
         {
             PlayClicSound();
             AppController.instance.MainMenu();
-            Destroy(gameObject);
             MetricsManager.instance.DiscardCurrentMetrics();
+			AppController.instance.HideInGameMenu ();
         }
 
         public void OnInstructionsClic(){
             PlayClicSound();
             AppController.instance.ShowInstructions();
-            Destroy(gameObject);
+			AppController.instance.HideInGameMenu ();
         }
 
         public void OnCicRestartGame(){
             PlayClicSound();
             AppController.instance.RestartLvl();
-            Destroy(gameObject);
+			AppController.instance.HideInGameMenu ();
             MetricsManager.instance.DiscardCurrentMetrics();
         }
 
         public void OnClicBackToGame(){
             PlayClicSound();
-            Destroy(gameObject);
+			AppController.instance.HideInGameMenu ();
             TimerImpl.instance.Resume();
         }
 

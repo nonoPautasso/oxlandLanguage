@@ -136,6 +136,8 @@ GameObject:
   - 224: {fileID: 22404414}
   - 222: {fileID: 22292094}
   - 114: {fileID: 11427054}
+  - 114: {fileID: 11419822}
+  - 114: {fileID: 11486570}
   m_Layer: 5
   m_Name: cover
   m_TagString: Untagged
@@ -182,7 +184,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 11486570}
         m_MethodName: OnClicOxBtn
         m_Mode: 1
         m_Arguments:
@@ -222,6 +224,18 @@ MonoBehaviour:
   m_FillAmount: 1
   m_FillClockwise: 1
   m_FillOrigin: 0
+--- !u!114 &11419822
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 198030}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6ddf4c5aa8d0c2c40bba18955ae36af2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  coverView: {fileID: 11486570}
 --- !u!114 &11427054
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -288,7 +302,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 11486570}
         m_MethodName: OnClicAboutBtn
         m_Mode: 1
         m_Arguments:
@@ -378,7 +392,7 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 11486570}
         m_MethodName: PlayClicSound
         m_Mode: 1
         m_Arguments:
@@ -441,7 +455,7 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 11486570}
         m_MethodName: PlayClicSound
         m_Mode: 1
         m_Arguments:
@@ -493,7 +507,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 11486570}
         m_MethodName: OnClicStartBtn
         m_Mode: 1
         m_Arguments:
@@ -533,6 +547,36 @@ MonoBehaviour:
   m_FillAmount: 1
   m_FillClockwise: 1
   m_FillOrigin: 0
+--- !u!114 &11486570
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 198030}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3181556055c29ef419a1a0c4b29b64c7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  argentineBtn: {fileID: 11494330}
+  britishBtn: {fileID: 11487122}
+  startBtn: {fileID: 11473564}
+  aboutBtn: {fileID: 11428320}
+  oxBtn: {fileID: 11403128}
+  aboutScreen: {fileID: 11468308}
+  oxScreen: {fileID: 11459608}
+  aboutScreenSprites:
+  - {fileID: 21300000, guid: bdd1a0ca8c0336f41afa5a96de7b91d2, type: 3}
+  - {fileID: 21300002, guid: bdd1a0ca8c0336f41afa5a96de7b91d2, type: 3}
+  oxScreenSprites:
+  - {fileID: 21300000, guid: 14ca2caff4c368a41852186ca2ce2c92, type: 3}
+  - {fileID: 21300002, guid: 14ca2caff4c368a41852186ca2ce2c92, type: 3}
+  aboutBtnSprites:
+  - {fileID: 21300000, guid: c047d54fef59935449c383aabc401d71, type: 3}
+  - {fileID: 21300002, guid: c047d54fef59935449c383aabc401d71, type: 3}
+  startBtnSprites:
+  - {fileID: 21300000, guid: dd8adbf3fc019b84a9fd950ff73b1a74, type: 3}
+  - {fileID: 21300002, guid: dd8adbf3fc019b84a9fd950ff73b1a74, type: 3}
 --- !u!114 &11487122
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -572,7 +616,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 11486570}
         m_MethodName: OnClicFlagBtn
         m_Mode: 3
         m_Arguments:
@@ -678,7 +722,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 11486570}
         m_MethodName: OnClicFlagBtn
         m_Mode: 3
         m_Arguments:

@@ -36,5 +36,9 @@ namespace Assets.Scripts.App{
             MetricsManager.instance.GameFinished(minSeconds, pointsPerSecond, pointsPerError);
             ViewController.instance.LoadScene("LevelCompleted");
 		}
+
+		public void UnloadLevel(){
+			Destroy (gameObject);
+		}
 	}
 }

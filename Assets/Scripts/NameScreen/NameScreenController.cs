@@ -23,12 +23,12 @@ public class NameScreenController : MonoBehaviour {
 
 	public void SaveUsername(string username){
 		SettingsController.instance.SwitchName (username);
-        ViewController.instance.LoadScene("ModeScreen");
+		ViewController.instance.LoadModeScreen();
     }
 
     internal void GoBack()
     {
-        ViewController.instance.LoadScene("Cover");
+        ViewController.instance.LoadCover();
     }
 
     internal static void PlayClicSound()

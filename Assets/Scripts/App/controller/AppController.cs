@@ -12,6 +12,9 @@ public class AppController : AppElement {
     public GameObject inGameMenu;
 	public GameObject[] instructions;
 
+	private GameObject inGameMenuScreen;
+	private GameObject instructionsScreen;
+
 	void Awake()
 	{
 		if (instance == null)           
@@ -25,13 +28,36 @@ public class AppController : AppElement {
 	}
 
         internal void MainMenu(){
-            ViewController.instance.LoadScene("MainMenu");
+			DestroyLvl (appModel.CurrentLevel);
+			ViewController.instance.LoadMainMenu();
         }
 
 		public void StartLevel(int level){			
 			SoundManager.instance.StopMusic ();
-			ViewController.instance.LoadScene (GetLevelName(appModel.CurrentLevel));
+			ViewController.instance.LoadLevel (GetLevelIndex(appModel.CurrentLevel));
 		}
+
+		private int GetLevelIndex(int level)
+		{
+			if (level < 6)
+			{
+				return level-1;
+			}
+			else if (level < 12)
+			{
+				return 5;
+			}
+			else {
+				if (level==12)
+					return 6; 
+				else
+					return 7; 
+				
+			}
+
+		}
+
+
 
         private string GetLevelName(int level)
         {
@@ -64,12 +90,14 @@ public class AppController : AppElement {
         }
 
         internal void RestartLvl(){
-            DestroyLvl(appModel.CurrentLevel);
-            StartLevel(appModel.CurrentLevel);
+			
+//            DestroyLvl(appModel.CurrentLevel);
+//            StartLevel(appModel.CurrentLevel);
+			ViewController.instance.ChangeCurrentObject(GameObject.Find(GetLevelName(appModel.CurrentLevel)));
         }
 
         internal void NextLvl(){
-            DestroyLvl(appModel.CurrentLevel);
+//            DestroyLvl(appModel.CurrentLevel);
             appModel.NextLvl();
             StartLevel(appModel.CurrentLevel);
         }
@@ -87,7 +115,6 @@ public class AppController : AppElement {
             return appModel.CurrentLevel == appModel.MaxLevelPossible;
         }
 
-
 		public int GetMaxLevelPossible(){
 			return appModel.MaxLevelPossible;
 		}
@@ -103,13 +130,23 @@ public class AppController : AppElement {
 
         internal void ShowInGameMenu(){
             TimerImpl.instance.Pause();
-            GameObject.Instantiate(inGameMenu);
+			inGameMenuScreen = Instantiate(inGameMenu);
+//			GameObject.Instantiate(inGameMenu);
         }
+
+		internal void HideInGameMenu(){
+			Destroy(inGameMenuScreen);
+		}
+
+		internal void HideInstructions(){
+			Destroy(instructionsScreen);
+		}
 
 
 		internal void ShowInstructions()
 		{
-			GameObject.Instantiate (instructions[appModel.CurrentLevel-1]);
+			instructionsScreen = Instantiate(instructions[appModel.CurrentLevel-1]);
+//			GameObject.Instantiate (instructions[appModel.CurrentLevel-1]);
 
 			//play sound
 		}

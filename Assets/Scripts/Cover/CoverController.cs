@@ -11,6 +11,7 @@ namespace Assets.Scripts.Cover
 
         public static CoverController instance;
         public CoverView coverView;
+	
 
         // Use this for initialization
         void Start()
@@ -38,7 +39,9 @@ namespace Assets.Scripts.Cover
 
         internal static void Play()
         {
-            ViewController.instance.LoadScene("NameScreen");
+
+			ViewController.instance.LoadNameScreen();
+
         }
 
         internal static void PlayClicSound()
