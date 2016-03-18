@@ -212,6 +212,8 @@ GameObject:
   - 224: {fileID: 22407558}
   - 222: {fileID: 22281666}
   - 114: {fileID: 11466548}
+  - 114: {fileID: 11410562}
+  - 114: {fileID: 11417166}
   m_Layer: 0
   m_Name: levelCompleted
   m_TagString: Untagged
@@ -374,6 +376,27 @@ Animator:
   m_WarningMessage: 
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
+--- !u!114 &11410562
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 154328}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: de8b7ba39fbe53944998bdd16ba9326a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  title: {fileID: 11480910}
+  score: {fileID: 11425104}
+  nextLvlBtn: {fileID: 11422864}
+  stars:
+  - {fileID: 11430786}
+  - {fileID: 11488150}
+  - {fileID: 11414340}
+  correct: {fileID: 128760}
+  incorrect: {fileID: 175666}
+  hints: {fileID: 110864}
 --- !u!114 &11411538
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -434,6 +457,17 @@ MonoBehaviour:
   m_FillAmount: 1
   m_FillClockwise: 1
   m_FillOrigin: 0
+--- !u!114 &11417166
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 154328}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 56ee57dc0bb79bb479f3a09c6d2e2c92, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &11417958
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -473,7 +507,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 11410562}
         m_MethodName: OnClicMainMenu
         m_Mode: 1
         m_Arguments:
@@ -525,7 +559,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 11410562}
         m_MethodName: OnClickNextLvl
         m_Mode: 1
         m_Arguments:
@@ -730,7 +764,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 11410562}
         m_MethodName: OnClickRetry
         m_Mode: 1
         m_Arguments:

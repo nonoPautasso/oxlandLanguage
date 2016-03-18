@@ -434,6 +434,7 @@ GameObject:
   - 224: {fileID: 22481022}
   - 222: {fileID: 22294876}
   - 114: {fileID: 11433646}
+  - 114: {fileID: 11478460}
   m_Layer: 5
   m_Name: settings
   m_TagString: Untagged
@@ -769,7 +770,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 11478460}
         m_MethodName: OnClicSwitchMode
         m_Mode: 1
         m_Arguments:
@@ -914,7 +915,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 11478460}
         m_MethodName: OnClicCrossBtn
         m_Mode: 1
         m_Arguments:
@@ -1020,7 +1021,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 11478460}
         m_MethodName: OnClicTicBtn
         m_Mode: 1
         m_Arguments:
@@ -1105,7 +1106,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 11478460}
         m_MethodName: OnClicSound
         m_Mode: 1
         m_Arguments:
@@ -1190,7 +1191,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 11478460}
         m_MethodName: OnClicMusicBtn
         m_Mode: 1
         m_Arguments:
@@ -1455,7 +1456,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 11478460}
         m_MethodName: OnClicLanguageBtn
         m_Mode: 1
         m_Arguments:
@@ -1468,6 +1469,43 @@ MonoBehaviour:
         m_CallState: 2
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
+--- !u!114 &11478460
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 195544}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 92ac77bd09ade2445ad2a8708787a580, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  settingsOptions: {fileID: 170738}
+  labels:
+  - {fileID: 11465682}
+  - {fileID: 11464132}
+  - {fileID: 11428730}
+  - {fileID: 11442714}
+  title: {fileID: 11428668}
+  labelButtons:
+  - {fileID: 11425884}
+  - {fileID: 11469182}
+  - {fileID: 11484746}
+  spriteButtons:
+  - {fileID: 11448370}
+  - {fileID: 11436792}
+  musicBtnSprites:
+  - {fileID: 21300000, guid: f44118e8dc866be4bac5895e02f57f26, type: 3}
+  - {fileID: 21300002, guid: f44118e8dc866be4bac5895e02f57f26, type: 3}
+  soundBtnSprites:
+  - {fileID: 21300000, guid: 7685f6e47657c90448d17dd247cdfb92, type: 3}
+  - {fileID: 21300002, guid: 7685f6e47657c90448d17dd247cdfb92, type: 3}
+  popUp: {fileID: 11451162}
+  newName: {fileID: 11403532}
+  ticBtn: {fileID: 11435696}
+  popUpCross: {fileID: 11479062}
+  popUpTitle: {fileID: 11460460}
+  warningAnimation: {fileID: 9515116}
 --- !u!114 &11479062
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1507,7 +1545,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 11478460}
         m_MethodName: OnClicPopUpCrossBtn
         m_Mode: 1
         m_Arguments:
@@ -1559,7 +1597,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 11478460}
         m_MethodName: OnClicSwitchName
         m_Mode: 1
         m_Arguments:

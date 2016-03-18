@@ -45,6 +45,8 @@ GameObject:
   - 224: {fileID: 22410928}
   - 222: {fileID: 22282942}
   - 114: {fileID: 11402246}
+  - 114: {fileID: 11412440}
+  - 114: {fileID: 11401416}
   m_Layer: 5
   m_Name: mainMenu
   m_TagString: Untagged
@@ -620,7 +622,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 11412440}
         m_MethodName: OnClickLevel
         m_Mode: 3
         m_Arguments:
@@ -672,7 +674,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 11412440}
         m_MethodName: OnClickLevel
         m_Mode: 3
         m_Arguments:
@@ -685,6 +687,18 @@ MonoBehaviour:
         m_CallState: 2
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
+--- !u!114 &11401416
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 108576}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: df900c620f031485cb316651cda84e36, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  mainMenuView: {fileID: 11412440}
 --- !u!114 &11402172
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -838,7 +852,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 11412440}
         m_MethodName: OnClickLevel
         m_Mode: 3
         m_Arguments:
@@ -917,7 +931,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 11412440}
         m_MethodName: OnClickSelector
         m_Mode: 1
         m_Arguments:
@@ -996,7 +1010,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 11412440}
         m_MethodName: OnClickLevel
         m_Mode: 3
         m_Arguments:
@@ -1009,6 +1023,50 @@ MonoBehaviour:
         m_CallState: 2
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
+--- !u!114 &11412440
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 108576}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6823f195b97954a6c93e674115a9304c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  settingsBtn: {fileID: 11477218}
+  metricsBtn: {fileID: 11463448}
+  levelBtns:
+  - {fileID: 11412980}
+  - {fileID: 11415156}
+  - {fileID: 11420240}
+  - {fileID: 11400140}
+  - {fileID: 11488834}
+  - {fileID: 11400164}
+  - {fileID: 11411256}
+  - {fileID: 11448642}
+  - {fileID: 11497852}
+  - {fileID: 11442078}
+  - {fileID: 11417922}
+  - {fileID: 11465220}
+  - {fileID: 11404064}
+  - {fileID: 11480978}
+  - {fileID: 11461736}
+  - {fileID: 11477254}
+  welcomeText: {fileID: 11463156}
+  vladimirText: {fileID: 11494714}
+  levelStateSprites:
+  - {fileID: 21300002, guid: 90a9f007075a04faf9197b7c8da3674f, type: 3}
+  - {fileID: 21300000, guid: 90a9f007075a04faf9197b7c8da3674f, type: 3}
+  - {fileID: 21300004, guid: 90a9f007075a04faf9197b7c8da3674f, type: 3}
+  - {fileID: 21300006, guid: 90a9f007075a04faf9197b7c8da3674f, type: 3}
+  - {fileID: 21300008, guid: 90a9f007075a04faf9197b7c8da3674f, type: 3}
+  infoPanelStatus:
+  - {fileID: 21300002, guid: 8f2a28aec521b6c498c7127d1a34009b, type: 3}
+  - {fileID: 21300000, guid: 8f2a28aec521b6c498c7127d1a34009b, type: 3}
+  infoPanel: {fileID: 187914}
+  selectorAnimator: {fileID: 9529170}
+  scrollRect: {fileID: 11436550}
 --- !u!114 &11412980
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1048,7 +1106,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 11412440}
         m_MethodName: OnClickLevel
         m_Mode: 3
         m_Arguments:
@@ -1100,7 +1158,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 11412440}
         m_MethodName: OnClickLevel
         m_Mode: 3
         m_Arguments:
@@ -1152,7 +1210,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 11412440}
         m_MethodName: OnClickLevel
         m_Mode: 3
         m_Arguments:
@@ -1204,7 +1262,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 11412440}
         m_MethodName: OnClickLevel
         m_Mode: 3
         m_Arguments:
@@ -1310,7 +1368,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 11412440}
         m_MethodName: OnClickCrossBtn
         m_Mode: 1
         m_Arguments:
@@ -1420,7 +1478,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 11412440}
         m_MethodName: OnClickLevel
         m_Mode: 3
         m_Arguments:
@@ -1526,7 +1584,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 11412440}
         m_MethodName: OnClickLevel
         m_Mode: 3
         m_Arguments:
@@ -1697,7 +1755,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 11412440}
         m_MethodName: OnClickLevel
         m_Mode: 3
         m_Arguments:
@@ -1836,7 +1894,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 11412440}
         m_MethodName: OnClickMetrics
         m_Mode: 1
         m_Arguments:
@@ -1888,7 +1946,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 11412440}
         m_MethodName: OnClickLevel
         m_Mode: 3
         m_Arguments:
@@ -1994,7 +2052,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 11412440}
         m_MethodName: OnClickSettings
         m_Mode: 1
         m_Arguments:
@@ -2046,7 +2104,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 11412440}
         m_MethodName: OnClickLevel
         m_Mode: 3
         m_Arguments:
@@ -2125,7 +2183,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 11412440}
         m_MethodName: OnClickLevel
         m_Mode: 3
         m_Arguments:
@@ -2295,7 +2353,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 11412440}
         m_MethodName: OnClickLevel
         m_Mode: 3
         m_Arguments:
@@ -2347,7 +2405,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 11412440}
         m_MethodName: OnClickPlayGame
         m_Mode: 1
         m_Arguments:
@@ -2540,7 +2598,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 11412440}
         m_MethodName: OnClickLevel
         m_Mode: 3
         m_Arguments:
