@@ -37,7 +37,7 @@ public class ViewController : MonoBehaviour {
 		public void ChangeCurrentObject(GameObject newObject)
 		{
 			GameObject child = Instantiate(newObject);
-//			FitObjectToScene(child);
+			FitObjectToScene(child);
 
 			Destroy(currentGameObject);
 			currentGameObject = child;            
@@ -75,8 +75,6 @@ public class ViewController : MonoBehaviour {
 		public void LoadMainMenu(){
 			ChangeCurrentObject (mainMenu);
 		}
-
-
-			
+	
 }
 }

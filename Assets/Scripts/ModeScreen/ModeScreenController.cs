@@ -12,7 +12,6 @@ namespace Assets.Scripts.ChooseScreen
         public static ModeScreenController instance;
         public ModeScreenView modeScreenView;
 
-
         void Start()
         {
             if (instance == null)
@@ -24,12 +23,12 @@ namespace Assets.Scripts.ChooseScreen
         public void SetMode(int newMode)
         {
             SettingsController.instance.SwitchMode(newMode);
-            ViewController.instance.LoadScene("MainMenu");
+			ViewController.instance.LoadMainMenu();
         }
 
         internal void GoBack()
         {
-            ViewController.instance.LoadScene("NameScreen");
+			ViewController.instance.LoadNameScreen();
         }
 
         internal static void PlayClicSound()

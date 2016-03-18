@@ -10,6 +10,8 @@ GameObject:
   - 224: {fileID: 22497904}
   - 222: {fileID: 22297770}
   - 114: {fileID: 11448400}
+  - 114: {fileID: 11420528}
+  - 114: {fileID: 11418034}
   m_Layer: 0
   m_Name: modeScreen
   m_TagString: Untagged
@@ -157,7 +159,7 @@ MonoBehaviour:
     callback:
       m_PersistentCalls:
         m_Calls:
-        - m_Target: {fileID: 0}
+        - m_Target: {fileID: 11420528}
           m_MethodName: OnHoverChallengeBtn
           m_Mode: 1
           m_Arguments:
@@ -174,7 +176,7 @@ MonoBehaviour:
     callback:
       m_PersistentCalls:
         m_Calls:
-        - m_Target: {fileID: 0}
+        - m_Target: {fileID: 11420528}
           m_MethodName: OnExitHover
           m_Mode: 1
           m_Arguments:
@@ -188,6 +190,34 @@ MonoBehaviour:
       m_TypeName: UnityEngine.EventSystems.EventTrigger+TriggerEvent, UnityEngine.UI,
         Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
   delegates: []
+--- !u!114 &11418034
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 101354}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9421a289217c14607b9d5fc1327114fb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  modeScreenView: {fileID: 11420528}
+--- !u!114 &11420528
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 101354}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 604ac1951833d4159bce852f4b3d71ca, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  freeBtn: {fileID: 11482824}
+  challengeBtn: {fileID: 11458164}
+  titleTxt: {fileID: 11431724}
+  hoverTxt: {fileID: 11443064}
+  backBtn: {fileID: 11430610}
 --- !u!114 &11430610
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -227,7 +257,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 11420528}
         m_MethodName: OnClicBack
         m_Mode: 1
         m_Arguments:
@@ -376,7 +406,7 @@ MonoBehaviour:
     callback:
       m_PersistentCalls:
         m_Calls:
-        - m_Target: {fileID: 0}
+        - m_Target: {fileID: 11420528}
           m_MethodName: OnHoverFreeBtn
           m_Mode: 1
           m_Arguments:
@@ -393,7 +423,7 @@ MonoBehaviour:
     callback:
       m_PersistentCalls:
         m_Calls:
-        - m_Target: {fileID: 0}
+        - m_Target: {fileID: 11420528}
           m_MethodName: OnExitHover
           m_Mode: 1
           m_Arguments:
@@ -446,7 +476,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 11420528}
         m_MethodName: OnChallengeClic
         m_Mode: 1
         m_Arguments:
@@ -618,7 +648,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 11420528}
         m_MethodName: OnFreeClic
         m_Mode: 1
         m_Arguments:

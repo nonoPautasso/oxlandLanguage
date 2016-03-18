@@ -116,6 +116,8 @@ GameObject:
   - 224: {fileID: 22407842}
   - 222: {fileID: 22267382}
   - 114: {fileID: 11466456}
+  - 114: {fileID: 11472330}
+  - 114: {fileID: 11410698}
   m_Layer: 0
   m_Name: nameScreen
   m_TagString: Untagged
@@ -196,7 +198,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 11472330}
         m_MethodName: OnClickOkBtn
         m_Mode: 1
         m_Arguments:
@@ -272,6 +274,18 @@ MonoBehaviour:
   m_CaretBlinkRate: 0.85
   m_CaretWidth: 1
   m_ReadOnly: 0
+--- !u!114 &11410698
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 179710}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 54e8e7a25f0744ed2a192d9a513d34a5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  nameScreenView: {fileID: 11472330}
 --- !u!114 &11417866
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -419,6 +433,20 @@ MonoBehaviour:
   m_FillAmount: 1
   m_FillClockwise: 1
   m_FillOrigin: 0
+--- !u!114 &11472330
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 179710}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 756809c52143d4e13b07e7d05fcbcb01, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  inputText: {fileID: 11409830}
+  insertNameText: {fileID: 11457060}
+  warningAnimation: {fileID: 9502982}
 --- !u!114 &11483932
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -458,7 +486,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 11472330}
         m_MethodName: OnClickBack
         m_Mode: 1
         m_Arguments:
