@@ -55,10 +55,10 @@ namespace Assets.Scripts.Levels.Vowels
                 Debug.Log("Revealing letter at index: " + index);
                 view.ShowLetter(index, letter.text);
                 model.RevealLetter(index, letter.text);
-                LogAnswer(true);
+                //LogAnswer(true);
             }
-            else LogAnswer(false);
-            if (model.GetNumRevealedLetters() == 5) EndGame(model.MinSeconds,model.PointsPerSecond, model.PointsPerError);
+            //else LogAnswer(false);
+            //if (model.GetNumRevealedLetters() == 5) EndGame(model.MinSeconds,model.PointsPerSecond, model.PointsPerError);
 		}
 
 		public void ResetBubble (Button bubble)

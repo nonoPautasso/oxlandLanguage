@@ -163,7 +163,29 @@ namespace Assets.Scripts.Levels.Vowels
 		public void ReturnToStack(string letter)
 		{
             if (!(letter.Equals("A") || letter.Equals("E") || letter.Equals("I") || letter.Equals("O") || letter.Equals("U")))
-                consonantQueue.Enqueue(letter);				
+                consonantQueue.Enqueue(letter);	
+            else
+            {
+                switch (letter)
+                {
+                    case "A":
+                        if (!revealedLetters[0]) vowelQueue.Enqueue(letter);
+                        break;
+                    case "E":
+                        if (!revealedLetters[1]) vowelQueue.Enqueue(letter);
+                        break;
+                    case "I":
+                        if (!revealedLetters[2]) vowelQueue.Enqueue(letter);
+                        break;
+                    case "O":
+                        if (!revealedLetters[3]) vowelQueue.Enqueue(letter);
+                        break;
+                    case "U":
+                        if (!revealedLetters[4]) vowelQueue.Enqueue(letter);
+                        break;
+
+                }
+            }
 		}
 
         public int GetNumRevealedLetters()
