@@ -17,8 +17,9 @@ public class BubbleAnimationEventListener : MonoBehaviour {
 	
 	}
 
-    public void EventHandlerMethod(AnimationEvent animationEvent)
+    public void EventHandlerMethod()
     {
-        controller.ResetBubble(GameObject.Find("letter" + animationEvent.intParameter.ToString() + "Button").GetComponent<Button>());
+        //controller.ResetBubble(GameObject.Find("letter" + animationEvent.intParameter.ToString() + "Button").GetComponent<Button>());
+        controller.ResetBubble(this.GetComponent<Button>());
     }
     }
