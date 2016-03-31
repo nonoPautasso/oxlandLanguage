@@ -2,24 +2,16 @@
 using UnityEngine.UI;
 using System.Collections;
 using Assets.Scripts.Levels.Vowels;
-
-public class BubbleAnimationEventListener : MonoBehaviour {
+/*
+Event listener to reset animation when bubble has reached top of screen
+*/
+public class BubbleAnimationEventListener : MonoBehaviour
+{
 
     public VowelsController controller;
 
-	// Use this for initialization
-	void Start () {
-	
-	}
-	
-	// Update is called once per frame
-	void Update () {
-	
-	}
-
     public void EventHandlerMethod()
     {
-        //controller.ResetBubble(GameObject.Find("letter" + animationEvent.intParameter.ToString() + "Button").GetComponent<Button>());
         controller.ResetBubble(this.GetComponent<Button>());
     }
-    }
+}

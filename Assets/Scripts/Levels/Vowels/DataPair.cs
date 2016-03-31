@@ -5,7 +5,10 @@ using System.Text;
 
 namespace Assets.Scripts.Levels.Vowels
 {
-    public class DataPair<X,Y>
+    /*
+    A data structure to send a pair of values
+    */
+    public class DataPair<X, Y>
     {
         private X fst;
         private Y snd;
