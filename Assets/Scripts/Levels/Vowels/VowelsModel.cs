@@ -11,6 +11,7 @@ namespace Assets.Scripts.Levels.Vowels
 	{
         private bool[] revealedLetters;
         private int numRevealedLetters;
+        private int numVowelsInBubbles;
 
 
 		private static string[] vowels;
@@ -21,6 +22,7 @@ namespace Assets.Scripts.Levels.Vowels
 		public override void StartGame ()
 		{
             numRevealedLetters = 0;
+            numVowelsInBubbles = 0;
 			vowels = new string[]{"A","E","I","O","U"};
 			vowelQueue = new Queue<string> ();
             consonants = new string[]{"B","C","D","F","G","H","J",
@@ -135,16 +137,19 @@ namespace Assets.Scripts.Levels.Vowels
 		public string GenerateLetter ()
 		{
 			string letter;
-			if (CheckGenerateVowel () && vowelQueue.Count() != 0)
-				letter = GenerateVowel();
-			else
-				letter = GenerateConsonant();
+            if (CheckGenerateVowel() && vowelQueue.Count() != 0)
+            {
+                letter = GenerateVowel();
+                numVowelsInBubbles++;
+            }
+            else
+                letter = GenerateConsonant();
 			return letter;
 		}
 
 		private bool CheckGenerateVowel ()
 		{
-			if (UnityEngine.Random.value <= 0.5)
+			if (UnityEngine.Random.value <= 0.75 && numVowelsInBubbles != 0)
 				return false;
 			else
 				return true;
@@ -185,6 +190,7 @@ namespace Assets.Scripts.Levels.Vowels
                         break;
 
                 }
+                numVowelsInBubbles--;
             }
 		}
 

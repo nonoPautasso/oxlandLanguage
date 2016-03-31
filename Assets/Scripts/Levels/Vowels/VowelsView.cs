@@ -39,7 +39,7 @@ namespace Assets.Scripts.Levels.Vowels
 
 		public void ResetAnimation (Button bubble, string letter)
 		{
-			//	bubble.GetComponent<Animation> ().GetComponent<AnimationState>().time = 0;
+            bubble.GetComponent<Animator>().SetTime(0);
 			bubble.GetComponentInChildren<Text> ().text = letter;
 		}
 	}
