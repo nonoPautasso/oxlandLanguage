@@ -32,11 +32,12 @@ namespace Assets.Scripts.App{
 		public void ChangeCurrentObject(GameObject newObject)
 		{
 			GameObject child = Instantiate(newObject);
-			//			FitObjectToScene(child);
+			FitObjectToScene(child);
 			if(currentGameObject)
 				Destroy(currentGameObject);
 			currentGameObject = child;            
 		}
+			
 
 		private void FitObjectToScene(GameObject child)
 		{
@@ -60,6 +61,8 @@ namespace Assets.Scripts.App{
 		public void LoadCover(){
 			ChangeCurrentObject (cover);
 		}
+
+
 
 		public void LoadModeScreen(){
 			ChangeCurrentObject (modeScreen);
