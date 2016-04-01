@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 
+
 namespace Assets.Scripts.App{
 
 	public abstract class LevelController : MonoBehaviour{
@@ -8,6 +9,7 @@ namespace Assets.Scripts.App{
 		public abstract void NextChallenge ();
 		public abstract void ShowHint ();
 		public abstract void InitGame ();
+		public abstract void RestartGame ();
 
 		public void LogAnswer(bool isCorrect){
 			MetricsManager.instance.LogAnswer (isCorrect);
@@ -33,8 +35,8 @@ namespace Assets.Scripts.App{
 
 		public void EndGame(int minSeconds,int pointsPerSecond,int  pointsPerError){
 			CheckIfLevelUp();
-            MetricsManager.instance.GameFinished(minSeconds, pointsPerSecond, pointsPerError);
-            ViewController.instance.LoadScene("LevelCompleted");
+			MetricsManager.instance.GameFinished(minSeconds, pointsPerSecond, pointsPerError);
+			ViewController.instance.LoadLevelComplete();
 		}
 
 		public void UnloadLevel(){

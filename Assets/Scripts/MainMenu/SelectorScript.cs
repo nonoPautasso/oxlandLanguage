@@ -13,7 +13,7 @@ public class SelectorScript : MonoBehaviour {
 			if (MainMenuController.instance.SelectorInTransition) {	
 				if (level == AppController.instance.appModel.CurrentLevel) {
 					gameObject.GetComponent<Animator> ().speed = 0;
-					AppController.instance.StartLevel (level);
+					AppController.instance.StartLevel ();
 				}
 			}
 	}

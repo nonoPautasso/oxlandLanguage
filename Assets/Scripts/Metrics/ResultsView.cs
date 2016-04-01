@@ -53,7 +53,7 @@ namespace Assets.Scripts.Metrics
 
         public void OnClickCrossBtn(){
             PlaySoundClick();
-            ViewController.instance.LoadScene("MainMenu");
+            ViewController.instance.LoadMainMenu();
         }
 
         public void OnClickViewDetailsCrossBtn()

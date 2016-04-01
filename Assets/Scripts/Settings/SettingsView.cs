@@ -100,7 +100,7 @@ namespace Assets.Scripts.Settings
         public void OnClicCrossBtn()
         {
             PlayClicSound();
-			ViewController.instance.LoadScene ("MainMenu");
+			ViewController.instance.LoadMainMenu();
         }
 
         public void OnClicPopUpCrossBtn()

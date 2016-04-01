@@ -83,12 +83,12 @@ public class MainMenuView : MonoBehaviour {
 
 	public void OnClickSettings(){
 		SoundManager.instance.PlayClicSound ();
-		ViewController.instance.LoadScene ("Settings");
+			ViewController.instance.LoadSettings();
 	}
 
 	public void OnClickMetrics(){
 		SoundManager.instance.PlayClicSound ();
-		ViewController.instance.LoadScene ("Metrics");
+		ViewController.instance.LoadMetrics();
 	}
 
 	void RefreshLevelBtnsStatus(){
@@ -135,7 +135,7 @@ public class MainMenuView : MonoBehaviour {
 			int currentLevel = AppController.instance.GetCurrentLevel ();
 			int levelGap;
 			if (oldLevel == currentLevel) {
-				AppController.instance.StartLevel (currentLevel);
+				AppController.instance.StartLevel ();
 			}else if (oldLevel < currentLevel){
 				if (currentLevel - oldLevel > 4){
 					levelGap = (currentLevel - 5>0) ? currentLevel-5 : 1;

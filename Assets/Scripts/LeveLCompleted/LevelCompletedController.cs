@@ -31,7 +31,7 @@ namespace Assets.Scripts.LevelCompleted
 
         internal void MainMenu()
         {
-            ViewController.instance.LoadScene("MainMenu");
+			ViewController.instance.LoadMainMenu();
         }
 
         internal void PlayClicSound()

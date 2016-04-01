@@ -32,7 +32,7 @@ public class AppController : AppElement {
 			ViewController.instance.LoadMainMenu();
         }
 
-		public void StartLevel(int level){			
+		public void StartLevel(){			
 			SoundManager.instance.StopMusic ();
 			ViewController.instance.LoadLevel (GetLevelIndex(appModel.CurrentLevel));
 		}
@@ -93,13 +93,13 @@ public class AppController : AppElement {
 			
 //            DestroyLvl(appModel.CurrentLevel);
 //            StartLevel(appModel.CurrentLevel);
-			ViewController.instance.ChangeCurrentObject(GameObject.Find(GetLevelName(appModel.CurrentLevel)));
+			StartLevel();
         }
 
         internal void NextLvl(){
 //            DestroyLvl(appModel.CurrentLevel);
             appModel.NextLvl();
-            StartLevel(appModel.CurrentLevel);
+            StartLevel();
         }
 
         private void DestroyLvl(int lvl)
