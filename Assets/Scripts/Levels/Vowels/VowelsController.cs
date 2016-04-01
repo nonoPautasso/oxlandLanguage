@@ -3,6 +3,7 @@ using System.Collections;
 using Assets.Scripts.App;
 using UnityEngine.UI;
 using System.Collections.Generic;
+using System;
 
 namespace Assets.Scripts.Levels.Vowels
 {
@@ -15,6 +16,12 @@ namespace Assets.Scripts.Levels.Vowels
         void Start()
         {
             InitGame();
+        }
+
+        public override void RestartGame()
+        {
+            InitGame();
+            view.EnableHint();
         }
 
         public override void InitGame()
@@ -49,7 +56,9 @@ namespace Assets.Scripts.Levels.Vowels
                 // Calls on the view to show the letter as hint
                 view.RevealHint(letters[i].Snd(), letters[i].Fst());
             }
+            view.DisableHint();
         }
+
 
         public void SubmitLetter(Text letter)
         {
@@ -62,8 +71,8 @@ namespace Assets.Scripts.Levels.Vowels
                 model.RevealLetter(index); // Tells model to record that the vowel was revealed
                 //LogAnswer(true);
             }
-            //else LogAnswer(false);
-            //if (model.GetNumRevealedLetters() == 5) EndGame(model.MinSeconds,model.PointsPerSecond, model.PointsPerError);
+            else LogAnswer(false);
+            if (model.GetNumRevealedLetters() == 5) EndGame(model.MinSeconds,model.PointsPerSecond, model.PointsPerError);
         }
 
         public void ResetBubble(Button bubble)

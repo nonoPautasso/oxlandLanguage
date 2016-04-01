@@ -29,14 +29,14 @@ namespace Assets.Scripts.Levels.Vowels
                 "K","L","M","N", "Ñ","P","Q","R","S","T","V","W","X","Y","Z"};
             consonantQueue = new Queue<string>();
             revealedLetters = new bool[5];
-            // Places all vowels in the vowels array into a queue in a random order
+            // Places all vowels from the vowels array into a queue in a random order
             while (vowels.Length != 0)
             {
                 int index = UnityEngine.Random.Range(0, vowels.Length);
                 vowelQueue.Enqueue(vowels[index]);
                 vowels = RemoveFromArray(vowels, index);
             }
-            // Places all consonants in the consonants array into a queue in a random order
+            // Places all consonants from the consonants array into a queue in a random order
             while (consonants.Length != 0)
             {
                 int index = UnityEngine.Random.Range(0, consonants.Length);
@@ -45,6 +45,7 @@ namespace Assets.Scripts.Levels.Vowels
             }
 
         }
+
         /*
         From an element from an array and returns the new array
         */
@@ -116,7 +117,7 @@ namespace Assets.Scripts.Levels.Vowels
         }
 
         /*
-        Returns the index of the clicked vowel. Returns -1 if the letter is a consonant
+        Returns the index of the clicked letter if it is a vowel. Returns -1 if the letter is a consonant
         */
         public int IndexOfRevealedVowel(string letter)
         {
