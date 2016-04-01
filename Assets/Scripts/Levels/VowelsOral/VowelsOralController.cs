@@ -14,7 +14,8 @@ namespace Assets.Scripts.Levels.VowelsOral
 
         public override void InitGame()
         {
-            throw new NotImplementedException();
+            model.InitModel();
+            LoadResources();
         }
 
         public override void NextChallenge()
@@ -29,7 +30,16 @@ namespace Assets.Scripts.Levels.VowelsOral
 
         public override void ShowHint()
         {
-            throw new NotImplementedException();
+            view.ShowHints(model.RequestHintInfo());
+        }
+
+        public void LoadResources()
+        {
+            view.SetResources(model.LoadResources("A"));
+            view.SetResources(model.LoadResources("E"));
+            view.SetResources(model.LoadResources("I"));
+            view.SetResources(model.LoadResources("O"));
+            view.SetResources(model.LoadResources("U"));
         }
 
         // Use this for initialization
