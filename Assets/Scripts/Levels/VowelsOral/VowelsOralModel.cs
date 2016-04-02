@@ -13,9 +13,11 @@ namespace Assets.Scripts.Levels.VowelsOral
 
         private string currentCorrectLetter;
 
+        int[] letterAmounts;
+
         public void InitModel()
         {
-
+            letterAmounts = new int[5];
         }
 
         public DataTrio<Image[], AudioClip[], int> LoadResources(string letter)
@@ -51,6 +53,7 @@ namespace Assets.Scripts.Levels.VowelsOral
                 toReturn.Fst()[i] = images[i];
                 toReturn.Snd()[i] = clips[i];
             }
+            letterAmounts[intValue] = clips.Length;
             return toReturn;
         }
 
@@ -120,6 +123,14 @@ namespace Assets.Scripts.Levels.VowelsOral
                 arr[i] = arr[r];
                 arr[r] = tmp;
             }
+        }
+
+        public int Next()
+        {
+            int value = UnityEngine.Random.Range(0, 5);
+            if (letterAmounts[value] == 0) return Next();
+            else letterAmounts[value]--;
+            return value;
         }
 
         // Use this for initialization

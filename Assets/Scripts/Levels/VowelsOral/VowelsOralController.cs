@@ -20,7 +20,7 @@ namespace Assets.Scripts.Levels.VowelsOral
 
         public override void NextChallenge()
         {
-            throw new NotImplementedException();
+            view.Next(model.Next());
         }
 
         public override void RestartGame()

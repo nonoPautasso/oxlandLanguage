@@ -12,7 +12,8 @@ namespace Assets.Scripts.Levels.VowelsOral
 
         public Button[] vowelButtons;
 
-        private Image currentObjectImage;
+        public Image currentObjectImage;
+        public AudioClip currentAudioClip;
 
         private DataPair<Image[], AudioClip[]>[] letters;
 
@@ -50,6 +51,24 @@ namespace Assets.Scripts.Levels.VowelsOral
         public void SetResources(DataTrio<Image[], AudioClip[], int> resources)
         {
             letters[resources.Thd()] = new DataPair<Image[], AudioClip[]>(resources.Fst(), resources.Snd());
+        }
+
+        public void Next(int letter)
+        {
+            currentAudioClip = letters[letter].Snd()[0];
+            currentObjectImage = letters[letter].Fst()[0];
+            RemoveFirst(letters[letter].Snd());
+            RemoveFirst(letters[letter].Fst());
+        }
+
+        static void RemoveFirst<X>(X[] array)
+        {
+            X[] toReturn = new X[array.Length - 1];
+            for (int i = 0; i < toReturn.Length; i++)
+            {
+                toReturn[i] = array[i + 1];
+            }
+            array = toReturn;
         }
 
     }
