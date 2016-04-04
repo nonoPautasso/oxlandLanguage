@@ -48,8 +48,6 @@ namespace Assets.Scripts.App{
 			child.transform.localScale = Vector3.one;
 		}
 
-
-
 		public void LoadLevel(int level){
 			ChangeCurrentObject (levels [level]);
 		}
@@ -61,9 +59,7 @@ namespace Assets.Scripts.App{
 		public void LoadCover(){
 			ChangeCurrentObject (cover);
 		}
-
-
-
+			
 		public void LoadModeScreen(){
 			ChangeCurrentObject (modeScreen);
 		}
