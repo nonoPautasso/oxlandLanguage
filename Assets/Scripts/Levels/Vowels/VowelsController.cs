@@ -69,7 +69,7 @@ namespace Assets.Scripts.Levels.Vowels
                 // Clicked letter is a vowel
                 view.ShowLetter(index, letter.text);    // Tells view to show the letter at appropriate index
                 model.RevealLetter(index); // Tells model to record that the vowel was revealed
-                //LogAnswer(true);
+                LogAnswer(true);
             }
             else LogAnswer(false);
             if (model.GetNumRevealedLetters() == 5) EndGame(model.MinSeconds,model.PointsPerSecond, model.PointsPerError);

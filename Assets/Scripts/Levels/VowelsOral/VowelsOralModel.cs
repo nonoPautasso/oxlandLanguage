@@ -132,17 +132,5 @@ namespace Assets.Scripts.Levels.VowelsOral
             else letterAmounts[value]--;
             return value;
         }
-
-        // Use this for initialization
-        void Start()
-        {
-
-        }
-
-        // Update is called once per frame
-        void Update()
-        {
-
-        }
     }
 }
