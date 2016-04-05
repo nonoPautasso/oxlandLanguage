@@ -45,13 +45,15 @@ namespace Assets.Scripts.Levels.VowelsOral
                     break;
             }
             DataTrio<Image[], AudioClip[], int> toReturn;
-            AudioClip[] clips = Resources.LoadAll("Audio/Spanish/" + letter + "Words") as AudioClip[];
-            Image[] images = Resources.LoadAll("Sprites/" + letter + "Images") as Image[];
+            AudioClip[] clips = Resources.LoadAll<AudioClip>("Audio/Spanish/" + letter + "Words");
+            Image[] images = Resources.LoadAll<Image>("Sprites/" + letter + "Images");
+            Debug.Log(clips.Length);
+            Debug.Log(images.Length);
             toReturn = new DataTrio<Image[], AudioClip[], int>(new Image[clips.Length], new AudioClip[clips.Length], intValue);
             for (int i = 0; i < clips.Length; i++)
             {
-                toReturn.Fst()[i] = images[i];
-                toReturn.Snd()[i] = clips[i];
+                //toReturn.Fst()[i] = images[i];
+                //toReturn.Snd()[i] = clips[i];
             }
             letterAmounts[intValue] = clips.Length;
             return toReturn;
@@ -127,10 +129,38 @@ namespace Assets.Scripts.Levels.VowelsOral
 
         public int Next()
         {
+            if (letterAmounts[0] == 0 && letterAmounts[1] == 0 && letterAmounts[2] == 0
+                && letterAmounts[3] == 0 && letterAmounts[4] == 0) return -1;
             int value = UnityEngine.Random.Range(0, 5);
             if (letterAmounts[value] == 0) return Next();
             else letterAmounts[value]--;
+            switch (value)
+            {
+                case 0:
+                    currentCorrectLetter = "A";
+                    break;
+                case 1:
+                    currentCorrectLetter = "E";
+                    break;
+                case 2:
+                    currentCorrectLetter = "I";
+                    break;
+                case 3:
+                    currentCorrectLetter = "O";
+                    break;
+                case 4:
+                    currentCorrectLetter = "U";
+                    break;
+                default:
+                    currentCorrectLetter = null;
+                    break;
+            }
             return value;
+        }
+
+        public bool CheckSubmittedLetter(string letter)
+        {
+            return letter.Equals(currentCorrectLetter);
         }
     }
 }

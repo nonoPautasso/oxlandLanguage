@@ -11,7 +11,7 @@ namespace Assets.Scripts.Levels.Vowels
     {
         public VowelsView view;
 
-        VowelsModel model;
+        private VowelsModel model;
 
         void Start()
         {
@@ -41,6 +41,7 @@ namespace Assets.Scripts.Levels.Vowels
                 view.SetLetterButton(i, model.GenerateLetter());
             }
         }
+
 
         public override void NextChallenge()
         {
@@ -72,7 +73,7 @@ namespace Assets.Scripts.Levels.Vowels
                 LogAnswer(true);
             }
             else LogAnswer(false);
-            if (model.GetNumRevealedLetters() == 5) EndGame(model.MinSeconds,model.PointsPerSecond, model.PointsPerError);
+            if (model.GetNumRevealedLetters() == 5) EndGame(model.MinSeconds, model.PointsPerSecond, model.PointsPerError);
         }
 
         public void ResetBubble(Button bubble)

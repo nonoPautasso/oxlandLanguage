@@ -2,6 +2,7 @@
 using System.Collections;
 using Assets.Scripts.App;
 using System;
+using UnityEngine.UI;
 
 namespace Assets.Scripts.Levels.VowelsOral
 {
@@ -14,6 +15,7 @@ namespace Assets.Scripts.Levels.VowelsOral
 
         public override void InitGame()
         {
+            model = new VowelsOralModel();
             model.InitModel();
             LoadResources();
         }
@@ -52,6 +54,20 @@ namespace Assets.Scripts.Levels.VowelsOral
         void Update()
         {
 
+        }
+
+        public void SubmitLetter(Button button)
+        {
+            bool correct = model.CheckSubmittedLetter(button.GetComponent<Text>().text);
+            if (correct)
+            {
+                LogAnswer(true);
+                int nextLetterIndex = model.Next();
+                if (nextLetterIndex == -1) EndGame(model.MinSeconds, model.PointsPerSecond, model.PointsPerError);
+                view.Next(nextLetterIndex);    // Tells view to show the letter at appropriate index
+                LogAnswer(true);
+            }
+            else LogAnswer(false);
         }
     }
 }
