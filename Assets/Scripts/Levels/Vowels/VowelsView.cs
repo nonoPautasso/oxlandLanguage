@@ -10,6 +10,23 @@ namespace Assets.Scripts.Levels.Vowels
         public Button[] revealedLetters;
         public Button[] bubbleLetters;
 
+        void Start()
+        {
+            /*   Debug.Log("Creating arrays");
+               revealedLetters = new Button[] { GameObject.Find("upVowel1Button").GetComponent<Button>(),
+               GameObject.Find("upVowel2Button").GetComponent<Button>(),
+               GameObject.Find("upVowel3Button").GetComponent<Button>(),
+               GameObject.Find("upVowel4Button").GetComponent<Button>(),
+               GameObject.Find("upVowel5Button").GetComponent<Button>()};
+               bubbleLetters = new Button[] { GameObject.Find("letter1Button").GetComponent<Button>(),
+               GameObject.Find("letter2Button").GetComponent<Button>(),
+               GameObject.Find("letter3Button").GetComponent<Button>(),
+               GameObject.Find("letter4Button").GetComponent<Button>()};
+               Debug.Log("Revealed Letters array size: " + revealedLetters.Length);
+               Debug.Log("Bubble Letters array size: " + bubbleLetters.Length);
+               */
+        }
+
         public override void ShowHint()
         {
             throw new System.NotImplementedException();
@@ -53,6 +70,21 @@ namespace Assets.Scripts.Levels.Vowels
         {
             bubble.GetComponent<Animator>().SetTime(0);
             bubble.GetComponentInChildren<Text>().text = letter;
+        }
+
+        public void PlaySoundClick()
+        {
+            PlaySoundClic();
+        }
+
+        public void PlaySoundRight()
+        {
+            PlayRightSound();
+        }
+
+        public void PlaySoundWrong()
+        {
+            PlayWrongSound();
         }
     }
 }

@@ -11,7 +11,7 @@ namespace Assets.Scripts.Levels.Vowels
     {
         public VowelsView view;
 
-        VowelsModel model;
+        private VowelsModel model;
 
         void Start()
         {
@@ -42,6 +42,7 @@ namespace Assets.Scripts.Levels.Vowels
             }
         }
 
+
         public override void NextChallenge()
         {
 
@@ -66,13 +67,17 @@ namespace Assets.Scripts.Levels.Vowels
             int index = model.IndexOfRevealedVowel(letter.text);
             if (index != -1)
             {
+                view.PlayRightSound();
                 // Clicked letter is a vowel
                 view.ShowLetter(index, letter.text);    // Tells view to show the letter at appropriate index
                 model.RevealLetter(index); // Tells model to record that the vowel was revealed
-                //LogAnswer(true);
+               // LogAnswer(true);
             }
-            else LogAnswer(false);
-            if (model.GetNumRevealedLetters() == 5) EndGame(model.MinSeconds,model.PointsPerSecond, model.PointsPerError);
+            else {
+                //  LogAnswer(false);
+                view.PlayWrongSound();
+            }
+            if (model.GetNumRevealedLetters() == 5) EndGame(model.MinSeconds, model.PointsPerSecond, model.PointsPerError);
         }
 
         public void ResetBubble(Button bubble)
