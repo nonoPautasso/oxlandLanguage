@@ -5,6 +5,7 @@ using Assets.Scripts.App;
 using System.IO;
 using System.Linq;
 using UnityEditor;
+using I18N;
 
 namespace Assets.Scripts.Common {
 	public class Words {
@@ -12,6 +13,7 @@ namespace Assets.Scripts.Common {
 		private static string[] alphabet = new string[] {"A", "B","C","D","E", "F","G","H","I", "J",
 			"K","L","M","N", "Ñ","O", "P","Q","R","S","T","U", "V","W","X","Y","Z"};
 		private static Randomizer alphabetRandomizer = Randomizer.New(alphabet.Count() - 1);
+		static string currentPath;
 
 		//alphabet letter -> list of tuples including audio clip of word and sprite number. Use AudioClip.name to get word.
 		private static Dictionary<string, List<Word>> words;
@@ -25,9 +27,10 @@ namespace Assets.Scripts.Common {
 		public static void LoadAllWords() {
 			words = new Dictionary<string, List<Word>>();
 			int count = 0;
+			currentPath = CurrentPath ();
 			foreach (string letter in alphabet) {
 				List<Word> l = new List<Word>();
-				List<AudioClip> audioFiles = Resources.LoadAll<AudioClip> ("Audio/Spanish/" + letter + "Words/").ToList ();
+				List<AudioClip> audioFiles = Resources.LoadAll<AudioClip>(currentPath + letter + "Words/").ToList ();
 				foreach (AudioClip audio in audioFiles) {
 					l.Add (new Word(audio, count));
 					count++;
@@ -36,7 +39,12 @@ namespace Assets.Scripts.Common {
 			}
 		}
 
+		static string CurrentPath () {
+			return "Audio/" + I18n.Msg ("words.locale") + "/";
+		}
+
 		public static Word GetRandomWord(bool includeVowels = true){
+			CheckLoadedWords();
 			string letter = alphabet[alphabetRandomizer.Next()];
 			while ((!includeVowels && vowels.Contains (letter)) || words[letter].Count == 0) letter = alphabet [alphabetRandomizer.Next ()];
 			List<Word> audios = words[letter];
@@ -44,6 +52,7 @@ namespace Assets.Scripts.Common {
 		}
 
 		public static List<Word> GetRandomWordsFromLetter(string letter, int quantity){
+			CheckLoadedWords();
 			List<Word> letterWords = words[letter.ToUpper ()];
 			List<Word> result = new List<Word> ();
 			Randomizer randomizer = Randomizer.New(letterWords.Count - 1);
@@ -54,6 +63,7 @@ namespace Assets.Scripts.Common {
 		}
 
 		public static List<Word> GetRandomWords (int quantity, int correct, string letter) {
+			CheckLoadedWords();
 			List<Word> result = GetRandomWordsFromLetter(letter, correct);
 			for (int i = 0; i < quantity - correct; i++) {
 				Word w = GetRandomWord(false);
@@ -65,15 +75,22 @@ namespace Assets.Scripts.Common {
 		}
 
 		public static string[] GetVowels(){
+			CheckLoadedWords();
 			return vowels;
 		}
 
 		public static string[] GetAlphabet(){
+			CheckLoadedWords();
 			return alphabet;
 		}
 
 		public static Dictionary<string, List<Word>> GetWords() {
+			CheckLoadedWords();
 			return words;
+		}
+
+		static void CheckLoadedWords () {
+			if (currentPath != CurrentPath()) LoadAllWords();
 		}
 	}
 }

@@ -2,6 +2,7 @@
 using UnityEngine;
 using UnityEngine.UI;
 using Assets.Scripts.App;
+using I18N;
 
 namespace Assets.Scripts.Common {
 	public class Word : IEquatable<Word> {
@@ -27,7 +28,7 @@ namespace Assets.Scripts.Common {
 		}
 
 		public Sprite Sprite () {
-			Sprite[] s = Resources.LoadAll<Sprite>("Sprites/Spanish/ObjectsCastellano");
+			Sprite[] s = Resources.LoadAll<Sprite>("Sprites/" + I18n.Msg ("words.spritePath"));
 			return s[spriteNumber];
 		}
 
