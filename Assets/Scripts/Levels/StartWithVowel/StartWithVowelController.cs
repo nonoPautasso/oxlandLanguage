@@ -10,7 +10,9 @@ namespace Assets.Scripts.Levels.StartWithVowel {
 
 		public override void NextChallenge () { }
 
-		public override void ShowHint () { }
+		public override void ShowHint () {
+			LogHint ();
+		}
 
 		public override void InitGame () {
 			MetricsManager.instance.GameStart();

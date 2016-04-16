@@ -21,6 +21,8 @@ namespace Assets.Scripts.Levels.StartWithVowel {
 		
 		public override void ShowHint() {
 			SoundButtonsActive(true);
+			DisableHint ();
+			controller.ShowHint ();
 		}
 
 		public void NextChallenge() { }
@@ -38,8 +40,8 @@ namespace Assets.Scripts.Levels.StartWithVowel {
 		}
 
 		public void SetCurrentPage (int currentPage, List<Tuple<Word, bool>> model) {
-			//TODO restart red/green color in objects
 			ResetObjectsText ();
+			EnableHint ();
 			Views.SetActiveButton (backButton, currentPage != 0);
 			Views.SetActiveButton (nextButton, currentPage != (Words.GetVowels ().Length - 1));
 			submarine.sprite = Resources.LoadAll<Sprite> ("Sprites/submarinos") [currentPage];
@@ -47,6 +49,7 @@ namespace Assets.Scripts.Levels.StartWithVowel {
 			SoundButtonsActive(false);
 
 			for (int i = 0; i < objects.Count; i++) {
+				Views.PaintButton (objects[i], Color.white);
 				Views.SetButtonSprite (objects[i], model[i].Item1.Sprite());
 				if (model [i].Item2)
 					SetWord (model[i].Item1, i, controller.IsCorrect(i));
@@ -72,17 +75,19 @@ namespace Assets.Scripts.Levels.StartWithVowel {
 			objects [index].GetComponentInChildren<Text> ().text = word.Name ();
 			objects [index].enabled = false;
 			if(correct){
-				//TODO paint green.
+				Views.PaintButton (objects [index], Color.green);
 			} else {
-				//TODO paint red.
+				Views.PaintButton (objects [index], Color.red);
 			}
 		}
 
 		public void BackButton(){
+			PlaySoundClic ();
 			controller.BackButton ();
 		}
 
 		public void NextButton(){
+			PlaySoundClic ();
 			controller.NextButton ();
 		}
 
