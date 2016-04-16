@@ -35,7 +35,7 @@ namespace Assets.Scripts.App{
         public void PlayClip(AudioClip myClip)
     {
 	    mySource.clip = myClip;
-	    mySource.Play();
+		mySource.Play();
     }
 
         public void PlayFailureSound()

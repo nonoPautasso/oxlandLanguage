@@ -37,5 +37,13 @@ namespace Assets.Scripts.Common {
 			}
 			return false;
 		}
+
+		public static void PaintButton(Button button, Color color){
+			PaintImage (button.GetComponentInChildren<Image> (), color);
+		}
+
+		public static void PaintImage(Image image, Color color){
+			image.color = color;
+		}
 	}
 }

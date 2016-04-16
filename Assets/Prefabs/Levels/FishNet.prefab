@@ -115,7 +115,7 @@ GameObject:
   - 222: {fileID: 22263788}
   - 114: {fileID: 11400208}
   m_Layer: 5
-  m_Name: object4Image
+  m_Name: object3Image
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -235,6 +235,8 @@ GameObject:
   - 224: {fileID: 22484694}
   - 222: {fileID: 22248340}
   - 114: {fileID: 11457958}
+  - 114: {fileID: 11470044}
+  - 114: {fileID: 11434376}
   m_Layer: 5
   m_Name: FishNet
   m_TagString: Untagged
@@ -304,7 +306,7 @@ GameObject:
   - 222: {fileID: 22229324}
   - 114: {fileID: 11498914}
   m_Layer: 5
-  m_Name: object3Image
+  m_Name: object4Image
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -879,7 +881,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 11434376}
         m_MethodName: OnClickHintBtn
         m_Mode: 1
         m_Arguments:
@@ -952,6 +954,40 @@ MonoBehaviour:
   m_FillAmount: 1
   m_FillClockwise: 1
   m_FillOrigin: 0
+--- !u!114 &11434376
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 128342}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 532f427cf9d4544a88d63e6aa43b986d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  hintBtn: {fileID: 11424838}
+  letters:
+  - {fileID: 11462318}
+  - {fileID: 11429762}
+  - {fileID: 11491774}
+  - {fileID: 11458008}
+  - {fileID: 11460448}
+  - {fileID: 11491386}
+  objects:
+  - {fileID: 11496362}
+  - {fileID: 11412114}
+  - {fileID: 11400208}
+  - {fileID: 11498914}
+  - {fileID: 11473036}
+  - {fileID: 11409854}
+  answers:
+  - {fileID: 11453244}
+  - {fileID: 11476596}
+  - {fileID: 11467534}
+  - {fileID: 11487976}
+  - {fileID: 11497294}
+  - {fileID: 11487088}
+  - {fileID: 11484318}
 --- !u!114 &11436122
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1078,7 +1114,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 11434376}
         m_MethodName: OnClickMenuBtn
         m_Mode: 1
         m_Arguments:
@@ -1282,7 +1318,18 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 11444106}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 11434376}
+        m_MethodName: AnswerClick
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 11453244}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.UI.Button, UnityEngine.UI
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
 --- !u!114 &11454646
@@ -1590,7 +1637,18 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 11416330}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 11434376}
+        m_MethodName: AnswerClick
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 11467534}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.UI.Button, UnityEngine.UI
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
 --- !u!114 &11468128
@@ -1620,6 +1678,18 @@ MonoBehaviour:
   m_FillAmount: 1
   m_FillClockwise: 1
   m_FillOrigin: 0
+--- !u!114 &11470044
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 128342}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3dd89a7931d4043108b8635a04f1ed9a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  view: {fileID: 11434376}
 --- !u!114 &11473036
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1685,7 +1755,18 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 11415898}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 11434376}
+        m_MethodName: AnswerClick
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 11476596}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.UI.Button, UnityEngine.UI
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
 --- !u!114 &11484318
@@ -1726,7 +1807,18 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 11497148}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 11434376}
+        m_MethodName: AnswerClick
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 11484318}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.UI.Button, UnityEngine.UI
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
 --- !u!114 &11486352
@@ -1790,7 +1882,18 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 11439872}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 11434376}
+        m_MethodName: AnswerClick
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 11487088}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.UI.Button, UnityEngine.UI
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
 --- !u!114 &11487976
@@ -1831,7 +1934,18 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 11438622}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 11434376}
+        m_MethodName: AnswerClick
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 11487976}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.UI.Button, UnityEngine.UI
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
 --- !u!114 &11488478
@@ -2100,7 +2214,18 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 11458632}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 11434376}
+        m_MethodName: AnswerClick
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 11497294}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.UI.Button, UnityEngine.UI
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
 --- !u!114 &11498914
@@ -2500,7 +2625,7 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 22445458}
-  m_RootOrder: 9
+  m_RootOrder: 8
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
   m_AnchoredPosition: {x: 831.91986, y: -387.49997}
@@ -2577,12 +2702,12 @@ RectTransform:
   - {fileID: 22467238}
   - {fileID: 22495520}
   - {fileID: 22420738}
-  - {fileID: 22480828}
   - {fileID: 22421244}
+  - {fileID: 22480828}
   - {fileID: 22476646}
   - {fileID: 22403754}
   m_Father: {fileID: 22484694}
-  m_RootOrder: 2
+  m_RootOrder: 0
   m_AnchorMin: {x: 0.108, y: 0.791}
   m_AnchorMax: {x: 0.8965418, y: 1}
   m_AnchoredPosition: {x: -3.9198914, y: -13.5}
@@ -2852,7 +2977,7 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 22445458}
-  m_RootOrder: 8
+  m_RootOrder: 9
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
   m_AnchoredPosition: {x: 1087.9199, y: -387.49997}
@@ -2886,7 +3011,7 @@ RectTransform:
   m_LocalScale: {x: 0.99975604, y: 0.99975604, z: 0.99975604}
   m_Children: []
   m_Father: {fileID: 22484694}
-  m_RootOrder: 0
+  m_RootOrder: 2
   m_AnchorMin: {x: 0, y: 0.892}
   m_AnchorMax: {x: 0.079, y: 1}
   m_AnchoredPosition: {x: 35.99125, y: -35.140625}
@@ -2919,9 +3044,9 @@ RectTransform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
-  - {fileID: 22483834}
-  - {fileID: 22411128}
   - {fileID: 22445458}
+  - {fileID: 22411128}
+  - {fileID: 22483834}
   - {fileID: 22462228}
   m_Father: {fileID: 0}
   m_RootOrder: 0

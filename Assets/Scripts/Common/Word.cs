@@ -16,7 +16,7 @@ namespace Assets.Scripts.Common {
 		}
 
 		public string Name(){
-			return audio.name;
+			return audio.name.ToUpper ();
 		}
 
 		public int SpriteNumber(){
@@ -34,6 +34,14 @@ namespace Assets.Scripts.Common {
 
 		public void PlayWord () {
 			SoundManager.instance.PlayClip(audio);
+		}
+
+		public string StartLetter () {
+			return Name ().ToCharArray ()[0].ToString ();
+		}
+
+		public float AudioLength () {
+			return audio.length;
 		}
 	}
 }

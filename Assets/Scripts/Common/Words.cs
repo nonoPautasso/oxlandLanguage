@@ -11,7 +11,7 @@ namespace Assets.Scripts.Common {
 	public class Words {
 		private static string[] vowels = new string[] { "A", "E", "I", "O", "U" };
 		private static string[] alphabet = new string[] {"A", "B","C","D","E", "F","G","H","I", "J",
-			"K","L","M","N", "Ñ","O", "P","Q","R","S","T","U", "V","W","X","Y","Z"};
+			"K","L","M","N", "O", "P","Q","R","S","T","U", "V","W","X","Y","Z"};
 		private static Randomizer alphabetRandomizer = Randomizer.New(alphabet.Count() - 1);
 		static string currentPath;
 
@@ -24,7 +24,7 @@ namespace Assets.Scripts.Common {
 
 		private Words () { }
 
-		public static void LoadAllWords() {
+		private static void LoadAllWords() {
 			words = new Dictionary<string, List<Word>>();
 			int count = 0;
 			currentPath = CurrentPath ();
@@ -62,6 +62,10 @@ namespace Assets.Scripts.Common {
 			return result;
 		}
 
+		public static Word GetRandomWordFromLetter(string letter){
+			return GetRandomWordsFromLetter (letter, 1)[0];
+		}
+
 		public static List<Word> GetRandomWords (int quantity, int correct, string letter) {
 			CheckLoadedWords();
 			List<Word> result = GetRandomWordsFromLetter(letter, correct);
@@ -91,6 +95,26 @@ namespace Assets.Scripts.Common {
 
 		static void CheckLoadedWords () {
 			if (currentPath != CurrentPath()) LoadAllWords();
+		}
+
+		public static string RandomLetter (int endOffset, int startOffset = 0) {
+			int letterNumber = alphabetRandomizer.Next ();
+			while(letterNumber < startOffset || letterNumber > alphabet.Count () - endOffset || IsAnyWordsEmpty(letterNumber, endOffset))
+				letterNumber = alphabetRandomizer.Next ();
+
+			return alphabet [letterNumber];
+		}
+
+		static bool IsAnyWordsEmpty (int letterNumber, int quantity) {
+			for (int i = 0; i < quantity; i++) {
+				List<Word> letterWords = words [alphabet [letterNumber + i]];
+				if (letterWords.Count == 0) return true;
+			}
+			return false;
+		}
+
+		public static string NextLetter (string letter) {
+			return alphabet [Array.IndexOf (alphabet, letter) + 1];
 		}
 	}
 }
