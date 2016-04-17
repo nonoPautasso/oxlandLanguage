@@ -30,7 +30,7 @@ namespace Assets.Scripts.Levels.FishNet {
 
 		public List<Word> CurrentPage () {
 			var currentLetter = CurrentLetter ();
-			List<Word> result = Words.GetRandomWords (ANSWER_QUANTITY - 1, Randomizer.RandomInRange (4, 1), currentLetter);
+			List<Word> result = Words.GetRandomWords (ANSWER_QUANTITY - 1, Randomizer.RandomInRange (4, 1), currentLetter, true);
 			if(IsSameWord ()){
 				//word has to be the same
 				Word sameWord = words [active];

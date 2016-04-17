@@ -1,16 +1,17 @@
 ﻿using System;
 using Assets.Scripts.App;
-using UnityEngine;
-using Assets.Scripts.Common;
 using System.Collections.Generic;
+using Assets.Scripts.Common;
 
-namespace Assets.Scripts.Levels.StartWithVowel {
-	public class StartWithVowelModel : LevelModel {
+namespace Assets.Scripts.Levels.Abc {
+	public class AbcModel : LevelModel {
 		private Dictionary<string, List<Tuple<Word, bool>>> model;
+		private List<string> letters;
 		private int currentPage;
 		public static int QUANTITY = 10;
 		public static int CORRECT = 5;
-		
+		public static int ROUNDS = 6;
+
 		public override void StartGame () {
 			currentPage = 0;
 
@@ -23,41 +24,35 @@ namespace Assets.Scripts.Levels.StartWithVowel {
 
 		void LoadModel () {
 			model = new Dictionary<string, List<Tuple<Word, bool>>> ();
-			foreach(string vowel in Words.GetVowels()) {
+			letters = Words.RandomLetters (ROUNDS);
+			foreach(string letter in letters) {
 				List<Tuple<Word, bool>> l = new List<Tuple<Word, bool>> ();
-				List<Word> words = Words.GetRandomWords(QUANTITY, CORRECT, vowel, false);
+				List<Word> words = Words.GetRandomWords(QUANTITY, CORRECT, letter, true);
 				foreach (Word word in words) {
 					l.Add (Tuple.Create (word, false));
 				}
-				model [vowel] = l;
+				model [letter] = l;
 			}
 		}
 
-		public void BackButton () {
-			currentPage--;
-		}
-
-		public void NextButton () {
+		public void NextPage () {
 			currentPage++;
 		}
 
 		public bool HasEnded () {
-			foreach (string vowel in Words.GetVowels ()) {
-				int correctCount = 0;
-				foreach (Tuple<Word, bool> word in model [vowel]) {
-					if (word.Item2 && IsCorrect (word, vowel)) correctCount++;
-				}
-				if (correctCount != CORRECT) return false;
-			}
-			return true;
+			return PageEnded() && currentPage == (ROUNDS - 1);
 		}
 
 		public List<Tuple<Word, bool>> GetCurrentPage () {
-			return model [Words.GetVowels()[currentPage]];
+			return model [GetCurrentLetter ()];
 		}
 
 		public Word GetWord(int index) {
 			return GetCurrentPage()[index].Item1;
+		}
+
+		public string GetCurrentLetter () {
+			return letters [currentPage];
 		}
 
 		public int GetCurrentPageNumber() {
@@ -73,7 +68,7 @@ namespace Assets.Scripts.Levels.StartWithVowel {
 
 		public bool IsCorrect (int index) {
 			Tuple<Word, bool> tuple = GetCurrentPage()[index];
-			string currentLetter = Words.GetVowels ()[currentPage];
+			string currentLetter = GetCurrentLetter ();
 			return IsCorrect (tuple, currentLetter);
 		}
 
@@ -82,9 +77,18 @@ namespace Assets.Scripts.Levels.StartWithVowel {
 			return currentLetter == clickedWord.ToUpper ().ToCharArray () [0].ToString ();
 		}
 
+		public bool PageEnded () {
+			string currentLetter = GetCurrentLetter ();
+			List<Tuple<Word, bool>> currentWords = model [currentLetter];
+			int correctCount = 0;
+			foreach (Tuple<Word, bool> word in currentWords) {
+				if (word.Item2 && IsCorrect (word, currentLetter)) correctCount++;
+			}
+			return correctCount == CORRECT;
+		}
+
 		public override void NextChallenge () { }
 
 		public override void RequestHint () { }
-		
 	}
 }

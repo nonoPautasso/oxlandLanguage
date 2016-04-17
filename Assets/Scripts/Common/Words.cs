@@ -66,12 +66,12 @@ namespace Assets.Scripts.Common {
 			return GetRandomWordsFromLetter (letter, 1)[0];
 		}
 
-		public static List<Word> GetRandomWords (int quantity, int correct, string letter) {
+		public static List<Word> GetRandomWords (int quantity, int correct, string letter, bool includeVowels) {
 			CheckLoadedWords();
 			List<Word> result = GetRandomWordsFromLetter(letter, correct);
 			for (int i = 0; i < quantity - correct; i++) {
-				Word w = GetRandomWord(false);
-				while (result.Contains (w)) w = GetRandomWord (false);
+				Word w = GetRandomWord(includeVowels);
+				while (result.Contains (w)) w = GetRandomWord (includeVowels);
 				result.Add(w);
 			}
 
@@ -97,7 +97,8 @@ namespace Assets.Scripts.Common {
 			if (currentPath != CurrentPath()) LoadAllWords();
 		}
 
-		public static string RandomLetter (int endOffset, int startOffset = 0) {
+		public static string RandomLetter (int endOffset = 1, int startOffset = 0) {
+			CheckLoadedWords();
 			int letterNumber = alphabetRandomizer.Next ();
 			while(letterNumber < startOffset || letterNumber > alphabet.Count () - endOffset || IsAnyWordsEmpty(letterNumber, endOffset))
 				letterNumber = alphabetRandomizer.Next ();
@@ -115,6 +116,17 @@ namespace Assets.Scripts.Common {
 
 		public static string NextLetter (string letter) {
 			return alphabet [Array.IndexOf (alphabet, letter) + 1];
+		}
+
+		public static List<string> RandomLetters (int quantity) {
+			List<string> result = new List<string> ();
+			for (int i = 0; i < quantity; i++) {
+				string letter = RandomLetter ();
+				while (result.Contains (letter))
+					letter = RandomLetter ();
+				result.Add (letter);
+			}
+			return result;
 		}
 	}
 }
