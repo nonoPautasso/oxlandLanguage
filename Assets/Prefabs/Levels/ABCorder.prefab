@@ -218,6 +218,8 @@ GameObject:
   - 224: {fileID: 22464776}
   - 222: {fileID: 22218498}
   - 114: {fileID: 11464604}
+  - 114: {fileID: 11434284}
+  - 114: {fileID: 11404032}
   m_Layer: 5
   m_Name: ABCorder
   m_TagString: Untagged
@@ -647,6 +649,35 @@ MonoBehaviour:
     m_VerticalOverflow: 0
     m_LineSpacing: 1
   m_Text: M
+--- !u!114 &11404032
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 145492}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2afc14277526a49578a9c237a1ca06cd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  hintBtn: {fileID: 11483964}
+  nextBtn: {fileID: 11453584}
+  answers:
+  - {fileID: 11461144}
+  - {fileID: 11424940}
+  - {fileID: 11465962}
+  - {fileID: 11444418}
+  - {fileID: 11411104}
+  letters:
+  - {fileID: 11415642}
+  - {fileID: 11486904}
+  - {fileID: 11455362}
+  - {fileID: 11421662}
+  - {fileID: 11475034}
+  - {fileID: 11477514}
+  - {fileID: 11498514}
+  - {fileID: 11483942}
+  - {fileID: 11459980}
 --- !u!114 &11408074
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -915,6 +946,18 @@ MonoBehaviour:
     m_VerticalOverflow: 0
     m_LineSpacing: 1
   m_Text: A
+--- !u!114 &11434284
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 145492}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 53ad93f58265b45dbbf7841ed12d0e42, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  view: {fileID: 11404032}
 --- !u!114 &11435210
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1605,7 +1648,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 11404032}
         m_MethodName: OnClickMenuBtn
         m_Mode: 1
         m_Arguments:
@@ -1921,7 +1964,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 11404032}
         m_MethodName: OnClickHintBtn
         m_Mode: 1
         m_Arguments:
