@@ -15,6 +15,7 @@ namespace Assets.Scripts.Levels.VowelsOral
 
         public override void InitGame()
         {
+			MetricsManager.instance.GameStart();
             model = new VowelsOralModel();
             model.InitModel();
             view.InitView();
@@ -52,11 +53,7 @@ namespace Assets.Scripts.Levels.VowelsOral
             InitGame();
         }
 
-        // Update is called once per frame
-        void Update()
-        {
-
-        }
+       
 
         public void SubmitLetter(Button button)
         {
@@ -64,7 +61,7 @@ namespace Assets.Scripts.Levels.VowelsOral
             if (correct)
             {
                 view.PlayRightSound();
-                //  LogAnswer(true);
+                  LogAnswer(true);
                 int nextLetterIndex = model.Next();
                 if (nextLetterIndex == -1) EndGame(model.MinSeconds, model.PointsPerSecond, model.PointsPerError);
                 view.Next(nextLetterIndex);    // Tells view to show the letter at appropriate index
@@ -72,7 +69,7 @@ namespace Assets.Scripts.Levels.VowelsOral
             else
             {
                 view.PlayWrongSound();
-            //    LogAnswer(false);
+                LogAnswer(false);
             }
         }
 

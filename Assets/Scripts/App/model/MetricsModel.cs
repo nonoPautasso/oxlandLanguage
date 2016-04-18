@@ -53,7 +53,9 @@ namespace Assets.Scripts.App{
 
         internal GameMetrics GetCurrentMetrics()
         {
-            return metrics[AppController.instance.appModel.CurrentLevel - 1][metrics[AppController.instance.appModel.CurrentLevel - 1].Count - 1];
+			Debug.Log (AppController.instance.appModel.CurrentLevel - 1);
+			Debug.Log(metrics[AppController.instance.appModel.CurrentLevel - 1].Count - 1);
+			return metrics[AppController.instance.appModel.CurrentLevel - 1][metrics[AppController.instance.appModel.CurrentLevel - 1].Count - 1];
         }
 
         internal List<int> GetLevelIndexes(int currentPage, int maxRows)

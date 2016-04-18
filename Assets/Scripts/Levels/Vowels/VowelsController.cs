@@ -26,6 +26,7 @@ namespace Assets.Scripts.Levels.Vowels
 
         public override void InitGame()
         {
+			MetricsManager.instance.GameStart();
             // Creates model
             model = new VowelsModel();
             // Basically sets initial values for model
