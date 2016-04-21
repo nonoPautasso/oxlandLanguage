@@ -54,7 +54,7 @@ namespace Assets.Scripts.Levels.VowelsOral
                 toReturn.Fst()[i] = images[j];
                 toReturn.Snd()[i] = clips[i];
             }
-            letterAmounts[intValue] = clips.Length;
+            letterAmounts[intValue] = 2;
             return toReturn;
         }
 
