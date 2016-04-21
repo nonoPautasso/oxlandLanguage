@@ -28,6 +28,7 @@ GameObject:
   - 222: {fileID: 22207702}
   - 114: {fileID: 11453402}
   - 114: {fileID: 11483942}
+  - 225: {fileID: 22546028}
   m_Layer: 5
   m_Name: letter8Button
   m_TagString: Untagged
@@ -115,6 +116,7 @@ GameObject:
   - 222: {fileID: 22281522}
   - 114: {fileID: 11457174}
   - 114: {fileID: 11415642}
+  - 225: {fileID: 22552758}
   m_Layer: 5
   m_Name: letter1Button
   m_TagString: Untagged
@@ -184,6 +186,7 @@ GameObject:
   - 222: {fileID: 22231710}
   - 114: {fileID: 11475154}
   - 114: {fileID: 11421662}
+  - 225: {fileID: 22545478}
   m_Layer: 5
   m_Name: letter4Button
   m_TagString: Untagged
@@ -238,6 +241,7 @@ GameObject:
   - 222: {fileID: 22215708}
   - 114: {fileID: 11436024}
   - 114: {fileID: 11455362}
+  - 225: {fileID: 22556282}
   m_Layer: 5
   m_Name: letter3Button
   m_TagString: Untagged
@@ -256,6 +260,7 @@ GameObject:
   - 222: {fileID: 22284822}
   - 114: {fileID: 11472730}
   - 114: {fileID: 11498514}
+  - 225: {fileID: 22500104}
   m_Layer: 5
   m_Name: letter7Button
   m_TagString: Untagged
@@ -308,6 +313,7 @@ GameObject:
   - 222: {fileID: 22211498}
   - 114: {fileID: 11499158}
   - 114: {fileID: 11475034}
+  - 225: {fileID: 22585694}
   m_Layer: 5
   m_Name: letter5Button
   m_TagString: Untagged
@@ -343,6 +349,7 @@ GameObject:
   - 224: {fileID: 22484042}
   - 222: {fileID: 22299458}
   - 114: {fileID: 11438814}
+  - 114: {fileID: 11497942}
   m_Layer: 5
   m_Name: lettersPanel
   m_TagString: Untagged
@@ -447,6 +454,7 @@ GameObject:
   - 222: {fileID: 22227160}
   - 114: {fileID: 11451774}
   - 114: {fileID: 11486904}
+  - 225: {fileID: 22522754}
   m_Layer: 5
   m_Name: letter2Button
   m_TagString: Untagged
@@ -516,6 +524,7 @@ GameObject:
   - 222: {fileID: 22261680}
   - 114: {fileID: 11442734}
   - 114: {fileID: 11459980}
+  - 225: {fileID: 22544644}
   m_Layer: 5
   m_Name: letter9Button
   m_TagString: Untagged
@@ -569,6 +578,7 @@ GameObject:
   - 222: {fileID: 22247212}
   - 114: {fileID: 11492960}
   - 114: {fileID: 11477514}
+  - 225: {fileID: 22587502}
   m_Layer: 5
   m_Name: letter6Button
   m_TagString: Untagged
@@ -678,6 +688,7 @@ MonoBehaviour:
   - {fileID: 11498514}
   - {fileID: 11483942}
   - {fileID: 11459980}
+  lettersPanel: {fileID: 11438814}
 --- !u!114 &11408074
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2105,6 +2116,36 @@ MonoBehaviour:
   m_FillAmount: 1
   m_FillClockwise: 1
   m_FillOrigin: 0
+--- !u!114 &11497942
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 155110}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: -1862395651, guid: f5f67c52d1564df4a8936ccd202a3bd8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Delegates:
+  - eventID: 6
+    callback:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 11404032}
+          m_MethodName: DropOnLettersPanel
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+      m_TypeName: UnityEngine.EventSystems.EventTrigger+TriggerEvent, UnityEngine.UI,
+        Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+  delegates: []
 --- !u!114 &11498514
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2988,6 +3029,105 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!225 &22500104
+CanvasGroup:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 147786}
+  m_Enabled: 1
+  m_Alpha: 1
+  m_Interactable: 1
+  m_BlocksRaycasts: 1
+  m_IgnoreParentGroups: 0
+--- !u!225 &22522754
+CanvasGroup:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 181330}
+  m_Enabled: 1
+  m_Alpha: 1
+  m_Interactable: 1
+  m_BlocksRaycasts: 1
+  m_IgnoreParentGroups: 0
+--- !u!225 &22544644
+CanvasGroup:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 184392}
+  m_Enabled: 1
+  m_Alpha: 1
+  m_Interactable: 1
+  m_BlocksRaycasts: 1
+  m_IgnoreParentGroups: 0
+--- !u!225 &22545478
+CanvasGroup:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 138292}
+  m_Enabled: 1
+  m_Alpha: 1
+  m_Interactable: 1
+  m_BlocksRaycasts: 1
+  m_IgnoreParentGroups: 0
+--- !u!225 &22546028
+CanvasGroup:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 109334}
+  m_Enabled: 1
+  m_Alpha: 1
+  m_Interactable: 1
+  m_BlocksRaycasts: 1
+  m_IgnoreParentGroups: 0
+--- !u!225 &22552758
+CanvasGroup:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 120860}
+  m_Enabled: 1
+  m_Alpha: 1
+  m_Interactable: 1
+  m_BlocksRaycasts: 1
+  m_IgnoreParentGroups: 0
+--- !u!225 &22556282
+CanvasGroup:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 147102}
+  m_Enabled: 1
+  m_Alpha: 1
+  m_Interactable: 1
+  m_BlocksRaycasts: 1
+  m_IgnoreParentGroups: 0
+--- !u!225 &22585694
+CanvasGroup:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 152256}
+  m_Enabled: 1
+  m_Alpha: 1
+  m_Interactable: 1
+  m_BlocksRaycasts: 1
+  m_IgnoreParentGroups: 0
+--- !u!225 &22587502
+CanvasGroup:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 193426}
+  m_Enabled: 1
+  m_Alpha: 1
+  m_Interactable: 1
+  m_BlocksRaycasts: 1
+  m_IgnoreParentGroups: 0
 --- !u!1001 &100100000
 Prefab:
   m_ObjectHideFlags: 1
