@@ -8,10 +8,11 @@ namespace Assets.Scripts.Levels.AbcOrder {
 		public static int ROUNDS = 6;
 		public static int ANSWERS = 5;
 		public static int OPTIONS = 9;
-		public static int FIRST_LETTER_ROUNDS = 6;
+		public static int FIRST_LETTER_ROUNDS = 3;
 		private int currentRound;
 		private List<string> answers;
 		private List<string> options;
+		private List<bool> helpLetters;
 
 		public override void StartGame () {
 			currentRound = 0;
@@ -23,15 +24,33 @@ namespace Assets.Scripts.Levels.AbcOrder {
 
 		public override void NextChallenge () {
 			LoadAnswers ();
+			LoadHelpLetters ();
 			LoadOptions ();
+		}
+
+		void LoadHelpLetters () {
+			bool isRandom = (AbcOrderModel.FIRST_LETTER_ROUNDS - currentRound) <= 0;
+			int help = isRandom ? AbcOrderModel.ROUNDS - currentRound : AbcOrderModel.FIRST_LETTER_ROUNDS - currentRound;
+			helpLetters = new List<bool> ();
+			for (int i = 0; i < answers.Count; i++) helpLetters.Add (false);
+			Randomizer r = Randomizer.New (answers.Count - 1);
+
+			for (int i = 0; i < help; i++) {
+				if (isRandom)
+					helpLetters [r.Next ()] = true;
+				else
+					helpLetters [i] = true;
+			}
 		}
 
 		private void LoadOptions () {
 			options = new List<string> ();
-			options.AddRange (answers);
+			for (int i = 0; i < answers.Count; i++) {
+				if (!helpLetters [i]) options.Add (answers [i]);
+			}
 			while (options.Count != OPTIONS){
 				string letter = Words.RandomLetter ();
-				if (!options.Contains (letter))
+				if (!options.Contains (letter) && !answers.Contains (letter))
 					options.Add (letter);
 			}
 			options = Randomizer.RandomizeList (options);
@@ -48,16 +67,14 @@ namespace Assets.Scripts.Levels.AbcOrder {
 			return answers;
 		}
 
+		public List<bool> GetHelpLetters () {
+			return helpLetters;
+		}
+
 		public List<string> GetOptions () {
 			return options;
 		}
 
-		public int GetCurrentRound () {
-			return currentRound;
-		}
-
-		public override void RequestHint () {
-			
-		}
+		public override void RequestHint () { }
 	}
 }

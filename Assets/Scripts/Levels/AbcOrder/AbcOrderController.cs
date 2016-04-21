@@ -8,7 +8,7 @@ namespace Assets.Scripts.Levels.AbcOrder {
 
 		public override void NextChallenge () {
 			model.NextChallenge ();
-			view.NextChallenge (model.GetAnswers (), model.GetOptions (), model.GetCurrentRound ());
+			view.NextChallenge (model.GetAnswers (), model.GetOptions (), model.GetHelpLetters ());
 		}
 
 		public override void ShowHint () {
@@ -25,7 +25,9 @@ namespace Assets.Scripts.Levels.AbcOrder {
 		}
 
 		public override void RestartGame () {
-			
+			InitGame ();
 		}
+
+		public void Start(){ InitGame (); }
 	}
 }
