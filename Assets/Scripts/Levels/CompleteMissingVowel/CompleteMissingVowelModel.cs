@@ -4,6 +4,10 @@ using Assets.Scripts.App;
 using System.Collections.Generic;
 using Assets.Scripts.Levels.Vowels;
 using Assets.Scripts.Levels.VowelsOral;
+using System.Text;
+using System.Globalization;
+using System.Linq;
+using System.Collections.Generic;
 
 namespace Assets.Scripts.Levels.CompleteMissingVowel
 {
@@ -61,14 +65,15 @@ namespace Assets.Scripts.Levels.CompleteMissingVowel
 			letterAmounts = new int[]{ 2, 2, 2, 2, 2 };
 			easyMode = true;
 			wordCount = 0;
+			Debug.Log (RemoveDiacritics ("É"));
 		}
 
 		public DataTrio<string[], AudioClip[], Sprite[]> LoadResources (bool easy)
 		{
-			Sprite[] sprites = Resources.LoadAll<Sprite>("Sprites/Spanish/ObjectsFindVowelSpanish");
+			Sprite[] sprites = Resources.LoadAll<Sprite> ("Sprites/Spanish/ObjectsFindVowelSpanish");
 			Debug.Log ("Easy word list size: " + easyWordList.Length);
 			Debug.Log ("Hard word list size: " + hardWordList.Length);
-			Debug.Log("Sprite array size: " + sprites.Length);
+			Debug.Log ("Sprite array size: " + sprites.Length);
 			DataTrio<string[], AudioClip[], Sprite[]> toReturn;
 			if (easy) {
 				toReturn = new DataTrio<string[], AudioClip[], Sprite[]> (new string[easyWordList.Length], 
@@ -121,6 +126,7 @@ namespace Assets.Scripts.Levels.CompleteMissingVowel
 		{
 			int value = UnityEngine.Random.Range (0, hardWordList.Length);
 			hardChars = FindVowelsInWord (hardWordList [value]);
+			wordCount++;
 			return value;
 		}
 
@@ -131,32 +137,60 @@ namespace Assets.Scripts.Levels.CompleteMissingVowel
 
 		public bool CheckHardLetter (string letter)
 		{
-			return System.Array.IndexOf(hardChars, letter) != -1;
+			Debug.Log ("Hard letter to be checked: " + letter);
+			Debug.Log("Hard letter #1: " + hardChars[0]);
+				Debug.Log("Hard letter #2: " + hardChars[1]);
+			return System.Array.IndexOf (hardChars, letter) != -1;
 		}
 
 		public DataPair<int, int> RequestHintInfo ()
 		{
 			DataPair<int, int> toReturn;
-			switch (easyChar) {
-			case "A":
-				toReturn = new DataPair<int, int> (2, 4);
-				break;
-			case "E":
-				toReturn = new DataPair<int, int> (2, 4);
-				break;
-			case "I":
-				toReturn = ChooseTwoRandomOpenVowels ();
-				break;
-			case "O":
-				toReturn = new DataPair<int, int> (2, 4);
-				break;
-			case "U":
-				toReturn = ChooseTwoRandomOpenVowels ();
-				break;
-			default:
-				toReturn = null;
-				break;
+			if (easyMode) {
+				switch (easyChar) {
+				case "A":
+					toReturn = new DataPair<int, int> (2, 4);
+					break;
+				case "E":
+					toReturn = new DataPair<int, int> (2, 4);
+					break;
+				case "I":
+					toReturn = ChooseTwoRandomOpenVowels ();
+					break;
+				case "O":
+					toReturn = new DataPair<int, int> (2, 4);
+					break;
+				case "U":
+					toReturn = ChooseTwoRandomOpenVowels ();
+					break;
+				default:
+					toReturn = null;
+					break;
+				}
+			} else {
+				int[] randLetts = GetRandomLetters ();
+				toReturn = new DataPair<int,int> (randLetts [0], randLetts [1]);
 			}
+			return toReturn;
+		}
+
+		private int[] GetRandomLetters() {
+			int[] toReturn = new int[2];
+			int[] hardCharIntArray = new int[2];
+			hardCharIntArray [0] = GetLetterPos(hardChars [0]);
+			hardCharIntArray [1] = GetLetterPos(hardChars [1]);
+			var exclude = new HashSet<int>(hardCharIntArray);
+			var range = Enumerable.Range (1, 4).Where (i => !exclude.Contains (i));
+
+			var rand = new System.Random ();
+			int index = rand.Next (0, 4 - exclude.Count);
+			toReturn[0] = range.ElementAt (index);
+
+			exclude.Add (range.ElementAt (index));
+			range = Enumerable.Range (1, 4).Where (i => !exclude.Contains (i));
+			index = rand.Next (0, 4 - exclude.Count);
+			toReturn[1] = range.ElementAt (index);
+
 			return toReturn;
 		}
 
@@ -183,24 +217,43 @@ namespace Assets.Scripts.Levels.CompleteMissingVowel
 			for (int i = 0; i < word.Length; i++) {
 				string c = word [i].ToString ().ToUpper ();
 				if (c.Equals ("A") || c.Equals ("E") || c.Equals ("I") || c.Equals ("O") || c.Equals ("U"))
-					return c;
+					return RemoveDiacritics(c);
 			}
 			return "Z";
 		}
 
-		public string[] FindVowelsInWord(string word) {
+		public string[] FindVowelsInWord (string word)
+		{
 			string[] toReturn = new string[2];
 			for (int i = 0, j = 0; i < word.Length && j < 2; i++) {
-				string c = word [i].ToString ().ToUpper ();
+				string c = RemoveDiacritics(word [i].ToString ().ToUpper ());
 				if (c.Equals ("A") || c.Equals ("E") || c.Equals ("I") || c.Equals ("O") || c.Equals ("U")) {
-					if (System.Array.IndexOf(toReturn, c) == -1){ 
-						toReturn[j] = c;
+					if (System.Array.IndexOf (toReturn, c) == -1) { 
+						toReturn [j] = c;
 						j++;
 					}
 				}
 			}
 			return toReturn;
 		}
-			
+
+	
+
+		static string RemoveDiacritics (string text)
+		{
+			var normalizedString = text.Normalize (NormalizationForm.FormD);
+			var stringBuilder = new StringBuilder ();
+
+			foreach (var c in normalizedString) {
+				var unicodeCategory = CharUnicodeInfo.GetUnicodeCategory (c);
+				if (unicodeCategory != UnicodeCategory.NonSpacingMark) {
+					stringBuilder.Append (c);
+				}
+			}
+
+			return stringBuilder.ToString ().Normalize (NormalizationForm.FormC);
+		}
 	}
+
+
 }

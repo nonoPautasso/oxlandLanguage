@@ -38,7 +38,7 @@ namespace Assets.Scripts.Levels.CompleteMissingVowel
 		{
 			letter1 = "";
 			letter2 = "";
-			//MetricsManager.instance.GameStart ();
+			MetricsManager.instance.GameStart ();
 			model = new CompleteMissingVowelModel ();
 			model.InitModel ();
 			view.InitView ();
