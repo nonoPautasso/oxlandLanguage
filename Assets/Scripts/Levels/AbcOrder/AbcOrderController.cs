@@ -12,7 +12,15 @@ namespace Assets.Scripts.Levels.AbcOrder {
 		}
 
 		public override void ShowHint () {
-			
+			LogHint ();
+			view.Hint (model.GetAnswers ());
+		}
+
+		public void ChallengeFinish () {
+			model.RoundFinish ();
+			if (model.HasEnded ())
+				EndGame (model.MinSeconds, model.PointsPerSecond, model.PointsPerError);
+			NextChallenge ();
 		}
 
 		public override void InitGame () {
@@ -24,7 +32,17 @@ namespace Assets.Scripts.Levels.AbcOrder {
 			NextChallenge ();
 		}
 
+		public void Try (int index, string answer) {
+			bool isCorrect = model.IsCorrect (index, answer);
+			LogAnswer (isCorrect);
+			if (isCorrect)
+				view.Correct (index);
+			else
+				view.Wrong (index);
+		}
+
 		public override void RestartGame () {
+			view.ResetLetters ();
 			InitGame ();
 		}
 

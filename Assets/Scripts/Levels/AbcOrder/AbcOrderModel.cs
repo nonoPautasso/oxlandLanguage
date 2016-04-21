@@ -22,6 +22,10 @@ namespace Assets.Scripts.Levels.AbcOrder {
 			pointsPerSecond = 13;
 		}
 
+		public void RoundFinish () {
+			currentRound++;
+		}
+
 		public override void NextChallenge () {
 			LoadAnswers ();
 			LoadHelpLetters ();
@@ -61,6 +65,14 @@ namespace Assets.Scripts.Levels.AbcOrder {
 			answers.Add (Words.RandomLetter (ANSWERS));
 			while (answers.Count != ANSWERS)
 				answers.Add (Words.NextLetter (answers [answers.Count - 1]));
+		}
+
+		public bool IsCorrect (int index, string answer) {
+			return answers [index] == answer;
+		}
+
+		public bool HasEnded () {
+			return currentRound == ROUNDS;
 		}
 
 		public List<string> GetAnswers () {

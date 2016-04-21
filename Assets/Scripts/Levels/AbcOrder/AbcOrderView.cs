@@ -16,6 +16,7 @@ namespace Assets.Scripts.Levels.AbcOrder {
 		private AbcOrderController controller;
 
 		public void NextChallenge (List<string> modelAnswers, List<string> options, List<bool> helpLetters) {
+			EnableHint ();
 			SetAnswerLetters (modelAnswers, helpLetters);
 			SetOptions (options);
 			nextBtn.gameObject.SetActive (false);
@@ -37,22 +38,99 @@ namespace Assets.Scripts.Levels.AbcOrder {
 					answers [i].GetComponentInChildren<Text> ().text = modelAnswers [i];
 				} else {
 					answers [i].GetComponentInChildren<Text> ().text = "";
-					answers [i].gameObject.AddComponent<Slot> ();
+					answers [i].gameObject.AddComponent<Slot> ().view = this;
 				}
 			}
 		}
 
+		public void Correct (int index) {
+			PlayRightSound ();
+			Button letter = answers [index].GetComponent<Slot> ().item.GetComponent<Button> ();
+			Destroy (letter.GetComponent<DragHandler>());
+			if(IsEnded()){
+				DisableHint ();
+				nextBtn.gameObject.SetActive (true);
+				RemoveDragHandlers ();
+			}
+		}
+
+		void RemoveDragHandlers () {
+			foreach (Button letter in letters) {
+				DragHandler comp = letter.GetComponent<DragHandler>();
+				if (comp)
+					Destroy (comp);
+			}
+		}
+
+		public void NextClick(){
+			ResetLetters ();
+			controller.ChallengeFinish ();
+		}
+
+		bool IsEnded () {
+			foreach (Image answer in answers) {
+				string text = answer.GetComponentInChildren<Text>().text;
+				if(text == "") {
+					if (!answer.GetComponent<Slot> ().item)
+						return false;
+				}
+			}
+			return true;
+		}
+
+		public void Wrong (int index) {
+			PlayWrongSound ();
+			Button letter = answers [index].GetComponent<Slot> ().item.GetComponent<Button> ();
+			ResetLetter (letter, originalPositions[letters.IndexOf (letter)]);
+		}
+
 		public override void ShowHint () {
-			
+			DisableHint ();
+			controller.ShowHint ();
+		}
+
+		public void Try(Image image){
+			int index = answers.IndexOf (image);
+			string answer = image.GetComponent<Slot>().item.GetComponentInChildren<Text>().text;
+			controller.Try (index, answer);
 		}
 
 		public override void EndGame () { }
 
-		public void DropOnLettersPanel(){
-			var itemBeingDragged = DragHandler.itemBeingDragged;
-			if (itemBeingDragged.transform.parent != lettersPanel.transform) {
-				itemBeingDragged.transform.SetParent (lettersPanel.transform);
-				itemBeingDragged.transform.position = originalPositions [letters.IndexOf (itemBeingDragged.GetComponent<Button>())];
+		public void ResetLetters () {
+			for (int i = 0; i < letters.Count; i++) {
+				ResetLetter (letters[i], originalPositions[i]);
+			}
+		}
+
+		void ResetLetter (Button letter, Vector3 originalPosition)
+		{
+			letter.transform.SetParent (lettersPanel.transform);
+			letter.transform.position = originalPosition;
+		}
+
+		public void Hint (List<string> answersLetters) {
+			for (int i = 0; i < answers.Count; i++) {
+				string text = answers[i].GetComponentInChildren<Text>().text;
+				if(text == "") {
+					if (!answers[i].GetComponent<Slot> ().item){
+						SetAnswer (answersLetters, i);
+						break;
+					}
+						
+				}
+			}
+		}
+
+		void SetAnswer (List<string> answersLetters, int index) {
+			string answer = answersLetters [index];
+			foreach (Button letter in letters) {
+				if(letter.GetComponentInChildren<Text> ().text == answer){
+					letter.transform.SetParent (answers[index].transform);
+					letter.transform.position = answers [index].transform.position;
+					Try (answers [index]);
+					break;
+				}
 			}
 		}
 

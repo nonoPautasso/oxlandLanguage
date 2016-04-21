@@ -3,6 +3,7 @@ using System.Collections;
 using UnityEngine.EventSystems;
 using System;
 
+//EXCLUSIVE ABC ORDER. CANT MOVE IT, DONT USE, FUCKIN MONODEVELOP!
 public class DragHandler : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHandler {
 
     public static GameObject itemBeingDragged;
@@ -12,6 +13,7 @@ public class DragHandler : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndD
 
 
     public void OnBeginDrag(PointerEventData eventData) {
+		transform.SetParent (beginParent);
 		itemBeingDragged = gameObject;
 		startPosition = transform.position;
 		startParent = transform.parent;

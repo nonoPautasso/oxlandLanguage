@@ -3,8 +3,11 @@ using System.Collections;
 using UnityEngine.EventSystems;
 using System;
 using UnityEngine.UI;
+using Assets.Scripts.Levels.AbcOrder;
 
+//EXCLUSIVE ABC ORDER. CANT MOVE IT, DONT USE, FUCKIN MONODEVELOP!
 public class Slot : MonoBehaviour, IDropHandler {
+	public AbcOrderView view;
 
     public GameObject item {
         get {
@@ -12,7 +15,7 @@ public class Slot : MonoBehaviour, IDropHandler {
 				var obj = transform.GetChild (0);
 				return obj.GetComponent<Text>() != null ? null : obj.gameObject;
 			} else if(transform.childCount > 1){
-				return transform.GetChild (0).gameObject;
+				return transform.GetChild (1).gameObject;
 			}
             return null;
         }
@@ -20,7 +23,11 @@ public class Slot : MonoBehaviour, IDropHandler {
 
     public void OnDrop(PointerEventData eventData) {
         if (!item) {
-            DragHandler.itemBeingDragged.transform.SetParent(transform);
+			try{
+		        DragHandler.itemBeingDragged.transform.SetParent(transform);
+				DragHandler.itemBeingDragged.GetComponent<DragHandler>().OnEndDrag (null);
+				view.Try (GetComponent<Image>());
+			} catch(NullReferenceException ignored) {}
         }
     }
 }
