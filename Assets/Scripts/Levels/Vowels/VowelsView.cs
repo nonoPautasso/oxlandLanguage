@@ -10,23 +10,6 @@ namespace Assets.Scripts.Levels.Vowels
         public Button[] revealedLetters;
         public Button[] bubbleLetters;
 
-        void Start()
-        {
-            /*   Debug.Log("Creating arrays");
-               revealedLetters = new Button[] { GameObject.Find("upVowel1Button").GetComponent<Button>(),
-               GameObject.Find("upVowel2Button").GetComponent<Button>(),
-               GameObject.Find("upVowel3Button").GetComponent<Button>(),
-               GameObject.Find("upVowel4Button").GetComponent<Button>(),
-               GameObject.Find("upVowel5Button").GetComponent<Button>()};
-               bubbleLetters = new Button[] { GameObject.Find("letter1Button").GetComponent<Button>(),
-               GameObject.Find("letter2Button").GetComponent<Button>(),
-               GameObject.Find("letter3Button").GetComponent<Button>(),
-               GameObject.Find("letter4Button").GetComponent<Button>()};
-               Debug.Log("Revealed Letters array size: " + revealedLetters.Length);
-               Debug.Log("Bubble Letters array size: " + bubbleLetters.Length);
-               */
-        }
-
         public override void ShowHint()
         {
             throw new System.NotImplementedException();
@@ -68,6 +51,7 @@ namespace Assets.Scripts.Levels.Vowels
         */
         public void ResetAnimation(Button bubble, string letter)
         {
+			bubble.GetComponent<Image> ().color = Color.white;
             bubble.GetComponent<Animator>().SetTime(0);
             bubble.GetComponentInChildren<Text>().text = letter;
         }
@@ -86,5 +70,14 @@ namespace Assets.Scripts.Levels.Vowels
         {
             PlayWrongSound();
         }
+
+		public void SetBubbleCorrect(Button bubble) {
+			bubble.GetComponent<Image> ().color = Color.green;
+		}
+
+		public void SetBubbleWrong(Button bubble) {
+			bubble.GetComponent<Image> ().color = Color.red;
+		}
+
     }
 }
