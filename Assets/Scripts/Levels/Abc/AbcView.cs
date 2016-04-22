@@ -13,8 +13,11 @@ namespace Assets.Scripts.Levels.Abc {
 		public List<Button> objects;
 		public List<Button> soundButtons;
 
+		private Sprite originalSound;
+
 		public void Controller (AbcController controller){
 			this.controller = controller;
+			originalSound = soundButtons [0].image.sprite;
 		}
 
 		public override void ShowHint() {
@@ -45,7 +48,7 @@ namespace Assets.Scripts.Levels.Abc {
 			SoundButtonsActive(false);
 
 			for (int i = 0; i < objects.Count; i++) {
-				Views.PaintButton (objects[i], Color.white);
+				soundButtons[i].image.sprite = originalSound;
 				Views.SetButtonSprite (objects[i], model[i].Item1.Sprite());
 			}
 		}
@@ -68,10 +71,11 @@ namespace Assets.Scripts.Levels.Abc {
 		void SetWord (Word word, int index, bool correct) {
 			objects [index].GetComponentInChildren<Text> ().text = word.Name ();
 			objects [index].enabled = false;
+			soundButtons [index].gameObject.SetActive (true);
 			if(correct){
-				Views.PaintButton (objects [index], Color.green);
+				soundButtons [index].image.sprite = Resources.Load<Sprite>("Sprites/rightLengua");
 			} else {
-				Views.PaintButton (objects [index], Color.red);
+				soundButtons [index].image.sprite = Resources.Load<Sprite>("Sprites/wrongLengua");
 			}
 		}
 

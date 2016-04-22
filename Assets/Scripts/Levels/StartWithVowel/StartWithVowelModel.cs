@@ -8,7 +8,7 @@ namespace Assets.Scripts.Levels.StartWithVowel {
 	public class StartWithVowelModel : LevelModel {
 		private Dictionary<string, List<Tuple<Word, bool>>> model;
 		private int currentPage;
-		public static int QUANTITY = 10;
+		public static int QUANTITY = 9;
 		public static int CORRECT = 5;
 		
 		public override void StartGame () {

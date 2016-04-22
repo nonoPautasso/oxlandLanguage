@@ -10,12 +10,11 @@ using I18N;
 namespace Assets.Scripts.Common {
 	public class Words {
 		private static string[] vowels = new string[] { "A", "E", "I", "O", "U" };
-		private static string[] alphabet = new string[] {"A", "B","C","D","E", "F","G","H","I", "J",
-			"K","L","M","N", "O", "P","Q","R","S","T","U", "V","W","X","Y","Z"};
-		private static Randomizer alphabetRandomizer = Randomizer.New(alphabet.Count() - 1);
+		private static string[] alphabet;
+		private static Randomizer alphabetRandomizer;
 		static string currentPath;
 
-		//alphabet letter -> list of tuples including audio clip of word and sprite number. Use AudioClip.name to get word.
+		//alphabet letter -> list of tuples including audio clip of word and sprite number.
 		private static Dictionary<string, List<Word>> words;
 
 		static Words(){
@@ -26,6 +25,7 @@ namespace Assets.Scripts.Common {
 
 		private static void LoadAllWords() {
 			words = new Dictionary<string, List<Word>>();
+			CheckAlphabet ();
 			int count = 0;
 			currentPath = CurrentPath ();
 			foreach (string letter in alphabet) {
@@ -37,6 +37,18 @@ namespace Assets.Scripts.Common {
 				}
 				words [letter] = l;
 			}
+		}
+
+		static void CheckAlphabet () {
+			if(I18n.GetLocale () == "en-US"){
+				alphabet = new string[] {"A", "B","C","D","E", "F","G","H","I", "J",
+					"K","L","M","N", "O", "P","Q","R","S","T","U", "V","W","X","Y","Z"};
+			} else {
+				alphabet = new string[] {"A", "B","C","D","E", "F","G","H","I", "J",
+					"K","L","M","N", "Ñ", "O", "P","Q","R","S","T","U", "V","W","X","Y","Z"};
+			}
+
+			alphabetRandomizer = Randomizer.New(alphabet.Length - 1);
 		}
 
 		static string CurrentPath () {
@@ -119,6 +131,7 @@ namespace Assets.Scripts.Common {
 		}
 
 		public static List<string> RandomLetters (int quantity) {
+			CheckLoadedWords ();
 			List<string> result = new List<string> ();
 			for (int i = 0; i < quantity; i++) {
 				string letter = RandomLetter ();

@@ -12,11 +12,16 @@ namespace Assets.Scripts.Levels.StartWithVowel {
 		public Image submarine;
 		public List<Button> objects;
 		public List<Button> soundButtons;
+		public Image pageFinished;
+		private Sprite originalSound;
+
+		private int correctCount;
 
 		StartWithVowelController controller;
 
 		public void Controller (StartWithVowelController controller){
 			this.controller = controller;
+			originalSound = soundButtons [0].image.sprite;
 		}
 		
 		public override void ShowHint() {
@@ -48,12 +53,18 @@ namespace Assets.Scripts.Levels.StartWithVowel {
 
 			SoundButtonsActive(false);
 
+			correctCount = 0;
+
 			for (int i = 0; i < objects.Count; i++) {
-				Views.PaintButton (objects[i], Color.white);
+				soundButtons[i].image.sprite = originalSound;
 				Views.SetButtonSprite (objects[i], model[i].Item1.Sprite());
-				if (model [i].Item2)
-					SetWord (model[i].Item1, i, controller.IsCorrect(i));
+				var isCorrect = controller.IsCorrect (i);
+				if (model [i].Item2) {
+					SetWord (model [i].Item1, i, isCorrect);
+					if (isCorrect) correctCount++;
+				}
 			}
+			pageFinished.gameObject.SetActive (correctCount == StartWithVowelModel.CORRECT);
 		}
 
 		void ResetObjectsText () {
@@ -65,19 +76,24 @@ namespace Assets.Scripts.Levels.StartWithVowel {
 
 		public void Answer (Word word, int index, bool correct) {
 			SetWord (word, index, correct);
-			if (correct)
+			if (correct) {
 				PlayRightSound ();
+				correctCount++;
+			}
 			else
 				PlayWrongSound ();
+
+			pageFinished.gameObject.SetActive (correctCount == StartWithVowelModel.CORRECT);
 		}
 
 		void SetWord (Word word, int index, bool correct) {
 			objects [index].GetComponentInChildren<Text> ().text = word.Name ();
 			objects [index].enabled = false;
+			soundButtons [index].gameObject.SetActive (true);
 			if(correct){
-				Views.PaintButton (objects [index], Color.green);
+				soundButtons [index].image.sprite = Resources.Load<Sprite>("Sprites/rightLengua");
 			} else {
-				Views.PaintButton (objects [index], Color.red);
+				soundButtons [index].image.sprite = Resources.Load<Sprite>("Sprites/wrongLengua");
 			}
 		}
 
@@ -92,7 +108,9 @@ namespace Assets.Scripts.Levels.StartWithVowel {
 		}
 
 		void SoundButtonsActive(bool active) {
-			foreach(Button b in soundButtons) Views.SetActiveButton (b, active);
+			for (int i = 0; i < soundButtons.Count; i++) {
+				Views.SetActiveButton (soundButtons[i], active);
+			}
 		}
 
 		public override void EndGame() { }
