@@ -12,6 +12,7 @@ namespace Assets.Scripts.Levels.FishNet {
 		public List<Image> letters;
 		public List<Image> objects;
 		public List<Button> answers;
+		public List<Image> crosses;
 
 		private List<Word> playingAudios;
 		private Word currentAudio;
@@ -37,7 +38,7 @@ namespace Assets.Scripts.Levels.FishNet {
 
 		public void WrongAnswer (int index, string wordText) {
 			PlayWrongSound ();
-			Views.PaintButton (answers[index], Color.red);
+			crosses [index].gameObject.SetActive (true);
 			answers [index].GetComponentInChildren<Text> ().text = wordText;
 		}
 
@@ -93,12 +94,12 @@ namespace Assets.Scripts.Levels.FishNet {
 				obj.gameObject.SetActive (false);
 			}
 			Views.ButtonsEnabled (answers.ToArray (), true);
-			foreach (Button answer in answers) {
-				answer.GetComponentInChildren<Text>().text = "";
-				Color c = answer.GetComponentInChildren<Image>().color;
+			for (int i = 0; i < answers.Count; i++) {
+				answers[i].GetComponentInChildren<Text>().text = "";
+				Color c = answers[i].GetComponentInChildren<Image>().color;
 				c.a = 1f;
-				answer.GetComponentInChildren<Image>().color = c;
-				Views.PaintButton (answer, Color.white);
+				answers[i].GetComponentInChildren<Image>().color = c;
+				crosses [i].gameObject.SetActive (false);
 			}
 		}
 		

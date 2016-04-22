@@ -305,6 +305,10 @@ Prefab:
   m_Modification:
     m_TransformParent: {fileID: 2112792599}
     m_Modifications:
+    - target: {fileID: 11434376, guid: 4e9949c9b69ef478bbede628a4be262f, type: 2}
+      propertyPath: crosses.Array.size
+      value: 7
+      objectReference: {fileID: 0}
     - target: {fileID: 22484694, guid: 4e9949c9b69ef478bbede628a4be262f, type: 2}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -377,9 +381,79 @@ Prefab:
       propertyPath: m_Pivot.y
       value: 0.5
       objectReference: {fileID: 0}
+    - target: {fileID: 11434376, guid: 4e9949c9b69ef478bbede628a4be262f, type: 2}
+      propertyPath: crosses.Array.data[0]
+      value: 
+      objectReference: {fileID: 1739193154}
+    - target: {fileID: 11434376, guid: 4e9949c9b69ef478bbede628a4be262f, type: 2}
+      propertyPath: crosses.Array.data[1]
+      value: 
+      objectReference: {fileID: 1739193153}
+    - target: {fileID: 11434376, guid: 4e9949c9b69ef478bbede628a4be262f, type: 2}
+      propertyPath: crosses.Array.data[2]
+      value: 
+      objectReference: {fileID: 1739193152}
+    - target: {fileID: 11434376, guid: 4e9949c9b69ef478bbede628a4be262f, type: 2}
+      propertyPath: crosses.Array.data[3]
+      value: 
+      objectReference: {fileID: 1739193151}
+    - target: {fileID: 11434376, guid: 4e9949c9b69ef478bbede628a4be262f, type: 2}
+      propertyPath: crosses.Array.data[4]
+      value: 
+      objectReference: {fileID: 1739193150}
+    - target: {fileID: 11434376, guid: 4e9949c9b69ef478bbede628a4be262f, type: 2}
+      propertyPath: crosses.Array.data[5]
+      value: 
+      objectReference: {fileID: 1739193149}
+    - target: {fileID: 11434376, guid: 4e9949c9b69ef478bbede628a4be262f, type: 2}
+      propertyPath: crosses.Array.data[6]
+      value: 
+      objectReference: {fileID: 1739193148}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 4e9949c9b69ef478bbede628a4be262f, type: 2}
   m_IsPrefabParent: 0
+--- !u!114 &1739193148 stripped
+MonoBehaviour:
+  m_PrefabParentObject: {fileID: 11416918, guid: 4e9949c9b69ef478bbede628a4be262f,
+    type: 2}
+  m_PrefabInternal: {fileID: 1739193147}
+  m_Script: {fileID: -765806418, guid: f5f67c52d1564df4a8936ccd202a3bd8, type: 3}
+--- !u!114 &1739193149 stripped
+MonoBehaviour:
+  m_PrefabParentObject: {fileID: 11493152, guid: 4e9949c9b69ef478bbede628a4be262f,
+    type: 2}
+  m_PrefabInternal: {fileID: 1739193147}
+  m_Script: {fileID: -765806418, guid: f5f67c52d1564df4a8936ccd202a3bd8, type: 3}
+--- !u!114 &1739193150 stripped
+MonoBehaviour:
+  m_PrefabParentObject: {fileID: 11477484, guid: 4e9949c9b69ef478bbede628a4be262f,
+    type: 2}
+  m_PrefabInternal: {fileID: 1739193147}
+  m_Script: {fileID: -765806418, guid: f5f67c52d1564df4a8936ccd202a3bd8, type: 3}
+--- !u!114 &1739193151 stripped
+MonoBehaviour:
+  m_PrefabParentObject: {fileID: 11476752, guid: 4e9949c9b69ef478bbede628a4be262f,
+    type: 2}
+  m_PrefabInternal: {fileID: 1739193147}
+  m_Script: {fileID: -765806418, guid: f5f67c52d1564df4a8936ccd202a3bd8, type: 3}
+--- !u!114 &1739193152 stripped
+MonoBehaviour:
+  m_PrefabParentObject: {fileID: 11401282, guid: 4e9949c9b69ef478bbede628a4be262f,
+    type: 2}
+  m_PrefabInternal: {fileID: 1739193147}
+  m_Script: {fileID: -765806418, guid: f5f67c52d1564df4a8936ccd202a3bd8, type: 3}
+--- !u!114 &1739193153 stripped
+MonoBehaviour:
+  m_PrefabParentObject: {fileID: 11465996, guid: 4e9949c9b69ef478bbede628a4be262f,
+    type: 2}
+  m_PrefabInternal: {fileID: 1739193147}
+  m_Script: {fileID: -765806418, guid: f5f67c52d1564df4a8936ccd202a3bd8, type: 3}
+--- !u!114 &1739193154 stripped
+MonoBehaviour:
+  m_PrefabParentObject: {fileID: 11466314, guid: 4e9949c9b69ef478bbede628a4be262f,
+    type: 2}
+  m_PrefabInternal: {fileID: 1739193147}
+  m_Script: {fileID: -765806418, guid: f5f67c52d1564df4a8936ccd202a3bd8, type: 3}
 --- !u!1 &2112792595
 GameObject:
   m_ObjectHideFlags: 0
@@ -450,7 +524,6 @@ Canvas:
   m_ReceivesEvents: 1
   m_OverrideSorting: 0
   m_OverridePixelPerfect: 0
-  m_SortingBucketNormalizedSize: 0
   m_SortingLayerID: 0
   m_SortingOrder: 0
   m_TargetDisplay: 0
