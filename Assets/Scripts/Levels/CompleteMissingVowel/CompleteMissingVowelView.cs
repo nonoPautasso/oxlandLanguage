@@ -11,6 +11,8 @@ namespace Assets.Scripts.Levels.CompleteMissingVowel
 	{
 
 		public Button[] vowelButtons;
+		public Button nextButton;
+		public Button ticButton;
 
 		public Image currentObjectImage;
 		public AudioClip currentAudioClip;
@@ -146,6 +148,18 @@ namespace Assets.Scripts.Levels.CompleteMissingVowel
 			word = word.Replace ("U", "_");
 			word = word.Replace ("Ú", "_");
 			return word;
+		}
+
+		public void CorrectAnswer ()
+		{
+			nextButton.interactable = true;
+			ticButton.interactable = false;
+		}
+
+		public void ResetTicAndNext ()
+		{
+			nextButton.interactable = false;
+			ticButton.interactable = true;
 		}
 	}
 }

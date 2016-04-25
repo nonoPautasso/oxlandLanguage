@@ -717,6 +717,8 @@ MonoBehaviour:
   - {fileID: 11490500}
   - {fileID: 11481278}
   - {fileID: 11472708}
+  nextButton: {fileID: 11454538}
+  ticButton: {fileID: 11495512}
   currentObjectImage: {fileID: 11417526}
   currentAudioClip: {fileID: 0}
   rulesText: {fileID: 11441686}
@@ -841,13 +843,13 @@ MonoBehaviour:
     m_HighlightedTrigger: Highlighted
     m_PressedTrigger: Pressed
     m_DisabledTrigger: Disabled
-  m_Interactable: 1
+  m_Interactable: 0
   m_TargetGraphic: {fileID: 11456368}
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 11492076}
-        m_MethodName: SubmitLetters
+        m_MethodName: NextChallenge
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -1436,7 +1438,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 11492076}
-        m_MethodName: 
+        m_MethodName: SubmitLetters
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -1714,7 +1716,7 @@ RectTransform:
   m_RootOrder: 7
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 633, y: 379.00006}
+  m_AnchoredPosition: {x: 633, y: -529}
   m_SizeDelta: {x: 237, y: 237}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!224 &22434634

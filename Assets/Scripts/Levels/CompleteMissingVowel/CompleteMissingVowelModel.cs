@@ -21,6 +21,8 @@ namespace Assets.Scripts.Levels.CompleteMissingVowel
 
 		private string[] hardChars;
 
+		private List<int> lettersUsed;
+
 		int[] letterAmounts;
 
 		private string[] easyWordList = new string[] {"araña", "arpa", "barba", "botón", "caja",
@@ -62,6 +64,7 @@ namespace Assets.Scripts.Levels.CompleteMissingVowel
 
 		public void InitModel ()
 		{
+			lettersUsed = new List<int> ();
 			letterAmounts = new int[]{ 2, 2, 2, 2, 2 };
 			easyMode = true;
 			wordCount = 0;
@@ -117,17 +120,27 @@ namespace Assets.Scripts.Levels.CompleteMissingVowel
 		public int NextEasy ()
 		{
 			int value = UnityEngine.Random.Range (0, easyWordList.Length);
-			easyChar = FindVowelInWord (easyWordList [value]);
-			wordCount++;
-			return value;
+			if (lettersUsed.Contains (value))
+				return NextEasy ();
+			else {
+				easyChar = FindVowelInWord (easyWordList [value]);
+				wordCount++;
+				lettersUsed.Add (value);
+				return value;
+			}
 		}
 
 		public int NextHard ()
 		{
 			int value = UnityEngine.Random.Range (0, hardWordList.Length);
-			hardChars = FindVowelsInWord (hardWordList [value]);
-			wordCount++;
-			return value;
+			if (lettersUsed.Contains (value))
+				return NextHard ();
+			else {
+				hardChars = FindVowelsInWord (hardWordList [value]);
+				wordCount++;
+				lettersUsed.Add (value);
+				return value;
+			}
 		}
 
 		public bool CheckEasyLetter (string letter)
@@ -138,8 +151,8 @@ namespace Assets.Scripts.Levels.CompleteMissingVowel
 		public bool CheckHardLetter (string letter)
 		{
 			Debug.Log ("Hard letter to be checked: " + letter);
-			Debug.Log("Hard letter #1: " + hardChars[0]);
-				Debug.Log("Hard letter #2: " + hardChars[1]);
+			Debug.Log ("Hard letter #1: " + hardChars [0]);
+			Debug.Log ("Hard letter #2: " + hardChars [1]);
 			return System.Array.IndexOf (hardChars, letter) != -1;
 		}
 
@@ -174,22 +187,23 @@ namespace Assets.Scripts.Levels.CompleteMissingVowel
 			return toReturn;
 		}
 
-		private int[] GetRandomLetters() {
+		private int[] GetRandomLetters ()
+		{
 			int[] toReturn = new int[2];
 			int[] hardCharIntArray = new int[2];
-			hardCharIntArray [0] = GetLetterPos(hardChars [0]);
-			hardCharIntArray [1] = GetLetterPos(hardChars [1]);
-			var exclude = new HashSet<int>(hardCharIntArray);
+			hardCharIntArray [0] = GetLetterPos (hardChars [0]);
+			hardCharIntArray [1] = GetLetterPos (hardChars [1]);
+			var exclude = new HashSet<int> (hardCharIntArray);
 			var range = Enumerable.Range (1, 4).Where (i => !exclude.Contains (i));
 
 			var rand = new System.Random ();
 			int index = rand.Next (0, 4 - exclude.Count);
-			toReturn[0] = range.ElementAt (index);
+			toReturn [0] = range.ElementAt (index);
 
 			exclude.Add (range.ElementAt (index));
 			range = Enumerable.Range (1, 4).Where (i => !exclude.Contains (i));
 			index = rand.Next (0, 4 - exclude.Count);
-			toReturn[1] = range.ElementAt (index);
+			toReturn [1] = range.ElementAt (index);
 
 			return toReturn;
 		}
@@ -217,7 +231,7 @@ namespace Assets.Scripts.Levels.CompleteMissingVowel
 			for (int i = 0; i < word.Length; i++) {
 				string c = word [i].ToString ().ToUpper ();
 				if (c.Equals ("A") || c.Equals ("E") || c.Equals ("I") || c.Equals ("O") || c.Equals ("U"))
-					return RemoveDiacritics(c);
+					return RemoveDiacritics (c);
 			}
 			return "Z";
 		}
@@ -226,7 +240,7 @@ namespace Assets.Scripts.Levels.CompleteMissingVowel
 		{
 			string[] toReturn = new string[2];
 			for (int i = 0, j = 0; i < word.Length && j < 2; i++) {
-				string c = RemoveDiacritics(word [i].ToString ().ToUpper ());
+				string c = RemoveDiacritics (word [i].ToString ().ToUpper ());
 				if (c.Equals ("A") || c.Equals ("E") || c.Equals ("I") || c.Equals ("O") || c.Equals ("U")) {
 					if (System.Array.IndexOf (toReturn, c) == -1) { 
 						toReturn [j] = c;

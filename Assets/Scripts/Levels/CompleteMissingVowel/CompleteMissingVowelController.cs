@@ -19,19 +19,26 @@ namespace Assets.Scripts.Levels.CompleteMissingVowel
 			if (model.easyMode) {
 				view.Next (model.NextEasy ());
 			} else {
-				view.NextHard (model.NextHard ());
+				if (model.wordCount < 10)
+					view.NextHard (model.NextHard ());
+				else
+					EndGame (model.MinSeconds, model.PointsPerSecond, model.PointsPerError);
 			}
+			view.UpdateLetterSelections (-1, -1);
+			view.ResetTicAndNext ();
+			letter1 = "";
+			letter2 = "";
 		}
 
 		public override void ShowHint ()
 		{
 			view.PlaySoundClic ();
 			view.ShowHints (model.RequestHintInfo ());
-			view.ResetSelection (model.GetLetterPos(letter1));
-			view.ResetSelection (model.GetLetterPos(letter2));
+			view.ResetSelection (model.GetLetterPos (letter1));
+			view.ResetSelection (model.GetLetterPos (letter2));
 			letter1 = "";
 			letter2 = "";
-
+			LogHint ();
 		}
 
 		public override void InitGame ()
@@ -69,10 +76,10 @@ namespace Assets.Scripts.Levels.CompleteMissingVowel
 			view.PlaySoundClic ();
 			if (!letter1.Equals ("") && !letter2.Equals ("")) {
 				if (letter1.Equals (letter)) {
-					view.ResetSelection (model.GetLetterPos(letter1));
+					view.ResetSelection (model.GetLetterPos (letter1));
 					letter1 = "";
 				} else if (letter2.Equals (letter)) {
-					view.ResetSelection (model.GetLetterPos(letter2));
+					view.ResetSelection (model.GetLetterPos (letter2));
 					letter2 = "";
 				} else {
 					return;
@@ -82,39 +89,39 @@ namespace Assets.Scripts.Levels.CompleteMissingVowel
 				
 			if (model.easyMode) {
 				if (letter1.Equals (letter)) {
-					view.ResetSelection (model.GetLetterPos(letter1));
+					view.ResetSelection (model.GetLetterPos (letter1));
 					letter1 = "";
 				}
-				view.ResetSelection (model.GetLetterPos(letter1));
+				view.ResetSelection (model.GetLetterPos (letter1));
 				letter1 = letter;
 				letter2 = "";
-				view.SelectLetter(model.GetLetterPos(letter1));
+				view.SelectLetter (model.GetLetterPos (letter1));
 			} else {
 				if (letter1.Equals (letter)) {
 					view.ResetSelection (model.GetLetterPos (letter1));
 					letter1 = "";
 					return;
 				} else if (letter2.Equals (letter)) {
-					view.ResetSelection (model.GetLetterPos(letter2));
+					view.ResetSelection (model.GetLetterPos (letter2));
 					letter2 = "";
 					return;
 				}
 					
 				
 				if (letter1.Equals ("")) {
-					view.ResetSelection (model.GetLetterPos(letter1));
+					view.ResetSelection (model.GetLetterPos (letter1));
 					letter1 = letter;
-					view.SelectLetter(model.GetLetterPos(letter1));
+					view.SelectLetter (model.GetLetterPos (letter1));
 
 				} else {
 					if (letter2.Equals ("")) {
-						view.ResetSelection (model.GetLetterPos(letter2));
+						view.ResetSelection (model.GetLetterPos (letter2));
 						letter2 = letter;
-						view.SelectLetter(model.GetLetterPos(letter2));
+						view.SelectLetter (model.GetLetterPos (letter2));
 					} else {
-						view.ResetSelection (model.GetLetterPos(letter1));
+						view.ResetSelection (model.GetLetterPos (letter1));
 						letter1 = letter;
-						view.SelectLetter(model.GetLetterPos(letter1));
+						view.SelectLetter (model.GetLetterPos (letter1));
 					}
 				}
 			}
@@ -130,16 +137,10 @@ namespace Assets.Scripts.Levels.CompleteMissingVowel
 				} else {
 					correct = model.CheckEasyLetter (letter1);
 					if (correct) {
-						if (model.wordCount < 5)
-							view.Next (model.NextEasy ());
-						else {
-							view.NextHard (model.NextHard ());
+						if (!(model.wordCount < 5))
 							model.easyMode = false;
-						}
-						view.UpdateLetterSelections (-1, -1);
-						letter1 = "";
-						letter2 = "";
 						view.PlayRightSound ();
+						view.CorrectAnswer ();
 					} else {
 						view.IncorrectSelection (model.GetLetterPos (letter1), -1);
 						view.PlayWrongSound ();
@@ -160,15 +161,10 @@ namespace Assets.Scripts.Levels.CompleteMissingVowel
 							view.IncorrectSelection (model.GetLetterPos (letter2));
 						view.PlayWrongSound ();
 					} else {
-						if (model.wordCount < 10) {
-							view.NextHard (model.NextHard ());
-							view.UpdateLetterSelections (-1, -1);
-							letter1 = "";
-							letter2 = "";
-							view.PlayRightSound ();
-						} else {
-							EndGame (model.MinSeconds, model.PointsPerSecond, model.PointsPerError);
-						}
+						
+						view.PlayRightSound ();
+						view.CorrectAnswer ();
+						
 					}
 				}
 			}
