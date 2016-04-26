@@ -22,7 +22,7 @@ namespace Assets.Scripts.InGameMenu
 
 		public void OnInstructionsClic(){
 			PlayClicSound();
-			AppController.instance.ShowInstructions();
+			ViewController.instance.ShowInstructions();
 			AppController.instance.HideInGameMenu ();
 		}
 

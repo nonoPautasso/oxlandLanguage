@@ -155,7 +155,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   inGameMenu: {fileID: 148162, guid: 56e105d2c83e6844892182afb3258977, type: 2}
-  instructions: []
 --- !u!114 &412594230
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -568,22 +567,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4b70a7591e2c443f0b603298810abda1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cover: {fileID: 198030, guid: 67b0ba49e06d3ba48809d7737871d9c7, type: 2}
-  nameScreen: {fileID: 179710, guid: 0f33ceafaf36eaa409f19a80ee9d7c71, type: 2}
-  modeScreen: {fileID: 101354, guid: da0e4477382ecbc4882360a839305dcb, type: 2}
-  mainMenu: {fileID: 108576, guid: 286d131ca196f5d479a8416f89f1547b, type: 2}
-  levelComplete: {fileID: 154328, guid: a6e6d70c8c5addd40b0e7c3e72590468, type: 2}
-  settingsScreen: {fileID: 195544, guid: eb6bf58aa1b64274da875da6651c7c32, type: 2}
-  metricsScreen: {fileID: 170066, guid: c007d532cf17be94784ea318d963425c, type: 2}
-  levels:
-  - {fileID: 163800, guid: fc8ef4868e5b6fb40b08f10fa9f417f1, type: 2}
-  - {fileID: 134082, guid: b9aeea8d668057241a57f6a6482753bb, type: 2}
-  - {fileID: 145740, guid: 102b745fc74955a49a1f6c9beaf25c9c, type: 2}
-  - {fileID: 121538, guid: f4c88341acd71184d83eb293e47bbc42, type: 2}
-  - {fileID: 145492, guid: 9c250921f9e59784d8db6af5c22a6071, type: 2}
-  - {fileID: 116534, guid: 57fcaa7b3a2eeeb438fbda27337e1ac5, type: 2}
-  - {fileID: 128342, guid: 4e9949c9b69ef478bbede628a4be262f, type: 2}
-  - {fileID: 116534, guid: 57fcaa7b3a2eeeb438fbda27337e1ac5, type: 2}
   viewPanel: {fileID: 825449071}
 --- !u!82 &2134291542
 AudioSource:

@@ -10,10 +10,10 @@ public class AppController : AppElement {
 	public static AppController instance;
 	public AppModel appModel;
     public GameObject inGameMenu;
-	public GameObject[] instructions;
+	
 
 	private GameObject inGameMenuScreen;
-	private GameObject instructionsScreen;
+	
 
 	void Awake()
 	{
@@ -34,56 +34,44 @@ public class AppController : AppElement {
 
 		public void StartLevel(){			
 			SoundManager.instance.StopMusic ();
-			ViewController.instance.LoadLevel (GetLevelIndex(appModel.CurrentLevel));
+			ViewController.instance.LoadLevel (appModel.CurrentLevel);
 		}
 
-		private int GetLevelIndex(int level)
-		{
-			if (level < 6)
-			{
-				return level-1;
-			}
-			else if (level < 12)
-			{
-				return 5;
-			}
-			else {
-				if (level==12)
-					return 6; 
-				else
-					return 7; 
-				
-			}
 
-		}
 
 
 
         private string GetLevelName(int level)
         {
+			
             if (level < 6)
             {
                 switch (level)
                 {
-                    case 1: return "SayTheNumberLevel";
-                    case 2: return "OrderNumbers";
-                    case 3: return "MonsterCount";
-                    case 4: return "MonsterCreator"; 
-                    case 5: return "Patterns";
+				case 1: return "Vowels";
+				case 2: return "VowelsOral";
+				case 3: return "StartWithVowel";
+				case 4: return "CompleteVowel"; 
+				case 5: return "ABCOrder";
                 }
             }
             else if (level < 12)
             {
-                return "CastilloNumeros";
+				switch (level)
+				{
+				case 6: return "ABCWords";
+				case 7: return "ABCBonus"; 
+				case 8: return "";
+				}
             }
             else {
                 switch (level)
                 {
-                    case 12: return "ObjectSum"; 
+                    case 12: return ""; 
                     case 13:
                     case 14:
                     case 15:
-                    case 16: return "Gato"; 
+                    case 16: return ""; 
                 }
             }
             return "Error";
@@ -126,8 +114,7 @@ public class AppController : AppElement {
 		public void SetMaxLevelPossible(int level){
 			appModel.SetMaxLevelPossible (level);
 		}
-
-
+			
         internal void ShowInGameMenu(){
             TimerImpl.instance.Pause();
 			inGameMenuScreen = Instantiate(inGameMenu);
@@ -138,18 +125,7 @@ public class AppController : AppElement {
 			Destroy(inGameMenuScreen);
 		}
 
-		internal void HideInstructions(){
-			Destroy(instructionsScreen);
-		}
 
-
-		internal void ShowInstructions()
-		{
-			instructionsScreen = Instantiate(instructions[appModel.CurrentLevel-1]);
-//			GameObject.Instantiate (instructions[appModel.CurrentLevel-1]);
-
-			//play sound
-		}
     }
 
 }

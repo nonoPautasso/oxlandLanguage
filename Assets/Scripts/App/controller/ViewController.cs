@@ -10,9 +10,10 @@ namespace Assets.Scripts.App{
 	public class ViewController : MonoBehaviour {
 
 		public static ViewController instance;
-		public GameObject cover,nameScreen,modeScreen,mainMenu,levelComplete,settingsScreen,metricsScreen;
-		public GameObject[] levels;
+		private string[] levels;
+		private string[] instructions;
 
+		private GameObject instructionsScreen;
 		public GameObject viewPanel;
 		private GameObject currentGameObject;
 
@@ -25,7 +26,17 @@ namespace Assets.Scripts.App{
 				Destroy(gameObject);
 
 			DontDestroyOnLoad(transform.root.gameObject);
+			levels = new string[]{"Vowels","VowelsOral","StartWithVowel","CompleteVowel"
+				,"ABCOrder","ABCWords","ABCBonus"};
+			instructions = new string[]{"VowelsInstructions","VowelsOralInstructions","StartWithVowelInstructions",
+				"CompleteVowelInstructions","ABCOrderInstructions","ABCWordsInstructions","ABCBonusInstructions"};
 			LoadCover();
+		}
+
+		private GameObject LoadPrefab(string name)
+		{
+
+			return Resources.Load<GameObject>("Prefabs/" + name);
 		}
 
 
@@ -37,7 +48,6 @@ namespace Assets.Scripts.App{
 				Destroy(currentGameObject);
 			currentGameObject = child;            
 		}
-			
 
 		private void FitObjectToScene(GameObject child)
 		{
@@ -48,42 +58,55 @@ namespace Assets.Scripts.App{
 			child.transform.localScale = Vector3.one;
 		}
 
+
+
 		public void LoadLevel(int level){
-			ChangeCurrentObject (levels [level]);
+			ChangeCurrentObject (LoadPrefab("Levels/"+levels [level-1]));
 		}
 
 		public void LoadNameScreen(){
-			ChangeCurrentObject (nameScreen);
+			ChangeCurrentObject (LoadPrefab("NameScreen"));
 		}
 
 		public void LoadCover(){
-			ChangeCurrentObject (cover);
+			ChangeCurrentObject (LoadPrefab("Cover"));
 		}
-			
+
 		public void LoadModeScreen(){
-			ChangeCurrentObject (modeScreen);
+			ChangeCurrentObject (LoadPrefab("ModeScreen"));
 		}
 
 		public void LoadMainMenu(){
-			ChangeCurrentObject (mainMenu);
+			ChangeCurrentObject (LoadPrefab("MainMenu"));
 		}
 
 		public void LoadLevelComplete(){
-			ChangeCurrentObject (levelComplete);
+			ChangeCurrentObject (LoadPrefab("LevelComplete"));
 		}
 
 		public void LoadSettings(){
-			ChangeCurrentObject (settingsScreen);
+			ChangeCurrentObject (LoadPrefab("SettingsScreen"));
 		}
 
 		public void LoadMetrics(){
-			ChangeCurrentObject (metricsScreen);
+			ChangeCurrentObject (LoadPrefab("MetricsScreen"));
 		}
 
 		public GameObject CurrentGameObject {
 			get {
 				return currentGameObject;
 			}
+		}
+
+		internal void HideInstructions(){
+			Destroy(instructionsScreen);
+		}
+
+
+		internal void ShowInstructions()
+		{
+			instructionsScreen = Instantiate(LoadPrefab("Explanations/"+instructions[AppController.instance.GetCurrentLevel()-1]));
+			FitObjectToScene(instructionsScreen);
 		}
 	}
 }

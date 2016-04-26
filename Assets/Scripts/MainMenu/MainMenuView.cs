@@ -34,10 +34,10 @@ public class MainMenuView : MonoBehaviour {
 			SoundManager.instance.PlayMusic ();
 			if (SettingsController.instance.GetLanguage () == 0) {
 				welcomeText.text = "¡BIENVENIDO!";
-				vladimirText.text = "Soy Vladimir Trompo";
+				vladimirText.text = "Soy Jacques Bulla";
 			} else {
 				welcomeText.text = "WELCOME!";
-				vladimirText.text = "I'm Vladimir Trompo";
+				vladimirText.text = "I'm Jacques Bulla";
 			}
 
 
