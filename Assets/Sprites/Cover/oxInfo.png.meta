@@ -9,7 +9,7 @@ TextureImporter:
   serializedVersion: 2
   mipmaps:
     mipMapMode: 0
-    enableMipMap: 1
+    enableMipMap: 0
     linearTexture: 0
     correctGamma: 0
     fadeOut: 0
@@ -63,10 +63,10 @@ TextureImporter:
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline:
-      - - {x: -512, y: 384}
-        - {x: -512, y: -384}
-        - {x: 512, y: -384}
-        - {x: 512, y: 384}
+      - - {x: -256, y: 192}
+        - {x: -256, y: -192}
+        - {x: 256, y: -192}
+        - {x: 256, y: 192}
     - name: oxInfo_1
       rect:
         serializedVersion: 2
@@ -78,10 +78,10 @@ TextureImporter:
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline:
-      - - {x: -512, y: 384}
-        - {x: -512, y: -384}
-        - {x: 512, y: -384}
-        - {x: 512, y: 384}
+      - - {x: -255.76651, y: 192}
+        - {x: -255.76651, y: -192}
+        - {x: 257.2335, y: -192}
+        - {x: 257.2335, y: 192}
     outline: []
   spritePackingTag: 
   userData: 

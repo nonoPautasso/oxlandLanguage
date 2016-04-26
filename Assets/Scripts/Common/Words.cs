@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using Assets.Scripts.App;
 using System.IO;
 using System.Linq;
-using UnityEditor;
+//using UnityEditor;
 using I18N;
 
 namespace Assets.Scripts.Common {
