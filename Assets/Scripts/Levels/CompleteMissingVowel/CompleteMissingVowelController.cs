@@ -47,7 +47,7 @@ namespace Assets.Scripts.Levels.CompleteMissingVowel
 			letter2 = "";
 			MetricsManager.instance.GameStart ();
 			model = new CompleteMissingVowelModel ();
-			model.InitModel ();
+			model.InitModel (SettingsController.instance.GetLanguage ());
 			view.InitView ();
 			LoadResources ();
 			view.Next (model.NextEasy ());

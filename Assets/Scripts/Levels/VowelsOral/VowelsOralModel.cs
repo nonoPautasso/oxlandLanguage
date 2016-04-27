@@ -62,8 +62,14 @@ namespace Assets.Scripts.Levels.VowelsOral
 				break;
 			}
 			DataTrio<Sprite[], AudioClip[], int> toReturn;
+			string importText;
+			if (language.Equals ("Spansish")) {
+				importText = "Vowels";
+			} else {
+				importText = "English";
+			}
 			AudioClip[] clips = Resources.LoadAll<AudioClip> ("Audio/" + lang + "/" + letter + "Words");
-			Sprite[] images = Resources.LoadAll<Sprite> ("Sprites/" + lang + "/ObjectsVowels" + englishText);
+			Sprite[] images = Resources.LoadAll<Sprite> ("Sprites/" + lang + "/Objects" + importText);
 			toReturn = new DataTrio<Sprite[], AudioClip[], int> (new Sprite[clips.Length], new AudioClip[clips.Length], intValue);
 			for (int i = 0, j = GetLetterStartingIndex (letter); j < GetLetterStartingIndex (letter)
 			+ GetLetterSize (letter); i++, j++) {

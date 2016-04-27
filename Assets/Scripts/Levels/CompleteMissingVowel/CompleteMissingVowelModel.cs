@@ -27,14 +27,14 @@ namespace Assets.Scripts.Levels.CompleteMissingVowel
 
 		int[] letterAmounts;
 
-		private string[] easyWordList = new string[] {"araña", "arpa", "barba", "botón", "caja",
+		private string[] easyWordListSpanish = new string[] {"araña", "arpa", "barba", "botón", "caja",
 			"cama", "cámara", "casa", "coco", "flan", "flor", "fósforo", "globo", "gorro", "hongo",
 			"horno", "kayak", "kiwi", "lana", "lata", "loro", "leche", "manzana", "mapa", "mono", "moño",
 			"moto", "naranja", "ojo", "oso", "pan", "pez", "rana", "raya", "red", "robot", "sal", "sol",
 			"taza", "toro", "tren", "tronco", "vaca", "yoyo", "zorro"
 		};
 
-		private string[] hardWordList = new string[] {
+		private string[] hardWordListSpanish = new string[] {
 			"abeja", "árbol", "arco", "avispa", "ballena", "boca", "bomba", "bota", "bote", "bruja",
 			"brújula", "caballo", "cardón", "cartel", "cerdo", "cereza", "cierre", "clavo", "cocodrilo",
 			"conejo", "crayón", "dado", "dedo", "delfín", "dientes", "dragón", "elefante", "empanada",
@@ -50,6 +50,30 @@ namespace Assets.Scripts.Levels.CompleteMissingVowel
 			"volcán", "yate", "yema", "yogur", "yunque", "zapallo", "zapatilla", "zapato"
 		};
 
+		private string[] easyWordListEnglish = new string[] {
+			"ant", "arm", "ball", "banana", "bat", "bed", "bee", "beetle", "bird", "bomb", "book", "boot",
+			"bow", "box", "broom", "can", "car", "cat", "cheese", "church", "cow", "crab", "dog", "door",
+			"drum", "duck", "egg", "eye", "fan", "fish", "fox", "frog", "ghost", "glass", "ham", "hand",
+			"harp", "hat", "hen", "ink", "jam", "jelly", "key", "kiwi", "knot", "lamp", "leg", "log", "map",
+			"milk", "moon", "neck", "nest", "net", "nut", "owl", "ox", "pan", "pig", "pot", "rat", "ring",
+			"robot", "salt", "shark", "sheep", "star", "sun", "sword", "teeth", "tree", "van", "witch"
+		};
+
+		private string[] hardWordListEnglish = new string[] {
+			"apple", "arrow", "axe", "balloon", "bear", "bicycle", "boat", "bottle", "bread", "cake",
+			"camel", "candle", "carrot", "coin", "cricket", "dice", "dragon", "ear", "elephant", "finger",
+			"flower", "flute", "giraffe", "grape", "heart", "hippo", "ice", "igloo", "iron", "island",
+			"jacket", "koala", "lemon", "lettuce", "lion", "lollipop", "magnet", "matches", "mirror",
+			"monkey", "mouth", "nail", "oven", "parrot", "pear", "pencil", "planet", "queen", "rabbit",
+			"rain", "rocket", "ruler", "shoe", "snake", "soap", "spider", "table", "tiger", "train",
+			"violin", "whale", "zebra"
+		};
+
+		string language;
+
+		private string[] currentEasyWordList;
+		private string[] currentHardWordList;
+
 		public override void StartGame ()
 		{
 		}
@@ -64,39 +88,47 @@ namespace Assets.Scripts.Levels.CompleteMissingVowel
 			
 		}
 
-		public void InitModel ()
+		public void InitModel (int lang)
 		{
 			lettersUsed = new List<int> ();
 			letterAmounts = new int[]{ 2, 2, 2, 2, 2 };
 			easyMode = true;
 			wordCount = 0;
-			Debug.Log (RemoveDiacritics ("É"));
+			if (lang == 0) {
+				language = "Spanish";
+				currentEasyWordList = easyWordListSpanish;
+				currentHardWordList = hardWordListSpanish;
+			} else {
+				language = "English";
+				currentEasyWordList = easyWordListEnglish;
+				currentHardWordList = hardWordListEnglish;
+			}
 		}
 
 		public DataTrio<string[], AudioClip[], Sprite[]> LoadResources (bool easy)
 		{
-			Sprite[] sprites = Resources.LoadAll<Sprite> ("Sprites/Spanish/ObjectsFindVowelSpanish");
-			Debug.Log ("Easy word list size: " + easyWordList.Length);
-			Debug.Log ("Hard word list size: " + hardWordList.Length);
+			Sprite[] sprites = Resources.LoadAll<Sprite> ("Sprites/" + language + "/ObjectsFindVowel"+ language);
+			Debug.Log ("Easy word list size: " + currentEasyWordList.Length);
+			Debug.Log ("Hard word list size: " + currentHardWordList.Length);
 			Debug.Log ("Sprite array size: " + sprites.Length);
 			DataTrio<string[], AudioClip[], Sprite[]> toReturn;
 			if (easy) {
-				toReturn = new DataTrio<string[], AudioClip[], Sprite[]> (new string[easyWordList.Length], 
-					new AudioClip[easyWordList.Length], new Sprite[easyWordList.Length]);
-				for (int i = 0; i < easyWordList.Length; i++) {
-					toReturn.Fst () [i] = easyWordList [i];
-					toReturn.Snd () [i] = Resources.Load<AudioClip> ("Audio/Spanish/" + easyWordList [i] [0] +
-					"Words/" + easyWordList [i]);
+				toReturn = new DataTrio<string[], AudioClip[], Sprite[]> (new string[currentEasyWordList.Length], 
+					new AudioClip[currentEasyWordList.Length], new Sprite[currentEasyWordList.Length]);
+				for (int i = 0; i < currentEasyWordList.Length; i++) {
+					toReturn.Fst () [i] = currentEasyWordList [i];
+					toReturn.Snd () [i] = Resources.Load<AudioClip> ("Audio/" + language + "/" + currentEasyWordList [i] [0] +
+						"Words/" + currentEasyWordList [i]);
 					toReturn.Thd () [i] = sprites [i];
 				}
 			} else {
-				toReturn = new DataTrio<string[], AudioClip[], Sprite[]> (new string[hardWordList.Length], 
-					new AudioClip[hardWordList.Length], new Sprite[hardWordList.Length]);
-				for (int i = 0; i < hardWordList.Length; i++) {
-					toReturn.Fst () [i] = hardWordList [i];
-					toReturn.Snd () [i] = Resources.Load<AudioClip> ("Audio/Spanish/" + hardWordList [i] [0] +
-					"Words/" + hardWordList [i]);
-					toReturn.Thd () [i] = sprites [easyWordList.Length + i];
+				toReturn = new DataTrio<string[], AudioClip[], Sprite[]> (new string[currentHardWordList.Length], 
+					new AudioClip[currentHardWordList.Length], new Sprite[currentHardWordList.Length]);
+				for (int i = 0; i < currentHardWordList.Length; i++) {
+					toReturn.Fst () [i] = currentHardWordList [i];
+					toReturn.Snd () [i] = Resources.Load<AudioClip> ("Audio/" + language + "/" + currentHardWordList [i] [0] +
+						"Words/" + currentHardWordList [i]);
+					toReturn.Thd () [i] = sprites [currentEasyWordList.Length + i];
 				}
 			}
 				
@@ -121,28 +153,28 @@ namespace Assets.Scripts.Levels.CompleteMissingVowel
 
 		public int NextEasy ()
 		{
-			int value = UnityEngine.Random.Range (0, easyWordList.Length);
+			int value = UnityEngine.Random.Range (0, currentEasyWordList.Length);
 			if (lettersUsed.Contains (value))
 				return NextEasy ();
 			else {
-				easyChar = FindVowelInWord (easyWordList [value]);
+				easyChar = FindVowelInWord (currentEasyWordList [value]);
 				wordCount++;
 				lettersUsed.Add (value);
-				currentWord = easyWordList [value];
+				currentWord = currentEasyWordList [value];
 				return value;
 			}
 		}
 
 		public int NextHard ()
 		{
-			int value = UnityEngine.Random.Range (0, hardWordList.Length);
+			int value = UnityEngine.Random.Range (0, currentHardWordList.Length);
 			if (lettersUsed.Contains (value))
 				return NextHard ();
 			else {
-				hardChars = FindVowelsInWord (hardWordList [value]);
+				hardChars = FindVowelsInWord (currentHardWordList [value]);
 				wordCount++;
 				lettersUsed.Add (value);
-				currentWord = hardWordList [value];
+				currentWord = currentHardWordList [value];
 				return value;
 			}
 		}
@@ -255,7 +287,8 @@ namespace Assets.Scripts.Levels.CompleteMissingVowel
 			return toReturn;
 		}
 
-		public string GetCurrentWord() {
+		public string GetCurrentWord ()
+		{
 			return currentWord;
 		}
 
