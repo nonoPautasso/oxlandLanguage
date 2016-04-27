@@ -150,6 +150,11 @@ namespace Assets.Scripts.Levels.CompleteMissingVowel
 			} else {
 				if (letter1.Equals ("") || letter2.Equals ("")) {
 					view.PlaySoundClic ();
+					if (letter1.Equals ("")) {
+						view.IncorrectSelection (model.GetLetterPos (letter2));
+					} else {
+						view.IncorrectSelection (model.GetLetterPos (letter1));
+					}
 					return;
 				} else {
 					correct = model.CheckHardLetter (letter1) && model.CheckHardLetter (letter2);
@@ -161,12 +166,16 @@ namespace Assets.Scripts.Levels.CompleteMissingVowel
 							view.IncorrectSelection (model.GetLetterPos (letter2));
 						view.PlayWrongSound ();
 					} else {
-						
+						view.SelectLetter (model.GetLetterPos (letter1));
+						view.SelectLetter (model.GetLetterPos (letter2));
 						view.PlayRightSound ();
 						view.CorrectAnswer ();
 						
 					}
 				}
+			}
+			if (correct) {
+				view.ShowWord (model.GetCurrentWord ());
 			}
 		}
 	}

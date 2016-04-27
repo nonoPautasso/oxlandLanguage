@@ -23,7 +23,6 @@ namespace Assets.Scripts.Levels.VowelsOral
 
 		public DataTrio<Sprite[], AudioClip[], int> LoadResources (string letter, int language)
 		{
-			Debug.Log ("Entered LoadResources method with letter: " + letter);
 			langNum = language;
 			string lang;
 			string englishText;
@@ -38,7 +37,6 @@ namespace Assets.Scripts.Levels.VowelsOral
 				break;
 			default:
 				lang = "Spanish";
-				Debug.Log ("Default language set");
 				englishText = "";
 				break;
 			}
@@ -66,8 +64,6 @@ namespace Assets.Scripts.Levels.VowelsOral
 			DataTrio<Sprite[], AudioClip[], int> toReturn;
 			AudioClip[] clips = Resources.LoadAll<AudioClip> ("Audio/" + lang + "/" + letter + "Words");
 			Sprite[] images = Resources.LoadAll<Sprite> ("Sprites/" + lang + "/ObjectsVowels" + englishText);
-			Debug.Log ("Clips length: " + clips.Length);
-			Debug.Log ("Images length: " + images.Length);
 			toReturn = new DataTrio<Sprite[], AudioClip[], int> (new Sprite[clips.Length], new AudioClip[clips.Length], intValue);
 			for (int i = 0, j = GetLetterStartingIndex (letter); j < GetLetterStartingIndex (letter)
 			+ GetLetterSize (letter); i++, j++) {
@@ -75,6 +71,12 @@ namespace Assets.Scripts.Levels.VowelsOral
 				toReturn.Snd () [i] = clips [i];
 			}
 			letterAmounts [intValue] = 2;
+			Sprite[] fst = toReturn.Fst ();
+			AudioClip[] snd = toReturn.Snd ();
+
+
+			toReturn.SetFst (RandomizeArray<Sprite> (fst));
+			toReturn.SetSnd (RandomizeArray<AudioClip> (snd));
 			return toReturn;
 		}
 
@@ -135,7 +137,7 @@ namespace Assets.Scripts.Levels.VowelsOral
 			throw new NotImplementedException ();
 		}
 
-		static void RandomizeArray<T> (T[] arr)
+		static T[] RandomizeArray<T> (T[] arr)
 		{
 			for (var i = arr.Length - 1; i > 0; i--) {
 				var r = UnityEngine.Random.Range (0, i);
@@ -143,6 +145,7 @@ namespace Assets.Scripts.Levels.VowelsOral
 				arr [i] = arr [r];
 				arr [r] = tmp;
 			}
+			return arr;
 		}
 
 		public int Next ()
@@ -175,6 +178,7 @@ namespace Assets.Scripts.Levels.VowelsOral
 				currentCorrectLetter = null;
 				break;
 			}
+			Debug.Log ("Value returned: " + value);
 			return value;
 		}
 
@@ -185,7 +189,6 @@ namespace Assets.Scripts.Levels.VowelsOral
 
 		int GetLetterStartingIndex (string letter)
 		{
-			Debug.Log (letter);
 			int toReturn;
 			switch (letter) {
 			case "A":
@@ -213,13 +216,12 @@ namespace Assets.Scripts.Levels.VowelsOral
 				if (langNum == 0)
 					toReturn = 36;
 				else
-					toReturn = 26;
+					toReturn = 27;
 				break;
 			default:
 				toReturn = -1;
 				break;
 			}
-			Debug.Log (toReturn);
 			return toReturn;
 		}
 

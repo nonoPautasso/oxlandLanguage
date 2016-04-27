@@ -55,10 +55,15 @@ namespace Assets.Scripts.Levels.VowelsOral
 
         public void Next(int letter)
         {
+			Debug.Log ("Value received by View: " + letter);
+			Debug.Log ("Audio size before removing: " + letters [letter].Snd ().Length);
+			Debug.Log ("Audio size before removing: " + letters [letter].Fst ().Length);
             currentAudioClip = letters[letter].Snd()[0];
             currentObjectImage.sprite =  letters[letter].Fst()[0];
             letters[letter].SetSnd(RemoveFirst(letters[letter].Snd()));
             letters[letter].SetFst(RemoveFirst(letters[letter].Fst()));
+			Debug.Log ("Audio size after removing: " + letters [letter].Snd ().Length);
+			Debug.Log ("Audio size after removing: " + letters [letter].Fst ().Length);
             ResetHint();
         }
 

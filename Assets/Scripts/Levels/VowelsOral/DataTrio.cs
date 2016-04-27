@@ -21,6 +21,21 @@ namespace Assets.Scripts.Levels.VowelsOral
             this.thd = thd;
         }
 
+		public void SetFst(X fst)
+		{
+			this.fst = fst;
+		}
+
+		public void SetSnd(Y snd)
+		{
+			this.snd = snd;
+		}
+
+		public void SetThd(Z thd)
+		{
+			this.thd = thd;
+		}
+
         public X Fst()
         {
             return this.fst;

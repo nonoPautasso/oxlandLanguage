@@ -161,5 +161,9 @@ namespace Assets.Scripts.Levels.CompleteMissingVowel
 			nextButton.interactable = false;
 			ticButton.interactable = true;
 		}
+
+		public void ShowWord(string s) {
+			rulesText.text = s.ToUpper();
+		}
 	}
 }

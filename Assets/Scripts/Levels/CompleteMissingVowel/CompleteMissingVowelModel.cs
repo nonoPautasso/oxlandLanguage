@@ -19,6 +19,8 @@ namespace Assets.Scripts.Levels.CompleteMissingVowel
 		public int wordCount;
 		public bool easyMode;
 
+		private string currentWord;
+
 		private string[] hardChars;
 
 		private List<int> lettersUsed;
@@ -126,6 +128,7 @@ namespace Assets.Scripts.Levels.CompleteMissingVowel
 				easyChar = FindVowelInWord (easyWordList [value]);
 				wordCount++;
 				lettersUsed.Add (value);
+				currentWord = easyWordList [value];
 				return value;
 			}
 		}
@@ -139,6 +142,7 @@ namespace Assets.Scripts.Levels.CompleteMissingVowel
 				hardChars = FindVowelsInWord (hardWordList [value]);
 				wordCount++;
 				lettersUsed.Add (value);
+				currentWord = hardWordList [value];
 				return value;
 			}
 		}
@@ -249,6 +253,10 @@ namespace Assets.Scripts.Levels.CompleteMissingVowel
 				}
 			}
 			return toReturn;
+		}
+
+		public string GetCurrentWord() {
+			return currentWord;
 		}
 
 	
