@@ -62,14 +62,8 @@ namespace Assets.Scripts.Levels.VowelsOral
 				break;
 			}
 			DataTrio<Sprite[], AudioClip[], int> toReturn;
-			string importText;
-			if (language.Equals ("Spansish")) {
-				importText = "Vowels";
-			} else {
-				importText = "English";
-			}
 			AudioClip[] clips = Resources.LoadAll<AudioClip> ("Audio/" + lang + "/" + letter + "Words");
-			Sprite[] images = Resources.LoadAll<Sprite> ("Sprites/" + lang + "/Objects" + importText);
+			Sprite[] images = Resources.LoadAll<Sprite> ("Sprites/" + lang + "/ObjectsVowels" + englishText);
 			toReturn = new DataTrio<Sprite[], AudioClip[], int> (new Sprite[clips.Length], new AudioClip[clips.Length], intValue);
 			for (int i = 0, j = GetLetterStartingIndex (letter); j < GetLetterStartingIndex (letter)
 			+ GetLetterSize (letter); i++, j++) {
@@ -80,9 +74,9 @@ namespace Assets.Scripts.Levels.VowelsOral
 			Sprite[] fst = toReturn.Fst ();
 			AudioClip[] snd = toReturn.Snd ();
 
-
-			toReturn.SetFst (RandomizeArray<Sprite> (fst));
-			toReturn.SetSnd (RandomizeArray<AudioClip> (snd));
+			DataPair<Sprite[], AudioClip[]> randomized = RandomizeArrays<Sprite, AudioClip> (toReturn.Fst (), toReturn.Snd ());
+			toReturn.SetFst (randomized.Fst ());
+			toReturn.SetSnd (randomized.Snd ());
 			return toReturn;
 		}
 
@@ -143,15 +137,19 @@ namespace Assets.Scripts.Levels.VowelsOral
 			throw new NotImplementedException ();
 		}
 
-		static T[] RandomizeArray<T> (T[] arr)
+		static DataPair<T[], V[]> RandomizeArrays<T, V> (T[] arr1, V[] arr2)
 		{
-			for (var i = arr.Length - 1; i > 0; i--) {
+			for (var i = arr1.Length - 1; i > 0; i--) {
 				var r = UnityEngine.Random.Range (0, i);
-				var tmp = arr [i];
-				arr [i] = arr [r];
-				arr [r] = tmp;
+				var tmp1 = arr1 [i];
+				arr1 [i] = arr1 [r];
+				arr1 [r] = tmp1;
+
+				var tmp2 = arr2 [i];
+				arr2 [i] = arr2 [r];
+				arr2 [r] = tmp2;
 			}
-			return arr;
+			return new DataPair<T[], V[]> (arr1, arr2);
 		}
 
 		public int Next ()

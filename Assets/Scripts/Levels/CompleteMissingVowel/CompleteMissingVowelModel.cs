@@ -107,6 +107,12 @@ namespace Assets.Scripts.Levels.CompleteMissingVowel
 
 		public DataTrio<string[], AudioClip[], Sprite[]> LoadResources (bool easy)
 		{
+			string importText;
+			if (language.Equals ("Spansish")) {
+				importText = "Vowels";
+			} else {
+				importText = "English";
+			}
 			Sprite[] sprites = Resources.LoadAll<Sprite> ("Sprites/" + language + "/ObjectsFindVowel"+ language);
 			Debug.Log ("Easy word list size: " + currentEasyWordList.Length);
 			Debug.Log ("Hard word list size: " + currentHardWordList.Length);
