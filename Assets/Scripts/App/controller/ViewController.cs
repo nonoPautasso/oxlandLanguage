@@ -27,7 +27,7 @@ namespace Assets.Scripts.App{
 
 			DontDestroyOnLoad(transform.root.gameObject);
 			levels = new string[]{"Vowels","VowelsOral","StartWithVowel","CompleteVowel"
-				,"ABCOrder","ABCWords","ABCBonus"};
+				,"ABCOrder","ABCWords","ABCBonus", "Syllables"};
 			instructions = new string[]{"VowelsInstructions","VowelsOralInstructions","StartWithVowelInstructions",
 				"CompleteVowelInstructions","ABCOrderInstructions","ABCWordsInstructions","ABCBonusInstructions"};
 			LoadCover();
