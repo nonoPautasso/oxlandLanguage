@@ -54,7 +54,7 @@ namespace Assets.Scripts.Levels.CompleteMissingVowel
 			"ant", "arm", "ball", "banana", "bat", "bed", "bee", "beetle", "bird", "bomb", "book", "boot",
 			"bow", "box", "broom", "can", "car", "cat", "cheese", "church", "cow", "crab", "dog", "door",
 			"drum", "duck", "egg", "eye", "fan", "fish", "fox", "frog", "ghost", "glass", "ham", "hand",
-			"harp", "hat", "hen", "ink", "jam", "jelly", "key", "kiwi", "knot", "lamp", "leg", "log", "map",
+			"harp", "hat", "hen", "ink", "jam", "jar", "jelly", "key", "kiwi", "knot", "lamp", "leg", "log", "map",
 			"milk", "moon", "neck", "nest", "net", "nut", "owl", "ox", "pan", "pig", "pot", "rat", "ring",
 			"robot", "salt", "shark", "sheep", "star", "sun", "sword", "teeth", "tree", "van", "witch"
 		};
@@ -65,7 +65,7 @@ namespace Assets.Scripts.Levels.CompleteMissingVowel
 			"flower", "flute", "giraffe", "grape", "heart", "hippo", "ice", "igloo", "iron", "island",
 			"jacket", "koala", "lemon", "lettuce", "lion", "lollipop", "magnet", "matches", "mirror",
 			"monkey", "mouth", "nail", "oven", "parrot", "pear", "pencil", "planet", "queen", "rabbit",
-			"rain", "rocket", "ruler", "shoe", "snake", "soap", "spider", "table", "tiger", "train",
+			"rain", "rocket","rose","rubber", "ruler", "shoes", "snake", "soap", "spider", "table", "tiger", "train",
 			"violin", "whale", "zebra"
 		};
 
@@ -107,12 +107,6 @@ namespace Assets.Scripts.Levels.CompleteMissingVowel
 
 		public DataTrio<string[], AudioClip[], Sprite[]> LoadResources (bool easy)
 		{
-			string importText;
-			if (language.Equals ("Spansish")) {
-				importText = "Vowels";
-			} else {
-				importText = "English";
-			}
 			Sprite[] sprites = Resources.LoadAll<Sprite> ("Sprites/" + language + "/ObjectsFindVowel"+ language);
 			Debug.Log ("Easy word list size: " + currentEasyWordList.Length);
 			Debug.Log ("Hard word list size: " + currentHardWordList.Length);
