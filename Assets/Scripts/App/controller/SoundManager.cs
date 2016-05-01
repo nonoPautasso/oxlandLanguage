@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
+using System;
 
 namespace Assets.Scripts.App{
     public class SoundManager : MonoBehaviour{
@@ -97,6 +98,33 @@ namespace Assets.Scripts.App{
             {
 	            mySource.Stop();
             }
+
+		//Trying to concatenate audios!
+
+		private List<AudioClip> playingAudios;
+		private AudioClip currentAudio;
+		private Action action;
+
+		public void ConcatenateAudios(List<AudioClip> audios, Action f){
+			action = f;
+			currentAudio = null;
+			playingAudios = audios;
+			Invoke ("PlayCurrentAudios", 0.1f);
+		}
+
+		public void PlayCurrentAudios(){
+			if (currentAudio == null)
+				currentAudio = playingAudios [0];
+			else if (playingAudios.IndexOf (currentAudio) == playingAudios.Count - 1) {
+				currentAudio = null;
+				action.Invoke ();
+				return;
+			} else
+				currentAudio = playingAudios [playingAudios.IndexOf (currentAudio) + 1];
+
+			SoundManager.instance.PlayClip(currentAudio);
+			Invoke ("PlayCurrentAudios", currentAudio.length);
+		}
 
     }
 

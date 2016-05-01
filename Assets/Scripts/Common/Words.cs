@@ -17,8 +17,11 @@ namespace Assets.Scripts.Common {
 		//alphabet letter -> list of tuples including audio clip of word and sprite number.
 		private static Dictionary<string, List<Word>> words;
 
+		private static Dictionary<string, List<AudioClip>> syllables;
+
 		static Words(){
 			LoadAllWords();
+			LoadSyllables ();
 		}
 
 		private Words () { }
@@ -36,6 +39,19 @@ namespace Assets.Scripts.Common {
 					count++;
 				}
 				words [letter] = l;
+			}
+		}
+
+		private static void LoadSyllables () {
+			syllables = new Dictionary<string, List<AudioClip>>();
+			currentPath = CurrentPath ();
+			List<AudioClip> syllablesClips = Resources.LoadAll<AudioClip>(currentPath + "Syllables/").ToList ();
+			foreach (AudioClip syllable in syllablesClips) {
+				string firstLetter = syllable.name.ToCharArray ()[0].ToString ().ToUpper ();
+				if(!syllables.ContainsKey (firstLetter)){
+					syllables [firstLetter] = new List<AudioClip> ();
+				}
+				syllables [firstLetter].Add (syllable);
 			}
 		}
 
@@ -106,7 +122,10 @@ namespace Assets.Scripts.Common {
 		}
 
 		static void CheckLoadedWords () {
-			if (currentPath != CurrentPath()) LoadAllWords();
+			if (currentPath != CurrentPath ()) {
+				LoadAllWords ();
+				LoadSyllables ();
+			}
 		}
 
 		public static string RandomLetter (int endOffset = 1, int startOffset = 0) {
@@ -140,6 +159,37 @@ namespace Assets.Scripts.Common {
 				result.Add (letter);
 			}
 			return result;
+		}
+
+		public static AudioClip RandomSyllable(){
+			CheckLoadedWords ();
+			AudioClip result = null;
+			while(result == null){
+				string letter = alphabet [alphabetRandomizer.Next ()];
+				if(syllables.ContainsKey (letter)){
+					List<AudioClip> letterSyllables = syllables [letter];
+					result = letterSyllables [Randomizer.RandomInRange (letterSyllables.Count - 1)];
+				}
+			}
+			return result;
+		}
+
+		public static Word GetWord (string wordString) {
+			string firstLetter = wordString.ToCharArray () [0].ToString ().ToUpper ();
+			foreach (Word word in words[firstLetter]) {
+				if (word.Name ().ToLower () == wordString.ToLower ())
+					return word;
+			}
+			return null;
+		}
+
+		public static AudioClip SyllableClip (string syllableString) {
+			string firstLetter = syllableString.ToCharArray () [0].ToString ().ToUpper ();
+			foreach (AudioClip clip in syllables[firstLetter]) {
+				if (clip.name.ToLower () == syllableString.ToLower ())
+					return clip;
+			}
+			return null;
 		}
 	}
 }

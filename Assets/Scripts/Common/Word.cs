@@ -43,5 +43,9 @@ namespace Assets.Scripts.Common {
 		public float AudioLength () {
 			return audio.length;
 		}
+
+		public AudioClip GetAudio(){
+			return audio;
+		}
 	}
 }
