@@ -61,13 +61,17 @@ public class AppController : AppElement {
 				{
 				case 6: return "ABCWords";
 				case 7: return "ABCBonus"; 
-				case 8: return "";
+				case 8: return "WriteWords";
+				case 9: return "MayusMin";
+				case 10: return "CreateSentence";
+				case 11: return "Syllables";
+					
 				}
             }
             else {
                 switch (level)
                 {
-                    case 12: return ""; 
+                    case 12: return "SplitSentences"; 
                     case 13:
                     case 14:
                     case 15:

@@ -27,7 +27,9 @@ namespace Assets.Scripts.App{
 
 			DontDestroyOnLoad(transform.root.gameObject);
 			levels = new string[]{"Vowels","VowelsOral","StartWithVowel","CompleteVowel"
-				,"ABCOrder","ABCWords","ABCBonus", "Syllables"};
+				,"ABCOrder","ABCWords","ABCBonus", "WriteWords","MayusMin",
+				"CreateSentence","Syllables","SplitSentences"
+				};
 			instructions = new string[]{"VowelsInstructions","VowelsOralInstructions","StartWithVowelInstructions",
 				"CompleteVowelInstructions","ABCOrderInstructions","ABCWordsInstructions","ABCBonusInstructions"};
 			LoadCover();
@@ -61,6 +63,7 @@ namespace Assets.Scripts.App{
 
 
 		public void LoadLevel(int level){
+			Debug.Log (levels[level-1]);
 			ChangeCurrentObject (LoadPrefab("Levels/"+levels [level-1]));
 		}
 
