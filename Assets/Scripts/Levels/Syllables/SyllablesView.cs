@@ -39,6 +39,7 @@ namespace Assets.Scripts.Levels.Syllables {
 		public void SyllableClick(int index){
 			Button syllableButton = syllables [index];
 			if(syllableButton.transform.parent == originalParent){
+				controller.PlaySyllable (syllables[index].GetComponentInChildren<Text>().text);
 				MoveToPanel (syllableButton);
 			} else {
 				MoveFromPanel (syllableButton);

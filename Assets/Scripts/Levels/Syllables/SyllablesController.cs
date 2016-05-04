@@ -55,6 +55,10 @@ namespace Assets.Scripts.Levels.Syllables {
 			SoundManager.instance.ConcatenateAudios (audios, a);
 		}
 
+		public void PlaySyllable (string syllable) {
+			SoundManager.instance.PlayClip (Words.SyllableClip (syllable));
+		}
+
 		public void AudiosDone(){
 			NextChallenge ();
 		}
