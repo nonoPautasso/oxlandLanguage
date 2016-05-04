@@ -191,8 +191,8 @@ GameObject:
   - 224: {fileID: 22447652}
   - 222: {fileID: 22232356}
   - 114: {fileID: 11482860}
-  - 114: {fileID: 11405376}
-  - 114: {fileID: 11451416}
+  - 114: {fileID: 11489796}
+  - 114: {fileID: 11497892}
   m_Layer: 5
   m_Name: CreateSentence
   m_TagString: Untagged
@@ -436,27 +436,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: AAAAAAA
---- !u!114 &11405376
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 162250}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 75af2d609fe71fc4597e7ce44fd37f2f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  hintBtn: {fileID: 11487286}
-  vowelButtons:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  currentObjectImage: {fileID: 0}
-  currentAudioClip: {fileID: 0}
+  m_Text: AAAAAAAAAAA
 --- !u!114 &11408592
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -798,19 +778,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 11405376}
+      - m_Target: {fileID: 11497892}
         m_MethodName: OnClickMenuBtn
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-      - m_Target: {fileID: 11405376}
-        m_MethodName: PlaySoundClick
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -862,18 +831,6 @@ MonoBehaviour:
   m_Spacing: 0
   m_ChildForceExpandWidth: 0
   m_ChildForceExpandHeight: 0
---- !u!114 &11451416
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 162250}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 025d356df50ad904bb125f59154a8a70, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  view: {fileID: 11405376}
 --- !u!114 &11453650
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1000,7 +957,18 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 11494410}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 11497892}
+        m_MethodName: TryClick
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
 --- !u!114 &11457538
@@ -1339,19 +1307,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 11451416}
-        m_MethodName: ShowHint
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-      - m_Target: {fileID: 11405376}
-        m_MethodName: PlaySoundClick
+      - m_Target: {fileID: 11497892}
+        m_MethodName: OnClickHintBtn
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -1416,6 +1373,18 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_HorizontalFit: 2
   m_VerticalFit: 2
+--- !u!114 &11489796
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 162250}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5aba7549805cd493ca6c5b41bfafea44, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  view: {fileID: 11497892}
 --- !u!114 &11490222
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1456,6 +1425,20 @@ MonoBehaviour:
   m_FillAmount: 1
   m_FillClockwise: 1
   m_FillOrigin: 0
+--- !u!114 &11497892
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 162250}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1d5751415a7804f20a0b9cf1382ec3cb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  hintBtn: {fileID: 11487286}
+  wordsPanel: {fileID: 11439104}
+  sentencePanel: {fileID: 11458806}
 --- !u!222 &22204198
 CanvasRenderer:
   m_ObjectHideFlags: 1
