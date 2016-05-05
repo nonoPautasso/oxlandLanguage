@@ -164,71 +164,9 @@ Prefab:
       propertyPath: m_Pivot.y
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 11494330, guid: 67b0ba49e06d3ba48809d7737871d9c7, type: 2}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
-      value: 
-      objectReference: {fileID: 835297459}
-    - target: {fileID: 11494330, guid: 67b0ba49e06d3ba48809d7737871d9c7, type: 2}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: OnClicFlagBtn
-      objectReference: {fileID: 0}
-    - target: {fileID: 11487122, guid: 67b0ba49e06d3ba48809d7737871d9c7, type: 2}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
-      value: 
-      objectReference: {fileID: 835297459}
-    - target: {fileID: 11487122, guid: 67b0ba49e06d3ba48809d7737871d9c7, type: 2}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: OnClicFlagBtn
-      objectReference: {fileID: 0}
-    - target: {fileID: 11473564, guid: 67b0ba49e06d3ba48809d7737871d9c7, type: 2}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
-      value: 
-      objectReference: {fileID: 835297459}
-    - target: {fileID: 11473564, guid: 67b0ba49e06d3ba48809d7737871d9c7, type: 2}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: OnClicStartBtn
-      objectReference: {fileID: 0}
-    - target: {fileID: 11403128, guid: 67b0ba49e06d3ba48809d7737871d9c7, type: 2}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
-      value: 
-      objectReference: {fileID: 835297459}
-    - target: {fileID: 11403128, guid: 67b0ba49e06d3ba48809d7737871d9c7, type: 2}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: OnClicOxBtn
-      objectReference: {fileID: 0}
-    - target: {fileID: 11428320, guid: 67b0ba49e06d3ba48809d7737871d9c7, type: 2}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
-      value: 
-      objectReference: {fileID: 835297459}
-    - target: {fileID: 11428320, guid: 67b0ba49e06d3ba48809d7737871d9c7, type: 2}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: OnClicAboutBtn
-      objectReference: {fileID: 0}
-    - target: {fileID: 11468308, guid: 67b0ba49e06d3ba48809d7737871d9c7, type: 2}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Target
-      value: 
-      objectReference: {fileID: 835297459}
-    - target: {fileID: 11468308, guid: 67b0ba49e06d3ba48809d7737871d9c7, type: 2}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_MethodName
-      value: PlayClicSound
-      objectReference: {fileID: 0}
-    - target: {fileID: 11459608, guid: 67b0ba49e06d3ba48809d7737871d9c7, type: 2}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Target
-      value: 
-      objectReference: {fileID: 835297459}
-    - target: {fileID: 11459608, guid: 67b0ba49e06d3ba48809d7737871d9c7, type: 2}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_MethodName
-      value: PlayClicSound
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 67b0ba49e06d3ba48809d7737871d9c7, type: 2}
   m_IsPrefabParent: 0
---- !u!114 &835297459 stripped
-MonoBehaviour:
-  m_PrefabParentObject: {fileID: 11486570, guid: 67b0ba49e06d3ba48809d7737871d9c7,
-    type: 2}
-  m_PrefabInternal: {fileID: 835297458}
-  m_Script: {fileID: 11500000, guid: 3181556055c29ef419a1a0c4b29b64c7, type: 3}
 --- !u!1 &993323671
 GameObject:
   m_ObjectHideFlags: 0
