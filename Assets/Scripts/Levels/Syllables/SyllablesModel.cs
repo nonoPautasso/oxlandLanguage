@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using Assets.Scripts.Common;
 using System.Linq;
 using System.Configuration;
+using I18N;
 
 namespace Assets.Scripts.Levels.Syllables {
 	public class SyllablesModel : LevelModel {
@@ -31,7 +32,7 @@ namespace Assets.Scripts.Levels.Syllables {
 		}
 
 		private void LoadWordSyllables () {
-			TextAsset JSONstring = Resources.Load<TextAsset> ("syllables_es");
+			TextAsset JSONstring = Resources.Load<TextAsset> (I18n.Msg ("syllables.fileName"));
 			JSONClass data = JSON.Parse (JSONstring.text) as JSONClass;
 			foreach (KeyValuePair<string, JSONNode> word in data) {
 				List<string> l = new List<string> ();
