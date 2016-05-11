@@ -27,11 +27,13 @@ namespace Assets.Scripts.App{
 
 			DontDestroyOnLoad(transform.root.gameObject);
 			levels = new string[]{"Vowels","VowelsOral","StartWithVowel","CompleteVowel"
-				,"ABCOrder","ABCWords","ABCBonus", "WriteWords","MayusMin",
-				"CreateSentence","Syllables","SplitSentences"
+				,"ABCOrder","ABCWords","ABCBonus","Syllables", "WriteWords","MayusMin",
+				"CreateSentence","SplitSentences"
 				};
 			instructions = new string[]{"VowelsInstructions","VowelsOralInstructions","StartWithVowelInstructions",
-				"CompleteVowelInstructions","ABCOrderInstructions","ABCWordsInstructions","ABCBonusInstructions"};
+				"CompleteVowelInstructions","ABCOrderInstructions","ABCWordsInstructions","ABCBonusInstructions",
+				"VowelsInstructions","VowelsInstructions","VowelsInstructions","VowelsInstructions","VowelsInstructions",
+				"VowelsInstructions","VowelsInstructions"};
 			LoadCover();
 		}
 

@@ -27,6 +27,8 @@ GameObject:
   - 224: {fileID: 22403634}
   - 222: {fileID: 22257798}
   - 114: {fileID: 11400060}
+  - 114: {fileID: 11404838}
+  - 114: {fileID: 11462754}
   m_Layer: 5
   m_Name: VowelsOral
   m_TagString: Untagged
@@ -374,8 +376,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
-        m_MethodName: PlaySoundClick
+      - m_Target: {fileID: 11404838}
+        m_MethodName: OnClickMenuBtn
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -398,6 +400,26 @@ MonoBehaviour:
         m_CallState: 2
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
+--- !u!114 &11404838
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 108664}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 75af2d609fe71fc4597e7ce44fd37f2f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  hintBtn: {fileID: 11436034}
+  vowelButtons:
+  - {fileID: 11416128}
+  - {fileID: 11473032}
+  - {fileID: 11462516}
+  - {fileID: 11430842}
+  - {fileID: 11448140}
+  currentObjectImage: {fileID: 0}
+  currentAudioClip: {fileID: 0}
 --- !u!114 &11404866
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -550,7 +572,18 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 11402484}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 11462754}
+        m_MethodName: SubmitLetter
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 11416128}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.UI.Button, UnityEngine.UI
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
 --- !u!114 &11417974
@@ -699,7 +732,18 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 11404866}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 11462754}
+        m_MethodName: SubmitLetter
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 11430842}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.UI.Button, UnityEngine.UI
+          m_IntArgument: 3
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
 --- !u!114 &11436034
@@ -741,8 +785,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
-        m_MethodName: PlaySoundClick
+      - m_Target: {fileID: 11462754}
+        m_MethodName: ShowHint
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -863,7 +907,18 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 11410044}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 11462754}
+        m_MethodName: SubmitLetter
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 11448140}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.UI.Button, UnityEngine.UI
+          m_IntArgument: 4
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
 --- !u!114 &11462516
@@ -904,9 +959,32 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 11405818}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 11462754}
+        m_MethodName: SubmitLetter
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 11462516}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.UI.Button, UnityEngine.UI
+          m_IntArgument: 2
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
+--- !u!114 &11462754
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 108664}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 025d356df50ad904bb125f59154a8a70, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  view: {fileID: 11404838}
 --- !u!114 &11473032
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -945,7 +1023,18 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 11442084}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 11462754}
+        m_MethodName: SubmitLetter
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 11473032}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.UI.Button, UnityEngine.UI
+          m_IntArgument: 1
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
 --- !u!114 &11473728
@@ -1102,7 +1191,18 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 11417974}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 11404838}
+        m_MethodName: PlaySound
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
 --- !u!114 &11495930
