@@ -105,6 +105,12 @@ namespace Assets.Scripts.App{
 		private AudioClip currentAudio;
 		private Action action;
 
+		public void ConcatenateAudio(AudioClip audio, Action f){
+			List<AudioClip> l = new List<AudioClip> ();
+			l.Add (audio);
+			ConcatenateAudios (l, f);
+		}
+
 		public void ConcatenateAudios(List<AudioClip> audios, Action f){
 			action = f;
 			currentAudio = null;

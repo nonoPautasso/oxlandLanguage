@@ -11,7 +11,7 @@ namespace AssemblyCSharp {
 		private Randomizer sentenceRandomizer;
 		private int currentRound;
 
-		private List<AudioClip> sentenceAudios;
+		private List<string> sentenceAudios;
 		private List<string> answers;
 		private List<List<string>> options;
 		private int currentIndex;
@@ -29,7 +29,7 @@ namespace AssemblyCSharp {
 		}
 
 		private void LoadSentences () {
-			sentenceAudios = new List<AudioClip>();
+			sentenceAudios = new List<string>();
 			answers = new List<string> ();
 			options = new List<List<string>> ();
 
@@ -40,14 +40,9 @@ namespace AssemblyCSharp {
 				string answer = sentence ["text"].Value;
 				answers.Add (answer);
 				AddOptions (answer, sentence);
+				sentenceAudios.Add (sentence["audio"].Value);
 			}
 			sentenceRandomizer = Randomizer.New (answers.Count - 1);
-
-			AddAudios ();
-		}
-
-		void AddAudios () {
-			sentenceAudios = new List<AudioClip>(Resources.LoadAll<AudioClip> ("Audio/" + I18n.Msg ("words.locale") + "/Sentences"));
 		}
 
 		private void AddOptions (string answer, JSONClass sentence) {
@@ -79,7 +74,7 @@ namespace AssemblyCSharp {
 		public bool GameEnded () { return currentRound == ROUNDS; }
 
 		public AudioClip GetSentenceAudio () {
-			return sentenceAudios [currentIndex];
+			return Resources.Load<AudioClip> ("Audio/" + I18n.Msg ("words.locale") + "/Sentences/" + sentenceAudios[currentIndex]);
 		}
 
 		public override void RequestHint () { }

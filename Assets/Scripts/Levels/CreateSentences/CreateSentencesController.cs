@@ -32,15 +32,23 @@ namespace AssemblyCSharp {
 		public void Try (List<string> result) {
 			if (model.IsCorrect (result)) {
 				Correct ();
-				NextChallenge ();
 			}
 			else
 				Wrong ();
 		}
 
+		public void AudioDone(){
+			NextChallenge ();
+		}
+
 		private void Correct () {
 			LogAnswer (true);
 			view.Correct ();
+			PlayAudioWithCallback ();
+		}
+
+		private void PlayAudioWithCallback () {
+			SoundManager.instance.ConcatenateAudio(model.GetSentenceAudio (), AudioDone);
 		}
 
 		private void PlaySentence () {

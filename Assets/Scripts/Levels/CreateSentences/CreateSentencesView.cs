@@ -34,7 +34,17 @@ namespace AssemblyCSharp {
 		}
 
 		public void Correct () {
-			PlayRightSound ();
+			DisableHint ();
+			foreach (GameObject word in words) {
+				word.GetComponentInChildren<Button> ().enabled = false;
+			}
+
+			foreach (GameObject line in sentenceSentenceLines) {
+				foreach (Button word in line.GetComponentsInChildren <Button>()) {
+					Views.PaintButton (word, Color.green);
+				}
+			}
+			
 			tryBtn.enabled = false;
 		}
 
