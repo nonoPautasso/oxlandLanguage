@@ -6,7 +6,7 @@ using UnityEngine;
 using UnityEngine.EventSystems;
 using Assets.Scripts.Common;
 
-namespace AssemblyCSharp {
+namespace Assets.Scripts.Levels.CreateSentences {
 	public class CreateSentencesView : LevelView {
 		public Image wordsPanel;
 		public Image sentencePanel;

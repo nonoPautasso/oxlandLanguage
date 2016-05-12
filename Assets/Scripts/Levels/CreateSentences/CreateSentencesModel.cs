@@ -6,7 +6,7 @@ using UnityEngine;
 using I18N;
 using SimpleJSON;
 
-namespace AssemblyCSharp {
+namespace Assets.Scripts.Levels.CreateSentences {
 	public class CreateSentencesModel : LevelModel {
 		private Randomizer sentenceRandomizer;
 		private int currentRound;

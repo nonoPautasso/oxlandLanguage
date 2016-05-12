@@ -5,7 +5,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using Assets.Scripts.Common;
 
-namespace AssemblyCSharp {
+namespace Assets.Scripts.Levels.SplitSentences {
 	public class SplitSentencesView : LevelView {
 		public List<GameObject> sentenceLines;
 		public Image lettersPanel;

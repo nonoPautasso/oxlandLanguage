@@ -1,7 +1,7 @@
 ﻿using System;
 using Assets.Scripts.App;
 
-namespace AssemblyCSharp {
+namespace Assets.Scripts.Levels.SplitSentences {
 	public class SplitSentencesController : LevelController {
 		private SplitSentencesModel model;
 		public SplitSentencesView view;

@@ -2,7 +2,7 @@
 using Assets.Scripts.App;
 using System.Collections.Generic;
 
-namespace AssemblyCSharp {
+namespace Assets.Scripts.Levels.CreateSentences {
 	public class CreateSentencesController : LevelController {
 		private CreateSentencesModel model;
 		public CreateSentencesView view;
