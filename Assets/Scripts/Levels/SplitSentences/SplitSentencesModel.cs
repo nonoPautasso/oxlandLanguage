@@ -42,6 +42,10 @@ namespace Assets.Scripts.Levels.SplitSentences {
 			currentRound++;
 		}
 
+		public bool IsCorrect (string answer) {
+			return sentences [currentIndex] == answer;
+		}
+
 		public string GetSentence () { return sentences [currentIndex]; }
 
 		public bool GameEnded () { return currentRound == ROUNDS; }

@@ -20,20 +20,22 @@ public class TogglePaint : MonoBehaviour, IPointerDownHandler, IPointerUpHandler
 	}
 
 	public void OnPointerEnter (PointerEventData eventData) {
-		if(view.PaintMode()) {
+		if (view.PaintMode () && view.IsNextToCurrent (this)) {
 			if (AmIPainted ())
 				view.PaintModeOff (this);
 			else {
 				PaintMe (view.GetColor ());
+				view.PaintModeOn (this);
 			}
-		}
+		} else
+			view.PaintModeOff (this);
 	}
 
-	private void PaintMe (Color c) {
+	public void PaintMe (Color c) {
 		GetComponentInChildren<Image>().color = c;
 	}
 
-	private bool AmIPainted () {
+	public bool AmIPainted () {
 		return GetComponentInChildren<Image> ().color != Color.white;
 	}
 

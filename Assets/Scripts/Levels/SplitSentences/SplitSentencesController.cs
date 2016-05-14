@@ -15,6 +15,7 @@ namespace Assets.Scripts.Levels.SplitSentences {
 
 		public override void ShowHint () {
 			LogHint();
+			view.PaintNextWord (model.GetSentence ());
 		}
 
 		public override void InitGame () {
@@ -24,6 +25,25 @@ namespace Assets.Scripts.Levels.SplitSentences {
 			model.StartGame();
 
 			NextChallenge ();
+		}
+
+		public void Try (string answer) {
+			var isCorrect = model.IsCorrect (answer);
+			LogAnswer (isCorrect);
+			if (isCorrect) {
+				Correct ();
+			} else {
+				Wrong ();
+			}
+		}
+
+		private void Correct () {
+			view.Correct ();
+			NextChallenge ();
+		}
+
+		private void Wrong () {
+			view.Wrong ();
 		}
 
 		public override void RestartGame () {
