@@ -45,5 +45,9 @@ namespace Assets.Scripts.Common {
 		public static void PaintImage(Image image, Color color){
 			image.color = color;
 		}
+
+		public static GameObject LoadPrefab(string path) {
+			return Resources.Load<GameObject>("Prefabs/" + path);
+		}
 	}
 }
