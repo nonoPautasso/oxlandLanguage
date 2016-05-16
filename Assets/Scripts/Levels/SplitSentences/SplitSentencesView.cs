@@ -22,6 +22,7 @@ namespace Assets.Scripts.Levels.SplitSentences {
 		private bool paintMode;
 
 		public static int MAX_CHARS = 20;
+		public static int CHARS_PER_LINE = 21;
 
 		private SplitSentencesController controller;
 
@@ -32,17 +33,28 @@ namespace Assets.Scripts.Levels.SplitSentences {
 		}
 
 		private void SetSentence (string sentence) {
-			char[] charArray = sentence.ToCharArray ();
-			int charNumber = 0;
-			foreach (Toggle letterToggle in lettersPanel.GetComponentsInChildren<Toggle>(true)) {
-				if (charNumber < charArray.Length && charArray [charNumber] == ' ') charNumber++;
-				if (charNumber < charArray.Length){
-					ResetLetterToggle (letterToggle);
-					letterToggle.GetComponentInChildren<Text>().text = charArray[charNumber].ToString ();
-				} else {
-					Views.SetActiveToggle (letterToggle, false);
+			string[] split = sentence.Split (' ');
+			int toggleNumber = 0;
+			int lineMax = CHARS_PER_LINE;
+			Toggle[] toggles = lettersPanel.GetComponentsInChildren<Toggle> (true);
+
+			foreach (string word in split) {
+				if(word.Length + toggleNumber >= lineMax){
+					for (int i = toggleNumber; i < lineMax; i++) {
+						Views.SetActiveToggle (toggles[i], false);
+					}
+					toggleNumber = CHARS_PER_LINE;
+					lineMax = CHARS_PER_LINE * 2;
 				}
-				charNumber++;
+				foreach (char wordChar in word.ToCharArray ()) {
+					ResetLetterToggle (toggles[toggleNumber]);
+					toggles[toggleNumber].GetComponentInChildren<Text>().text = wordChar.ToString ();
+					toggleNumber++;
+				}
+				if (toggleNumber == lineMax) lineMax = CHARS_PER_LINE * 2;
+			}
+			for (int i = toggleNumber; i < toggles.Length; i++) {
+				Views.SetActiveToggle (toggles[i], false);
 			}
 		}
 
