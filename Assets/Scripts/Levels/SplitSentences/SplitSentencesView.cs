@@ -14,8 +14,9 @@ namespace Assets.Scripts.Levels.SplitSentences {
 		public Image sentencePanel;
 		private TogglePaint currentToggle;
 
-		private static List<Color> colors = new List<Color> {Color.blue, Color.green, Color.red, Color.yellow, Color.cyan, Color.magenta};
-		public Randomizer colorRandomizer;
+		private static List<Color> colors = new List<Color> {new Color32(255, 73, 235, 255), new Color32(200, 137, 255, 255),
+			new Color32(34, 191, 255, 255), new Color32(70, 233, 172, 255), new Color32(158, 255, 66, 255), new Color32(245, 255, 66, 255),
+			new Color32(214, 173, 66, 255), new Color32(255, 86, 86, 255), new Color32(173, 81, 98, 255), new Color32(173, 139, 0, 255)};
 		public Color currentColor;
 
 		private bool paintMode;
@@ -28,7 +29,6 @@ namespace Assets.Scripts.Levels.SplitSentences {
 			ResetView ();
 			SetSentence (sentence);
 			currentColor = Color.white;
-			colorRandomizer = Randomizer.New (colors.Count - 1);
 		}
 
 		private void SetSentence (string sentence) {
@@ -173,7 +173,7 @@ namespace Assets.Scripts.Levels.SplitSentences {
 			EnableHint ();
 			ClearWordsAndLines ();
 			sentenceLines.Clear ();
-			foreach (TogglePaint toggle in lettersPanel.GetComponentsInChildren<TogglePaint>()) {
+			foreach (TogglePaint toggle in lettersPanel.GetComponentsInChildren<TogglePaint>(true)) {
 				toggle.PaintMe (Color.white);
 			}
 		}
@@ -193,8 +193,20 @@ namespace Assets.Scripts.Levels.SplitSentences {
 		}
 
 		public Color GetColor () {
-			if (currentColor == Color.white) currentColor = colors [colorRandomizer.Next ()];
+			if (currentColor == Color.white) {
+				Randomizer colorRandomizer = Randomizer.New (colors.Count - 1);
+				currentColor = colors [colorRandomizer.Next ()];
+				while(IsCurrentColorInUse()) currentColor = colors [colorRandomizer.Next ()];
+			}
 			return currentColor;
+		}
+
+		private bool IsCurrentColorInUse () {
+			foreach (TogglePaint toggle in lettersPanel.GetComponentsInChildren<TogglePaint>(true)) {
+				if (toggle.GetColor () == currentColor)
+					return true;
+			}
+			return false;
 		}
 
 		public void Correct () {
