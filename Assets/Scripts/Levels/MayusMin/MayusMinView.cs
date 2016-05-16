@@ -12,7 +12,7 @@ namespace Assets.Scripts.Levels.MayusMin {
 		public Text hintText;
 		public Button nextBtn;
 
-		public static int MAX_CHARS = 20;
+		public static int MAX_CHARS = 16;
 
 		private List<GameObject> sentenceLines = new List<GameObject>();
 		private List<GameObject> slots = new List<GameObject> ();
@@ -39,7 +39,7 @@ namespace Assets.Scripts.Levels.MayusMin {
 				GameObject word = GetWord ();
 				GameObject slot = w.Contains ("_") ? GetSlot () : null;
 				if(slot != null){
-					slot.GetComponentInChildren<Text>().text = "";
+					//slot.GetComponentInChildren<Text>().text = "";
 					slot.transform.SetParent (line.transform, true);
 					slot.transform.localScale = Vector3.one;
 					slot.AddComponent<LetterSlot>().View (this);
@@ -57,13 +57,15 @@ namespace Assets.Scripts.Levels.MayusMin {
 			string[] split = sentence.Split (' ');
 			List<string> result = new List<string> ();
 			foreach (string word in split) {
+				if(word.Contains ("_")) result.Add (" ");
 				result.Add (word);
-				if(word != split[split.Length - 1]) result.Add (" ");
+//				
 			}
 			return result;
 		}
 
 		public void LetterClick(int index){
+			SoundManager.instance.PlayClicSound ();
 			Image letter = letters [index];
 			string text = letter.GetComponentInChildren<Text> ().text;
 			letter.GetComponentInChildren<Text> ().text = text.ToUpper () == text ? text.ToLower () : text.ToUpper ();
@@ -123,6 +125,7 @@ namespace Assets.Scripts.Levels.MayusMin {
 		}
 
 		public void NextClick () {
+			SoundManager.instance.PlayClicSound ();
 			controller.NextChallenge ();
 		}
 
