@@ -155,7 +155,6 @@ Canvas:
   m_ReceivesEvents: 1
   m_OverrideSorting: 0
   m_OverridePixelPerfect: 0
-  m_SortingBucketNormalizedSize: 0
   m_SortingLayerID: 0
   m_SortingOrder: 0
   m_TargetDisplay: 0
@@ -361,7 +360,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 22487144, guid: ea56b82fdf2b74775b134197d630b4ce, type: 2}
       propertyPath: m_RootOrder
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 22487144, guid: ea56b82fdf2b74775b134197d630b4ce, type: 2}
       propertyPath: m_AnchoredPosition.x
@@ -402,26 +401,6 @@ Prefab:
     - target: {fileID: 22487144, guid: ea56b82fdf2b74775b134197d630b4ce, type: 2}
       propertyPath: m_Pivot.y
       value: 0.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 22459320, guid: ea56b82fdf2b74775b134197d630b4ce, type: 2}
-      propertyPath: m_RootOrder
-      value: 5
-      objectReference: {fileID: 0}
-    - target: {fileID: 22481720, guid: ea56b82fdf2b74775b134197d630b4ce, type: 2}
-      propertyPath: m_RootOrder
-      value: 4
-      objectReference: {fileID: 0}
-    - target: {fileID: 22456762, guid: ea56b82fdf2b74775b134197d630b4ce, type: 2}
-      propertyPath: m_RootOrder
-      value: 3
-      objectReference: {fileID: 0}
-    - target: {fileID: 22492656, guid: ea56b82fdf2b74775b134197d630b4ce, type: 2}
-      propertyPath: m_RootOrder
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 22476084, guid: ea56b82fdf2b74775b134197d630b4ce, type: 2}
-      propertyPath: m_RootOrder
-      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: ea56b82fdf2b74775b134197d630b4ce, type: 2}
