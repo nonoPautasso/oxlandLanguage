@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using Assets.Scripts.Common;
-using UnityEditor;
+//using UnityEditor;
 
 namespace Assets.Scripts.Levels.SplitSentences {
 	public class SplitSentencesView : LevelView {
@@ -16,7 +16,13 @@ namespace Assets.Scripts.Levels.SplitSentences {
 
 		private static List<Color> colors = new List<Color> {new Color32(255, 73, 235, 255), new Color32(200, 137, 255, 255),
 			new Color32(34, 191, 255, 255), new Color32(70, 233, 172, 255), new Color32(158, 255, 66, 255), new Color32(245, 255, 66, 255),
-			new Color32(214, 173, 66, 255), new Color32(255, 86, 86, 255), new Color32(173, 81, 98, 255), new Color32(173, 139, 0, 255)};
+			new Color32(214, 173, 66, 255), new Color32(255, 86, 86, 255), new Color32(173, 81, 98, 255), new Color32(173, 139, 0, 255),
+			new Color32(35, 126, 204, 255),new Color32(123, 47, 255, 255),new Color32(187, 0, 240, 255), new Color32(240, 0, 104, 255),
+			new Color32(0, 141, 123, 255),new Color32(122, 161, 107, 255),new Color32(151, 161, 107, 255),new Color32(142, 173, 0, 255),
+			new Color32(173, 117, 0, 255),new Color32(173, 46, 0, 255),new Color32(0, 141, 123, 255),new Color32(131, 85, 85, 255),
+			new Color32(85, 131, 122, 255),new Color32(107, 107, 107, 255),new Color32(161, 161, 161, 255),new Color32(129, 97, 158, 255),
+			new Color32(221, 138, 205, 255),new Color32(255, 163, 180, 255)};
+		
 		public Color currentColor;
 
 		private bool paintMode;
