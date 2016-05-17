@@ -31,12 +31,18 @@ namespace Assets.Scripts.Levels.Abc {
 			LogAnswer (correct);
 			view.Answer(model.GetWord (index), index, correct);
 
+			if(model.PageEnded()){
+				view.PageEnded ();
+			}
+		}
+
+		public void NextClick(){
 			if(model.HasEnded()){
 				EndGame(model.MinSeconds, model.PointsPerSecond, model.PointsPerError);
-			} else if(model.PageEnded()){
-				model.NextPage ();
-				SetCurrentPage ();
 			}
+
+			model.NextPage ();
+			SetCurrentPage ();
 		}
 
 		public bool IsCorrect (int index) {

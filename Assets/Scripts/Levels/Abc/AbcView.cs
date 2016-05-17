@@ -10,6 +10,7 @@ namespace Assets.Scripts.Levels.Abc {
 		private AbcController controller;
 
 		public Text letterText;
+		public Button nextBtn;
 		public List<Button> objects;
 		public List<Button> soundButtons;
 
@@ -42,6 +43,7 @@ namespace Assets.Scripts.Levels.Abc {
 
 		public void SetCurrentPage (string currentLetter, List<Tuple<Word, bool>> model) {
 			ResetObjectsText ();
+			nextBtn.gameObject.SetActive (false);
 			EnableHint ();
 			letterText.text = currentLetter;
 
@@ -77,6 +79,16 @@ namespace Assets.Scripts.Levels.Abc {
 			} else {
 				soundButtons [index].image.sprite = Resources.Load<Sprite>("Sprites/wrongLengua");
 			}
+		}
+
+		public void PageEnded () {
+			DisableHint ();
+			Views.ButtonsEnabled (objects.ToArray (), false);
+			nextBtn.gameObject.SetActive (true);
+		}
+
+		public void NextClick(){
+			controller.NextClick ();
 		}
 
 		void SoundButtonsActive(bool active) {
