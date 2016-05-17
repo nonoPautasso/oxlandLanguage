@@ -18,22 +18,27 @@ namespace Assets.Scripts.Levels.FishNet {
 		private Word currentAudio;
 
 		private int active;
+		private bool hint;
 
 		private FishNetController controller;
 
 		public override void ShowHint () {
 			DisableHint ();
 			controller.ShowHint();
+			Views.ButtonsEnabled (answers.ToArray (), false);
 		}
 
 		public override void EndGame () { }
 
-		public void Hint (List<int> grey) {
+		public void Hint (List<int> grey, List<Word> activeObjects) {
 			foreach (int i in grey) {
 				Color c = answers [i].GetComponentInChildren<Image>().color;
 				c.a = 0.5f;
 				answers [i].GetComponentInChildren<Image>().color = c;
 			}
+			playingAudios = activeObjects;
+			hint = true;
+			Invoke ("PlayCurrentAudios", 0.1f);
 		}
 
 		public void WrongAnswer (int index, string wordText) {
@@ -43,10 +48,19 @@ namespace Assets.Scripts.Levels.FishNet {
 		}
 
 		public void CorrectAnswer (List<Word> activeObjects, int index) {
+			DisableHint ();
 			Views.ButtonsEnabled (answers.ToArray (), false);
 			answers [index].GetComponentInChildren<Text> ().text = activeObjects [activeObjects.Count - 1].Name ();
 			playingAudios = activeObjects;
+		}
+
+		public void PlayAudios () {
+			hint = false;
 			Invoke ("PlayCurrentAudios", 0.1f);
+		}
+
+		private void HintDone () {
+			Views.ButtonsEnabled (answers.ToArray (), true);
 		}
 
 		public void PlayCurrentAudios(){
@@ -54,7 +68,10 @@ namespace Assets.Scripts.Levels.FishNet {
 				currentAudio = playingAudios [0];
 			else if (playingAudios.IndexOf (currentAudio) == playingAudios.Count - 1) {
 				currentAudio = null;
-				controller.AudioDone ();
+				if (!hint)
+					controller.AudioDone ();
+				else
+					HintDone ();
 				return;
 			} else
 				currentAudio = playingAudios [playingAudios.IndexOf (currentAudio) + 1];

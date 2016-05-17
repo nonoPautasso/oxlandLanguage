@@ -23,7 +23,7 @@ namespace Assets.Scripts.Levels.FishNet {
 
 		public override void ShowHint () {
 			LogHint ();
-			view.Hint (model.GetHint());
+			view.Hint (model.GetHint(), model.ActiveObjects ());
 		}
 
 		public void AnswerClick (int index) {
@@ -32,8 +32,11 @@ namespace Assets.Scripts.Levels.FishNet {
 				LogAnswer (true);
 				view.SetActiveObjects (model.ActiveObjects ());
 				view.CorrectAnswer(model.ActiveObjects (), index);
-				if (resetActive)
+				if (resetActive) {
+					view.PlayAudios ();
 					model.ResetActive ();
+				} else
+					AudioDone ();
 			} else {
 				//model.Wrong ();
 				LogAnswer (false);
