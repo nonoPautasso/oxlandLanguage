@@ -48,8 +48,13 @@ TextureImporter:
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spritePixelsToUnits: 100
   alphaIsTransparency: 1
-  textureType: 8
-  buildTargetSettings: []
+  textureType: 5
+  buildTargetSettings:
+  - buildTarget: Android
+    maxTextureSize: 256
+    textureFormat: 46
+    compressionQuality: 50
+    allowsAlphaSplitting: 0
   spriteSheet:
     sprites:
     - name: flechasVerdes_0
@@ -63,14 +68,14 @@ TextureImporter:
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline:
-      - - {x: -18.889936, y: 31.841719}
-        - {x: -30.889936, y: 17.841719}
-        - {x: -30.889936, y: -27.158281}
-        - {x: -19.889936, y: -31.158281}
-        - {x: 26.110064, y: -31.158281}
-        - {x: 32.11006, y: -25.158281}
-        - {x: 32.11006, y: 19.841719}
-        - {x: 26.110064, y: 31.841719}
+      - - {x: -29.788383, y: 63.17635}
+        - {x: -61.788383, y: 41.17635}
+        - {x: -61.788383, y: -49.82365}
+        - {x: -34.788383, y: -61.82365}
+        - {x: 45.211617, y: -61.82365}
+        - {x: 62.211617, y: -39.82365}
+        - {x: 62.211617, y: 30.17635}
+        - {x: 38.211617, y: 63.17635}
     - name: flechasVerdes_1
       rect:
         serializedVersion: 2
@@ -82,14 +87,15 @@ TextureImporter:
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline:
-      - - {x: 24.439201, y: 31.841719}
-        - {x: -21.560799, y: 31.841719}
-        - {x: -30.560799, y: 25.841719}
-        - {x: -30.560799, y: -31.158281}
-        - {x: 21.439201, y: -31.158281}
-        - {x: 31.439201, y: -22.158281}
-        - {x: 32.4392, y: -16.158281}
-        - {x: 32.4392, y: 17.841719}
+      - - {x: -37.46472, y: 62.67635}
+        - {x: -43.46472, y: 61.67635}
+        - {x: -61.46472, y: 40.67635}
+        - {x: -61.46472, y: -33.32365}
+        - {x: -50.46472, y: -61.32365}
+        - {x: 56.53528, y: -61.32365}
+        - {x: 62.53528, y: -40.32365}
+        - {x: 62.53528, y: 49.67635}
+        - {x: 46.53528, y: 62.67635}
     outline: []
   spritePackingTag: 
   userData: 

@@ -48,8 +48,13 @@ TextureImporter:
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spritePixelsToUnits: 100
   alphaIsTransparency: 1
-  textureType: 8
-  buildTargetSettings: []
+  textureType: 5
+  buildTargetSettings:
+  - buildTarget: Android
+    maxTextureSize: 512
+    textureFormat: 46
+    compressionQuality: 50
+    allowsAlphaSplitting: 0
   spriteSheet:
     sprites:
     - name: aboutBtn_0
@@ -63,28 +68,30 @@ TextureImporter:
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline:
-      - - {x: -111, y: 43}
+      - - {x: -114, y: 43}
         - {x: -127, y: 36}
-        - {x: -127, y: -18}
-        - {x: -124, y: -26}
-        - {x: -108, y: -43}
-        - {x: -69, y: -43}
-        - {x: -42, y: -30}
-        - {x: -42, y: 21}
-        - {x: -51, y: 43}
-      - - {x: 69, y: 13}
-        - {x: 27, y: 11}
+        - {x: -127, y: -12}
+        - {x: -124, y: -19}
+        - {x: -121, y: -25}
+        - {x: -111, y: -36}
+        - {x: -98, y: -43}
+        - {x: -63, y: -43}
+        - {x: -42, y: -29}
+        - {x: -42, y: 28}
+        - {x: -47, y: 43}
+      - - {x: 27, y: 11}
         - {x: 26, y: 5}
         - {x: 26, y: 3}
         - {x: 26, y: 5}
         - {x: 23, y: 15}
         - {x: -20, y: 15}
         - {x: -22, y: 13}
-        - {x: -29, y: -9}
+        - {x: -29, y: -7}
         - {x: -29, y: -12}
-        - {x: -26, y: -14}
+        - {x: -24, y: -14}
         - {x: 73, y: -14}
         - {x: 73, y: 6}
+        - {x: 69, y: 13}
       - - {x: 98, y: 15}
         - {x: 89, y: 15}
         - {x: 80, y: 8}
@@ -105,14 +112,14 @@ TextureImporter:
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline:
-      - - {x: -113.802246, y: 43}
-        - {x: -127.802246, y: 33}
-        - {x: -127.802246, y: -27}
-        - {x: -120.802246, y: -43}
-        - {x: -64.802246, y: -43}
-        - {x: -41.802246, y: -26}
-        - {x: -41.802246, y: 25}
-        - {x: -47.802246, y: 43}
+      - - {x: -105.802246, y: 43}
+        - {x: -127.802246, y: 25}
+        - {x: -127.802246, y: -34}
+        - {x: -110.802246, y: -43}
+        - {x: -49.802246, y: -43}
+        - {x: -41.802246, y: -36}
+        - {x: -41.802246, y: 34}
+        - {x: -70.802246, y: 43}
       - - {x: -23.802246, y: 14}
         - {x: -28.802246, y: -1}
         - {x: -28.802246, y: -15}
