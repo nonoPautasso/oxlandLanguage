@@ -49,12 +49,7 @@ TextureImporter:
   spritePixelsToUnits: 100
   alphaIsTransparency: 1
   textureType: 5
-  buildTargetSettings:
-  - buildTarget: Android
-    maxTextureSize: 512
-    textureFormat: 45
-    compressionQuality: 50
-    allowsAlphaSplitting: 0
+  buildTargetSettings: []
   spriteSheet:
     sprites:
     - name: oxInfo_0
@@ -68,10 +63,10 @@ TextureImporter:
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline:
-      - - {x: -256, y: 192}
-        - {x: -256, y: -192}
-        - {x: 256, y: -192}
-        - {x: 256, y: 192}
+      - - {x: -128, y: 96}
+        - {x: -128, y: -96}
+        - {x: 128, y: -96}
+        - {x: 128, y: 96}
     - name: oxInfo_1
       rect:
         serializedVersion: 2
@@ -83,10 +78,10 @@ TextureImporter:
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline:
-      - - {x: -255.76651, y: 192}
-        - {x: -255.76651, y: -192}
-        - {x: 257.2335, y: -192}
-        - {x: 257.2335, y: 192}
+      - - {x: -127.633255, y: 96}
+        - {x: -127.633255, y: -96}
+        - {x: 129.36674, y: -96}
+        - {x: 129.36674, y: 96}
     outline: []
   spritePackingTag: 
   userData: 
