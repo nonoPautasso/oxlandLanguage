@@ -1,15 +1,13 @@
 fileFormatVersion: 2
-guid: 14ca2caff4c368a41852186ca2ce2c92
-timeCreated: 1454587231
+guid: 6b9418afee958fc429795f52f1d53f4f
+timeCreated: 1463671250
 licenseType: Free
 TextureImporter:
-  fileIDToRecycleName:
-    21300000: oxInfo_0
-    21300002: oxInfo_1
+  fileIDToRecycleName: {}
   serializedVersion: 2
   mipmaps:
     mipMapMode: 0
-    enableMipMap: 0
+    enableMipMap: 1
     linearTexture: 0
     correctGamma: 0
     fadeOut: 0
@@ -32,7 +30,7 @@ TextureImporter:
   maxTextureSize: 2048
   textureSettings:
     filterMode: -1
-    aniso: 16
+    aniso: -1
     mipBias: -1
     wrapMode: 1
   nPOTScale: 0
@@ -40,7 +38,7 @@ TextureImporter:
   rGBM: 0
   compressionQuality: 50
   allowsAlphaSplitting: 0
-  spriteMode: 2
+  spriteMode: 1
   spriteExtrude: 1
   spriteMeshType: 1
   alignment: 0
@@ -48,40 +46,10 @@ TextureImporter:
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spritePixelsToUnits: 100
   alphaIsTransparency: 1
-  textureType: 5
+  textureType: 8
   buildTargetSettings: []
   spriteSheet:
-    sprites:
-    - name: oxInfo_0
-      rect:
-        serializedVersion: 2
-        x: 0
-        y: 0
-        width: 1920
-        height: 1440
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline:
-      - - {x: -128, y: 96}
-        - {x: -128, y: -96}
-        - {x: 128, y: -96}
-        - {x: 128, y: 96}
-    - name: oxInfo_1
-      rect:
-        serializedVersion: 2
-        x: 1920
-        y: 0
-        width: 1920
-        height: 1440
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline:
-      - - {x: -127.633255, y: 96}
-        - {x: -127.633255, y: -96}
-        - {x: 129.36674, y: -96}
-        - {x: 129.36674, y: 96}
+    sprites: []
     outline: []
   spritePackingTag: 
   userData: 
