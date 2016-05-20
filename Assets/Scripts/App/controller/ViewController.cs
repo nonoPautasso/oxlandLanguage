@@ -10,8 +10,11 @@ namespace Assets.Scripts.App{
 	public class ViewController : MonoBehaviour {
 
 		public static ViewController instance;
+
+
 		private string[] levels;
 		private string[] instructions;
+
 
 		private GameObject instructionsScreen;
 		public GameObject viewPanel;
@@ -27,7 +30,7 @@ namespace Assets.Scripts.App{
 
 			DontDestroyOnLoad(transform.root.gameObject);
 			levels = new string[]{"Vowels","VowelsOral","StartWithVowel","CompleteVowel"
-				,"ABCOrder","ABCWords","ABCBonus","Syllables", "WriteWords","MayusMin",
+				,"ABCOrder","ABCWords","ABCBonus","Syllables", "ListenAndWrite","MayusMin",
 				"CreateSentence","SplitSentences"
 				};
 			instructions = new string[]{"VowelsInstructions","VowelsOralInstructions","StartWithVowelInstructions",
@@ -107,11 +110,17 @@ namespace Assets.Scripts.App{
 			Destroy(instructionsScreen);
 		}
 
+		public int GetLevelAmount(){
+			return levels.Length;
+		}
+
 
 		internal void ShowInstructions()
 		{
 			instructionsScreen = Instantiate(LoadPrefab("Explanations/"+instructions[AppController.instance.GetCurrentLevel()-1]));
 			FitObjectToScene(instructionsScreen);
 		}
+
+
 	}
 }

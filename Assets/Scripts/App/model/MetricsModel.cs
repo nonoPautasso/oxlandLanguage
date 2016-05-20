@@ -15,9 +15,10 @@ namespace Assets.Scripts.App{
 		}
 
 		private void CreateLevelMetrics(){
-
+			
 			metrics = new  List<List<GameMetrics>> ();
-			for (int i = 0; i < 16; i++) {
+			//TODO: Check why using GetLevelAmount throws error
+			for (int i = 0; i < 20; i++) {
                 metrics.Add (new List<GameMetrics>());
 			}
 		}
