@@ -164,6 +164,10 @@ Prefab:
       propertyPath: m_Pivot.y
       value: 0.5
       objectReference: {fileID: 0}
+    - target: {fileID: 167862, guid: 7046c3289f389db4e9cdb8c054a5405f, type: 2}
+      propertyPath: m_Name
+      value: SoundsInWords
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 7046c3289f389db4e9cdb8c054a5405f, type: 2}
   m_IsPrefabParent: 0
@@ -303,6 +307,7 @@ Canvas:
   m_ReceivesEvents: 1
   m_OverrideSorting: 0
   m_OverridePixelPerfect: 0
+  m_SortingBucketNormalizedSize: 0
   m_SortingLayerID: 0
   m_SortingOrder: 0
   m_TargetDisplay: 0
