@@ -9,7 +9,7 @@ using Assets.Scripts.Common;
 namespace Assets.Scripts.Levels.SplitSentences {
 	public class SplitSentencesView : LevelView {
 		private List<GameObject> sentenceLines = new List<GameObject>();
-		private Dictionary<string, int> wordsLastToggleIndex = new Dictionary<string, int> ();
+		private Dictionary<GameObject, int> wordsLastToggleIndex = new Dictionary<GameObject, int> ();
 		public Image lettersPanel;
 		public Image sentencePanel;
 		private TogglePaint currentToggle;
@@ -110,8 +110,8 @@ namespace Assets.Scripts.Levels.SplitSentences {
 
 		private void AddColoredWords () {
 			TogglePaint[] togglePaints = lettersPanel.GetComponentsInChildren<TogglePaint> ();
-			List<string> words = new List<string> ();
-			wordsLastToggleIndex = new Dictionary<string, int> ();
+			List<Tuple<string, int>> words = new List<Tuple<string, int>> ();
+			wordsLastToggleIndex = new Dictionary<GameObject, int> ();
 			sentenceLines = new List<GameObject> ();
 			string currentWord = "";
 			Color currentColor = togglePaints[0].GetColor ();
@@ -122,34 +122,34 @@ namespace Assets.Scripts.Levels.SplitSentences {
 				else {
 					currentColor = toggle.GetColor ();
 					if (currentWord.Length != 0) {
-						words.Add (currentWord);
 						var lastIndexWord = Array.IndexOf (togglePaints, toggle) - 1;
-						wordsLastToggleIndex.Add (currentWord, lastIndexWord);
+						words.Add (Tuple.Create (currentWord, lastIndexWord));
 					}
 					currentWord = "";
 					if (currentColor != Color.white) currentWord = toggle.GetComponentInChildren <Text> ().text;
 				}
 			}
 			if (currentWord.Length != 0) {
-				words.Add (currentWord);
-				wordsLastToggleIndex.Add (currentWord, togglePaints.Length - 1);
+				words.Add (Tuple.Create (currentWord, togglePaints.Length - 1));
 			}
 
 			int lineCount = 0;
 			int charCount = 0;
-			foreach (string w in words) {
-				if (charCount + w.Length > MAX_CHARS) {
+			foreach (Tuple<string, int> w in words) {
+				if (charCount + w.Item1.Length > MAX_CHARS) {
 					lineCount++;
 					charCount = 0;
 				}
 				GameObject line = sentenceLines.Count == lineCount ? NewLine(sentenceLines, sentencePanel) : sentenceLines [lineCount];
 				GameObject word = GetWord ();
-				word.GetComponentInChildren<Text>().text = w;
+				word.GetComponentInChildren<Text>().text = w.Item1;
 				word.transform.SetParent (line.transform, true);
 				word.transform.localScale = Vector3.one;
 
 				word.GetComponent <Button> ().onClick.AddListener (() => WordClick (word));
-				charCount += w.Length;
+				charCount += w.Item1.Length;
+
+				wordsLastToggleIndex.Add (word, w.Item2);
 			}
 		}
 
@@ -157,7 +157,7 @@ namespace Assets.Scripts.Levels.SplitSentences {
 			PlaySoundClic ();
 
 			string wordText = word.GetComponentInChildren<Text>().text;
-			int lastIndex = wordsLastToggleIndex [wordText];
+			int lastIndex = wordsLastToggleIndex [word];
 			TogglePaint[] togglePaints = lettersPanel.GetComponentsInChildren<TogglePaint> ();
 
 			for (int i = 0; i < wordText.Length; i++) {

@@ -28,6 +28,10 @@ namespace Assets.Scripts.Levels.FishNet {
 			return words.GetRange (0, active);
 		}
 
+		public List<Word> AllObjects () {
+			return words;
+		}
+
 		public List<Word> CurrentPage () {
 			var currentLetter = CurrentLetter ();
 			List<Word> result = Words.GetRandomWords (ANSWER_QUANTITY - 1, Randomizer.RandomInRange (4, 1), currentLetter, true);

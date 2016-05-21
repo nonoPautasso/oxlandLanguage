@@ -23,7 +23,7 @@ namespace Assets.Scripts.Levels.FishNet {
 
 		public override void ShowHint () {
 			LogHint ();
-			view.Hint (model.GetHint(), model.ActiveObjects ());
+			view.Hint (model.GetHint(), model.AllObjects ());
 		}
 
 		public void AnswerClick (int index) {
