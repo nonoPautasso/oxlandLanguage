@@ -81,6 +81,14 @@ namespace Assets.Scripts.Levels.SplitSentences {
 			return current == (previous + 1) || current == (previous - 1);
 		}
 
+		public bool HasSameColor (TogglePaint togglePaint) {
+			return togglePaint.GetColor () == GetColor ();
+		}
+
+		public void UnPaintCurrent(){
+			currentToggle.PaintMe (Color.white);
+		}
+
 		public void PaintModeOn (TogglePaint togglePaint) {
 			paintMode = true;
 			currentToggle = togglePaint;

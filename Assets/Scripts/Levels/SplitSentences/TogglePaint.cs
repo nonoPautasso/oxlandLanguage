@@ -21,8 +21,14 @@ public class TogglePaint : MonoBehaviour, IPointerDownHandler, IPointerUpHandler
 
 	public void OnPointerEnter (PointerEventData eventData) {
 		if (view.PaintMode () && view.IsNextToCurrent (this)) {
-			if (AmIPainted ())
-				view.PaintModeOff (this);
+			if (AmIPainted ()) {
+				//I'm going back!
+				if(view.HasSameColor(this)){
+					view.UnPaintCurrent ();
+					view.PaintModeOn (this);
+				}
+				else view.PaintModeOff (this);
+			}
 			else {
 				PaintMe (view.GetColor ());
 				view.PaintModeOn (this);
