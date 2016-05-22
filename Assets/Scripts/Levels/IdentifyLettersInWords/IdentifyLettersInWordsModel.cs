@@ -15,7 +15,7 @@ namespace Assets.Scripts.Levels.IdentifyLettersInWords {
 		private string currentLetter;
 
 		public static int ROUNDS = 7;
-		public static int EASY_QUANTITY = 7;
+		public static int EASY_QUANTITY = 2;
 
 		private List<String> easyWords;
 		private List<String> hardWords;
@@ -55,7 +55,8 @@ namespace Assets.Scripts.Levels.IdentifyLettersInWords {
 		}
 
 		private string LetterFromWord (string word) {
-			return word.ToCharArray () [Randomizer.New (word.Length - 1).Next ()].ToString ();
+			var ch = word.ToCharArray () [Randomizer.New (word.Length - 1).Next ()];
+			return ch.ToString ().ToUpper () == "Ñ" ? LetterFromWord (word) : ch.ToString ();
 		}
 
 		public Word GetCurrentWord () { return currentWord; }
@@ -63,7 +64,6 @@ namespace Assets.Scripts.Levels.IdentifyLettersInWords {
 		public string GetCurrentLetter () { return currentLetter; }
 
 		public bool IsCorrect (List<string> answers) {
-			Debug.Log (string.Join (",", answers.ToArray ()));
 			return AllEqual(answers) && CorrectAmount(answers);
 		}
 

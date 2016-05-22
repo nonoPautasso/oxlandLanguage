@@ -205,5 +205,17 @@ namespace Assets.Scripts.Common {
 			Regex reg = new Regex("[^a-zA-Z0-9 ]");
 			return reg.Replace(normalized, "");
 		}
+
+		public static List<string> GetWordsWithLength (List<int> lengths) {
+			CheckLoadedWords ();
+			List<string> result = new List<string> ();
+
+			foreach (string letter in alphabet) {
+				foreach (Word word in words[letter]) {
+					if (lengths.Contains (RipSymbols(word.Name ()).Length)) result.Add (word.Name ());
+				}
+			}
+			return result;
+		}
 	}
 }
