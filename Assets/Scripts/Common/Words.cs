@@ -6,6 +6,8 @@ using System.IO;
 using System.Linq;
 //using UnityEditor;
 using I18N;
+using System.Text.RegularExpressions;
+using System.Text;
 
 namespace Assets.Scripts.Common {
 	public class Words {
@@ -190,6 +192,18 @@ namespace Assets.Scripts.Common {
 					return clip;
 			}
 			return null;
+		}
+
+		public static void PlayLetter (string letter) {
+			string rippedLetter = RipSymbols (letter);
+			AudioClip clip = Resources.Load<AudioClip>("Audio/" + I18n.Msg ("words.locale") + "/Letters/" + rippedLetter);
+			SoundManager.instance.PlayClip(clip);
+		}
+
+		public static string RipSymbols(string s){
+			string normalized = s.Normalize(NormalizationForm.FormD);
+			Regex reg = new Regex("[^a-zA-Z0-9 ]");
+			return reg.Replace(normalized, "");
 		}
 	}
 }

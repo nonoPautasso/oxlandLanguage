@@ -2,6 +2,7 @@
 using Assets.Scripts.App;
 using Assets.Scripts.Common;
 using UnityEngine;
+using I18N;
 
 namespace Assets.Scripts.Levels.Abc {
 	public class AbcController : LevelController {
@@ -51,7 +52,7 @@ namespace Assets.Scripts.Levels.Abc {
 
 		public void LetterClick () {
 			string letter = model.GetCurrentLetter ();
-			AudioClip clip = Resources.Load<AudioClip>("Audio/Spanish/Letters/" + letter);
+			AudioClip clip = Resources.Load<AudioClip>("Audio/" + I18n.Msg ("words.locale") + "/Letters/" + letter);
 			SoundManager.instance.PlayClip(clip);
 		}
 
