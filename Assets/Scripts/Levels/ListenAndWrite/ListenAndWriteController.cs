@@ -40,7 +40,7 @@ namespace Assets.Scripts.Levels.ListenAndWrite
             JSONNode data = JSON.Parse(JSONstring.text);
 			JSONNode level = data["listenAndWrite"]["levels"][0];       
 //            listenAndWriteView.SetSentence(level["sentence"].Value);
-            TO_WIN = level["excercises"].AsInt;
+            TO_WIN = 5;
 //            instruction = (Resources.Load("ListenAndWrite/" + level["instructionAudio"]) as AudioClip);
             FillWordsList(level);
             listenAndWriteModel.StartGame();
@@ -59,6 +59,7 @@ namespace Assets.Scripts.Levels.ListenAndWrite
 
 		public override void RestartGame()
 		{
+			Start ();
 		}
 
         internal void CheckAnswer(string text)
@@ -81,7 +82,7 @@ namespace Assets.Scripts.Levels.ListenAndWrite
 
             if (GameIsEnded())
             {
-                Invoke("EndGame", 1f);
+				EndGame (listenAndWriteModel.MinSeconds, listenAndWriteModel.PointsPerSecond, listenAndWriteModel.PointsPerError);
             } else
             {
                 Invoke("NextChallenge", 1f);

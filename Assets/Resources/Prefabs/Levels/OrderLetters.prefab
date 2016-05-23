@@ -498,7 +498,7 @@ GameObject:
   - 224: {fileID: 22475442}
   - 222: {fileID: 22238626}
   - 114: {fileID: 11407494}
-  - 114: {fileID: 11443522}
+  - 114: {fileID: 11446086}
   m_Layer: 5
   m_Name: lowerBubblesPanel
   m_TagString: Untagged
@@ -1371,29 +1371,6 @@ MonoBehaviour:
   m_FillAmount: 1
   m_FillClockwise: 1
   m_FillOrigin: 0
---- !u!114 &11443522
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 175882}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: -2095666955, guid: f5f67c52d1564df4a8936ccd202a3bd8, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_Padding:
-    m_Left: 0
-    m_Right: 0
-    m_Top: 0
-    m_Bottom: 0
-  m_ChildAlignment: 4
-  m_StartCorner: 0
-  m_StartAxis: 0
-  m_CellSize: {x: 235.3, y: 228.5}
-  m_Spacing: {x: 25.5, y: 0}
-  m_Constraint: 0
-  m_ConstraintCount: 2
 --- !u!114 &11444856
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1515,6 +1492,26 @@ MonoBehaviour:
   nextBtn: {fileID: 11444856}
   soundBtn: {fileID: 11453086}
   objImage: {fileID: 11485876}
+--- !u!114 &11446086
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 175882}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: -405508275, guid: f5f67c52d1564df4a8936ccd202a3bd8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Padding:
+    m_Left: 0
+    m_Right: 0
+    m_Top: 0
+    m_Bottom: 0
+  m_ChildAlignment: 4
+  m_Spacing: 45
+  m_ChildForceExpandWidth: 0
+  m_ChildForceExpandHeight: 0
 --- !u!114 &11446610
 MonoBehaviour:
   m_ObjectHideFlags: 1
