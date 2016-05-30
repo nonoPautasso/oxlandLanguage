@@ -17,10 +17,11 @@ namespace Assets.Scripts.Levels.VowelsOral
 		{
 			MetricsManager.instance.GameStart ();
 			model = new VowelsOralModel ();
-			model.InitModel ();
+			model.StartGame ();
 			view.InitView ();
 			LoadResources ();
 			view.Next (model.Next ());
+
 		}
 
 		public override void NextChallenge ()
@@ -35,6 +36,7 @@ namespace Assets.Scripts.Levels.VowelsOral
 
 		public override void ShowHint ()
 		{
+			LogHint ();
 			view.ShowHints (model.RequestHintInfo ());
 		}
 
@@ -54,21 +56,44 @@ namespace Assets.Scripts.Levels.VowelsOral
 			InitGame ();
 		}
 
-       
+		public void SelectLetter(Toggle toggle){
+			
+			SoundManager.instance.PlayClickSound ();
+			if (model.GetCurrentSelectedLetter () == "") {
+				view.EnableCheckButton ();
+			}
 
-		public void SubmitLetter (Button button)
+			view.SetSelectedToggle (toggle);
+			model.SetCurrentSelectedLetter (toggle.GetComponentInChildren<Text> ().text);
+		}
+
+		public void SubmitLetter ()
 		{
-			bool correct = model.CheckSubmittedLetter (button.GetComponentInChildren<Text> ().text);
+			bool correct = model.CheckSubmittedLetter ();
 			if (correct) {
 				view.PlayRightSound ();
 				LogAnswer (true);
-				int nextLetterIndex = model.Next ();
-				if (nextLetterIndex == -1)
-					EndGame (model.MinSeconds, model.PointsPerSecond, model.PointsPerError);
-				view.Next (nextLetterIndex);    // Tells view to show the letter at appropriate index
+				view.PrepareForNext ();	 
+
+					
 			} else {
 				view.PlayWrongSound ();
 				LogAnswer (false);
+				model.SetCurrentSelectedLetter ("");
+				view.DisableCheckButton ();
+				view.PaintWrongToggle ();
+			}
+		}
+
+		public void onClickNextButton(){
+			int nextLetterIndex = model.Next ();
+
+			if (nextLetterIndex == -1) {
+				EndGame (model.MinSeconds, model.PointsPerSecond, model.PointsPerError);
+			} else {
+				SoundManager.instance.PlayClickSound ();
+				view.EnableAllButtons ();
+				view.Next (nextLetterIndex);  // Tells view to show the letter at appropriate index
 			}
 		}
 

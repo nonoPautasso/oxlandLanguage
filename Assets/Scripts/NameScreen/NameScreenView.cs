@@ -38,7 +38,7 @@ public class NameScreenView : MonoBehaviour {
 	}
 
 	void CheckEnteredUsername(){
-		SoundManager.instance.PlayClicSound ();
+		SoundManager.instance.PlayClickSound ();
         inputText.text = inputText.text.Trim();
 		if (inputText.text != "") {
 			Debug.Log ("cool name " + inputText.text.ToLower());

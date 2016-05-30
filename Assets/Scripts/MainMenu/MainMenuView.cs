@@ -82,12 +82,12 @@ public class MainMenuView : MonoBehaviour {
 		}
 
 	public void OnClickSettings(){
-		SoundManager.instance.PlayClicSound ();
+		SoundManager.instance.PlayClickSound ();
 			ViewController.instance.LoadSettings();
 	}
 
 	public void OnClickMetrics(){
-		SoundManager.instance.PlayClicSound ();
+		SoundManager.instance.PlayClickSound ();
 		ViewController.instance.LoadMetrics();
 	}
 
@@ -111,13 +111,13 @@ public class MainMenuView : MonoBehaviour {
 	}
 
 		public void OnClickLevel(int level){
-			SoundManager.instance.PlayClicSound ();
+			SoundManager.instance.PlayClickSound ();
 			ShowActivityInfo (level);
 
 		}
 
 		public void OnClickSelector(){
-			SoundManager.instance.PlayClicSound ();
+			SoundManager.instance.PlayClickSound ();
 			ShowActivityInfo (AppController.instance.GetCurrentLevel ());
 		}
 
@@ -153,7 +153,7 @@ public class MainMenuView : MonoBehaviour {
 		}
 
 		void CloseGameInfo(){
-			SoundManager.instance.PlayClicSound ();
+			SoundManager.instance.PlayClickSound ();
 			infoPanel.SetActive (false);
 		}
 

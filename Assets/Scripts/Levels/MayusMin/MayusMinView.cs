@@ -65,7 +65,7 @@ namespace Assets.Scripts.Levels.MayusMin {
 		}
 
 		public void LetterClick(int index){
-			SoundManager.instance.PlayClicSound ();
+			SoundManager.instance.PlayClickSound ();
 			Image letter = letters [index];
 			string text = letter.GetComponentInChildren<Text> ().text;
 			letter.GetComponentInChildren<Text> ().text = text.ToUpper () == text ? text.ToLower () : text.ToUpper ();
@@ -125,7 +125,7 @@ namespace Assets.Scripts.Levels.MayusMin {
 		}
 
 		public void NextClick () {
-			SoundManager.instance.PlayClicSound ();
+			SoundManager.instance.PlayClickSound ();
 			controller.NextChallenge ();
 		}
 

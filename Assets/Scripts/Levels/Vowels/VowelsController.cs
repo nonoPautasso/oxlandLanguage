@@ -49,6 +49,7 @@ namespace Assets.Scripts.Levels.Vowels
 
 		public override void ShowHint ()
 		{
+			LogHint ();
 			// Asks model for all the vowels that haven't been revealed + their index
 			DataPair<string, int>[] letters = model.RequestHintInfo ();
 			for (int i = 0; i < letters.Length; i++) {
@@ -58,9 +59,23 @@ namespace Assets.Scripts.Levels.Vowels
 			view.DisableHint ();
 		}
 
+		public void HideHint ()
+		{
+			// Asks model for all the vowels that haven't been revealed + their index
+			DataPair<string, int>[] letters = model.RequestHintInfo ();
+			for (int i = 0; i < letters.Length; i++) {
+				// Calls on the view to show the letter as hint
+				view.HideHint (letters [i].Snd (), letters [i].Fst ());
+			}
+			view.EnableHint ();
+		}
+
+
 
 		public void SubmitLetter (Button bubble)
 		{
+			HideHint ();
+
 			// Returns the index in the revealed letter space for the clicked letter
 			int index = model.IndexOfRevealedVowel (bubble.GetComponentInChildren<Text> ().text);
 			if (index != -1) {
@@ -71,6 +86,7 @@ namespace Assets.Scripts.Levels.Vowels
 				model.RevealLetter (index); // Tells model to record that the vowel was revealed
 				LogAnswer (true);
 			} else {
+				
 				view.SetBubbleWrong (bubble);
 				LogAnswer (false);
 				view.PlayWrongSound ();

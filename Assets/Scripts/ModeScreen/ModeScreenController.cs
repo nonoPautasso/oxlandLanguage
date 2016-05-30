@@ -31,9 +31,6 @@ namespace Assets.Scripts.ChooseScreen
 			ViewController.instance.LoadNameScreen();
         }
 
-        internal static void PlayClicSound()
-        {
-            SoundManager.instance.PlayClicSound();
-        }
+       
     }
 }

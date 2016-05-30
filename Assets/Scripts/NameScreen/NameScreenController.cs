@@ -33,6 +33,6 @@ public class NameScreenController : MonoBehaviour {
 
     internal static void PlayClicSound()
     {
-        SoundManager.instance.PlayClicSound();
+        SoundManager.instance.PlayClickSound();
     }
 }

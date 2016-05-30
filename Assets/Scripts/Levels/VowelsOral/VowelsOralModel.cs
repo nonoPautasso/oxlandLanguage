@@ -12,14 +12,13 @@ namespace Assets.Scripts.Levels.VowelsOral
 	{
 
 		private string currentCorrectLetter;
+		private string currentSelectedLetter;
 
 		int[] letterAmounts;
 		int langNum;
 
-		public void InitModel ()
-		{
-			letterAmounts = new int[5];
-		}
+
+
 
 		public DataTrio<Sprite[], AudioClip[], int> LoadResources (string letter, int language)
 		{
@@ -71,8 +70,8 @@ namespace Assets.Scripts.Levels.VowelsOral
 				toReturn.Snd () [i] = clips [i];
 			}
 			letterAmounts [intValue] = 2;
-			Sprite[] fst = toReturn.Fst ();
-			AudioClip[] snd = toReturn.Snd ();
+//			Sprite[] fst = toReturn.Fst ();
+//			AudioClip[] snd = toReturn.Snd ();
 
 			DataPair<Sprite[], AudioClip[]> randomized = RandomizeArrays<Sprite, AudioClip> (toReturn.Fst (), toReturn.Snd ());
 			toReturn.SetFst (randomized.Fst ());
@@ -134,7 +133,13 @@ namespace Assets.Scripts.Levels.VowelsOral
 
 		public override void StartGame ()
 		{
-			throw new NotImplementedException ();
+			minSeconds = 15;
+			pointsPerError = 200;
+			pointsPerSecond = 13;
+
+			letterAmounts = new int[5];
+			currentSelectedLetter = "";
+
 		}
 
 		static DataPair<T[], V[]> RandomizeArrays<T, V> (T[] arr1, V[] arr2)
@@ -154,6 +159,8 @@ namespace Assets.Scripts.Levels.VowelsOral
 
 		public int Next ()
 		{
+			currentSelectedLetter = "";
+
 			if (letterAmounts [0] == 0 && letterAmounts [1] == 0 && letterAmounts [2] == 0
 			    && letterAmounts [3] == 0 && letterAmounts [4] == 0)
 				return -1;
@@ -186,9 +193,9 @@ namespace Assets.Scripts.Levels.VowelsOral
 			return value;
 		}
 
-		public bool CheckSubmittedLetter (string letter)
+		public bool CheckSubmittedLetter ()
 		{
-			return letter.Equals (currentCorrectLetter);
+			return currentSelectedLetter.Equals (currentCorrectLetter);
 		}
 
 		int GetLetterStartingIndex (string letter)
@@ -227,6 +234,14 @@ namespace Assets.Scripts.Levels.VowelsOral
 				break;
 			}
 			return toReturn;
+		}
+
+		public void SetCurrentSelectedLetter(string letter){
+			currentSelectedLetter = letter;
+		}
+
+		public string GetCurrentSelectedLetter(){
+			return currentSelectedLetter;
 		}
 
 		int GetLetterSize (string letter)

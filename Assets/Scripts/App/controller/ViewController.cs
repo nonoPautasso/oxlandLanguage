@@ -42,11 +42,9 @@ namespace Assets.Scripts.App{
 
 		private GameObject LoadPrefab(string name)
 		{
-
 			return Resources.Load<GameObject>("Prefabs/" + name);
 		}
-
-
+			
 		public void ChangeCurrentObject(GameObject newObject)
 		{
 			GameObject child = Instantiate(newObject);
@@ -65,11 +63,9 @@ namespace Assets.Scripts.App{
 			child.transform.localScale = Vector3.one;
 		}
 
-
-
 		public void LoadLevel(int level){
-			Debug.Log (level);
-			Debug.Log (levels[level-1]);
+			//Debug.Log (level);
+			//Debug.Log (levels[level-1]);
 			ChangeCurrentObject (LoadPrefab("Levels/"+levels [level-1]));
 		}
 

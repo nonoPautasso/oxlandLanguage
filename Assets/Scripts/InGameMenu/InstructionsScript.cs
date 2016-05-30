@@ -35,7 +35,7 @@ namespace Assets.Scripts.InGameMenu
 
 		public void OnClickPanel(){
 			SoundManager.instance.StopSound();
-			SoundManager.instance.PlayClicSound ();
+			SoundManager.instance.PlayClickSound ();
 			ViewController.instance.HideInstructions ();
 			TimerImpl.instance.Resume();
 		}

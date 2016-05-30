@@ -69,7 +69,7 @@ namespace Assets.Scripts.App
 
         internal void PlayClicSound()
         {
-            SoundManager.instance.PlayClicSound();
+            SoundManager.instance.PlayClickSound();
 
         }
     }

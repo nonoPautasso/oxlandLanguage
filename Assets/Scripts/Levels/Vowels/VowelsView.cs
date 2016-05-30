@@ -24,6 +24,15 @@ namespace Assets.Scripts.Levels.Vowels
             (revealedLetters[pos].GetComponentInChildren<Text>() as Text).color = new Color(0, 0, 0, 0.5f);
         }
 
+		/*
+        Hides a letter in a position as hint text
+        */
+		public void HideHint(int pos, string letter)
+		{
+			(revealedLetters[pos].GetComponentInChildren<Text>() as Text).text = letter;
+			(revealedLetters[pos].GetComponentInChildren<Text>() as Text).color = new Color(0, 0, 0, 0);
+		}
+
         public override void EndGame()
         {
             throw new System.NotImplementedException();

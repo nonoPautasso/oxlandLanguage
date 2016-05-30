@@ -65,7 +65,7 @@ namespace Assets.Scripts.Metrics
 
         private void PlaySoundClick()
         {
-            SoundManager.instance.PlayClicSound();
+            SoundManager.instance.PlayClickSound();
         }
 
         private void updateMetricRows(){

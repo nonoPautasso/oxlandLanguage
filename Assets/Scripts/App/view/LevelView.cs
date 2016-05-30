@@ -41,7 +41,7 @@ namespace Assets.Scripts.App
 
         internal void PlaySoundClic()
         {
-            SoundManager.instance.PlayClicSound();
+            SoundManager.instance.PlayClickSound();
         }
 
         internal void PlayRightSound()

@@ -35,7 +35,7 @@ namespace Assets.Scripts.App{
 
         internal void GameFinished(int lapsedSeconds, int minSeconds, int pointsPerSecond, int pointsPerError){
             CalculateFinalScore(lapsedSeconds, minSeconds, pointsPerSecond, pointsPerError);
-            GetCurrentMetrics().stars = CalculeteStars();
+            GetCurrentMetrics().stars = CalculateStars();
         }
 
         internal void AddWrongAnswer() {
@@ -85,9 +85,15 @@ namespace Assets.Scripts.App{
             metrics[AppController.instance.appModel.CurrentLevel - 1].Add(new GameMetrics(AppController.instance.appModel.CurrentLevel - 1, SettingsController.instance.GetMode()));
         }       
 
-        private void CalculateFinalScore(int lpasedSeconds, int minSeconds, int pointsPerSecond, int pointsPerError){
-            GetCurrentMetrics().lapsedTime = lpasedSeconds;
-            GetCurrentMetrics().score = MAX_SCORE - pointsPerSecond * (lpasedSeconds < minSeconds ? 0 : lpasedSeconds - minSeconds) - GetCurrentMetrics().wrongAnswers * pointsPerError;
+        private void CalculateFinalScore(int lapsedSeconds, int minSeconds, int pointsPerSecond, int pointsPerError){
+            
+			GetCurrentMetrics ().score = MAX_SCORE;
+			if (SettingsController.instance.GetMode () == 1) {
+				GetCurrentMetrics().lapsedTime = lapsedSeconds;
+				GetCurrentMetrics ().score -= pointsPerSecond * (lapsedSeconds < minSeconds ? 0 : lapsedSeconds - minSeconds);
+			}
+			GetCurrentMetrics().score -= GetCurrentMetrics().wrongAnswers * pointsPerError;
+
             if (GetCurrentMetrics().score < MIN_SCORE) GetCurrentMetrics().score = MIN_SCORE;
            
         }
@@ -96,7 +102,7 @@ namespace Assets.Scripts.App{
             return GetCurrentMetrics().score;
         }
      
-        private int CalculeteStars(){
+        private int CalculateStars(){
             float percentage = (GetCurrentMetrics().score + 0f) / (MAX_SCORE + 0f);
 
             if (percentage > 0.75)

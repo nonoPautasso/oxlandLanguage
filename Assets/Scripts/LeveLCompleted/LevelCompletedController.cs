@@ -36,7 +36,7 @@ namespace Assets.Scripts.LevelCompleted
 
         internal void PlayClicSound()
         {
-            SoundManager.instance.PlayClicSound();
+            SoundManager.instance.PlayClickSound();
         }
     }
 }

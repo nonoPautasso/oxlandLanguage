@@ -71,7 +71,7 @@ namespace Assets.Scripts.Levels.ListenAndWrite
 
         public override void ShowHint()
         {
-			SoundManager.instance.PlayClicSound ();
+			SoundManager.instance.PlayClickSound ();
           
 			ListenAndWriteController.GetController().ShowHint();
             hintBtn.interactable = false;
@@ -93,13 +93,13 @@ namespace Assets.Scripts.Levels.ListenAndWrite
 
         public void OnClickTic()
         {
-			SoundManager.instance.PlayClicSound ();
+			SoundManager.instance.PlayClickSound ();
             ListenAndWriteController.GetController().CheckAnswer(input.text);
         }
 
         public void OnClickLetter(string letter)
         {
-			SoundManager.instance.PlayClicSound ();
+			SoundManager.instance.PlayClickSound ();
             if (tildeOn && (letter[0] == 'a' || letter[0] == 'e' || letter[0] == 'i' || letter[0] == 'o' || letter[0] == 'u') )
             {
                 switch (letter[0])
@@ -134,27 +134,27 @@ namespace Assets.Scripts.Levels.ListenAndWrite
 
         public void OnClickTilde()
         {
-			SoundManager.instance.PlayClicSound ();
+			SoundManager.instance.PlayClickSound ();
             tildeOn = true;
             diaresisOn = false;
         }
 
         public void OnClickDiaresis()
         {
-			SoundManager.instance.PlayClicSound ();
+			SoundManager.instance.PlayClickSound ();
             diaresisOn = true;
             tildeOn = false;
         }
 
         public void OnClickShift()
         {
-			SoundManager.instance.PlayClicSound ();
+			SoundManager.instance.PlayClickSound ();
             UpdateLettersOnKeyboard();
         }
 
 		public void OnClickDelete()
 		{
-			SoundManager.instance.PlayClicSound ();
+			SoundManager.instance.PlayClickSound ();
 			string newString = input.text.Substring (0, input.text.Length - 1);
 			input.text = newString;
 		}

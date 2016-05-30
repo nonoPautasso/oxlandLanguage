@@ -15,18 +15,23 @@ namespace Assets.Scripts.Levels.Vowels
 
 
         private static string[] vowels;
-        private static string[] consonants;
+		private static string[] otherSymbols;
         private Queue<string> vowelQueue;
         private Queue<string> consonantQueue;
 
         public override void StartGame()
         {
+
+			minSeconds = 15;
+			pointsPerError = 200;
+			pointsPerSecond = 13;
+
             numRevealedLetters = 0;
             numVowelsInBubbles = 0;
             vowels = new string[] { "A", "E", "I", "O", "U" };
             vowelQueue = new Queue<string>();
-            consonants = new string[]{"B","C","D","F","G","H","J",
-                "K","L","M","N", "Ñ","P","Q","R","S","T","V","W","X","Y","Z"};
+            otherSymbols = new string[]{"B","C","D","F","G","H","J",
+				"K","L","M","N", "Ñ","P","Q","R","S","T","V","W","X","Y","Z","1","2","3","4","5","6","7","8","9"};
             consonantQueue = new Queue<string>();
             revealedLetters = new bool[5];
             // Places all vowels from the vowels array into a queue in a random order
@@ -37,11 +42,11 @@ namespace Assets.Scripts.Levels.Vowels
                 vowels = RemoveFromArray(vowels, index);
             }
             // Places all consonants from the consonants array into a queue in a random order
-            while (consonants.Length != 0)
+            while (otherSymbols.Length != 0)
             {
-                int index = UnityEngine.Random.Range(0, consonants.Length);
-                consonantQueue.Enqueue(consonants[index]);
-                consonants = RemoveFromArray(consonants, index);
+                int index = UnityEngine.Random.Range(0, otherSymbols.Length);
+                consonantQueue.Enqueue(otherSymbols[index]);
+                otherSymbols = RemoveFromArray(otherSymbols, index);
             }
 
         }

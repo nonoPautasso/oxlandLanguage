@@ -72,7 +72,7 @@ namespace Assets.Scripts.InGameMenu
 
 		private void PlayClicSound()
 		{
-			SoundManager.instance.PlayClicSound();
+			SoundManager.instance.PlayClickSound();
 		}
 
 	}

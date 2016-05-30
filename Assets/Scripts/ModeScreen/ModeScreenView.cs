@@ -30,18 +30,18 @@ namespace Assets.Scripts.ChooseScreen
 
         }
 
-        public void OnFreeClic()
+        public void OnFreeClick()
         {
-            PlayClicSound();
+			SoundManager.instance.PlayClickSound();
             ModeScreenController.instance.SetMode(0);
-            SoundManager.instance.PlayClicSound();
+           
         }
 
-        public void OnChallengeClic()
+        public void OnChallengeClick()
         {
-            PlayClicSound();
+			SoundManager.instance.PlayClickSound();
             ModeScreenController.instance.SetMode(1);
-            SoundManager.instance.PlayClicSound();
+          
         }
 
         public void OnHoverFreeBtn()
@@ -61,16 +61,13 @@ namespace Assets.Scripts.ChooseScreen
             hoverTxt.text = "";
         }
 
-        public void OnClicBack()
+        public void OnClickBack()
         {
-            PlayClicSound();
+			SoundManager.instance.PlayClickSound();
             ModeScreenController.instance.GoBack();
         }
 
-        private void PlayClicSound()
-        {
-            ModeScreenController.PlayClicSound();
-        }
+        
 
     }
 

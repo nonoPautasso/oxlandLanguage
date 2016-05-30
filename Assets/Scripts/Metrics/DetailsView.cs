@@ -47,7 +47,7 @@ namespace Assets.Scripts.Metrics
 
         private void PlayClicSound()
         {
-            SoundManager.instance.PlayClicSound();
+            SoundManager.instance.PlayClickSound();
         }
 
         internal void showDetailsOf(string activity, string username, List<GameMetrics> metrics)

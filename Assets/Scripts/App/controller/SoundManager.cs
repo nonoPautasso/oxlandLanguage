@@ -48,7 +48,7 @@ namespace Assets.Scripts.App{
 	
     }
 
-        public void PlayClicSound()
+        public void PlayClickSound()
     {
 	    if (SettingsController.instance.SfxOn()) {
 		    mySource.clip = clickSound;
