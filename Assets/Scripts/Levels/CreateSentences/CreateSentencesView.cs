@@ -68,11 +68,11 @@ namespace Assets.Scripts.Levels.CreateSentences {
 			
 			if (word.transform.parent.parent == wordsPanel.transform) {
 				if (CanAddToSentence ()) {
-					PlaySoundClic ();
+					PlaySoundClick ();
 					word.transform.SetParent (sentenceSentenceLines [0].transform, true);
 				}
 			} else {
-				PlaySoundClic ();
+				PlaySoundClick ();
 				word.transform.SetParent (originalParents[words.IndexOf (word)]);
 			}
 		}

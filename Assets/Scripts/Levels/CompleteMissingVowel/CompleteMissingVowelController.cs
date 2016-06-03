@@ -25,14 +25,14 @@ namespace Assets.Scripts.Levels.CompleteMissingVowel
 					EndGame (model.MinSeconds, model.PointsPerSecond, model.PointsPerError);
 			}
 			view.UpdateLetterSelections (-1, -1);
-			view.ResetTicAndNext ();
+			view.ResetTickAndNext ();
 			letter1 = "";
 			letter2 = "";
 		}
 
 		public override void ShowHint ()
 		{
-			view.PlaySoundClic ();
+			view.PlaySoundClick ();
 			view.ShowHints (model.RequestHintInfo ());
 			view.ResetSelection (model.GetLetterPos (letter1));
 			view.ResetSelection (model.GetLetterPos (letter2));
@@ -73,7 +73,7 @@ namespace Assets.Scripts.Levels.CompleteMissingVowel
 
 		public void SelectLetter (string letter)
 		{
-			view.PlaySoundClic ();
+			view.PlaySoundClick ();
 			if (!letter1.Equals ("") && !letter2.Equals ("")) {
 				if (letter1.Equals (letter)) {
 					view.ResetSelection (model.GetLetterPos (letter1));
@@ -132,7 +132,7 @@ namespace Assets.Scripts.Levels.CompleteMissingVowel
 			bool correct;
 			if (model.easyMode) {
 				if (letter1.Equals ("")) {
-					view.PlaySoundClic ();
+					view.PlaySoundClick ();
 					return;
 				} else {
 					correct = model.CheckEasyLetter (letter1);
@@ -140,7 +140,7 @@ namespace Assets.Scripts.Levels.CompleteMissingVowel
 						if (!(model.wordCount < 5))
 							model.easyMode = false;
 						view.PlayRightSound ();
-						view.CorrectAnswer ();
+						view.CorrectAnswer (model.GetLetterPos (letter1), -1);
 					} else {
 						view.IncorrectSelection (model.GetLetterPos (letter1), -1);
 						view.PlayWrongSound ();
@@ -149,7 +149,7 @@ namespace Assets.Scripts.Levels.CompleteMissingVowel
 				}
 			} else {
 				if (letter1.Equals ("") || letter2.Equals ("")) {
-					view.PlaySoundClic ();
+					view.PlaySoundClick ();
 					if (letter1.Equals ("")) {
 						view.IncorrectSelection (model.GetLetterPos (letter2));
 					} else {

@@ -122,11 +122,12 @@ namespace Assets.Scripts.Levels.VowelsOral
         public void PlaySound()
         {
             SoundManager.instance.PlayClip(currentAudioClip);
+			SpeakerScript.instance.PlaySound(currentAudioClip.name.Length < 6 ? 1 : 2);
         }
 
         public void PlaySoundClick()
         {
-            PlaySoundClic();
+            PlaySoundClick();
         }
 
         public void PlaySoundRight()

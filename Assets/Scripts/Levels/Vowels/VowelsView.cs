@@ -67,7 +67,7 @@ namespace Assets.Scripts.Levels.Vowels
 
         public void PlaySoundClick()
         {
-            PlaySoundClic();
+            PlaySoundClick();
         }
 
         public void PlaySoundRight()

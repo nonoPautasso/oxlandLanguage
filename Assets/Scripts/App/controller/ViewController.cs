@@ -29,9 +29,11 @@ namespace Assets.Scripts.App{
 				Destroy(gameObject);
 
 			DontDestroyOnLoad(transform.root.gameObject);
-			levels = new string[]{"Vowels","VowelsOral","StartWithVowel","CompleteVowel"
-				,"ABCOrder","ABCWords","ABCBonus","Syllables", "ListenAndWrite","MayusMin",
-				"CreateSentence","SplitSentences","IdentifyLettersInWords","CountLetters","OrderLetters","SoundsInWords"
+			levels = new string[]{"Vowels","VowelsOral","StartWithVowel","CompleteVowel","OracionesPictogramas",
+				"Consonants","ConsonantsOral","ABCWords","CompleteConsonant","ABCOrder",
+				"CountLetters","CombineSounds","SoundsInWords",
+				"LettersComposeWords","OrderLetters", "ListenAndWrite","FindError","CreateSentence",
+				"MayusMin","SplitSentences","IdentifyLettersInWords","ABCBonus","Syllables"
 				};
 			instructions = new string[]{"VowelsInstructions","VowelsOralInstructions","StartWithVowelInstructions",
 				"CompleteVowelInstructions","ABCOrderInstructions","ABCWordsInstructions","ABCBonusInstructions",

@@ -98,12 +98,12 @@ namespace Assets.Scripts.Levels.StartWithVowel {
 		}
 
 		public void BackButton(){
-			PlaySoundClic ();
+			PlaySoundClick ();
 			controller.BackButton ();
 		}
 
 		public void NextButton(){
-			PlaySoundClic ();
+			PlaySoundClick ();
 			controller.NextButton ();
 		}
 

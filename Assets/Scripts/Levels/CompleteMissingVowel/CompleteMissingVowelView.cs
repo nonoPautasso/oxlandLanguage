@@ -21,6 +21,10 @@ namespace Assets.Scripts.Levels.CompleteMissingVowel
 		private DataTrio<string[], AudioClip[], Sprite[]> easyLetters;
 		private DataTrio<string[], AudioClip[], Sprite[]> hardletters;
 
+		private static Color32 SELECTED_COLOR = new Color32(53,198,227,255);
+		private static Color32 WRONG_COLOR = new Color32(251,96,96,255);
+		private static Color32 RIGHT_COLOR = new Color32(81,225,148,225);
+
 		public override void ShowHint ()
 		{
 		}
@@ -64,11 +68,12 @@ namespace Assets.Scripts.Levels.CompleteMissingVowel
 		public void PlaySound ()
 		{
 			SoundManager.instance.PlayClip (currentAudioClip);
+			SpeakerScript.instance.PlaySound (currentAudioClip.name.Length < 5 ? 1 : 2);
 		}
 
 		public void PlaySoundClick ()
 		{
-			PlaySoundClic ();
+			PlaySoundClick ();
 		}
 
 		public void PlaySoundRight ()
@@ -97,9 +102,9 @@ namespace Assets.Scripts.Levels.CompleteMissingVowel
 		public void UpdateLetterSelections (int letter1, int letter2)
 		{
 			if (letter1 != -1)
-				vowelButtons [letter1].GetComponent<Image> ().color = Color.green;
+				vowelButtons [letter1].GetComponent<Image> ().color = SELECTED_COLOR;
 			if (letter2 != -1) {
-				vowelButtons [letter2].GetComponent<Image> ().color = Color.green;
+				vowelButtons [letter2].GetComponent<Image> ().color = SELECTED_COLOR;
 			}
 			for (int i = 0; i < vowelButtons.Length; i++) {
 				if (i != letter1 && i != letter2)
@@ -110,22 +115,35 @@ namespace Assets.Scripts.Levels.CompleteMissingVowel
 		public void SelectLetter (int letter)
 		{
 			if (letter != -1)
-				vowelButtons [letter].GetComponent<Image> ().color = Color.green;
+				vowelButtons [letter].GetComponent<Image> ().color = SELECTED_COLOR;
 		}
 
 		public void IncorrectSelection (int letter1, int letter2)
 		{
 			if (letter1 != -1)
-				vowelButtons [letter1].GetComponent<Image> ().color = Color.red;
+				vowelButtons [letter1].GetComponent<Image> ().color = WRONG_COLOR;
 			if (letter2 != -1) {
-				vowelButtons [letter2].GetComponent<Image> ().color = Color.red;
+				vowelButtons [letter2].GetComponent<Image> ().color = WRONG_COLOR;
+			}
+		}
+
+		public void CorrectSelection (int letter1, int letter2)
+		{
+			if (letter1 != -1)
+				vowelButtons [letter1].GetComponent<Image> ().color = RIGHT_COLOR;
+			if (letter2 != -1) {
+				vowelButtons [letter2].GetComponent<Image> ().color = RIGHT_COLOR;
 			}
 		}
 
 		public void IncorrectSelection (int letter)
 		{
-			if (letter != -1)
-				vowelButtons [letter].GetComponent<Image> ().color = Color.red;
+				vowelButtons [letter].GetComponent<Image> ().color = WRONG_COLOR;
+		}
+
+		public void CorrectSelection (int letter)
+		{
+			vowelButtons [letter].GetComponent<Image> ().color = RIGHT_COLOR;
 		}
 
 		public void ResetSelection (int letter)
@@ -150,13 +168,15 @@ namespace Assets.Scripts.Levels.CompleteMissingVowel
 			return word;
 		}
 
-		public void CorrectAnswer ()
+		public void CorrectAnswer (int letter)
 		{
 			nextButton.interactable = true;
 			ticButton.interactable = false;
+			CorrectSelection (letter);
+
 		}
 
-		public void ResetTicAndNext ()
+		public void ResetTickAndNext ()
 		{
 			nextButton.interactable = false;
 			ticButton.interactable = true;

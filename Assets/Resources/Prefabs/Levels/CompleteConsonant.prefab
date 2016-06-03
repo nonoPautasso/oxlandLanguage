@@ -174,7 +174,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!1 &154688
 GameObject:
   m_ObjectHideFlags: 1
@@ -292,6 +292,7 @@ GameObject:
   - 114: {fileID: 11428426}
   - 114: {fileID: 11461958}
   - 95: {fileID: 9585140}
+  - 114: {fileID: 11438938}
   m_Layer: 5
   m_Name: soundButton
   m_TagString: Untagged
@@ -620,6 +621,18 @@ MonoBehaviour:
   m_FillAmount: 1
   m_FillClockwise: 1
   m_FillOrigin: 0
+--- !u!114 &11438938
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 170962}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6f4d89577378d4957a1bf06b3e7b0ede, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  animator: {fileID: 9585140}
 --- !u!114 &11440202
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1652,7 +1665,7 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 22488976}
-  m_RootOrder: 7
+  m_RootOrder: 8
   m_AnchorMin: {x: 0.12553653, y: 0.762}
   m_AnchorMax: {x: 0.12553653, y: 0.762}
   m_AnchoredPosition: {x: -9, y: -82}
@@ -1743,7 +1756,7 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 22488976}
-  m_RootOrder: 8
+  m_RootOrder: 9
   m_AnchorMin: {x: 0.24972779, y: 0.6792216}
   m_AnchorMax: {x: 0.6952899, y: 0.82677853}
   m_AnchoredPosition: {x: 0, y: -79.37103}
@@ -1778,10 +1791,10 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 22488976}
-  m_RootOrder: 9
+  m_RootOrder: 6
   m_AnchorMin: {x: 0.81900007, y: 0.15522118}
   m_AnchorMax: {x: 0.81900007, y: 0.15522118}
-  m_AnchoredPosition: {x: 0, y: -37}
+  m_AnchoredPosition: {x: 20.049, y: 791.43}
   m_SizeDelta: {x: 237, y: 237}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!224 &22462024
@@ -1863,11 +1876,11 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 22488976}
-  m_RootOrder: 6
+  m_RootOrder: 7
   m_AnchorMin: {x: 0.83100003, y: 0.762}
   m_AnchorMax: {x: 0.83100003, y: 0.762}
-  m_AnchoredPosition: {x: -2.5, y: -81}
-  m_SizeDelta: {x: 236, y: 237}
+  m_AnchoredPosition: {x: -2, y: -83}
+  m_SizeDelta: {x: 305, y: 307}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!224 &22480808
 RectTransform:
@@ -1937,10 +1950,10 @@ RectTransform:
   - {fileID: 22480808}
   - {fileID: 22423092}
   - {fileID: 22439658}
+  - {fileID: 22452814}
   - {fileID: 22472816}
   - {fileID: 22410148}
   - {fileID: 22449168}
-  - {fileID: 22452814}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_AnchorMin: {x: 0, y: 0}

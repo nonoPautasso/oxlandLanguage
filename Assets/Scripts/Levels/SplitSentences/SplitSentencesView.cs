@@ -162,7 +162,7 @@ namespace Assets.Scripts.Levels.SplitSentences {
 		}
 
 		public void WordClick(GameObject word){
-			PlaySoundClic ();
+			PlaySoundClick ();
 
 			string wordText = word.GetComponentInChildren<Text>().text;
 			int lastIndex = wordsLastToggleIndex [word];

@@ -47,13 +47,13 @@ namespace Assets.Scripts.Levels.Syllables {
 		}
 
 		private void MoveFromPanel (Button button) {
-			PlaySoundClic ();
+			PlaySoundClick ();
 			button.transform.parent = originalParent;
 		}
 
 		private void MoveToPanel (Button button) {
 			if(backPanel.GetComponentsInChildren<Button>().Length != MAX_SYLLABLES) {
-				PlaySoundClic ();
+				PlaySoundClick ();
 				button.transform.parent = backPanel.transform;
 			}
 		}

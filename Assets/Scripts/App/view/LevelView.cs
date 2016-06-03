@@ -27,19 +27,19 @@ namespace Assets.Scripts.App
 		}
 
 		public void OnClickMenuBtn(){
-            PlaySoundClic();
+            PlaySoundClick();
             AppController.instance.ShowInGameMenu();
 		}
 
 		public void OnClickHintBtn(){
 			if (hintBtn.enabled)
 			{
-                PlaySoundClic();
+                PlaySoundClick();
                 ShowHint ();
 			}
 		}
 
-        internal void PlaySoundClic()
+        internal void PlaySoundClick()
         {
             SoundManager.instance.PlayClickSound();
         }
