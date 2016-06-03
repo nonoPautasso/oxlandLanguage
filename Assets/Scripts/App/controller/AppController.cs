@@ -1,7 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections.Generic;
 using System;
-using Assets.Scripts.Timer;
 
 namespace Assets.Scripts.App{
 
@@ -9,10 +8,7 @@ public class AppController : AppElement {
 
 	public static AppController instance;
 	public AppModel appModel;
-    public GameObject inGameMenu;
-	
-
-	private GameObject inGameMenuScreen;
+    
 	
 
 	void Awake()
@@ -90,8 +86,7 @@ public class AppController : AppElement {
         }
 
         internal void NextLvl(){
-//            DestroyLvl(appModel.CurrentLevel);
-            appModel.NextLvl();
+	       appModel.NextLvl();
             StartLevel();
         }
 
@@ -120,16 +115,7 @@ public class AppController : AppElement {
 			appModel.SetMaxLevelPossible (level);
 		}
 			
-        internal void ShowInGameMenu(){
-            TimerImpl.instance.Pause();
-			inGameMenuScreen = Instantiate(inGameMenu);
-//			GameObject.Instantiate(inGameMenu);
-        }
-
-		internal void HideInGameMenu(){
-			Destroy(inGameMenuScreen);
-		}
-
+       
 
     }
 

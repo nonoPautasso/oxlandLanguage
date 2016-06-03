@@ -28,7 +28,7 @@ namespace Assets.Scripts.App
 
 		public void OnClickMenuBtn(){
             PlaySoundClick();
-            AppController.instance.ShowInGameMenu();
+			ViewController.instance.ShowInGameMenu();
 		}
 
 		public void OnClickHintBtn(){

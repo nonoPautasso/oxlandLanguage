@@ -1,6 +1,8 @@
 ﻿using UnityEngine;
 using System.Collections;
 using UnityEngine.SceneManagement;
+using Assets.Scripts.Timer;
+
 
 namespace Assets.Scripts.App{
 
@@ -19,6 +21,10 @@ namespace Assets.Scripts.App{
 		private GameObject instructionsScreen;
 		public GameObject viewPanel;
 		private GameObject currentGameObject;
+
+		public GameObject inGameMenu;
+		private GameObject inGameMenuScreen;
+
 
 		//Awake is always called before any Start functions
 		void Awake()
@@ -52,7 +58,7 @@ namespace Assets.Scripts.App{
 			GameObject child = Instantiate(newObject);
 			FitObjectToScene(child);
 			if(currentGameObject)
-				Destroy(currentGameObject);
+				Destroy(currentGameObject.gameObject);
 			currentGameObject = child;            
 		}
 
@@ -69,6 +75,14 @@ namespace Assets.Scripts.App{
 			//Debug.Log (level);
 			//Debug.Log (levels[level-1]);
 			ChangeCurrentObject (LoadPrefab("Levels/"+levels [level-1]));
+		}
+
+		public GameObject LoadInGamePrefab(string screen){
+			GameObject loadedPrefab = LoadPrefab(screen);
+			GameObject prefabInstance = Instantiate(loadedPrefab);
+			FitObjectToScene(prefabInstance);
+			return prefabInstance;
+
 		}
 
 		public void LoadNameScreen(){
@@ -106,7 +120,7 @@ namespace Assets.Scripts.App{
 		}
 
 		internal void HideInstructions(){
-			Destroy(instructionsScreen);
+			Destroy(instructionsScreen.gameObject);
 		}
 
 		public int GetLevelAmount(){
@@ -116,9 +130,19 @@ namespace Assets.Scripts.App{
 
 		internal void ShowInstructions()
 		{
-			instructionsScreen = Instantiate(LoadPrefab("Explanations/"+instructions[AppController.instance.GetCurrentLevel()-1]));
-			FitObjectToScene(instructionsScreen);
+			instructionsScreen = LoadInGamePrefab (instructions[AppController.instance.appModel.CurrentLevel-1]);
 		}
+
+		internal void ShowInGameMenu(){
+			TimerImpl.instance.Pause();
+			inGameMenuScreen = LoadInGamePrefab ("InGameMenu");
+
+		}
+
+		internal void HideInGameMenu(){
+			Destroy(inGameMenuScreen.gameObject);
+		}
+
 
 
 	}

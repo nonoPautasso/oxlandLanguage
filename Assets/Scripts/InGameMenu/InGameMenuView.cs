@@ -12,30 +12,30 @@ namespace Assets.Scripts.InGameMenu
 		public Text  hoverTxt;
 
 
-		public void OnMainMenuClic()
+		public void OnMainMenuClick()
 		{
-			PlayClicSound();
+			PlayClickSound();
 			AppController.instance.MainMenu();
 			MetricsManager.instance.DiscardCurrentMetrics();
-			AppController.instance.HideInGameMenu ();
+			ViewController.instance.HideInGameMenu ();
 		}
 
-		public void OnInstructionsClic(){
-			PlayClicSound();
+		public void OnInstructionsClick(){
+			PlayClickSound();
 			ViewController.instance.ShowInstructions();
-			AppController.instance.HideInGameMenu ();
+			ViewController.instance.HideInGameMenu ();
 		}
 
-		public void OnCicRestartGame(){
-			PlayClicSound();
+		public void OnClickRestartGame(){
+			PlayClickSound();
 			AppController.instance.RestartLvl();
-			AppController.instance.HideInGameMenu ();
+			ViewController.instance.HideInGameMenu ();
 			MetricsManager.instance.DiscardCurrentMetrics();
 		}
 
-		public void OnClicBackToGame(){
-			PlayClicSound();
-			AppController.instance.HideInGameMenu ();
+		public void OnClickBackToGame(){
+			PlayClickSound();
+			ViewController.instance.HideInGameMenu ();
 			TimerImpl.instance.Resume();
 		}
 
@@ -70,7 +70,7 @@ namespace Assets.Scripts.InGameMenu
 
 
 
-		private void PlayClicSound()
+		private void PlayClickSound()
 		{
 			SoundManager.instance.PlayClickSound();
 		}

@@ -140,7 +140,7 @@ namespace Assets.Scripts.Levels.CompleteMissingVowel
 						if (!(model.wordCount < 5))
 							model.easyMode = false;
 						view.PlayRightSound ();
-						view.CorrectAnswer (model.GetLetterPos (letter1), -1);
+						view.CorrectSelection (model.GetLetterPos (letter1), -1);
 					} else {
 						view.IncorrectSelection (model.GetLetterPos (letter1), -1);
 						view.PlayWrongSound ();
@@ -169,7 +169,7 @@ namespace Assets.Scripts.Levels.CompleteMissingVowel
 						view.SelectLetter (model.GetLetterPos (letter1));
 						view.SelectLetter (model.GetLetterPos (letter2));
 						view.PlayRightSound ();
-						view.CorrectAnswer ();
+						view.CorrectSelection(model.GetLetterPos (letter2));
 						
 					}
 				}
