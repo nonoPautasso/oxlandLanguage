@@ -217,5 +217,12 @@ namespace Assets.Scripts.Common {
 			}
 			return result;
 		}
+
+		public static bool IsVowel (string letter) {
+			foreach (string vowel in vowels) {
+				if (letter.ToUpper () == vowel.ToUpper ()) return true;
+			}
+			return false;
+		}
 	}
 }
