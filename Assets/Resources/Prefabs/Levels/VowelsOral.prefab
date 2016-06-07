@@ -507,7 +507,7 @@ MonoBehaviour:
   - {fileID: 11428940}
   checkButton: {fileID: 11490410}
   nextButton: {fileID: 11429632}
-  soundButton: {fileID: 0}
+  soundButton: {fileID: 11464756}
   currentObjectImage: {fileID: 11423386}
   currentAudioClip: {fileID: 0}
 --- !u!114 &11404394
@@ -550,17 +550,6 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 11404320}
-        m_MethodName: OnClickMenuBtn
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-      - m_Target: {fileID: 0}
         m_MethodName: OnClickMenuBtn
         m_Mode: 1
         m_Arguments:
@@ -738,6 +727,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   animator: {fileID: 9587298}
+  soundButton: {fileID: 11464756}
 --- !u!114 &11419356
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1312,8 +1302,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
-        m_MethodName: SoundClick
+      - m_Target: {fileID: 11404320}
+        m_MethodName: PlaySound
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}

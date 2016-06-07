@@ -40,6 +40,7 @@ namespace Assets.Scripts.Levels.VowelsOral
         public void ShowHints(DataPair<int, int> letterIndices)
         {
             DisableHint();
+			PlaySoundClick ();
             vowelToggles[letterIndices.Fst()].interactable = false;
             vowelToggles[letterIndices.Snd()].interactable = false;
         }
@@ -121,14 +122,11 @@ namespace Assets.Scripts.Levels.VowelsOral
 
         public void PlaySound()
         {
-            SoundManager.instance.PlayClip(currentAudioClip);
+			
 			SpeakerScript.instance.PlaySound(currentAudioClip.name.Length < 6 ? 1 : 2);
         }
 
-        public void PlaySoundClick()
-        {
-            PlaySoundClick();
-        }
+       
 
         public void PlaySoundRight()
         {

@@ -133,8 +133,8 @@ namespace Assets.Scripts.Levels.VowelsOral
 
 		public override void StartGame ()
 		{
-			minSeconds = 15;
-			pointsPerError = 200;
+			minSeconds = 66;
+			pointsPerError = 500;
 			pointsPerSecond = 13;
 
 			letterAmounts = new int[5];

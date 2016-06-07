@@ -261,8 +261,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 149748}
-        m_MethodName: 
+      - m_Target: {fileID: 11447120}
+        m_MethodName: OnClickRestartGame
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -359,7 +359,7 @@ MonoBehaviour:
       m_PersistentCalls:
         m_Calls:
         - m_Target: {fileID: 11447120}
-          m_MethodName: OnHoverBackToGameBtn
+          m_MethodName: OnHoveRestartGameBtn
           m_Mode: 1
           m_Arguments:
             m_ObjectArgument: {fileID: 0}
@@ -456,7 +456,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 11447120}
-        m_MethodName: OnClickRestartGame
+        m_MethodName: OnClickBackToGame
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -640,7 +640,7 @@ MonoBehaviour:
       m_PersistentCalls:
         m_Calls:
         - m_Target: {fileID: 11447120}
-          m_MethodName: OnHoveRestartGameBtn
+          m_MethodName: OnHoverBackToGameBtn
           m_Mode: 1
           m_Arguments:
             m_ObjectArgument: {fileID: 0}

@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using Assets.Scripts.App;
+using UnityEngine.UI;
 
 namespace Assets.Scripts.Levels
 {
@@ -7,6 +8,7 @@ namespace Assets.Scripts.Levels
     {
         public static SpeakerScript instance;
         public Animator animator;
+		public Button soundButton;
 
         void Awake() {
             if (instance == null) instance = this;
@@ -19,12 +21,14 @@ namespace Assets.Scripts.Levels
 
         public void PlaySound(int digits)
         {
+			soundButton.enabled = false;
             animator.SetBool("isPlayingSound", true);        
             Invoke("silence", digits == 1 ? 0.6f : 1.2f);          
         }
 
         void silence()
         {
+			soundButton.enabled = true;
            animator.SetBool("isPlayingSound", false);
 
         }

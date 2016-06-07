@@ -22,8 +22,8 @@ namespace Assets.Scripts.Levels.Vowels
         public override void StartGame()
         {
 
-			minSeconds = 15;
-			pointsPerError = 200;
+			minSeconds = 13;
+			pointsPerError = 500;
 			pointsPerSecond = 13;
 
             numRevealedLetters = 0;
