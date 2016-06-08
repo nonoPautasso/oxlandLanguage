@@ -87,12 +87,13 @@ namespace Assets.Scripts.Levels.StartWithVowel {
 		}
 
 		void SetWord (Word word, int index, bool correct) {
-			objects [index].GetComponentInChildren<Text> ().text = word.Name ();
 			objects [index].enabled = false;
 			soundButtons [index].gameObject.SetActive (true);
 			if(correct){
+				objects [index].GetComponentInChildren<Text> ().text = "<color=green>" + word.Name ()[0] + "</color>" + word.Name ().Remove (0, 1);
 				soundButtons [index].image.sprite = Resources.Load<Sprite>("Sprites/rightLengua");
 			} else {
+				objects [index].GetComponentInChildren<Text> ().text = word.Name ();
 				soundButtons [index].image.sprite = Resources.Load<Sprite>("Sprites/wrongLengua");
 			}
 		}
