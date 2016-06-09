@@ -53,18 +53,40 @@ namespace Assets.Scripts.Levels.StartWithVowel {
 
 			SoundButtonsActive(false);
 
-			correctCount = 0;
+			var allCorrect = AllCorrect (model);
+
+			pageFinished.gameObject.SetActive (allCorrect);
+			if (allCorrect) SetObjectsAsDone (model);
 
 			for (int i = 0; i < objects.Count; i++) {
 				soundButtons[i].image.sprite = originalSound;
+				Views.SetActiveButton (objects [i], true);
 				Views.SetButtonSprite (objects[i], model[i].Item1.Sprite());
 				var isCorrect = controller.IsCorrect (i);
+				if (allCorrect && !isCorrect) Views.SetActiveButton (objects [i], false);
+				else if (model [i].Item2) {
+					SetWord (model [i].Item1, i, isCorrect);
+				}
+			}
+		}
+
+		private void SetObjectsAsDone (List<Tuple<Word, bool>> model) {
+			for (int i = 0; i < objects.Count; i++) {
+				var isCorrect = controller.IsCorrect (i);
+				if (!isCorrect) Views.SetActiveButton (objects [i], false);
+			}
+		}
+
+		private bool AllCorrect (List<Tuple<Word, bool>> model) {
+			correctCount = 0;
+			for (int i = 0; i < objects.Count; i++) {
 				if (model [i].Item2) {
+					var isCorrect = controller.IsCorrect (i);
 					SetWord (model [i].Item1, i, isCorrect);
 					if (isCorrect) correctCount++;
 				}
 			}
-			pageFinished.gameObject.SetActive (correctCount == StartWithVowelModel.CORRECT);
+			return correctCount == StartWithVowelModel.CORRECT;
 		}
 
 		void ResetObjectsText () {
@@ -83,7 +105,10 @@ namespace Assets.Scripts.Levels.StartWithVowel {
 			else
 				PlayWrongSound ();
 
-			pageFinished.gameObject.SetActive (correctCount == StartWithVowelModel.CORRECT);
+			if (correctCount == StartWithVowelModel.CORRECT) {
+				pageFinished.gameObject.SetActive (correctCount == StartWithVowelModel.CORRECT);
+				SetObjectsAsDone (controller.GetCurrentPage());
+			}
 		}
 
 		void SetWord (Word word, int index, bool correct) {

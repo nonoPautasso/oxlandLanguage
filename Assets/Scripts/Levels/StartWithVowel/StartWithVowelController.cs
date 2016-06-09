@@ -2,6 +2,7 @@
 using Assets.Scripts.App;
 using Assets.Scripts.Common;
 using UnityEngine;
+using System.Collections.Generic;
 
 namespace Assets.Scripts.Levels.StartWithVowel {
 	public class StartWithVowelController : LevelController {
@@ -58,6 +59,10 @@ namespace Assets.Scripts.Levels.StartWithVowel {
 
 		public void SoundButtonClick (int index) {
 			model.GetWord(index).PlayWord();
+		}
+
+		public List<Tuple<Word, bool>> GetCurrentPage () {
+			return model.GetCurrentPage ();
 		}
 
 		public override void RestartGame () {
