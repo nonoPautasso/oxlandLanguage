@@ -40,6 +40,21 @@ namespace Assets.Scripts.Levels.StartWithVowel {
 			controller.SoundButtonClick (index);
 		}
 
+		public void WordPlayed (float duration) {
+			SoundButtonsEnabled (false);
+			Invoke ("SoundFinished", duration);
+		}
+
+		public void SoundFinished(){
+			SoundButtonsEnabled (true);
+		}
+
+		private void SoundButtonsEnabled (bool enabled) {
+			foreach (Button btn in soundButtons) {
+				btn.enabled = enabled;
+			}
+		}
+
 		public void SubmarineClick(){
 			controller.SubmarineClick ();
 		}
@@ -97,6 +112,7 @@ namespace Assets.Scripts.Levels.StartWithVowel {
 		}
 
 		public void Answer (Word word, int index, bool correct) {
+			SoundButtonsActive (false, false);
 			SetWord (word, index, correct);
 			if (correct) {
 				PlayRightSound ();
@@ -133,10 +149,14 @@ namespace Assets.Scripts.Levels.StartWithVowel {
 			controller.NextButton ();
 		}
 
-		void SoundButtonsActive(bool active) {
+		void SoundButtonsActive(bool active, bool allOfThem = true) {
 			for (int i = 0; i < soundButtons.Count; i++) {
+				if(!allOfThem){
+					if(soundButtons[i].image.sprite != originalSound) continue;
+				}
 				Views.SetActiveButton (soundButtons[i], active);
 			}
+			if (!active) EnableHint ();
 		}
 
 		public override void EndGame() { }

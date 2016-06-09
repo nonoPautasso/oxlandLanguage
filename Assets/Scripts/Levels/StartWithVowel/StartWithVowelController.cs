@@ -58,7 +58,9 @@ namespace Assets.Scripts.Levels.StartWithVowel {
 		}
 
 		public void SoundButtonClick (int index) {
-			model.GetWord(index).PlayWord();
+			Word word = model.GetWord (index);
+			word.PlayWord();
+			view.WordPlayed (word.AudioLength ());
 		}
 
 		public List<Tuple<Word, bool>> GetCurrentPage () {
