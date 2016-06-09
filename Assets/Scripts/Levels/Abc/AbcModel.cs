@@ -24,7 +24,7 @@ namespace Assets.Scripts.Levels.Abc {
 
 		void LoadModel () {
 			model = new Dictionary<string, List<Tuple<Word, bool>>> ();
-			letters = Words.RandomLetters (ROUNDS);
+			letters = Words.RandomLetters (ROUNDS, false);
 			foreach(string letter in letters) {
 				List<Tuple<Word, bool>> l = new List<Tuple<Word, bool>> ();
 				List<Word> words = Words.GetRandomWords(QUANTITY, CORRECT, letter, true);
@@ -35,24 +35,31 @@ namespace Assets.Scripts.Levels.Abc {
 			}
 		}
 
-		public void NextPage () {
+		public void BackButton () {
+			currentPage--;
+		}
+
+		public void NextButton () {
 			currentPage++;
 		}
 
 		public bool HasEnded () {
-			return PageEnded() && currentPage == (ROUNDS - 1);
+			foreach (string letter in letters) {
+				int correctCount = 0;
+				foreach (Tuple<Word, bool> word in model [letter]) {
+					if (word.Item2 && IsCorrect (word, letter)) correctCount++;
+				}
+				if (correctCount != CORRECT) return false;
+			}
+			return true;
 		}
 
 		public List<Tuple<Word, bool>> GetCurrentPage () {
-			return model [GetCurrentLetter ()];
+			return model [letters[currentPage]];
 		}
 
 		public Word GetWord(int index) {
 			return GetCurrentPage()[index].Item1;
-		}
-
-		public string GetCurrentLetter () {
-			return letters [currentPage];
 		}
 
 		public int GetCurrentPageNumber() {
@@ -68,7 +75,7 @@ namespace Assets.Scripts.Levels.Abc {
 
 		public bool IsCorrect (int index) {
 			Tuple<Word, bool> tuple = GetCurrentPage()[index];
-			string currentLetter = GetCurrentLetter ();
+			string currentLetter = letters[currentPage];
 			return IsCorrect (tuple, currentLetter);
 		}
 
@@ -77,14 +84,12 @@ namespace Assets.Scripts.Levels.Abc {
 			return currentLetter == clickedWord.ToUpper ().ToCharArray () [0].ToString ();
 		}
 
-		public bool PageEnded () {
-			string currentLetter = GetCurrentLetter ();
-			List<Tuple<Word, bool>> currentWords = model [currentLetter];
-			int correctCount = 0;
-			foreach (Tuple<Word, bool> word in currentWords) {
-				if (word.Item2 && IsCorrect (word, currentLetter)) correctCount++;
-			}
-			return correctCount == CORRECT;
+		public List<string> GetLetters () {
+			return letters;
+		}
+
+		public string GetCurrentLetter () {
+			return letters [currentPage];
 		}
 
 		public override void NextChallenge () { }

@@ -3,6 +3,7 @@ using Assets.Scripts.App;
 using Assets.Scripts.Common;
 using UnityEngine;
 using System.Collections.Generic;
+using I18N;
 
 namespace Assets.Scripts.Levels.StartWithVowel {
 	public class StartWithVowelController : LevelController {
@@ -53,7 +54,7 @@ namespace Assets.Scripts.Levels.StartWithVowel {
 
 		public void SubmarineClick () {
 			string letter = Words.GetVowels()[model.GetCurrentPageNumber()];
-			AudioClip clip = Resources.Load<AudioClip>("Audio/Spanish/Letters/" + letter);
+			AudioClip clip = Resources.Load<AudioClip>("Audio/" + I18n.Msg ("words.locale") + "/Letters/" + letter);
 			SoundManager.instance.PlayClip(clip);
 		}
 

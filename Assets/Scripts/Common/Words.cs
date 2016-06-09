@@ -151,13 +151,14 @@ namespace Assets.Scripts.Common {
 			return alphabet [Array.IndexOf (alphabet, letter) + 1];
 		}
 
-		public static List<string> RandomLetters (int quantity) {
+		public static List<string> RandomLetters (int quantity, bool includeVowels = true) {
 			CheckLoadedWords ();
 			List<string> result = new List<string> ();
-			for (int i = 0; i < quantity; i++) {
+			while(result.Count < quantity) {
 				string letter = RandomLetter ();
-				while (result.Contains (letter))
+				while (result.Contains (letter) || (!includeVowels && Array.IndexOf (vowels, letter) != -1)) {
 					letter = RandomLetter ();
+				}
 				result.Add (letter);
 			}
 			return result;

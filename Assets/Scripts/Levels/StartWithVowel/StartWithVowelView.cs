@@ -86,6 +86,7 @@ namespace Assets.Scripts.Levels.StartWithVowel {
 		}
 
 		private void SetObjectsAsDone (List<Tuple<Word, bool>> model) {
+			DisableHint ();
 			for (int i = 0; i < objects.Count; i++) {
 				var isCorrect = controller.IsCorrect (i);
 				if (!isCorrect) Views.SetActiveButton (objects [i], false);

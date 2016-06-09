@@ -3,11 +3,12 @@ using Assets.Scripts.App;
 using Assets.Scripts.Common;
 using UnityEngine;
 using I18N;
+using System.Collections.Generic;
 
 namespace Assets.Scripts.Levels.Abc {
 	public class AbcController : LevelController {
-		public AbcView view;
 		private AbcModel model;
+		public AbcView view;
 
 		public override void NextChallenge () { }
 
@@ -24,7 +25,17 @@ namespace Assets.Scripts.Levels.Abc {
 		}
 
 		void SetCurrentPage () {
-			view.SetCurrentPage (model.GetCurrentLetter (), model.GetCurrentPage ());
+			view.SetCurrentPage (model.GetCurrentLetter(), model.GetCurrentPageNumber (), model.GetCurrentPage ());
+		}
+
+		public void BackButton () {
+			model.BackButton ();
+			SetCurrentPage ();
+		}
+
+		public void NextButton () {
+			model.NextButton ();
+			SetCurrentPage ();
 		}
 
 		public void ObjectClick (int index) {
@@ -32,32 +43,33 @@ namespace Assets.Scripts.Levels.Abc {
 			LogAnswer (correct);
 			view.Answer(model.GetWord (index), index, correct);
 
-			if(model.PageEnded()){
-				view.PageEnded ();
-			}
-		}
-
-		public void NextClick(){
 			if(model.HasEnded()){
 				EndGame(model.MinSeconds, model.PointsPerSecond, model.PointsPerError);
 			}
-
-			model.NextPage ();
-			SetCurrentPage ();
 		}
 
 		public bool IsCorrect (int index) {
 			return model.IsCorrect (index);
 		}
 
-		public void LetterClick () {
-			string letter = model.GetCurrentLetter ();
+		public void SubmarineClick () {
+			string letter = model.GetLetters()[model.GetCurrentPageNumber()];
 			AudioClip clip = Resources.Load<AudioClip>("Audio/" + I18n.Msg ("words.locale") + "/Letters/" + letter);
 			SoundManager.instance.PlayClip(clip);
 		}
 
 		public void SoundButtonClick (int index) {
-			model.GetWord(index).PlayWord();
+			Word word = model.GetWord (index);
+			word.PlayWord();
+			view.WordPlayed (word.AudioLength ());
+		}
+
+		public List<Tuple<Word, bool>> GetCurrentPage () {
+			return model.GetCurrentPage ();
+		}
+
+		public List<string> GetLetters () {
+			return model.GetLetters ();
 		}
 
 		public override void RestartGame () {
