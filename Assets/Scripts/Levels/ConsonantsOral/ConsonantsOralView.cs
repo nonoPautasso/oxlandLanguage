@@ -20,8 +20,8 @@ namespace Assets.Scripts.Levels.ConsonantsOral {
 			EnableHint ();
 			SetText ("");
 			ActiveButtons (true, false, true);
-			tryBtn.interactable = false;
 			SetLetters (letters);
+			tryBtn.interactable = false;
 		}
 
 		private void SetLetters (List<string> lettersText) {
@@ -72,7 +72,7 @@ namespace Assets.Scripts.Levels.ConsonantsOral {
 
 		public void Wrong (int index) {
 			PlayWrongSound ();
-			letters [index].image.color = Color.red;
+			letters [index].image.color = new Color32(251,96,96,255);
 			tryBtn.interactable = false;
 		}
 
@@ -80,7 +80,7 @@ namespace Assets.Scripts.Levels.ConsonantsOral {
 			PlayRightSound ();
 			DisableHint ();
 			Views.TogglesEnabled (letters.ToArray (), false);
-			letters [index].image.color = Color.green;
+			letters [index].image.color = new Color32(81,225,148,225);
 			SetText (word.Name ().ToUpper ());
 			ActiveButtons (false, true, false);
 		}

@@ -9,7 +9,7 @@ namespace Assets.Scripts.Levels.ConsonantsOral {
 		private Word currentWord;
 		private List<string> letters;
 
-		public static int ROUNDS = 7;
+		public static int ROUNDS = 10;
 		public static int LETTERS_QUANTITY = 5;
 		public static int HINT_QUANTITY = 3;
 		private List<List<string>> incompatibles;
@@ -29,10 +29,11 @@ namespace Assets.Scripts.Levels.ConsonantsOral {
 			incompatibles.Add (new List<string> {"M", "N"});
 			incompatibles.Add (new List<string> {"Q", "C", "K"});
 			incompatibles.Add (new List<string> {"U", "W"});
+			incompatibles.Add (new List<string> {"V", "B"});
 		}
 
 		public override void NextChallenge () {
-			currentWord = Words.GetRandomWord ();
+			currentWord = Words.GetRandomWord (false);
 			SetLetters (GetCorrect ());
 			currentRound++;
 		}
