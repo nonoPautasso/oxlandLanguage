@@ -4,6 +4,7 @@ using UnityEngine.UI;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
+using Assets.Scripts.Common;
 
 namespace Assets.Scripts.Levels.AbcOrder {
 	public class AbcOrderView : LevelView {
@@ -25,6 +26,8 @@ namespace Assets.Scripts.Levels.AbcOrder {
 		void SetOptions (List<string> options) {
 			originalPositions = new List<Vector3> ();
 			for (int i = 0; i < letters.Count; i++) {
+				letters [i].image.color = Color.white;
+				letters [i].interactable = true;
 				originalPositions.Add (letters[i].transform.position);
 				letters [i].GetComponentInChildren<Text> ().text = options [i];
 				letters [i].gameObject.AddComponent<DragHandler> ();
@@ -47,6 +50,7 @@ namespace Assets.Scripts.Levels.AbcOrder {
 			PlayRightSound ();
 			Button letter = answers [index].GetComponent<Slot> ().item.GetComponent<Button> ();
 			Destroy (letter.GetComponent<DragHandler>());
+			letter.image.color = new Color32 (81, 225, 148, 225);
 			if(IsEnded()){
 				DisableHint ();
 				nextBtn.gameObject.SetActive (true);
@@ -56,10 +60,13 @@ namespace Assets.Scripts.Levels.AbcOrder {
 
 		void RemoveDragHandlers () {
 			foreach (Button letter in letters) {
-				DragHandler comp = letter.GetComponent<DragHandler>();
-				if (comp)
-					Destroy (comp);
+				RemoveDragHandler (letter);
 			}
+		}
+
+		private static void RemoveDragHandler (Button letter) {
+			DragHandler comp = letter.GetComponent<DragHandler> ();
+			if (comp) Destroy (comp);
 		}
 
 		public void NextClick(){
@@ -82,6 +89,7 @@ namespace Assets.Scripts.Levels.AbcOrder {
 			PlayWrongSound ();
 			Button letter = answers [index].GetComponent<Slot> ().item.GetComponent<Button> ();
 			ResetLetter (letter, originalPositions[letters.IndexOf (letter)]);
+			letter.image.color = new Color32 (251, 96, 96, 255);
 		}
 
 		public override void ShowHint () {
@@ -103,33 +111,30 @@ namespace Assets.Scripts.Levels.AbcOrder {
 			}
 		}
 
-		void ResetLetter (Button letter, Vector3 originalPosition)
-		{
+		private void ResetLetter (Button letter, Vector3 originalPosition) {
 			letter.transform.SetParent (lettersPanel.transform);
 			letter.transform.position = originalPosition;
 		}
 
 		public void Hint (List<string> answersLetters) {
-			for (int i = 0; i < answers.Count; i++) {
-				string text = answers[i].GetComponentInChildren<Text>().text;
-				if(text == "") {
-					if (!answers[i].GetComponent<Slot> ().item){
-						SetAnswer (answersLetters, i);
-						break;
-					}
-						
+			Randomizer letterRandomizer = Randomizer.New (letters.Count - 1);
+			while(letterRandomizer.HasNext ()){
+				Button letter = letters[letterRandomizer.Next ()];
+				if(!answersLetters.Contains (letter.GetComponentInChildren<Text>().text) && letter.IsInteractable ()){
+					ResetLetter (letter, originalPositions[letters.IndexOf (letter)]);
+					letter.image.color = new Color32 (251, 96, 96, 255);
+					RemoveDragHandler (letter);
+					letter.interactable = false;
+					break;
 				}
 			}
+			CheckHint (answersLetters);
 		}
 
-		void SetAnswer (List<string> answersLetters, int index) {
-			string answer = answersLetters [index];
+		private void CheckHint (List<string> answersLetters) {
 			foreach (Button letter in letters) {
-				if(letter.GetComponentInChildren<Text> ().text == answer){
-					letter.transform.SetParent (answers[index].transform);
-					letter.transform.position = answers [index].transform.position;
-					Try (answers [index]);
-					break;
+				if(!answersLetters.Contains (letter.GetComponentInChildren<Text>().text) && letter.IsInteractable ()){
+					EnableHint ();
 				}
 			}
 		}

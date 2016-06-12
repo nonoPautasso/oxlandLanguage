@@ -4,6 +4,9 @@ using UnityEngine.EventSystems;
 using System;
 
 //EXCLUSIVE ABC ORDER. CANT MOVE IT, DONT USE, FUCKIN MONODEVELOP!
+using UnityEngine.UI;
+
+
 public class DragHandler : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHandler {
 
     public static GameObject itemBeingDragged;
@@ -13,6 +16,7 @@ public class DragHandler : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndD
 
 
     public void OnBeginDrag(PointerEventData eventData) {
+		GetComponent <Image>().color = Color.white;
 		transform.SetParent (beginParent);
 		itemBeingDragged = gameObject;
 		startPosition = transform.position;

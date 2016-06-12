@@ -1,6 +1,7 @@
 ﻿using System;
 using Assets.Scripts.App;
 using System.Collections.Generic;
+using Assets.Scripts.Common;
 
 namespace Assets.Scripts.Levels.CompleteConsonant {
 	public class CompleteConsonantController : LevelController {
@@ -29,7 +30,13 @@ namespace Assets.Scripts.Levels.CompleteConsonant {
 		}
 
 		public void PlayWord () {
-			model.GetCurrentWord ().PlayWord ();
+			Word word = model.GetCurrentWord ();
+			word.PlayWord ();
+			Invoke ("SoundFinished", word.AudioLength ());
+		}
+
+		public void SoundFinished(){
+			view.SoundFinished ();
 		}
 
 		public void Try (List<int> answers) {

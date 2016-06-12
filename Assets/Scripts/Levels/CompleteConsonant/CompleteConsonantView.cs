@@ -82,14 +82,19 @@ namespace Assets.Scripts.Levels.CompleteConsonant {
 		}
 
 		public void SoundClick(){
+			soundBtn.enabled = false;
 			controller.PlayWord ();
+		}
+
+		public void SoundFinished () {
+			soundBtn.enabled = true;
 		}
 
 		public void Wrong (List<int> indexes) {
 			PlayWrongSound ();
 			tryBtn.interactable = false;
 			Views.TogglesOff (letters.ToArray ());
-			PaintToggles (indexes, Color.red);
+			PaintToggles (indexes, new Color32(251,96,96,255));
 		}
 
 		private void PaintToggles (List<int> indexes, Color color) {
@@ -103,7 +108,7 @@ namespace Assets.Scripts.Levels.CompleteConsonant {
 			DisableHint ();
 			Views.TogglesEnabled (letters.ToArray (), false);
 			ActiveButtons (false, true, false);
-			PaintToggles (indexes, Color.green);
+			PaintToggles (indexes, new Color32(81,225,148,225));
 		}
 
 		public override void ShowHint () {
