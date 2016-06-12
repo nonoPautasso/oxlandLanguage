@@ -12,6 +12,7 @@ using System.Text;
 namespace Assets.Scripts.Common {
 	public class Words {
 		private static string[] vowels = new string[] { "A", "E", "I", "O", "U" };
+		private static List<string> numbers = new List<string> { "1", "2", "3", "4", "5", "6", "7", "8", "9" };
 		private static string[] alphabet;
 		private static Randomizer alphabetRandomizer;
 		static string currentPath;
@@ -113,9 +114,24 @@ namespace Assets.Scripts.Common {
 			return vowels;
 		}
 
+		public static List<string> GetNumbers(){
+			return numbers;
+		}
+
 		public static string[] GetAlphabet(){
 			CheckLoadedWords();
 			return alphabet;
+		}
+
+		public static List<string> GetConsonants () {
+			CheckAlphabet ();
+			List<string> aux = new List<string> ();
+			foreach (string letter in alphabet) {
+				if(Array.IndexOf (vowels, letter) == -1){
+					aux.Add (letter);
+				}
+			}
+			return aux;
 		}
 
 		public static Dictionary<string, List<Word>> GetWords() {
