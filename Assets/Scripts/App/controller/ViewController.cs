@@ -35,7 +35,7 @@ namespace Assets.Scripts.App{
 				Destroy(gameObject);
 
 			DontDestroyOnLoad(transform.root.gameObject);
-			levels = new string[]{"Mayusmin","VowelsOral","StartWithVowel","CompleteVowel","OracionesPictogramas",
+			levels = new string[]{"Vowels","VowelsOral","StartWithVowel","CompleteVowel","OracionesPictogramas",
 				"Consonants","ConsonantsOral","ABCWords","CompleteConsonant","ABCOrder",
 				"CountLetters","CombineSounds","SoundsInWords",
 				"LettersComposeWords","OrderLetters", "ListenAndWrite","FindError","CreateSentence",
