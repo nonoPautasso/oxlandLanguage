@@ -71,10 +71,6 @@ namespace Assets.Scripts.Levels.CompleteMissingVowel
 			SpeakerScript.instance.PlaySound (currentAudioClip.name.Length < 5 ? 1 : 2);
 		}
 
-		public void PlaySoundClick ()
-		{
-			PlaySoundClick ();
-		}
 
 		public void PlaySoundRight ()
 		{
