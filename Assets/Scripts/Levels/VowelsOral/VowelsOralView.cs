@@ -124,6 +124,7 @@ namespace Assets.Scripts.Levels.VowelsOral
         {
 			
 			SpeakerScript.instance.PlaySound(currentAudioClip.name.Length < 6 ? 1 : 2);
+
         }
 
        

@@ -622,11 +622,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   hintBtn: {fileID: 11454012}
   letters:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
+  - {fileID: 11431276}
+  - {fileID: 11445478}
+  - {fileID: 11414996}
+  - {fileID: 11473742}
+  - {fileID: 11412022}
   tryBtn: {fileID: 11483674}
   nextBtn: {fileID: 11463348}
   soundBtn: {fileID: 11461958}
@@ -1350,7 +1350,7 @@ MonoBehaviour:
   m_ChildAlignment: 4
   m_StartCorner: 0
   m_StartAxis: 0
-  m_CellSize: {x: 270, y: 270}
+  m_CellSize: {x: 280.2, y: 270}
   m_Spacing: {x: 99.2, y: 0}
   m_Constraint: 0
   m_ConstraintCount: 2
@@ -2294,10 +2294,10 @@ RectTransform:
   m_Children: []
   m_Father: {fileID: 22488976}
   m_RootOrder: 0
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -0.000095559255, y: -430.20007}
-  m_SizeDelta: {x: 1921, y: 580}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 1, y: 0.40055403}
+  m_AnchoredPosition: {x: 0.49990845, y: 1.7999268}
+  m_SizeDelta: {x: 4, y: 2}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!224 &22472816
 RectTransform:

@@ -10,7 +10,7 @@ namespace Assets.Scripts.Levels.CompleteMissingVowel
 	public class CompleteMissingVowelView : LevelView
 	{
 
-		public Button[] vowelButtons;
+		public Toggle[] vowelButtons;
 		public Button nextButton;
 		public Button ticButton;
 
