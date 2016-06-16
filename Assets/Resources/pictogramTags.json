@@ -1,0 +1,56 @@
+{
+	"characters":{
+		"male":[
+		"mago","robot","aguila","caballo","camello","cangrejo","cerdo","cocodrilo",
+		"conejo","delfin","dragon","elefante","escarabajo","escorpion","gato","gorila",
+		"grillo","hipopotamo","koala","leon","loro","mono","mosquito","murcielago",
+		"ornitorrinco","oso","pato","pajaro","perro","pez","pinguino","pulpo","tiburon",
+		"tigre","toro","tucan","unicornio","yaguarete","zorro"
+		],
+		"female":[
+		"abuela","bruja","reina","sirena","abeja","araña","avispa","raton"
+		"gallina","ballena","hormiga","iguana","jirafa","libelula","lombriz",
+		"mariposa","momia","oruga","oveja","rana","raya","serpiente","tortuga","vaca"]
+
+	},
+	"objects":{
+
+		"male":[
+		"anillo","arpa","barrilete","boton","cartel","clavo","coco","crayon","dado",
+		"damasco","diamante","enchufe","espejo","flan","florero","globo","gorro","helado","hongo",
+		"hueso","huevo","iman","jabon","jamon","jarron","jugo","kiwi","lapiz","libro","limon","mapa",
+		"martillo","moño","nido","pan","pantalon","pincel","queso","regalo","reloj","sandwich","sombrero",
+		"tambor","televisor","telefono","tomate","tronco","vaso","violin","zapato","zapallo"
+		],
+		"female":[
+		"banana","bomba","bota","botella","brujula","camara","cebolla","empanada",
+		"escalera","escoba","espada","flauta","flecha","flor","frutilla","goma","guitarra","hoja",
+		"jaula","lampara","lechuga","lupa","manzana","moneda","naranja","nuez","pelota","pera",
+		"pipa","pluma","quena","radio","red","regla","rosa","sandia","sarten","silla","sopa",
+		"taza","torta","trompeta","tuerca","vela","zapatilla","zanahoria"]
+	},
+	"actions":["viajar","dormir","dibujar","jugar","limpiar","comer","coser","cocinar","beber","tejer","escribir","leer","pintar"],
+	"places":{
+		"male":["desierto","arbol","edificio","faro","auto","avion","tren","kiosco","iglu","laboratorio","volcan"],
+		"female":["playa","isla","casa","cancha","iglesia","montaña"]
+
+		},
+	"transport":{
+		"male":[
+		"bote","auto","avion","camion","helicoptero","kayak","submarino","tractor","tren"
+		],
+		"female":[
+		"bicicleta","moto",
+		]
+	},
+	"food":{
+		"male":["coco","damasco","flan","helado","huevo","jamon","kiwi","limon","pan","queso","sandwich","tomate","yogur","zapallo"],
+		"female":["cebolla","empanada","banana","frutilla","lechuga","manzana","naranja","nuez","pera","sandia","sopa","torta","zanahoria"]
+	},
+	"storage":{
+		"male":["cofre","arbol","auto","camion","iglu"],
+		"female":["isla","lata","mochila","casa","caja","olla"]
+	}
+
+
+}
