@@ -28,9 +28,9 @@ namespace Assets.Scripts.InGameMenu
 
 		public void OnClickRestartGame(){
 			PlayClickSound();
-			AppController.instance.RestartLvl();
 			ViewController.instance.HideInGameMenu ();
 			MetricsManager.instance.DiscardCurrentMetrics();
+			AppController.instance.RestartLvl();
 		}
 
 		public void OnClickBackToGame(){

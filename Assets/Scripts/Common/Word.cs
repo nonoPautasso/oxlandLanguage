@@ -34,6 +34,7 @@ namespace Assets.Scripts.Common {
 
 		public void PlayWord () {
 			SoundManager.instance.PlayClip(audio);
+
 		}
 
 		public string StartLetter () {

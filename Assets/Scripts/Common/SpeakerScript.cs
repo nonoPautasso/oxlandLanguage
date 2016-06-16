@@ -21,16 +21,17 @@ namespace Assets.Scripts.Levels
 
         public void PlaySound(int digits)
         {
-			soundButton.enabled = false;
-            animator.SetBool("isPlayingSound", true);        
-            Invoke("silence", digits == 1 ? 0.6f : 1.2f);          
+			//if (soundButton) {
+				soundButton.enabled = false;
+				animator.SetBool("isPlayingSound", true);        
+				Invoke("silence", digits == 1 ? 0.6f : 1.2f); 
+			//}         
         }
 
         void silence()
         {
 			soundButton.enabled = true;
            animator.SetBool("isPlayingSound", false);
-
         }
     }
 }
