@@ -32,9 +32,9 @@ namespace Assets.Scripts.Levels.ConsonantsVowels {
 				AddLevel (new List<string> (Words.GetVowels ()));
 			} else {
 				rounds = 3;
-				AddLevel (new List<string> {"C", "D", "G", "L", "M", "P", "S", "T"}, true);
-				AddLevel (new List<string> {"B", "F", "J", "N", "R" }, true);
-				AddLevel (new List<string> {"H", "K", "Q", "V", "W", "X", "Y", "Z"}, true);
+				AddLevel (new List<string> {"M", "P", "L", "S", "N", "D", "F", "B"}, true);
+				AddLevel (new List<string> {"M", "P", "L", "S", "N", "D", "F", "B"}, true);
+				AddLevel (new List<string> {"T", "R", "C", "Q", "CH", "H", "J"}, true);
 			}
 		}
 
