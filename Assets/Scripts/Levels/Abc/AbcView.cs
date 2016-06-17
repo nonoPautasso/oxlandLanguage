@@ -37,16 +37,21 @@ namespace Assets.Scripts.Levels.Abc {
 		}
 
 		public void SoundButtonClick(int index){
-			controller.SoundButtonClick (index);
+			if(soundButtons[index].image.sprite == originalSound) controller.SoundButtonClick (index);
 		}
 
 		public void WordPlayed (float duration) {
 			SoundButtonsEnabled (false);
+			Views.ButtonsEnabled (objects.ToArray (), false);
 			Invoke ("SoundFinished", duration);
 		}
 
 		public void SoundFinished(){
 			SoundButtonsEnabled (true);
+
+			foreach (Button obj in objects) {
+				if (soundButtons[objects.IndexOf (obj)].image.sprite == originalSound) obj.enabled = true;
+			}
 		}
 
 		private void SoundButtonsEnabled (bool enabled) {
