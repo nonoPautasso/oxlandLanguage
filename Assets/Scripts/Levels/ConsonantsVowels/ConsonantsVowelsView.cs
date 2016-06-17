@@ -73,6 +73,7 @@ namespace Assets.Scripts.Levels.ConsonantsVowels {
 		}
 
 		public void BubbleClick(int index){
+			RemoveHint ();
 			Button bubble = bubbles [index];
 			string letter = bubble.GetComponentInChildren<Text> ().text;
 			bool isCorrect = letters.Contains (letter);
@@ -93,13 +94,36 @@ namespace Assets.Scripts.Levels.ConsonantsVowels {
 			}
 		}
 
+		private void AddHint () {
+			DisableHint ();
+			foreach (Text letterText in letterTexts) {
+				if(letterText.text.Length == 0) {
+					letterText.text = immutableLetters [letterTexts.IndexOf (letterText)];
+					Color c = letterText.color;
+					letterText.color = new Color(c.r, c.g, c.b, 0.5f);
+				}
+			}
+		}
+
+		private void RemoveHint () {
+			EnableHint ();
+
+			foreach (Text letterText in letterTexts) {
+				if(letterText.color.a == 0.5) {
+					letterText.text = "";
+					Color c = letterText.color;
+					letterText.color = new Color(c.r, c.g, c.b, 1);
+				}
+			}
+		}
+
 		private void SetCorrect (string letter) {
 			letterTexts [immutableLetters.IndexOf (letter)].text = letter;
 		}
 
 		public override void ShowHint () {
-			DisableHint ();
 			controller.ShowHint ();
+			AddHint ();
 		}
 
 		public override void EndGame () { }
