@@ -155,6 +155,15 @@ namespace Assets.Scripts.Common {
 			return alphabet [letterNumber];
 		}
 
+		public static string RandomConsonant(){
+			string letter = RandomLetter ();
+			return Array.IndexOf (vowels, letter) != -1 ? RandomConsonant () : letter;
+		}
+
+		public static string RandomVowel(){
+			return vowels [Randomizer.RandomInRange (vowels.Length - 1)];
+		}
+
 		static bool IsAnyWordsEmpty (int letterNumber, int quantity) {
 			for (int i = 0; i < quantity; i++) {
 				List<Word> letterWords = words [alphabet [letterNumber + i]];
@@ -240,6 +249,18 @@ namespace Assets.Scripts.Common {
 				if (letter.ToUpper () == vowel.ToUpper ()) return true;
 			}
 			return false;
+		}
+
+		public static AudioClip GetPhonem (string letter) {
+			return Resources.Load<AudioClip>("Audio/" + I18n.Msg ("words.locale") + "/Phonemes/" + letter);
+		}
+
+		public static List<AudioClip> GetPhonemes (string word) {
+			List<AudioClip> audios = new List<AudioClip>();
+			foreach (char letter in word) {
+				audios.Add (Words.GetPhonem(letter.ToString ()));
+			}
+			return audios;
 		}
 	}
 }
