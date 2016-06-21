@@ -54,7 +54,7 @@ namespace Assets.Scripts.Levels.StartWithVowel {
 
 		public void SubmarineClick () {
 			string letter = Words.GetVowels()[model.GetCurrentPageNumber()];
-			AudioClip clip = Resources.Load<AudioClip>("Audio/" + I18n.Msg ("words.locale") + "/Letters/" + letter);
+			AudioClip clip = Resources.Load<AudioClip>("Audio/" + I18n.Msg ("words.locale") + "/Phonemes/" + letter);
 			SoundManager.instance.PlayClip(clip);
 		}
 
