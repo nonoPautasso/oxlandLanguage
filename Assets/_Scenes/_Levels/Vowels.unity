@@ -155,6 +155,7 @@ Canvas:
   m_ReceivesEvents: 1
   m_OverrideSorting: 0
   m_OverridePixelPerfect: 0
+  m_SortingBucketNormalizedSize: 0
   m_SortingLayerID: 0
   m_SortingOrder: 0
   m_TargetDisplay: 0
@@ -550,6 +551,10 @@ Prefab:
     - target: {fileID: 22480810, guid: 232f9156c3c4f0f41b9e787786d79b56, type: 2}
       propertyPath: m_Pivot.y
       value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 110744, guid: 232f9156c3c4f0f41b9e787786d79b56, type: 2}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 22430872, guid: 232f9156c3c4f0f41b9e787786d79b56, type: 2}
       propertyPath: m_AnchorMin.y

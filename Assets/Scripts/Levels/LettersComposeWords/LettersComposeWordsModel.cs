@@ -61,7 +61,8 @@ namespace Assets.Scripts.Levels.LettersComposeWords {
 			string word = rounds [currentRound].Name ();
 			List<string> result = new List<string> ();
 			foreach (char letter in word) {
-				if(!result.Contains (letter)) result.Add (letter);
+				//TODO: uncomment
+				//if(!result.Contains (letter)) result.Add (letter);
 			}
 			return result;
 		}

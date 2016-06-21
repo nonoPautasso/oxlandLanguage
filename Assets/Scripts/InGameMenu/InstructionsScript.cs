@@ -19,12 +19,12 @@ namespace Assets.Scripts.InGameMenu
 			currentLevel = AppController.instance.GetCurrentLevel ();
 			switch (SettingsController.instance.GetLanguage ()) {
 			case 0:
-				instructionText = AppController.instance.appModel.InstructionsSpanish [currentLevel];
-				instructionAudio = (AudioClip) Resources.Load ("AudiosConsignas/Castellano/" + (currentLevel+1));
+				instructionText = AppController.instance.appModel.InstructionsSpanish [currentLevel-1];
+				instructionAudio = (AudioClip) Resources.Load ("AudiosConsignas/Castellano/" + (currentLevel));
 				break;
 			case 1:
-				instructionText = AppController.instance.appModel.InstructionsEnglish [currentLevel];
-				instructionAudio =  (AudioClip) Resources.Load ("AudiosConsignas/English/" + (currentLevel+1)+"e");
+				instructionText = AppController.instance.appModel.InstructionsEnglish [currentLevel-1];
+				instructionAudio =  (AudioClip) Resources.Load ("AudiosConsignas/English/" + (currentLevel)+"e");
 				break;
 			}
 
