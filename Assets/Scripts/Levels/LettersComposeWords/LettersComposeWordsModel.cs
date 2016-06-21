@@ -58,11 +58,10 @@ namespace Assets.Scripts.Levels.LettersComposeWords {
 		}
 
 		public List<string> GetAnswer () {
-			string word = rounds [currentRound].Name ();
+			string word = rounds [currentRound - 1].Name ();
 			List<string> result = new List<string> ();
 			foreach (char letter in word) {
-				//TODO: tira error
-				if(!result.Contains (letter)) result.Add (letter);
+				if(!result.Contains (letter.ToString ())) result.Add (letter.ToString ());
 			}
 			return result;
 		}

@@ -4,6 +4,7 @@ using UnityEngine.UI;
 using System.Collections.Generic;
 using Assets.Scripts.Common;
 using UnityEngine;
+using UnityEngine.EventSystems;
 
 namespace Assets.Scripts.Levels.LettersComposeWords {
 	public class LettersComposeWordsView : LevelView {
@@ -14,10 +15,14 @@ namespace Assets.Scripts.Levels.LettersComposeWords {
 		public Image objImage;
 		public List<Button> clams;
 
+		private bool hintEnabled;
+		private int roundNumber;
+
 		private LettersComposeWordsController controller;
 
 		public void NextChallenge (Word word) {
 			EnableHint ();
+			hintEnabled = false;
 			Views.ButtonsEnabled (keyboard.ToArray (), true);
 			Views.ButtonsEnabled (clams.ToArray (), true);
 			ActiveButtons (true, false, true);
@@ -42,7 +47,7 @@ namespace Assets.Scripts.Levels.LettersComposeWords {
 		}
 
 		private void RedrawClams (List<string> current = null) {
-			Views.SetActiveButtons(clams, false);
+			if(!hintEnabled) Views.SetActiveButtons(clams, false);
 			if (current == null) {
 				foreach (Button clam in clams) clam.GetComponentInChildren <Text> ().text = "";
 				return;
@@ -70,7 +75,15 @@ namespace Assets.Scripts.Levels.LettersComposeWords {
 				}
 			}
 
+			if(hintEnabled) CheckHint ();
 			CheckTryBtn ();
+		}
+
+		private void CheckHint () {
+			for (int i = 0; i < clams.Count; i++) {
+				clams [i].gameObject.SetActive (i < roundNumber);
+				if(i >= roundNumber) clams[i].GetComponentInChildren <Text>().text = "";
+			}
 		}
 
 		private List<string> CurrentLetters () {
@@ -94,8 +107,10 @@ namespace Assets.Scripts.Levels.LettersComposeWords {
 		}
 
 		public void ClamClick(Button clam){
+			List<string> current = CurrentLetters ();
+			current.Remove (clam.GetComponentInChildren <Text>().text);
 			clam.GetComponentInChildren <Text>().text = "";
-			RedrawClams ();
+			RedrawClams (current);
 			CheckTryBtn ();
 		}
 
@@ -141,7 +156,12 @@ namespace Assets.Scripts.Levels.LettersComposeWords {
 		}
 
 		public void Hint (List<string> round) {
-			
+			hintEnabled = true;
+			roundNumber = round.Count;
+
+			for (int i = 0; i < clams.Count; i++) {
+				clams [i].gameObject.SetActive (i < roundNumber);
+			}
 		}
 
 		private List<string> CharList (string round) {
