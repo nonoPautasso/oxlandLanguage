@@ -1,6 +1,7 @@
 ﻿using System;
 using UnityEngine.UI;
 using UnityEngine;
+using System.Collections.Generic;
 
 namespace Assets.Scripts.Common {
 	public class Views {
@@ -25,6 +26,10 @@ namespace Assets.Scripts.Common {
 
 		public static void SetActiveButton(Button button, bool active){
 			button.gameObject.SetActive(active);
+		}
+
+		public static void SetActiveButtons (List<Button> buttons, bool active) {
+			foreach (Button button in buttons) button.gameObject.SetActive(active);
 		}
 
 		public static void SetButtonSprite(Button button, Sprite sprite){
