@@ -15,7 +15,7 @@ namespace Assets.Scripts.Levels.CountLetters {
 		public static int EASY_QUANTITY = 2;
 
 		private static List<int> EASY = new List<int>{3, 4};
-		private static List<int> HARD = new List<int>{5, 6, 7};
+		private static List<int> HARD = new List<int>{5, 6};
 		private static List<string> WORD_FILTER = new List<string>{"H", "LL", "Q", "W", "X", "K", "GUE", "GUI", "RR"};
 
 		private List<String> easyWords;

@@ -103,6 +103,7 @@ namespace Assets.Scripts.App{
 
 		private List<AudioClip> playingAudios;
 		private AudioClip currentAudio;
+		private int currentAudioIndex;
 		private Action action;
 
 		public void ConcatenateAudio(AudioClip audio, Action f){
@@ -119,14 +120,18 @@ namespace Assets.Scripts.App{
 		}
 
 		public void PlayCurrentAudios(){
-			if (currentAudio == null)
+			if (currentAudio == null) {
 				currentAudio = playingAudios [0];
-			else if (playingAudios.IndexOf (currentAudio) == playingAudios.Count - 1) {
+				currentAudioIndex = 0;
+			}
+			else if (currentAudioIndex == playingAudios.Count - 1) {
 				currentAudio = null;
 				action.Invoke ();
 				return;
-			} else
-				currentAudio = playingAudios [playingAudios.IndexOf (currentAudio) + 1];
+			} else {
+				currentAudioIndex++;
+				currentAudio = playingAudios [currentAudioIndex];
+			}
 
 			SoundManager.instance.PlayClip(currentAudio);
 			Invoke ("PlayCurrentAudios", currentAudio.length);

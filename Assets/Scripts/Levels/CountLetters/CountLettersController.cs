@@ -1,6 +1,8 @@
 ﻿using System;
 using Assets.Scripts.App;
 using System.Collections.Generic;
+using UnityEngine;
+using Assets.Scripts.Common;
 
 namespace Assets.Scripts.Levels.CountLetters {
 	public class CountLettersController : LevelController {
@@ -16,7 +18,15 @@ namespace Assets.Scripts.Levels.CountLetters {
 
 		public override void ShowHint () {
 			LogHint();
+
+			List<AudioClip> audios = new List<AudioClip> ();
+			Word word = model.GetCurrentWord ();
+			audios.Add (word.GetAudio ());
+			audios.AddRange (Words.GetPhonemes (word.Name ()));
+			SoundManager.instance.ConcatenateAudios (audios, AudioDone);
 		}
+
+		private void AudioDone () { }
 
 		public override void InitGame () {
 			MetricsManager.instance.GameStart();
@@ -35,18 +45,10 @@ namespace Assets.Scripts.Levels.CountLetters {
 			var isCorrect = model.IsCorrect (answer);
 			LogAnswer (isCorrect);
 			if (isCorrect) {
-				Correct ();
+				view.Correct (model.GetCurrentWord ());
 			} else {
-				Wrong ();
+				view.Wrong ();
 			}
-		}
-
-		private void Correct () {
-			view.Correct ();
-		}
-
-		private void Wrong () {
-			view.Wrong ();
 		}
 
 		public override void RestartGame () { Start(); }

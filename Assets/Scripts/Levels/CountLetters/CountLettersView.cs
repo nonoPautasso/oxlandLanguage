@@ -3,25 +3,43 @@ using Assets.Scripts.App;
 using UnityEngine.UI;
 using System.Collections.Generic;
 using Assets.Scripts.Common;
+using System.Xml;
 
 namespace Assets.Scripts.Levels.CountLetters {
 	public class CountLettersView : LevelView {
 		public List<Toggle> clams;
+		public List<Image> bubbles;
+		public List<Image> littleBubbles;
 		public Button tryBtn;
 		public Button nextBtn;
 		public Button soundBtn;
 		public Image objImage;
+
+		private List<int> playingBubbles;
 
 		private CountLettersController controller;
 
 		public void NextChallenge (Word word) {
 			EnableHint ();
 			objImage.sprite = word.Sprite ();
+			HideBubbles ();
 			Views.TogglesEnabled (clams.ToArray (), true);
 			Views.TogglesOff (clams.ToArray ());
 			ActiveButtons (true, false, true);
 			tryBtn.interactable = false;
 			controller.PlayWord ();
+		}
+
+		private void HideBubbles () {
+			foreach (Image littleBubble in littleBubbles) {
+				littleBubble.gameObject.SetActive (false);
+			}
+
+			foreach (Image bubble in bubbles) {
+				bubble.gameObject.SetActive (false);
+			}
+
+			playingBubbles = new List<int> ();
 		}
 
 		private void ActiveButtons (bool tryB, bool next, bool sound) {
@@ -30,7 +48,8 @@ namespace Assets.Scripts.Levels.CountLetters {
 			soundBtn.enabled = sound;
 		}
 
-		public void ToggleChange(){
+		public void ToggleChange(Toggle toggle){
+			if (toggle.isOn) PlayBubbles (clams.IndexOf (toggle));
 			foreach (Toggle clam in clams) {
 				if(clam.isOn){
 					tryBtn.interactable = true;
@@ -38,6 +57,18 @@ namespace Assets.Scripts.Levels.CountLetters {
 				}
 			}
 			tryBtn.interactable = false;
+		}
+
+		private void PlayBubbles (int index) {
+			littleBubbles [index].gameObject.SetActive (true);
+			playingBubbles.Add (index);
+			Invoke ("BubbleDone", 1f);
+		}
+
+		public void BubbleDone(){
+			int first = playingBubbles [0];
+			playingBubbles.Remove (first);
+			littleBubbles [first].gameObject.SetActive (false);
 		}
 
 		public void TryClick(){
@@ -62,11 +93,20 @@ namespace Assets.Scripts.Levels.CountLetters {
 			Views.TogglesOff (clams.ToArray ());
 		}
 
-		public void Correct(){
+		public void Correct(Word w){
 			PlayRightSound ();
 			DisableHint ();
 			Views.TogglesEnabled (clams.ToArray (), false);
 			ActiveButtons (false, true, false);
+			SetBubbles (w.Name ());
+		}
+
+		private void SetBubbles (string word) {
+			for (int i = 0; i < word.Length; i++) {
+				Image bubble = bubbles [i];
+				bubble.gameObject.SetActive (true);
+				bubble.GetComponentInChildren <Text>().text = word[i].ToString ();
+			}
 		}
 
 		public override void ShowHint () {
@@ -78,4 +118,3 @@ namespace Assets.Scripts.Levels.CountLetters {
 		public void Controller (CountLettersController controller) { this.controller = controller; }
 	}
 }
-

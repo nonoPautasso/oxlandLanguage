@@ -2047,10 +2047,10 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 11488200}
         m_MethodName: ToggleChange
-        m_Mode: 1
+        m_Mode: 2
         m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_ObjectArgument: {fileID: 11418500}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.UI.Toggle, UnityEngine.UI
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
@@ -2163,10 +2163,10 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 11488200}
         m_MethodName: ToggleChange
-        m_Mode: 1
+        m_Mode: 2
         m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_ObjectArgument: {fileID: 11423560}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.UI.Toggle, UnityEngine.UI
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
@@ -2789,10 +2789,10 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 11488200}
         m_MethodName: ToggleChange
-        m_Mode: 1
+        m_Mode: 2
         m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_ObjectArgument: {fileID: 11451732}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.UI.Toggle, UnityEngine.UI
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
@@ -3117,10 +3117,10 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 11488200}
         m_MethodName: ToggleChange
-        m_Mode: 1
+        m_Mode: 2
         m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_ObjectArgument: {fileID: 11459932}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.UI.Toggle, UnityEngine.UI
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
@@ -3285,10 +3285,10 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 11488200}
         m_MethodName: ToggleChange
-        m_Mode: 1
+        m_Mode: 2
         m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_ObjectArgument: {fileID: 11463966}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.UI.Toggle, UnityEngine.UI
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
@@ -3740,12 +3740,25 @@ MonoBehaviour:
   hintBtn: {fileID: 11407202}
   clams:
   - {fileID: 11463966}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
+  - {fileID: 11418500}
+  - {fileID: 11493222}
+  - {fileID: 11423560}
+  - {fileID: 11459932}
+  - {fileID: 11451732}
+  bubbles:
+  - {fileID: 11424292}
+  - {fileID: 11490854}
+  - {fileID: 11442262}
+  - {fileID: 11459834}
+  - {fileID: 11498526}
+  - {fileID: 11440818}
+  littleBubbles:
+  - {fileID: 11469844}
+  - {fileID: 11470714}
+  - {fileID: 11468968}
+  - {fileID: 11476178}
+  - {fileID: 11416878}
+  - {fileID: 11482676}
   tryBtn: {fileID: 11456162}
   nextBtn: {fileID: 11456178}
   soundBtn: {fileID: 11402116}
@@ -3881,10 +3894,10 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 11488200}
         m_MethodName: ToggleChange
-        m_Mode: 1
+        m_Mode: 2
         m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_ObjectArgument: {fileID: 11493222}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.UI.Toggle, UnityEngine.UI
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
@@ -4778,9 +4791,9 @@ RectTransform:
   m_Children:
   - {fileID: 22414888}
   - {fileID: 22481954}
+  - {fileID: 22452130}
   - {fileID: 22478062}
   - {fileID: 22450334}
-  - {fileID: 22452130}
   - {fileID: 22406836}
   m_Father: {fileID: 22430436}
   m_RootOrder: 2
@@ -4927,7 +4940,7 @@ RectTransform:
   m_Children:
   - {fileID: 22406262}
   m_Father: {fileID: 22438624}
-  m_RootOrder: 3
+  m_RootOrder: 4
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 389.6001, y: -0.000030517578}
@@ -4945,7 +4958,7 @@ RectTransform:
   m_Children:
   - {fileID: 22409538}
   m_Father: {fileID: 22438624}
-  m_RootOrder: 4
+  m_RootOrder: 2
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: -127.19995, y: -0.000030517578}
@@ -5286,7 +5299,7 @@ RectTransform:
   m_Children:
   - {fileID: 22415160}
   m_Father: {fileID: 22438624}
-  m_RootOrder: 2
+  m_RootOrder: 3
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 131.20016, y: -0.000030517578}
