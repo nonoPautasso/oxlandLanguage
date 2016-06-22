@@ -52,7 +52,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!1 &102926
 GameObject:
   m_ObjectHideFlags: 1
@@ -70,7 +70,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!1 &103018
 GameObject:
   m_ObjectHideFlags: 1
@@ -893,7 +893,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!1 &169540
 GameObject:
   m_ObjectHideFlags: 0
@@ -906,6 +906,7 @@ GameObject:
   - 114: {fileID: 11448678}
   - 114: {fileID: 11408892}
   - 95: {fileID: 9505634}
+  - 114: {fileID: 11499196}
   m_Layer: 5
   m_Name: soundButton
   m_TagString: Untagged
@@ -1355,7 +1356,7 @@ Animator:
   m_GameObject: {fileID: 169540}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: b3f093ce7388bb0458640ee61ecad685, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -1725,7 +1726,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: AB
+  m_Text: 
 --- !u!114 &11407124
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2969,7 +2970,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: _ _ EJA
+  m_Text: 
 --- !u!114 &11432582
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -3201,7 +3202,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: _ _ UELA
+  m_Text: 
 --- !u!114 &11436130
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -5316,7 +5317,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: "_ _ I\xD3N"
+  m_Text: 
 --- !u!114 &11493950
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -5431,6 +5432,19 @@ MonoBehaviour:
   m_FillAmount: 1
   m_FillClockwise: 1
   m_FillOrigin: 0
+--- !u!114 &11499196
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 169540}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6f4d89577378d4957a1bf06b3e7b0ede, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  animator: {fileID: 9505634}
+  soundButton: {fileID: 11408892}
 --- !u!114 &11499336
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -6010,10 +6024,10 @@ RectTransform:
   - {fileID: 22483624}
   m_Father: {fileID: 22449268}
   m_RootOrder: 28
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 0}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 1728, y: -244.54999}
+  m_SizeDelta: {x: 108.8, y: 115.2}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!224 &22405074
 RectTransform:
@@ -7237,10 +7251,10 @@ RectTransform:
   - {fileID: 22471680}
   m_Father: {fileID: 22449268}
   m_RootOrder: 27
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 0}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 1600, y: -244.54999}
+  m_SizeDelta: {x: 108.8, y: 115.2}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!224 &22494460
 RectTransform:
