@@ -42,17 +42,16 @@ namespace Assets.Scripts.App{
 //				"MayusMin","SplitSentences","IdentifyLettersInWords","ABCBonus","Syllables"
 //				};
 
-			levels = new string[]{"LettersComposeWords","CountLetters","StartWithVowel","CompleteVowel","OracionesPictogramas",
+			levels = new string[]{"CreateSentence","CountLetters","StartWithVowel","CompleteVowel","OracionesPictogramas",
 				"Consonants","ConsonantsOral","ABCWords","CompleteConsonant","ABCOrder",
-				"CountLetters","CombineSounds","SoundsInWords",
-				"LettersComposeWords","OrderLetters", "ListenAndWrite","FindError","CreateSentence",
+				"CountLetters","CombineSounds","SoundsInWords","LettersComposeWords","OrderLetters",
+				"ListenAndWrite","FindError","CreateSentence",
 				"MayusMin","SplitSentences","IdentifyLettersInWords","ABCBonus","Syllables"
 			};
 
-			instructions = new string[]{"VowelsInstructions","VowelsOralInstructions","StartWithVowelInstructions",
-				"CompleteVowelInstructions","ABCOrderInstructions","ABCWordsInstructions","ABCBonusInstructions",
-				"VowelsInstructions","VowelsInstructions","VowelsInstructions","VowelsInstructions","VowelsInstructions",
-				"VowelsInstructions","VowelsInstructions"};
+			instructions = new string[]{"VowelsInstructions","VowelsOralInstructions","StartWithVowelInstructions","CompleteVowelInstructions","ABCOrderInstructions",
+				"VowelsInstructions","ConsonantsOralInstructions","VowelsInstructions","VowelsInstructions","VowelsInstructions",
+				"VowelsInstructions","VowelsInstructions","VowelsInstructions","VowelsInstructions"};
 			LoadCover();
 		}
 

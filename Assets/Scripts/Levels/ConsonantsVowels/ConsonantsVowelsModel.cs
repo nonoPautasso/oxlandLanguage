@@ -34,7 +34,7 @@ namespace Assets.Scripts.Levels.ConsonantsVowels {
 				rounds = 3;
 				AddLevel (new List<string> {"M", "P", "L", "S", "N", "D", "F", "B"}, true);
 				AddLevel (new List<string> {"M", "P", "L", "S", "N", "D", "F", "B"}, true);
-				AddLevel (new List<string> {"T", "R", "C", "Q", "CH", "H", "J"}, true);
+				AddLevel (new List<string> {"T", "R", "C", "Q", "H", "J"}, true);
 			}
 		}
 
