@@ -272,5 +272,15 @@ namespace Assets.Scripts.Common {
 		public static List<AudioClip> GetAudios (List<Word> round) {
 			return round.ConvertAll ((Word w) => w.GetAudio ());
 		}
+
+		//Shit I have to iterate all words!
+		public static List<Word> WordsWithSuffix (string endSound) {
+			CheckLoadedWords ();
+			List<Word> result = new List<Word> ();
+			foreach (List<Word> letterWords in words.Values) {
+				result.AddRange (letterWords.FindAll ((Word w) => w.EndLetters (2) == endSound.ToUpper ()));
+			}
+			return result;
+		}
 	}
 }
