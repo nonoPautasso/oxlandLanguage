@@ -46,14 +46,14 @@ namespace Assets.Scripts.App{
 			//TEMPORARY ORDER FOR TESTING PURPOSES ONLY
 			levels = new string[]{"LettersComposeWords","CountLetters","IdentifyInitialSound","MemotestEnding","OracionesPictogramas",
 				"FindError","OrderWordsDictionary","ABCWords","CompleteConsonant","ABCOrder",
-				"CountLetters","CombineSounds","SoundsInWords","LettersComposeWords","OrderLetters",
+				"CombineSounds","CombineSounds","SoundsInWords","LettersComposeWords","OrderLetters",
 				"ListenAndWrite","FindError","CreateSentence",
 				"MayusMin","SplitSentences","IdentifyLettersInWords","ABCBonus","Syllables"
 			};
 
 			instructions = new string[]{"VowelsInstructions","VowelsOralInstructions","StartWithVowelInstructions","CompleteVowelInstructions","ABCOrderInstructions",
-				"VowelsInstructions","ConsonantsOralInstructions","VowelsInstructions","VowelsInstructions","VowelsInstructions",
-				"VowelsInstructions","VowelsInstructions","VowelsInstructions","VowelsInstructions"};
+				"ConsonantsInstructions","ConsonantsOralInstructions","ABCWordsInstructions","VowelsInstructions","ABCOrderInstructions",
+				"CountLettersInstructions","VowelsInstructions","VowelsInstructions","VowelsInstructions"};
 			LoadCover();
 		}
 

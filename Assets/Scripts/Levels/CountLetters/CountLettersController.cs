@@ -37,8 +37,9 @@ namespace Assets.Scripts.Levels.CountLetters {
 			NextChallenge ();
 		}
 
-		public void PlayWord () {
+		public string PlayWord () {
 			model.GetCurrentWord ().PlayWord ();
+			return model.GetCurrentWord ().Name();
 		}
 
 		public void Try (int answer) {

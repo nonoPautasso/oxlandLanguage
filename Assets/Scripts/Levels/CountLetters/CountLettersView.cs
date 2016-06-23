@@ -84,7 +84,9 @@ namespace Assets.Scripts.Levels.CountLetters {
 		}
 
 		public void SoundClick(){
-			controller.PlayWord ();
+			string word = controller.PlayWord ();
+			SpeakerScript.instance.PlaySound(word.Length < 6 ? 1 : 2);
+
 		}
 
 		public void Wrong () {

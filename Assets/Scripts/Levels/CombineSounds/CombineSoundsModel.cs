@@ -10,7 +10,7 @@ namespace Assets.Scripts.Levels.CombineSounds {
 
 		public static int ROUNDS = 7;
 
-		private static List<string> CONSONANT_FILTER = new List<string>{ "B", "V", "C", "K", "Q", "X", "Y", "Z", "H" };
+		private static List<string> CONSONANT_FILTER = new List<string>{ "B", "V", "C", "K", "Q", "X", "Y", "Z", "H","J","G","W" };
 
 		public override void StartGame () {
 			currentRound = 0;
