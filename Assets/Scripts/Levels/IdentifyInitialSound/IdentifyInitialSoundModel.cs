@@ -13,8 +13,6 @@ namespace Assets.Scripts.Levels.IdentifyInitialSound {
 		public static int ROUNDS = 7;
 		public static int WORDS_TO_SHOW = 3;
 
-		private static List<string> CONSONANT_FILTER = new List<string>{ "B", "V", "C", "K", "Q", "X", "Y", "Z", "H" };
-
 		public override void StartGame () {
 			currentRound = 0;
 

@@ -45,6 +45,10 @@ namespace Assets.Scripts.Common {
 			return Name ().Substring (0, quantity);
 		}
 
+		public string EndLetters (int quantity) {
+			return Name ().Substring (Name ().Length - quantity, quantity);
+		}
+
 		public float AudioLength () {
 			return audio.length;
 		}
