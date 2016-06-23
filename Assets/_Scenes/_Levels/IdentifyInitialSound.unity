@@ -160,7 +160,6 @@ Canvas:
   m_ReceivesEvents: 1
   m_OverrideSorting: 0
   m_OverridePixelPerfect: 0
-  m_SortingBucketNormalizedSize: 0
   m_SortingLayerID: 0
   m_SortingOrder: 0
   m_TargetDisplay: 0
@@ -407,10 +406,6 @@ Prefab:
     - target: {fileID: 22415564, guid: 6165cd8e3762a66448afe1d75fb47d3d, type: 2}
       propertyPath: m_Pivot.y
       value: 0.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 172348, guid: 6165cd8e3762a66448afe1d75fb47d3d, type: 2}
-      propertyPath: m_Name
-      value: IdentifyInitialSound
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 6165cd8e3762a66448afe1d75fb47d3d, type: 2}

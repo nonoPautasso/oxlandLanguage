@@ -38,7 +38,11 @@ namespace Assets.Scripts.Common {
 		}
 
 		public string StartLetter () {
-			return Name ().ToCharArray ()[0].ToString ();
+			return StartLetters (1);
+		}
+
+		public string StartLetters (int quantity) {
+			return Name ().Substring (0, quantity);
 		}
 
 		public float AudioLength () {

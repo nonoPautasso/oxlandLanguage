@@ -262,5 +262,15 @@ namespace Assets.Scripts.Common {
 			}
 			return audios;
 		}
+
+		public static List<Word> WordsWithPrefix (string startSound) {
+			CheckLoadedWords ();
+			List<Word> letterWords = words [startSound [0].ToString ()];
+			return letterWords.FindAll ((Word w) => w.StartLetters (2) == startSound.ToUpper ());
+		}
+
+		public static List<AudioClip> GetAudios (List<Word> round) {
+			return round.ConvertAll ((Word w) => w.GetAudio ());
+		}
 	}
 }
