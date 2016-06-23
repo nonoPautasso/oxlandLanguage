@@ -30,6 +30,7 @@ namespace Assets.Scripts.Levels.LettersComposeWords {
 
 		public void PlayWord () {
 			model.GetCurrentWord ().PlayWord ();
+			SpeakerScript.instance.PlaySound (2);
 			Invoke ("AudioDone", model.GetCurrentWord ().AudioLength ());
 		}
 

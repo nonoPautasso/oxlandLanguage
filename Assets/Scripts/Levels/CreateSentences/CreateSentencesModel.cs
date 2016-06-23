@@ -24,6 +24,7 @@ namespace Assets.Scripts.Levels.CreateSentences {
 			minSeconds = 15;
 			pointsPerError = 200;
 			pointsPerSecond = 13;
+			MetricsManager.instance.GameStart ();
 
 			LoadSentences();
 		}

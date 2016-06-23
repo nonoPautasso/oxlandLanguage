@@ -239,11 +239,6 @@ AnimationClip:
         inSlope: 0
         outSlope: 0
         tangentMode: 1
-      - time: 10
-        value: -36
-        inSlope: 0
-        outSlope: 0
-        tangentMode: 1
       m_PreInfinity: 2
       m_PostInfinity: 2
       m_RotationOrder: 4
@@ -449,11 +444,6 @@ AnimationClip:
         inSlope: 0
         outSlope: 0
         tangentMode: 1
-      - time: 10
-        value: -1381.4
-        inSlope: 0
-        outSlope: 0
-        tangentMode: 1
       m_PreInfinity: 2
       m_PostInfinity: 2
       m_RotationOrder: 4
@@ -513,7 +503,7 @@ AnimationClip:
     m_AdditiveReferencePoseClip: {fileID: 0}
     m_AdditiveReferencePoseTime: 0
     m_StartTime: 0
-    m_StopTime: 10
+    m_StopTime: 8.45
     m_OrientationOffsetY: 0
     m_Level: 0
     m_CycleOffset: 0
@@ -752,11 +742,6 @@ AnimationClip:
         inSlope: 0
         outSlope: 0
         tangentMode: 1
-      - time: 10
-        value: -36
-        inSlope: 0
-        outSlope: 0
-        tangentMode: 1
       m_PreInfinity: 2
       m_PostInfinity: 2
       m_RotationOrder: 4
@@ -962,11 +947,6 @@ AnimationClip:
         inSlope: 0
         outSlope: 0
         tangentMode: 1
-      - time: 10
-        value: -1381.4
-        inSlope: 0
-        outSlope: 0
-        tangentMode: 1
       m_PreInfinity: 2
       m_PostInfinity: 2
       m_RotationOrder: 4
@@ -1063,93 +1043,86 @@ AnimationClip:
     intParameter: 9
     messageOptions: 0
   - time: 6.3333335
-    functionName: 
-    data: 
-    objectReferenceParameter: {fileID: 0}
-    floatParameter: 0
-    intParameter: 0
-    messageOptions: 0
-  - time: 6.5
     functionName: StopAnimation
     data: 
     objectReferenceParameter: {fileID: 0}
     floatParameter: 0
     intParameter: 10
     messageOptions: 0
-  - time: 7.1666665
+  - time: 6.5
     functionName: StopAnimation
     data: 
     objectReferenceParameter: {fileID: 0}
     floatParameter: 0
     intParameter: 11
     messageOptions: 0
+  - time: 7.1666665
+    functionName: StopAnimation
+    data: 
+    objectReferenceParameter: {fileID: 0}
+    floatParameter: 0
+    intParameter: 12
+    messageOptions: 0
   - time: 7.3333335
-    functionName: 
-    data: 
-    objectReferenceParameter: {fileID: 0}
-    floatParameter: 0
-    intParameter: 0
-    messageOptions: 0
-  - time: 7.5333333
-    functionName: 
-    data: 
-    objectReferenceParameter: {fileID: 0}
-    floatParameter: 0
-    intParameter: 0
-    messageOptions: 0
-  - time: 7.8333335
     functionName: StopAnimation
     data: 
     objectReferenceParameter: {fileID: 0}
     floatParameter: 0
     intParameter: 13
     messageOptions: 0
-  - time: 7.9
-    functionName: 
-    data: 
-    objectReferenceParameter: {fileID: 0}
-    floatParameter: 0
-    intParameter: 0
-    messageOptions: 0
-  - time: 7.9666667
+  - time: 7.5333333
     functionName: StopAnimation
     data: 
     objectReferenceParameter: {fileID: 0}
     floatParameter: 0
     intParameter: 14
     messageOptions: 0
-  - time: 8.066667
-    functionName: 
-    data: 
-    objectReferenceParameter: {fileID: 0}
-    floatParameter: 0
-    intParameter: 0
-    messageOptions: 0
-  - time: 8.166667
+  - time: 7.8333335
     functionName: StopAnimation
     data: 
     objectReferenceParameter: {fileID: 0}
     floatParameter: 0
     intParameter: 15
     messageOptions: 0
-  - time: 8.3
+  - time: 7.9
     functionName: StopAnimation
     data: 
     objectReferenceParameter: {fileID: 0}
     floatParameter: 0
     intParameter: 16
     messageOptions: 0
-  - time: 8.45
-    functionName: 
+  - time: 7.9666667
+    functionName: StopAnimation
     data: 
     objectReferenceParameter: {fileID: 0}
     floatParameter: 0
-    intParameter: 0
+    intParameter: 17
     messageOptions: 0
-  - time: 10
-    functionName: 
+  - time: 8.066667
+    functionName: StopAnimation
     data: 
     objectReferenceParameter: {fileID: 0}
     floatParameter: 0
-    intParameter: 0
+    intParameter: 18
+    messageOptions: 0
+  - time: 8.166667
+    functionName: StopAnimation
+    data: 
+    objectReferenceParameter: {fileID: 0}
+    floatParameter: 0
+    intParameter: 19
+    messageOptions: 0
+  - time: 8.3
+    functionName: StopAnimation
+    data: 
+    objectReferenceParameter: {fileID: 0}
+    floatParameter: 0
+    intParameter: 20
+    messageOptions: 0
+  - time: 8.45
+    functionName: StopAnimation
+    data: 
+    objectReferenceParameter: {fileID: 0}
+    floatParameter: 0
+    intParameter: 21
     messageOptions: 0

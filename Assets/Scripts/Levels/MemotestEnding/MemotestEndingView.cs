@@ -27,7 +27,7 @@ namespace Assets.Scripts.Levels.MemotestEnding {
 		}
 
 		private void LoadCardSprites () {
-			cardStates = Resources.LoadAll <Sprite>("Sprites/Spanish/fichaMemotest");
+			cardStates = Resources.LoadAll <Sprite>("Sprites/fichaMemotest");
 		}
 
 		public void CardClick(Button card){

@@ -40,41 +40,57 @@ public class AppController : AppElement {
         private string GetLevelName(int level)
         {
 			
-            if (level < 6)
-            {
-                switch (level)
-                {
-				case 1: return "Vowels";
-				case 2: return "VowelsOral";
-				case 3: return "StartWithVowel";
-				case 4: return "CompleteVowel"; 
-				case 5: return "ABCOrder";
-                }
-            }
-            else if (level < 12)
-            {
-				switch (level)
-				{
-				case 6: return "ABCWords";
-				case 7: return "ABCBonus"; 
-					
-				case 8: return "Syllables";
-				case 9: return "WriteWords";
-				case 10: return "MayusMin";
-				case 11: return "CreateSentence";
+			if (level < 6) {
+				switch (level) {
+				case 1:
+					return "Vowels";
+				case 2:
+					return "VowelsOral";
+				case 3:
+					return "StartWithVowel";
+				case 4:
+					return "CompleteVowel"; 
+				case 5:
+					return "ABCOrder";
+				}
+			} else if (level < 12) {
+				switch (level) {
+				case 6:
+					return "ABCWords";
+				case 7:
+					return "ABCBonus"; 
+				case 8:
+					return "Syllables";
+				case 9:
+					return "WriteWords";
+				case 10:
+					return "MayusMin";
+				case 11:
+					return "CreateSentence";
 					
 				}
-            }
-            else {
-                switch (level)
-                {
-                    case 12: return "SplitSentences"; 
-                    case 13:
-                    case 14:
-                    case 15:
-                    case 16: return ""; 
-                }
-            }
+			} else if (level < 17) {
+				switch (level) {
+				case 12:
+					return "SplitSentences"; 
+				case 13:
+				case 14:
+				case 15:
+				case 16:
+					return ""; 
+		
+				}
+			} else {
+				switch (level) {
+					case 17:
+					case 18:
+					case 19:
+					case 20:
+					case 21:
+						return ""; 
+				}
+			}
+				
             return "Error";
         }
 

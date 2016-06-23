@@ -34,7 +34,7 @@ public class MainMenuView : MonoBehaviour {
 			SoundManager.instance.PlayMusic ();
 			if (SettingsController.instance.GetLanguage () == 0) {
 				welcomeText.text = "¡BIENVENIDO!";
-				vladimirText.text = "Soy Jacques Bulla";
+				vladimirText.text = "SOY JACQUES BULLA";
 			} else {
 				welcomeText.text = "WELCOME!";
 				vladimirText.text = "I'm Jacques Bulla";
@@ -42,7 +42,7 @@ public class MainMenuView : MonoBehaviour {
 
 
 			if (SettingsController.instance.GetMode () == 0) {
-				AppController.instance.SetMaxLevelPossible (16);
+				AppController.instance.SetMaxLevelPossible (21);
 			} else {
 				AppController.instance.SetMaxLevelPossible (GetMaxLevel ());
 				ResetSelectorPosition ();

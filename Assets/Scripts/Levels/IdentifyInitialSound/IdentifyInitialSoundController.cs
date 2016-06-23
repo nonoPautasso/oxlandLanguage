@@ -34,6 +34,7 @@ namespace Assets.Scripts.Levels.IdentifyInitialSound {
 			List<Word> round = model.GetCurrentRound ();
 			List<AudioClip> audios = Words.GetAudios (round);
 			SoundManager.instance.ConcatenateAudios (audios, AudioDone);
+			SpeakerScript.instance.PlaySound (6);
 		}
 
 		public void AudioDone(){

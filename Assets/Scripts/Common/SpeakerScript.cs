@@ -24,7 +24,7 @@ namespace Assets.Scripts.Levels
 			//if (soundButton) {
 				soundButton.enabled = false;
 				animator.SetBool("isPlayingSound", true);        
-				Invoke("silence", digits == 1 ? 0.6f : 1.2f); 
+			Invoke("silence", digits * 0.6f); 
 			//}         
         }
 
