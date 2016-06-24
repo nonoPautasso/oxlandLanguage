@@ -1,5 +1,6 @@
 ﻿using System;
 using Assets.Scripts.App;
+using Assets.Scripts.Common;
 
 namespace Assets.Scripts.Levels.OrderLetters {
 	public class OrderLettersController : LevelController {
@@ -25,7 +26,13 @@ namespace Assets.Scripts.Levels.OrderLetters {
 		}
 
 		public void PlayWord () {
-			model.GetCurrentWord ().PlayWord ();
+			Word word = model.GetCurrentWord ();
+			word.PlayWord ();
+			Invoke("AudioDone", word.AudioLength ());
+		}
+
+		public void AudioDone(){
+			view.AudioDone ();
 		}
 
 		public void Try (string answer) {

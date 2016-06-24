@@ -67,7 +67,12 @@ namespace Assets.Scripts.Levels.OrderLetters {
 		}
 
 		public void SoundClick(){
+			soundBtn.enabled = false;
 			controller.PlayWord ();
+		}
+
+		public void AudioDone () {
+			soundBtn.enabled = true;
 		}
 
 		public void Wrong (Word word) {
@@ -86,7 +91,7 @@ namespace Assets.Scripts.Levels.OrderLetters {
 		private void PaintAndDisableCorrect () {
 			clickEnabled = false;
 			foreach (Image slot in slots) {
-				slot.color = Color.green;
+				slot.color = new Color32(81,225,148,225);
 			}
 		}
 
