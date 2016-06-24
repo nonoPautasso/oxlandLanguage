@@ -61,6 +61,8 @@ namespace Assets.Scripts.Levels.LettersComposeWords {
 		}
 
 		public void KeyboardClick(string letter){
+			GameObject myEventSystem = GameObject.Find("EventSystem");
+			myEventSystem .GetComponent<UnityEngine.EventSystems.EventSystem>().SetSelectedGameObject(null);
 			List<string> current = CurrentLetters ();
 			if(current.Contains (letter)){
 				current.Remove (letter);

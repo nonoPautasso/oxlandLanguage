@@ -16,7 +16,7 @@ namespace Assets.Scripts.Levels.SoundsInWords {
 		private AudioClip syllable;
 		private Randomizer wordRandomizer;
 
-		public static int ROUNDS = 7;
+		public static int ROUNDS = 10;
 
 		public override void StartGame () {
 			currentRound = 0;

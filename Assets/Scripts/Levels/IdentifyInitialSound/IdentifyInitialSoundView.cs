@@ -96,7 +96,7 @@ namespace Assets.Scripts.Levels.IdentifyInitialSound {
 
 		public void AudioDone () {
 			soundBtn.enabled = true;
-			tryBtn.interactable = true;
+			CheckTryBtn ();
 		}
 
 		public void Wrong () {
