@@ -244,9 +244,37 @@ namespace Assets.Scripts.Common {
 			return result;
 		}
 
+		public static List<Word> GetWordsWithGreaterLength (int length) {
+			CheckLoadedWords ();
+			List<Word> result = new List<Word> ();
+
+			foreach (string letter in alphabet) {
+				foreach (Word word in words[letter]) {
+					if (RipSymbols(word.Name ()).Length >= length) result.Add (word);
+				}
+			}
+			return result;
+		}
+
+		public static List<Word> GetWordsWithLowerLength (int length) {
+			CheckLoadedWords ();
+			List<Word> result = new List<Word> ();
+
+			foreach (string letter in alphabet) {
+				foreach (Word word in words[letter]) {
+					if (RipSymbols(word.Name ()).Length <= length) result.Add (word);
+				}
+			}
+			return result;
+		}
+
+		public static bool IsConsonant(string letter) {
+			return GetConsonants ().Contains (letter);
+		}
+
 		public static bool IsVowel (string letter) {
 			foreach (string vowel in vowels) {
-				if (letter.ToUpper () == vowel.ToUpper ()) return true;
+				if (RipSymbols(letter.ToUpper ()) == vowel.ToUpper ()) return true;
 			}
 			return false;
 		}

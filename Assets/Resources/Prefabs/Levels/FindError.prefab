@@ -236,6 +236,8 @@ GameObject:
   - 224: {fileID: 22420536}
   - 222: {fileID: 22260790}
   - 114: {fileID: 11468904}
+  - 114: {fileID: 11476108}
+  - 114: {fileID: 11427798}
   m_Layer: 5
   m_Name: FindError
   m_TagString: Untagged
@@ -395,7 +397,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 11427798}
         m_MethodName: OnClickHintBtn
         m_Mode: 1
         m_Arguments:
@@ -469,12 +471,12 @@ MonoBehaviour:
     m_HighlightedTrigger: Highlighted
     m_PressedTrigger: Pressed
     m_DisabledTrigger: Disabled
-  m_Interactable: 0
+  m_Interactable: 1
   m_TargetGraphic: {fileID: 11428056}
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 11427798}
         m_MethodName: SoundClick
         m_Mode: 1
         m_Arguments:
@@ -613,7 +615,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 11427798}
         m_MethodName: OnClickMenuBtn
         m_Mode: 1
         m_Arguments:
@@ -653,6 +655,25 @@ MonoBehaviour:
   m_FillAmount: 1
   m_FillClockwise: 1
   m_FillOrigin: 0
+--- !u!114 &11427798
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 179958}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5aef8754901aa423491cba5f6d73dc0d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  hintBtn: {fileID: 11401800}
+  nextBtn: {fileID: 11477432}
+  tryBtn: {fileID: 11471630}
+  soundBtn: {fileID: 11408098}
+  obj: {fileID: 11446764}
+  toggles:
+  - {fileID: 11484318}
+  - {fileID: 11460106}
 --- !u!114 &11428056
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -788,7 +809,18 @@ MonoBehaviour:
   m_Group: {fileID: 11483694}
   onValueChanged:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 11427798}
+        m_MethodName: ToggleChange
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_TypeName: UnityEngine.UI.Toggle+ToggleEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
   m_IsOn: 0
@@ -912,7 +944,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 11427798}
         m_MethodName: TryClick
         m_Mode: 1
         m_Arguments:
@@ -925,6 +957,18 @@ MonoBehaviour:
         m_CallState: 2
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
+--- !u!114 &11476108
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 179958}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9f7496fca965040cbac542de0dd468b8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  view: {fileID: 11427798}
 --- !u!114 &11477432
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -964,7 +1008,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 11427798}
         m_MethodName: NextClick
         m_Mode: 1
         m_Arguments:
@@ -1057,7 +1101,18 @@ MonoBehaviour:
   m_Group: {fileID: 11483694}
   onValueChanged:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 11427798}
+        m_MethodName: ToggleChange
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_TypeName: UnityEngine.UI.Toggle+ToggleEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
   m_IsOn: 0
@@ -1255,7 +1310,7 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 22420536}
-  m_RootOrder: 3
+  m_RootOrder: 8
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 20, y: -407}
@@ -1274,7 +1329,7 @@ RectTransform:
   - {fileID: 22451782}
   - {fileID: 22486868}
   m_Father: {fileID: 22420536}
-  m_RootOrder: 8
+  m_RootOrder: 6
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
   m_AnchoredPosition: {x: 0.50012, y: -239.08}
@@ -1292,13 +1347,13 @@ RectTransform:
   m_Children:
   - {fileID: 22478176}
   - {fileID: 22488632}
-  - {fileID: 22443388}
-  - {fileID: 22401666}
   - {fileID: 22487240}
   - {fileID: 22480500}
   - {fileID: 22482284}
   - {fileID: 22457826}
   - {fileID: 22402816}
+  - {fileID: 22443388}
+  - {fileID: 22401666}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_AnchorMin: {x: 0, y: 0}
@@ -1334,7 +1389,7 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 22420536}
-  m_RootOrder: 2
+  m_RootOrder: 7
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 21, y: -408}
@@ -1370,7 +1425,7 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 22420536}
-  m_RootOrder: 7
+  m_RootOrder: 5
   m_AnchorMin: {x: 0.6312934, y: 0.77677715}
   m_AnchorMax: {x: 0.6312934, y: 0.77677715}
   m_AnchoredPosition: {x: 21.000092, y: 7.4999695}
@@ -1404,7 +1459,7 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 22420536}
-  m_RootOrder: 5
+  m_RootOrder: 3
   m_AnchorMin: {x: 0.46185035, y: 0.77677715}
   m_AnchorMax: {x: 0.46185035, y: 0.77677715}
   m_AnchoredPosition: {x: -2.999939, y: 7.4999695}
@@ -1421,7 +1476,7 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 22420536}
-  m_RootOrder: 6
+  m_RootOrder: 4
   m_AnchorMin: {x: 1, y: 1}
   m_AnchorMax: {x: 1, y: 1}
   m_AnchoredPosition: {x: -112.5, y: -111.50012}
@@ -1474,7 +1529,7 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 22420536}
-  m_RootOrder: 4
+  m_RootOrder: 2
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
   m_AnchoredPosition: {x: 113.50026, y: -111.50012}
