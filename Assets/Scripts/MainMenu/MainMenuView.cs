@@ -30,7 +30,8 @@ public class MainMenuView : MonoBehaviour {
 	private float[] selectorPositions;
 
 	void Start(){
-			selectorPositions = new float[] {0, 0.09f, 0.2835f, 0.385f, 0.4165f,0.45f,0.50f,0.565f,0.619f,0.65f,0.718f,0.75f,0.80f,0.816f,0.831f,0.85f};
+			//Positions in 
+			selectorPositions = new float[] {0, 0.09f, 0.2835f, 0.385f, 0.4165f,0.45f,0.50f,0.565f,0.619f,0.65f,0.718f,0.75f,0.80f,0.816f,0.831f,0.85f,};
 			SoundManager.instance.PlayMusic ();
 			if (SettingsController.instance.GetLanguage () == 0) {
 				welcomeText.text = "¡BIENVENIDO!";
