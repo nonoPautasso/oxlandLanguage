@@ -24,12 +24,20 @@ namespace Assets.Scripts.Common {
 			toggle.gameObject.SetActive(active);
 		}
 
+		public static void SetActiveToggles (List<Toggle> toggles, bool active) {
+			foreach (Toggle toggle in toggles) toggle.gameObject.SetActive(active);
+		}
+
 		public static void SetActiveButton(Button button, bool active){
 			button.gameObject.SetActive(active);
 		}
 
 		public static void SetActiveButtons (List<Button> buttons, bool active) {
 			foreach (Button button in buttons) button.gameObject.SetActive(active);
+		}
+
+		public static void SetActiveImages (List<Image> images, bool active) {
+			foreach (Image image in images) image.gameObject.SetActive(active);
 		}
 
 		public static void SetButtonSprite(Button button, Sprite sprite){

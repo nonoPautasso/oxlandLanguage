@@ -49,7 +49,10 @@ namespace Assets.Scripts.Levels.CountLetters {
 		}
 
 		public void ToggleChange(Toggle toggle){
-			if (toggle.isOn) PlayBubbles (clams.IndexOf (toggle));
+			if (toggle.isOn) {
+				PlayBubbles (clams.IndexOf (toggle));
+			}
+			SetEmptyBubbles ();
 			foreach (Toggle clam in clams) {
 				if(clam.isOn){
 					tryBtn.interactable = true;
@@ -57,6 +60,20 @@ namespace Assets.Scripts.Levels.CountLetters {
 				}
 			}
 			tryBtn.interactable = false;
+		}
+
+		private void SetEmptyBubbles () {
+			int count = 0;
+			foreach (Image bubble in bubbles) {
+				bubble.gameObject.SetActive (false);
+				bubble.GetComponentInChildren <Text>().text = "";
+			}
+			foreach (Toggle clam in clams) {
+				if(clam.isOn){
+					bubbles [count].gameObject.SetActive (true);
+					count++;
+				}
+			}
 		}
 
 		private void PlayBubbles (int index) {
@@ -104,10 +121,12 @@ namespace Assets.Scripts.Levels.CountLetters {
 		}
 
 		private void SetBubbles (string word) {
-			for (int i = 0; i < word.Length; i++) {
+			for (int i = 0; i < bubbles.Count; i++) {
 				Image bubble = bubbles [i];
-				bubble.gameObject.SetActive (true);
-				bubble.GetComponentInChildren <Text>().text = word[i].ToString ();
+				if (i < word.Length) {
+					bubble.gameObject.SetActive (true);
+					bubble.GetComponentInChildren <Text> ().text = word [i].ToString ();
+				} else bubble.gameObject.SetActive (false);
 			}
 		}
 
