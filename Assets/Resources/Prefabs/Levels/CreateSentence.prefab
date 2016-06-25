@@ -699,6 +699,7 @@ MonoBehaviour:
   wordsPanel: {fileID: 11482458}
   sentencePanel: {fileID: 11408148}
   tryBtn: {fileID: 11490792}
+  soundBtn: {fileID: 11484942}
   sentenceSentenceLines:
   - {fileID: 183798}
   wordsSentenceLines:
@@ -770,7 +771,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 11482678}
-        m_MethodName: TryClick
+        m_MethodName: SoundClick
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}

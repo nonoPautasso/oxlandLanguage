@@ -1,6 +1,7 @@
 ﻿using System;
 using Assets.Scripts.App;
 using System.Collections.Generic;
+using UnityEngine;
 
 namespace Assets.Scripts.Levels.CreateSentences {
 	public class CreateSentencesController : LevelController {
@@ -16,7 +17,6 @@ namespace Assets.Scripts.Levels.CreateSentences {
 
 		public override void ShowHint () {
 			LogHint();
-			PlaySentence ();
 		}
 
 		public override void InitGame () {
@@ -51,8 +51,14 @@ namespace Assets.Scripts.Levels.CreateSentences {
 			SoundManager.instance.ConcatenateAudio(model.GetSentenceAudio (), AudioDone);
 		}
 
-		private void PlaySentence () {
-			SoundManager.instance.PlayClip (model.GetSentenceAudio());
+		public void PlaySentence () {
+			AudioClip audioClip = model.GetSentenceAudio ();
+			SoundManager.instance.PlayClip (audioClip);
+			Invoke ("HintAudioDone", audioClip.length);
+		}
+
+		public void HintAudioDone(){
+			view.AudioDone ();
 		}
 
 		private void Wrong () {

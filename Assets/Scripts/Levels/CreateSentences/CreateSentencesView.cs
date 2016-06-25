@@ -11,6 +11,7 @@ namespace Assets.Scripts.Levels.CreateSentences {
 		public Image wordsPanel;
 		public Image sentencePanel;
 		public Button tryBtn;
+		public Button soundBtn;
 
 		public List<GameObject> sentenceSentenceLines;
 		public List<GameObject> wordsSentenceLines;
@@ -41,11 +42,12 @@ namespace Assets.Scripts.Levels.CreateSentences {
 
 			foreach (GameObject line in sentenceSentenceLines) {
 				foreach (Button word in line.GetComponentsInChildren <Button>()) {
-					Views.PaintButton (word, Color.green);
+					Views.PaintButton (word, new Color32(81,225,148,225));
 				}
 			}
 			
 			tryBtn.enabled = false;
+			soundBtn.interactable = false;
 		}
 
 		public GameObject GetWord(){
@@ -62,17 +64,34 @@ namespace Assets.Scripts.Levels.CreateSentences {
 
 		public void Wrong () {
 			PlayWrongSound ();
+			AllWordsDone ();
 		}
 
-		public void WordClick(GameObject word){
-			
+		private void AllWordsDone () {
+			foreach (GameObject word in words) {
+				if(word.transform.parent.parent == sentencePanel.transform) WordClick (word, true);
+			}
+		}
+
+		public void SoundClick(){
+			controller.PlaySentence ();
+			soundBtn.interactable = false;
+			tryBtn.enabled = false;
+		}
+
+		public void AudioDone () {
+			EnableHint ();
+			tryBtn.enabled = true;
+		}
+
+		public void WordClick(GameObject word, bool wrong = false){
 			if (word.transform.parent.parent == wordsPanel.transform) {
 				if (CanAddToSentence ()) {
-					PlaySoundClick ();
+					if(!wrong) PlaySoundClick ();
 					word.transform.SetParent (sentenceSentenceLines [0].transform, true);
 				}
 			} else {
-				PlaySoundClick ();
+				if(!wrong) PlaySoundClick ();
 				word.transform.SetParent (originalParents[words.IndexOf (word)]);
 			}
 		}
@@ -88,6 +107,7 @@ namespace Assets.Scripts.Levels.CreateSentences {
 		public override void ShowHint () {
 			DisableHint ();
 			controller.ShowHint ();
+			soundBtn.interactable = true;
 		}
 
 		public void NextChallenge (List<string> options) {
@@ -150,6 +170,7 @@ namespace Assets.Scripts.Levels.CreateSentences {
 			EnableHint ();
 
 			tryBtn.enabled = true;
+			soundBtn.interactable = false;
 		}
 
 		public void Controller (CreateSentencesController controller) { this.controller = controller; }
