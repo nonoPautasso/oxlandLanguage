@@ -4,6 +4,7 @@ using UnityEngine.UI;
 using System.Collections.Generic;
 using Assets.Scripts.Common;
 using System.Xml;
+using UnityEngine;
 
 namespace Assets.Scripts.Levels.CountLetters {
 	public class CountLettersView : LevelView {
@@ -50,7 +51,10 @@ namespace Assets.Scripts.Levels.CountLetters {
 
 		public void ToggleChange(Toggle toggle){
 			if (toggle.isOn) {
+				toggle.transform.GetChild (0).GetComponent <Image>().sprite = Resources.LoadAll<Sprite>("Sprites/shell")[1];
 				PlayBubbles (clams.IndexOf (toggle));
+			} else {
+				toggle.transform.GetChild (0).GetComponent <Image>().sprite = Resources.LoadAll<Sprite>("Sprites/shell")[0];
 			}
 			SetEmptyBubbles ();
 			foreach (Toggle clam in clams) {
