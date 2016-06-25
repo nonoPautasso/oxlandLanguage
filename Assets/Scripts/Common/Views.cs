@@ -40,6 +40,10 @@ namespace Assets.Scripts.Common {
 			foreach (Image image in images) image.gameObject.SetActive(active);
 		}
 
+		public static void SetActiveImage (Image image, bool active) {
+			image.gameObject.SetActive(active);
+		}
+
 		public static void SetButtonSprite(Button button, Sprite sprite){
 			button.GetComponentInChildren<Image>().sprite = sprite;
 		}
