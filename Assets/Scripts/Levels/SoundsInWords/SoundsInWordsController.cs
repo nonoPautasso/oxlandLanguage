@@ -1,5 +1,6 @@
 ﻿using System;
 using Assets.Scripts.App;
+using UnityEngine;
 
 namespace Assets.Scripts.Levels.SoundsInWords {
 	public class SoundsInWordsController : LevelController {
@@ -15,6 +16,7 @@ namespace Assets.Scripts.Levels.SoundsInWords {
 
 		public override void ShowHint () {
 			LogHint();
+			view.Hint (model.GetWordSyllables ());
 		}
 
 		public override void InitGame () {
@@ -27,7 +29,13 @@ namespace Assets.Scripts.Levels.SoundsInWords {
 		}
 
 		public void PlaySyllable () {
-			SoundManager.instance.PlayClip (model.GetSyllable ());
+			AudioClip clip = model.GetSyllable ();
+			SoundManager.instance.PlayClip (clip);
+			Invoke ("AudioDone", clip.length);
+		}
+
+		public void AudioDone(){
+			view.AudioDone ();
 		}
 
 		public void Try (string answer) {

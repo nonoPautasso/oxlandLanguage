@@ -13,6 +13,7 @@ namespace Assets.Scripts.Levels.SoundsInWords {
 		public Button soundBtn;
 		public Toggle rubber;
 		public Image objImage;
+		public Text hint;
 
 		private static Color DEFAULT_COLOR = Color.cyan;
 		private bool paintMode;
@@ -21,6 +22,7 @@ namespace Assets.Scripts.Levels.SoundsInWords {
 
 		public void NextChallenge (Word word) {
 			EnableHint ();
+			hint.gameObject.SetActive (false);
 			objImage.sprite = word.Sprite ();
 			TogglesEnabled (letters, false);
 			UnPaintLetters ();
@@ -70,6 +72,11 @@ namespace Assets.Scripts.Levels.SoundsInWords {
 
 		public void SoundClick(){
 			controller.PlaySyllable ();
+			soundBtn.enabled = false;
+		}
+
+		public void AudioDone () {
+			soundBtn.enabled = true;
 		}
 
 		public void Wrong () {
@@ -103,6 +110,15 @@ namespace Assets.Scripts.Levels.SoundsInWords {
 		public override void ShowHint () {
 			DisableHint ();
 			controller.ShowHint ();
+		}
+
+		public void Hint (List<AudioClip> syllables) {
+			hint.gameObject.SetActive (true);
+			string h = "";
+			foreach (AudioClip syllable in syllables) {
+				h += syllable.name.ToUpper () + " ";
+			}
+			hint.text = h;
 		}
 
 		private void CheckTry () {

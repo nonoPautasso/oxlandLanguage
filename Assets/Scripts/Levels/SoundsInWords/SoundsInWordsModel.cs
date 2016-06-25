@@ -54,7 +54,7 @@ namespace Assets.Scripts.Levels.SoundsInWords {
 
 		private void SetRandomSyllable () {
 			List<string> syllables = words [word.Name ().ToLower ()];
-			syllable = Words.SyllableClip (syllables [Randomizer.RandomInRange (syllables.Count - 1)]);
+			syllable = Words.SyllableClip (syllables [Randomizer.New(syllables.Count - 1).Next ()]);
 		}
 
 		public List<AudioClip> GetWordSyllables () {
