@@ -26,7 +26,9 @@ namespace Assets.Scripts.Levels.CountLetters {
 			SoundManager.instance.ConcatenateAudios (audios, AudioDone);
 		}
 
-		private void AudioDone () { }
+		private void AudioDone () {
+			view.AudioDone ();
+		}
 
 		public override void InitGame () {
 			MetricsManager.instance.GameStart();

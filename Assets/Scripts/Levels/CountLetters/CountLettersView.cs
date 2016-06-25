@@ -136,7 +136,12 @@ namespace Assets.Scripts.Levels.CountLetters {
 
 		public override void ShowHint () {
 			DisableHint ();
+			tryBtn.interactable = false;
 			controller.ShowHint ();
+		}
+
+		public void AudioDone () {
+			tryBtn.interactable = true;
 		}
 
 		public override void EndGame () { }
