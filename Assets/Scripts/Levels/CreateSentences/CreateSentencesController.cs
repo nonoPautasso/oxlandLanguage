@@ -38,7 +38,7 @@ namespace Assets.Scripts.Levels.CreateSentences {
 		}
 
 		public void AudioDone(){
-			NextChallenge ();
+			view.CorrectAudioDone ();
 		}
 
 		private void Correct () {

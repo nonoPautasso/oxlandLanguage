@@ -100,6 +100,15 @@ namespace Assets.Scripts.Levels.FindError {
 		public void SoundClick(){
 			PlaySoundClick ();
 			controller.PlaySound ();
+			soundBtn.enabled = false;
+			tryBtn.interactable = false;
+			Views.TogglesEnabled (toggles.ToArray (), false);
+		}
+
+		public void AudioDone () {
+			soundBtn.enabled = true;
+			Views.TogglesEnabled (toggles.ToArray (), true);
+			CheckTry ();
 		}
 
 		public void Correct(){

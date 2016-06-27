@@ -25,4 +25,11 @@ public class CircleLetterSlot : MonoBehaviour, IDropHandler, IPointerClickHandle
 			view.CheckTry ();
 		}
 	}
+
+	public void Target(GameObject t){
+		target = t;
+		GetComponentInChildren <Text> ().text = target.GetComponentInChildren <Text> ().text;
+		target.SetActive (false);
+		view.CheckTry ();
+	}
 }

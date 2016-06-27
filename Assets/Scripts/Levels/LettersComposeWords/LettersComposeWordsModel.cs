@@ -11,9 +11,9 @@ namespace Assets.Scripts.Levels.LettersComposeWords {
 
 		public static int ROUNDS = 7;
 
-		const int MIN_LENGTH = 4;
+		const int MIN_LENGTH = 5;
 
-		const int MAX_LENGTH = 6;
+		const int MAX_ANSWER_LENGTH = 6;
 
 		public override void StartGame () {
 			currentRound = 0;
@@ -31,7 +31,7 @@ namespace Assets.Scripts.Levels.LettersComposeWords {
 				Word round = Words.GetRandomWord ();
 				if (!rounds.Contains(round) && 
 					round.Name ().Length >= MIN_LENGTH && 
-					round.Name ().Length <= MAX_LENGTH && 
+					GetAnswer (round.Name ()).Count <= MAX_ANSWER_LENGTH && 
 					Words.RipSymbols (round.Name ()) == round.Name ()) {
 						rounds.Add (round);
 				}
@@ -59,6 +59,14 @@ namespace Assets.Scripts.Levels.LettersComposeWords {
 
 		public List<string> GetAnswer () {
 			string word = rounds [currentRound - 1].Name ();
+			List<string> result = new List<string> ();
+			foreach (char letter in word) {
+				if(!result.Contains (letter.ToString ())) result.Add (letter.ToString ());
+			}
+			return result;
+		}
+
+		public List<string> GetAnswer(string word){
 			List<string> result = new List<string> ();
 			foreach (char letter in word) {
 				if(!result.Contains (letter.ToString ())) result.Add (letter.ToString ());

@@ -1,5 +1,6 @@
 ﻿using System;
 using Assets.Scripts.App;
+using Assets.Scripts.Common;
 
 namespace Assets.Scripts.Levels.FindError {
 	public class FindErrorController : LevelController {
@@ -15,7 +16,13 @@ namespace Assets.Scripts.Levels.FindError {
 		}
 
 		public void PlaySound () {
-			model.GetCurrentRound ().PlayWord ();
+			Word word = model.GetCurrentRound ();
+			word.PlayWord ();
+			Invoke ("AudioDone", word.AudioLength ());
+		}
+
+		public void AudioDone(){
+			view.AudioDone ();
 		}
 
 		public override void ShowHint () {

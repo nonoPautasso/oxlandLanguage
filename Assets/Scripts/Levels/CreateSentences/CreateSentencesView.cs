@@ -12,6 +12,7 @@ namespace Assets.Scripts.Levels.CreateSentences {
 		public Image sentencePanel;
 		public Button tryBtn;
 		public Button soundBtn;
+		public Button nextBtn;
 
 		public List<GameObject> sentenceSentenceLines;
 		public List<GameObject> wordsSentenceLines;
@@ -34,6 +35,16 @@ namespace Assets.Scripts.Levels.CreateSentences {
 			controller.Try (result);
 		}
 
+		public void NextClick(){
+			tryBtn.gameObject.SetActive (true);
+			nextBtn.gameObject.SetActive (false);
+			controller.NextChallenge ();
+		}
+
+		public void CorrectAudioDone () {
+			nextBtn.interactable = true;
+		}
+
 		public void Correct () {
 			DisableHint ();
 			foreach (GameObject word in words) {
@@ -46,7 +57,9 @@ namespace Assets.Scripts.Levels.CreateSentences {
 				}
 			}
 			
-			tryBtn.enabled = false;
+			tryBtn.gameObject.SetActive (false);
+			nextBtn.gameObject.SetActive (true);
+			nextBtn.interactable = false;
 			soundBtn.interactable = false;
 		}
 

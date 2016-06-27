@@ -16,12 +16,19 @@ namespace Assets.Scripts.Levels.CompleteConsonant {
 
 		public void NextChallenge (Word word, List<string> letters, List<string> answer) {
 			EnableHint ();
+			UnpaintLetters ();
 			objImage.sprite = word.Sprite ();
 			nextBtn.interactable = true;
 			ActiveButtons (true, false, true);
 			tryBtn.interactable = false;
 			SetWord (word.Name (), answer);
 			SetLetters (letters);
+		}
+
+		private void UnpaintLetters () {
+			foreach (Toggle letter in letters) {
+				letter.image.color = Color.white;
+			}
 		}
 
 		void SetWord (string word, List<string> answer) {
@@ -56,9 +63,7 @@ namespace Assets.Scripts.Levels.CompleteConsonant {
 		}
 
 		public void ToggleChange(){
-			foreach (Toggle letter in letters) {
-				letter.image.color = Color.white;
-			}
+			UnpaintLetters ();
 
 			foreach (Toggle letter in letters) {
 				if(letter.isOn){
@@ -108,6 +113,7 @@ namespace Assets.Scripts.Levels.CompleteConsonant {
 			DisableHint ();
 			Views.TogglesEnabled (letters.ToArray (), false);
 			ActiveButtons (false, true, false);
+			Views.TogglesOff (letters.ToArray ());
 			PaintToggles (indexes, new Color32(81,225,148,225));
 		}
 

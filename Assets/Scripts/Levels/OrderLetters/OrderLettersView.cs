@@ -100,6 +100,26 @@ namespace Assets.Scripts.Levels.OrderLetters {
 			controller.ShowHint ();
 		}
 
+		public void Hint (Word word) {
+			string w = word.Name ();
+			for (int i = 0; i < w.Length; i++) {
+				if (slots [i].GetComponentInChildren <Text> ().text == ""){
+					if (TryToDrop (w [i], slots[i]))
+						return;
+				}
+			}
+		}
+
+		private bool TryToDrop (char letter, Image slot) {
+			foreach (Button l in letters) {
+				if(l.IsActive () && l.GetComponentInChildren <Text>().text == letter.ToString ()){
+					slot.GetComponentInChildren <CircleLetterSlot>().Target (l.gameObject);
+					return true;
+				}
+			}
+			return false;
+		}
+
 		public void CheckTry () {
 			foreach (Image slot in slots) {
 				if (slot.GetComponentInChildren<Text>().text.Length > 0) {

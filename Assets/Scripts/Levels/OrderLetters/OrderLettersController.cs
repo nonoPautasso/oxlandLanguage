@@ -14,7 +14,10 @@ namespace Assets.Scripts.Levels.OrderLetters {
 			view.NextChallenge (model.GetCurrentWord ());
 		}
 
-		public override void ShowHint () { LogHint (); }
+		public override void ShowHint () {
+			LogHint ();
+			view.Hint (model.GetCurrentWord ());
+		}
 
 		public override void InitGame () {
 			MetricsManager.instance.GameStart();
