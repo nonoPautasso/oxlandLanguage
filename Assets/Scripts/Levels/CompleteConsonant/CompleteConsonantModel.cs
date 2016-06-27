@@ -60,6 +60,7 @@ namespace Assets.Scripts.Levels.CompleteConsonant {
 			if (EASY_QUANTITY == currentRound) LoadWords ("hard");
 			var index = wordRandomizer.Next ();
 			currentWord = Words.GetWord (words[index]);
+
 			answer = answers [index];
 			SetLetters();
 			currentRound++;
