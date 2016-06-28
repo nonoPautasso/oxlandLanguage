@@ -8,6 +8,7 @@ using System.Linq;
 using I18N;
 using System.Text.RegularExpressions;
 using System.Text;
+using SimpleJSON;
 
 namespace Assets.Scripts.Common {
 	public class Words {
@@ -32,17 +33,38 @@ namespace Assets.Scripts.Common {
 		private static void LoadAllWords() {
 			words = new Dictionary<string, List<Word>>();
 			CheckAlphabet ();
-			int count = 0;
 			currentPath = CurrentPath ();
+			JSONClass allWordsJson = GetAllWordsObject (I18n.Msg ("words.allWordsJson"));
 			foreach (string letter in alphabet) {
+				int count = 0;
 				List<Word> l = new List<Word>();
 				List<AudioClip> audioFiles = Resources.LoadAll<AudioClip>(currentPath + letter + "Words/").ToList ();
 				foreach (AudioClip audio in audioFiles) {
-					l.Add (new Word(audio, count));
+					if (allWordsJson == null)
+						l.Add (new Word (audio, count));
+					else
+						l.Add (new Word (audio, count, GetRealWordWrite (allWordsJson, audio)));
 					count++;
 				}
 				words [letter] = l;
 			}
+		}
+
+		private static string GetRealWordWrite (JSONClass allWordsJson, AudioClip audio) {
+			JSONClass word = allWordsJson [audio.name.ToLower ()] as JSONClass;
+			if (word == null) {
+				Debug.Log ("HOLA MARY YO NO ESTOY EN EL JSON! : " + audio.name);
+				return null;
+			}
+			return word ["word"].Value;
+		}
+
+		private static JSONClass GetAllWordsObject (string allWords) {
+			if(allWords != ""){
+				TextAsset json = Resources.Load<TextAsset> (allWords);
+				return (JSON.Parse (json.text) as JSONClass)["wordsSpanish"] as JSONClass;
+			}
+			return null;
 		}
 
 		private static void LoadSyllables () {

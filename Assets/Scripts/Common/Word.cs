@@ -7,16 +7,18 @@ using I18N;
 namespace Assets.Scripts.Common {
 	public class Word : IEquatable<Word> {
 		private int spriteNumber;
+		private string realWriteName;
 
 		private AudioClip audio;
 		
-		public Word(AudioClip audio, int spriteNumber) {
+		public Word(AudioClip audio, int spriteNumber, string realWriteName = null) {
 			this.audio = audio;
 			this.spriteNumber = spriteNumber;
+			this.realWriteName = realWriteName;
 		}
 
 		public string Name(){
-			return audio.name.ToUpper ();
+			return realWriteName == null ? audio.name.ToUpper () : realWriteName.ToUpper ();
 		}
 
 		public int SpriteNumber(){
@@ -28,7 +30,7 @@ namespace Assets.Scripts.Common {
 		}
 
 		public Sprite Sprite () {
-			Sprite[] s = Resources.LoadAll<Sprite>("Sprites/" + I18n.Msg ("words.spritePath"));
+			Sprite[] s = Resources.LoadAll<Sprite>("Sprites/" + I18n.Msg ("words.locale") + "/Separadas/" + StartLetter ().ToLower ());
 			return s[spriteNumber];
 		}
 
