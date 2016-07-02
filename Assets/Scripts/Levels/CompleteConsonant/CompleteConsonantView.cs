@@ -108,13 +108,14 @@ namespace Assets.Scripts.Levels.CompleteConsonant {
 			}
 		}
 
-		public void Correct(List<int> indexes){
+		public void Correct(List<int> indexes, string word){
 			PlayRightSound ();
 			DisableHint ();
 			Views.TogglesEnabled (letters.ToArray (), false);
 			ActiveButtons (false, true, false);
 			Views.TogglesOff (letters.ToArray ());
 			PaintToggles (indexes, new Color32(81,225,148,225));
+			txt.text = word;
 		}
 
 		public override void ShowHint () {

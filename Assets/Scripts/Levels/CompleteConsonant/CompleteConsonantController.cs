@@ -43,7 +43,7 @@ namespace Assets.Scripts.Levels.CompleteConsonant {
 			var isCorrect = model.IsCorrect (answers);
 			LogAnswer (isCorrect);
 			if (isCorrect) {
-				view.Correct (answers);
+				view.Correct (answers, model.GetCurrentWord ().Name ());
 			} else {
 				view.Wrong (answers);
 			}
