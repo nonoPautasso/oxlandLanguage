@@ -1,58 +1,50 @@
 {
 	"structures":[
 		{
-		"structure":["article","characters","conector","actions","locationConector","places"],
+		"structure":["article","characters","conector","actions","locationArticle","places"],
 		"article":{
 			"male":"al",
-			"female":"a|la"
+			"female":"a la"
 		},
 		"conector":"le gusta",
-		"locationConector":{
-			"male":"en|el",
-			"female":"en|la"
+		"locationArticle":{
+			"male":"en el",
+			"female":"en la"
 		}
 		},
 		{
-		"structure":["article","characters","conector","food","locationConector","places"],
+		"structure":["article","characters","conector","quantityArticle","food","locationArticle","places"],
 		"article":{
 			"male":"el",
 			"female":"la"
 		},
 		"conector":"come",
-		"locationConector":{
-			"male":"en|el",
-			"female":"en|la"
-		}
-		},
-		{
-		"structure":["article","characters","conector","objects","locationConector","places"],
-		"article":{
-			"male":"el",
-			"female":"la"
-		},
-		"conector":"usa","ve"
-		"locationConector":{
-			"male":"en|el",
-			"female":"en|la"
-		}
-		},
-		{
-		"structure":["article","places","conector","objects","quantityArticle","characters"],
-		"article":{
-			"male":"el",
-			"female":"la"
-		},
-		"conector":"tiene",
 		"quantityArticle":{
 			"male":"un",
 			"female":"una"
+		},
+		"locationArticle":{
+			"male":"en el",
+			"female":"en la"
 		}
 		},
 		{
-		"structure":["locationConector","transport","verbConector","quantityArticle","characters","conector","quantityArticle","characters"],
-		"locationConector":{
-			"male":"en|el",
-			"female":"en|la"
+		"structure":["article","characters","conector","article","objects","locationArticle","places"],
+		"article":{
+			"male":"un",
+			"female":"una"
+		},
+		"conector":"vio",
+		"locationArticle":{
+			"male":"en el",
+			"female":"en la"
+		}
+		},
+		{
+		"structure":["locationArticle","transport","verbConector","quantityArticle","characters","conector","quantityArticle","characters"],
+		"locationArticle":{
+			"male":"en el",
+			"female":"en la"
 		},
 		"verbConector":"viajan",
 		"quantityArticle":{
@@ -62,10 +54,10 @@
 		"conector":"y"
 		},
 		{
-		"structure":["locationConector","storage","verbConector","quantityArticle","objects","conector","quantityArticle","objects"],
-		"locationConector":{
-			"male":"en|un",
-			"female":"en|una"
+		"structure":["locationArticle","storage","verbConector","quantityArticle","objects","conector","quantityArticle","objects"],
+		"locationArticle":{
+			"male":"en un",
+			"female":"en una"
 		},
 		"verbConector":"encontramos",
 		"quantityArticle":{

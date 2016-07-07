@@ -20,12 +20,13 @@ namespace Assets.Scripts.Common {
 
 		//alphabet letter -> list of tuples including audio clip of word and sprite number.
 		private static Dictionary<string, List<Word>> words;
-
+		private static Dictionary<string, List<Word>> extraWords;
 		private static Dictionary<string, List<AudioClip>> syllables;
 
 		static Words(){
 			LoadAllWords();
 			LoadSyllables ();
+			LoadExtraWords ();
 		}
 
 		private Words () { }
@@ -50,8 +51,46 @@ namespace Assets.Scripts.Common {
 			}
 		}
 
-		private static string GetRealWordWrite (JSONClass allWordsJson, AudioClip audio) {
-			JSONClass word = allWordsJson [audio.name.ToLower ()] as JSONClass;
+		private static void LoadExtraWords () {
+			extraWords = new Dictionary<string, List<Word>>();
+			currentPath = CurrentPath ();
+			JSONClass extraWordsJson = GetExtraWordsObject (I18n.Msg ("words.allWordsJson"));
+
+			List<AudioClip> extraWordsClips = Resources.LoadAll<AudioClip>(currentPath + "Pictograms/ExtraWords/").ToList ();
+			foreach (AudioClip extraWordAudio in extraWordsClips) {
+				string firstLetter = extraWordAudio.name.ToCharArray ()[0].ToString ().ToUpper ();
+				if(!extraWords.ContainsKey (firstLetter)){
+					extraWords [firstLetter] = new List<Word> ();
+				}
+
+
+				JSONClass word = extraWordsJson [extraWordAudio.name.ToLower ()] as JSONClass;
+				if (word == null) {
+					Debug.Log ("HOLA GUTE YO NO ESTOY EN EL JSON! : " + extraWordAudio.name);
+
+				}
+
+				extraWords [firstLetter].Add (new Word (extraWordAudio, GetWord(word ["position"].Value).SpriteNumber(), GetRealWordWrite (extraWordsJson, extraWordAudio)));
+			}
+
+		}
+
+		private static void LoadSyllables () {
+			syllables = new Dictionary<string, List<AudioClip>>();
+			currentPath = CurrentPath ();
+			List<AudioClip> syllablesClips = Resources.LoadAll<AudioClip>(currentPath + "Syllables/").ToList ();
+			foreach (AudioClip syllable in syllablesClips) {
+				string firstLetter = syllable.name.ToCharArray ()[0].ToString ().ToUpper ();
+				if(!syllables.ContainsKey (firstLetter)){
+					syllables [firstLetter] = new List<AudioClip> ();
+				}
+				syllables [firstLetter].Add (syllable);
+			}
+		}
+
+
+		private static string GetRealWordWrite (JSONClass wordsJson, AudioClip audio) {
+			JSONClass word = wordsJson [audio.name.ToLower ()] as JSONClass;
 			if (word == null) {
 				Debug.Log ("HOLA MARY YO NO ESTOY EN EL JSON! : " + audio.name);
 				return null;
@@ -67,18 +106,15 @@ namespace Assets.Scripts.Common {
 			return null;
 		}
 
-		private static void LoadSyllables () {
-			syllables = new Dictionary<string, List<AudioClip>>();
-			currentPath = CurrentPath ();
-			List<AudioClip> syllablesClips = Resources.LoadAll<AudioClip>(currentPath + "Syllables/").ToList ();
-			foreach (AudioClip syllable in syllablesClips) {
-				string firstLetter = syllable.name.ToCharArray ()[0].ToString ().ToUpper ();
-				if(!syllables.ContainsKey (firstLetter)){
-					syllables [firstLetter] = new List<AudioClip> ();
-				}
-				syllables [firstLetter].Add (syllable);
+		private static JSONClass GetExtraWordsObject (string allWords) {
+			if(allWords != ""){
+				TextAsset json = Resources.Load<TextAsset> (allWords);
+				return (JSON.Parse (json.text) as JSONClass)["extraWords"] as JSONClass;
 			}
+			return null;
 		}
+
+
 
 		static void CheckAlphabet () {
 			if(I18n.GetLocale () == "en-US"){
@@ -165,6 +201,7 @@ namespace Assets.Scripts.Common {
 			if (currentPath != CurrentPath ()) {
 				LoadAllWords ();
 				LoadSyllables ();
+				LoadExtraWords ();
 			}
 		}
 
@@ -224,12 +261,32 @@ namespace Assets.Scripts.Common {
 			return result;
 		}
 
+		//Param is Word's Name
 		public static Word GetWord (string wordString) {
 			string firstLetter = wordString.ToCharArray () [0].ToString ().ToUpper ();
 			foreach (Word word in words[firstLetter]) {
 				if (word.Name ().ToLower () == wordString.ToLower ())
 					return word;
 			}
+			return null;
+		}
+
+		//Param is Word's Name
+		public static Word GetWordOrExtraWord (string wordString) {
+
+			string firstLetter = wordString.ToCharArray () [0].ToString ().ToUpper ();
+			foreach (Word word in words[firstLetter]) {
+				if (word.Name().ToLower () == wordString.ToLower ())
+					return word;
+			}
+			if (extraWords [firstLetter]!=null) {
+				
+				foreach (Word extraWord in  extraWords[firstLetter]) {
+					if (extraWord.Name().ToLower () == wordString.ToLower ())
+						return extraWord;
+				}
+			}
+
 			return null;
 		}
 

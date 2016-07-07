@@ -1,54 +1,53 @@
 {
 	"characters":{
 		"male":[
-		"mago","robot","aguila","caballo","camello","cangrejo","cerdo","cocodrilo",
-		"conejo","delfin","dragon","elefante","escarabajo","escorpion","gato","gorila",
-		"grillo","hipopotamo","koala","leon","loro","mono","mosquito","murcielago",
-		"ornitorrinco","oso","pato","pajaro","perro","pez","pinguino","pulpo","tiburon",
-		"tigre","toro","tucan","unicornio","yaguarete","zorro"
+		"mago","robot","caballo","camello","cangrejo","cerdo","cocodrilo",
+		"conejo","delfín","dragón","elefante","escarabajo","escorpión","gato","gorila",
+		"grillo","hipopótamo","koala","león","loro","mono","mosquito","murciélago",
+		"ornitorrinco","oso","pato","pájaro","perro","pez","pingüino","pulpo","tiburón",
+		"tigre","toro","tucán","unicornio","yaguareté","zorro"
 		],
 		"female":[
-		"abuela","bruja","reina","sirena","abeja","araña","avispa","raton"
-		"gallina","ballena","hormiga","iguana","jirafa","libelula","lombriz",
+		"abuela","bruja","reina","sirena","abeja","araña","avispa",
+		"gallina","ballena","hormiga","iguana","jirafa","libélula","lombriz",
 		"mariposa","momia","oruga","oveja","rana","raya","serpiente","tortuga","vaca"]
 
 	},
 	"objects":{
 
 		"male":[
-		"anillo","arpa","barrilete","boton","cartel","clavo","coco","crayon","dado",
-		"damasco","diamante","enchufe","espejo","flan","florero","globo","gorro","helado","hongo",
-		"hueso","huevo","iman","jabon","jamon","jarron","jugo","kiwi","lapiz","libro","limon","mapa",
-		"martillo","moño","nido","pan","pantalon","pincel","queso","regalo","reloj","sandwich","sombrero",
-		"tambor","televisor","telefono","tomate","tronco","vaso","violin","zapato","zapallo"
+		"anillo","arpa","barrilete","botón","cartel","clavo","coco","crayón","dado",
+		"durazno","diamante","enchufe","espejo","flan","florero","globo","gorro","helado","hongo",
+		"hueso","huevo","imán","jabón","jamón","jarrón","jugo","kiwi","lápiz","libro","limón","mapa",
+		"martillo","nido","pan","pantalón","pincel","queso","regalo","reloj","sombrero",
+		"tambor","televisor","teléfono","tomate","tronco","vaso","violín","zapato","zapallo"
 		],
 		"female":[
-		"banana","bomba","bota","botella","brujula","camara","cebolla","empanada",
+		"banana","bomba","bota","botella","brújula","cámara","cebolla","empanada",
 		"escalera","escoba","espada","flauta","flecha","flor","frutilla","goma","guitarra","hoja",
-		"jaula","lampara","lechuga","lupa","manzana","moneda","naranja","nuez","pelota","pera",
-		"pipa","pluma","quena","radio","red","regla","rosa","sandia","sarten","silla","sopa",
+		"jaula","lámpara","lechuga","lupa","manzana","moneda","naranja","nuez","pelota","pera",
+		"pipa","pluma","quena","radio","red","regla","rosa","sandía","sartén","silla","sopa",
 		"taza","torta","trompeta","tuerca","vela","zapatilla","zanahoria"]
 	},
 	"actions":["viajar","dormir","dibujar","jugar","limpiar","comer","coser","cocinar","beber","tejer","escribir","leer","pintar"],
 	"places":{
-		"male":["desierto","arbol","edificio","faro","auto","avion","tren","kiosco","iglu","laboratorio","volcan"],
+		"male":["desierto","edificio","faro","auto","avión","tren","kiosco","iglú","laboratorio","volcán"],
 		"female":["playa","isla","casa","cancha","iglesia","montaña"]
-
 		},
 	"transport":{
 		"male":[
-		"bote","auto","avion","camion","helicoptero","kayak","submarino","tractor","tren"
+		"bote","auto","avión","camión","helicóptero","kayak","submarino","tractor","tren"
 		],
 		"female":[
-		"bicicleta","moto",
+		"bicicleta","moto"
 		]
 	},
 	"food":{
-		"male":["coco","damasco","flan","helado","huevo","jamon","kiwi","limon","pan","queso","sandwich","tomate","yogur","zapallo"],
-		"female":["cebolla","empanada","banana","frutilla","lechuga","manzana","naranja","nuez","pera","sandia","sopa","torta","zanahoria"]
+		"male":["coco","durazno","flan","helado","huevo","jamón","kiwi","limón","pan","queso","tomate","yogur","zapallo"],
+		"female":["cebolla","empanada","banana","frutilla","lechuga","manzana","naranja","nuez","pera","sandía","sopa","torta","zanahoria"]
 	},
 	"storage":{
-		"male":["cofre","arbol","auto","camion","iglu"],
+		"male":["cofre","auto","camión","iglú"],
 		"female":["isla","lata","mochila","casa","caja","olla"]
 	}
 
