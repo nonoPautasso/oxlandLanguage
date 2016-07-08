@@ -705,15 +705,18 @@ MonoBehaviour:
   - {fileID: 11475632}
   - {fileID: 11460816}
   slots:
-  - {fileID: 11495836}
-  - {fileID: 11441240}
-  - {fileID: 11498546}
+  - {fileID: 11497750}
+  - {fileID: 11437020}
+  - {fileID: 11432610}
   draggables:
   - {fileID: 11437178}
   - {fileID: 11408312}
   - {fileID: 11439388}
   - {fileID: 11409714}
   - {fileID: 11474160}
+  GREEN_COLOR:
+    serializedVersion: 2
+    rgba: 3784630609
 --- !u!114 &11422512
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -753,7 +756,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 11413392}
         m_MethodName: NextClick
         m_Mode: 1
         m_Arguments:
@@ -1307,8 +1310,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
-        m_MethodName: TryClick
+      - m_Target: {fileID: 11413392}
+        m_MethodName: TicClick
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -1392,7 +1395,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 11413392}
         m_MethodName: OnClickMenuBtn
         m_Mode: 1
         m_Arguments:
@@ -1729,7 +1732,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 11413392}
         m_MethodName: OnClickHintBtn
         m_Mode: 1
         m_Arguments:
