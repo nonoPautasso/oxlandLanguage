@@ -22,6 +22,10 @@ namespace Assets.Scripts.Levels.CompleteConsonant {
 		private List<string> letters;
 		private List<List<string>> answers;
 
+		private bool isVowels;
+
+		public CompleteConsonantModel (bool isVowels) { this.isVowels = isVowels; }
+
 		public override void StartGame () {
 			currentRound = 0;
 
@@ -36,7 +40,7 @@ namespace Assets.Scripts.Levels.CompleteConsonant {
 			words = new List<string> ();
 			answers = new List<List<string>> ();
 
-			TextAsset sentencesAsset = Resources.Load<TextAsset> (I18n.Msg ("completeConsonant.fileName"));
+			TextAsset sentencesAsset = Resources.Load<TextAsset> (I18n.Msg (isVowels ? "completeVowel.fileName" : "completeConsonant.fileName"));
 			JSONClass data = JSON.Parse (sentencesAsset.text) as JSONClass;
 
 			foreach (JSONNode word in data[difficulty] as JSONArray) {
@@ -67,13 +71,18 @@ namespace Assets.Scripts.Levels.CompleteConsonant {
 		}
 
 		private void SetLetters () {
-			letters = new List<string> ();
-			letters.AddRange (answer);
-			while(letters.Count < LETTER_QUANTITY){
-				string next = Words.RandomLetter ();
-				if (!Words.IsVowel (next) && !letters.Contains (next)) letters.Add (next);
+			if(isVowels){
+				letters = new List<string>(Words.GetVowels());
+			} else {
+				letters = new List<string> ();
+				letters.AddRange (answer);
+				while (letters.Count < LETTER_QUANTITY) {
+					string next = Words.RandomLetter ();
+					if (!Words.IsVowel (next) && !letters.Contains (next))
+						letters.Add (next);
+				}
+				letters = Randomizer.RandomizeList (letters);
 			}
-			letters = Randomizer.RandomizeList (letters);
 		}
 
 		public List<int> GetHint () {

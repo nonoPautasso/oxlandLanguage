@@ -130,8 +130,8 @@ GameObject:
   - 224: {fileID: 22459098}
   - 222: {fileID: 22212324}
   - 114: {fileID: 11484044}
-  - 114: {fileID: 11492076}
-  - 114: {fileID: 11439752}
+  - 114: {fileID: 11412662}
+  - 114: {fileID: 11407674}
   m_Layer: 5
   m_Name: CompleteVowel
   m_TagString: Untagged
@@ -576,6 +576,29 @@ MonoBehaviour:
   m_FillAmount: 1
   m_FillClockwise: 1
   m_FillOrigin: 0
+--- !u!114 &11407674
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 121538}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e76c841e5682246a39d8f8326a99b320, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  hintBtn: {fileID: 11466292}
+  letters:
+  - {fileID: 11497040}
+  - {fileID: 11424584}
+  - {fileID: 11471548}
+  - {fileID: 11465290}
+  - {fileID: 11494772}
+  tryBtn: {fileID: 11495512}
+  nextBtn: {fileID: 11454538}
+  soundBtn: {fileID: 11438428}
+  objImage: {fileID: 11417526}
+  txt: {fileID: 11441686}
 --- !u!114 &11409464
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -603,6 +626,19 @@ MonoBehaviour:
   m_FillAmount: 1
   m_FillClockwise: 1
   m_FillOrigin: 0
+--- !u!114 &11412662
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 121538}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 70e2a049217284fc195001fe4cc5d53d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  view: {fileID: 11407674}
+  isVowels: 1
 --- !u!114 &11413012
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -810,7 +846,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 11439752}
+      - m_Target: {fileID: 11407674}
         m_MethodName: OnClickMenuBtn
         m_Mode: 1
         m_Arguments:
@@ -918,7 +954,18 @@ MonoBehaviour:
   m_Group: {fileID: 0}
   onValueChanged:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 11407674}
+        m_MethodName: ToggleChange
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_TypeName: UnityEngine.UI.Toggle+ToggleEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
   m_IsOn: 0
@@ -1001,8 +1048,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 11439752}
-        m_MethodName: PlaySound
+      - m_Target: {fileID: 11407674}
+        m_MethodName: SoundClick
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -1014,29 +1061,6 @@ MonoBehaviour:
         m_CallState: 2
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
---- !u!114 &11439752
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 121538}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2c4843f7dcbebeb45bea5addf62f5763, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  hintBtn: {fileID: 11466292}
-  vowelButtons:
-  - {fileID: 11497040}
-  - {fileID: 11424584}
-  - {fileID: 11471548}
-  - {fileID: 11465290}
-  - {fileID: 11494772}
-  nextButton: {fileID: 11454538}
-  ticButton: {fileID: 11495512}
-  currentObjectImage: {fileID: 11417526}
-  currentAudioClip: {fileID: 0}
-  rulesText: {fileID: 11441686}
 --- !u!114 &11440804
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1223,8 +1247,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 11492076}
-        m_MethodName: NextChallenge
+      - m_Target: {fileID: 11407674}
+        m_MethodName: NextClick
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -1304,7 +1328,18 @@ MonoBehaviour:
   m_Group: {fileID: 0}
   onValueChanged:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 11407674}
+        m_MethodName: ToggleChange
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_TypeName: UnityEngine.UI.Toggle+ToggleEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
   m_IsOn: 0
@@ -1374,8 +1409,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 11492076}
-        m_MethodName: ShowHint
+      - m_Target: {fileID: 11407674}
+        m_MethodName: OnClickHintBtn
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -1451,7 +1486,18 @@ MonoBehaviour:
   m_Group: {fileID: 0}
   onValueChanged:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 11407674}
+        m_MethodName: ToggleChange
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_TypeName: UnityEngine.UI.Toggle+ToggleEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
   m_IsOn: 0
@@ -1635,20 +1681,6 @@ MonoBehaviour:
   m_FillAmount: 1
   m_FillClockwise: 1
   m_FillOrigin: 0
---- !u!114 &11492076
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 121538}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4c5322b54d8b38c40bbfa5f75100ec59, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  view: {fileID: 11439752}
-  letter1: 
-  letter2: 
 --- !u!114 &11494772
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1690,7 +1722,18 @@ MonoBehaviour:
   m_Group: {fileID: 0}
   onValueChanged:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 11407674}
+        m_MethodName: ToggleChange
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_TypeName: UnityEngine.UI.Toggle+ToggleEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
   m_IsOn: 0
@@ -1733,8 +1776,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 11492076}
-        m_MethodName: SubmitLetters
+      - m_Target: {fileID: 11407674}
+        m_MethodName: TryClick
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -1814,7 +1857,18 @@ MonoBehaviour:
   m_Group: {fileID: 0}
   onValueChanged:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 11407674}
+        m_MethodName: ToggleChange
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_TypeName: UnityEngine.UI.Toggle+ToggleEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
   m_IsOn: 0

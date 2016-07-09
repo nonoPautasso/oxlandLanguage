@@ -7,6 +7,7 @@ namespace Assets.Scripts.Levels.CompleteConsonant {
 	public class CompleteConsonantController : LevelController {
 		private CompleteConsonantModel model;
 		public CompleteConsonantView view;
+		public bool isVowels;
 
 		public override void NextChallenge () {
 			if (model.GameEnded ()) EndGame (model.MinSeconds, model.PointsPerSecond, model.PointsPerError);
@@ -22,7 +23,7 @@ namespace Assets.Scripts.Levels.CompleteConsonant {
 
 		public override void InitGame () {
 			MetricsManager.instance.GameStart();
-			model = new CompleteConsonantModel();
+			model = new CompleteConsonantModel(isVowels);
 			view.Controller (this);
 			model.StartGame();
 
