@@ -13,6 +13,11 @@ namespace Assets.Scripts.Levels.ConsonantsOral {
 		public static int LETTERS_QUANTITY = 5;
 		public static int HINT_QUANTITY = 3;
 		private List<List<string>> incompatibles;
+		public List<Word> history;
+		private bool isVowels;
+		private Randomizer vowelRandomizer;
+
+		public ConsonantsOralModel (bool isVowels) { this.isVowels = isVowels; }
 
 		public override void StartGame () {
 			currentRound = 0;
@@ -21,6 +26,9 @@ namespace Assets.Scripts.Levels.ConsonantsOral {
 			pointsPerError = 200;
 			pointsPerSecond = 13;
 
+			if (isVowels) vowelRandomizer = Randomizer.New (Words.GetVowels ().Length - 1);
+
+			history = new List<Word> ();
 			SetIncompatibles ();
 		}
 
@@ -33,7 +41,14 @@ namespace Assets.Scripts.Levels.ConsonantsOral {
 		}
 
 		public override void NextChallenge () {
-			currentWord = Words.GetRandomWord (false);
+			while (history.Contains (currentWord) || currentWord == null) {
+				if (isVowels) {
+					currentWord = Words.GetRandomWordFromLetter (Words.GetVowels () [vowelRandomizer.Next ()]);
+				} else {
+					currentWord = Words.GetRandomWord (false);
+				}
+			}
+			history.Add (currentWord);
 			SetLetters (GetCorrect ());
 			currentRound++;
 		}
@@ -43,13 +58,17 @@ namespace Assets.Scripts.Levels.ConsonantsOral {
 		}
 
 		private void SetLetters (string correct) {
-			letters = new List<string> ();
-			letters.Add (correct);
-			while(letters.Count < LETTERS_QUANTITY){
-				string letter = Words.RandomLetter ().ToUpper ();
-				if (LetterOk (letter)) letters.Add (letter);
+			if(isVowels){
+				letters = new List<string>(Words.GetVowels ());
+			} else {
+				letters = new List<string> ();
+				letters.Add (correct);
+				while(letters.Count < LETTERS_QUANTITY){
+					string letter = Words.RandomLetter ().ToUpper ();
+					if (LetterOk (letter)) letters.Add (letter);
+				}
+				letters = Randomizer.RandomizeList (letters);
 			}
-			letters = Randomizer.RandomizeList (letters);
 		}
 
 		private bool LetterOk (string letter) {

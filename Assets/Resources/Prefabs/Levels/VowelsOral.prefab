@@ -27,8 +27,8 @@ GameObject:
   - 224: {fileID: 22403634}
   - 222: {fileID: 22257798}
   - 114: {fileID: 11400060}
-  - 114: {fileID: 11484182}
-  - 114: {fileID: 11404320}
+  - 114: {fileID: 11485750}
+  - 114: {fileID: 11414758}
   m_Layer: 5
   m_Name: VowelsOral
   m_TagString: Untagged
@@ -473,12 +473,12 @@ MonoBehaviour:
   onValueChanged:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 11484182}
-        m_MethodName: SelectLetter
-        m_Mode: 2
+      - m_Target: {fileID: 11414758}
+        m_MethodName: ToggleChange
+        m_Mode: 1
         m_Arguments:
-          m_ObjectArgument: {fileID: 11403834}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.UI.Toggle, UnityEngine.UI
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
@@ -487,29 +487,6 @@ MonoBehaviour:
     m_TypeName: UnityEngine.UI.Toggle+ToggleEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
   m_IsOn: 0
---- !u!114 &11404320
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 108664}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 75af2d609fe71fc4597e7ce44fd37f2f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  hintBtn: {fileID: 11436034}
-  vowelToggles:
-  - {fileID: 11468794}
-  - {fileID: 11451216}
-  - {fileID: 11425100}
-  - {fileID: 11403834}
-  - {fileID: 11428940}
-  checkButton: {fileID: 11490410}
-  nextButton: {fileID: 11429632}
-  soundButton: {fileID: 11464756}
-  currentObjectImage: {fileID: 11423386}
-  currentAudioClip: {fileID: 0}
 --- !u!114 &11404394
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -549,7 +526,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 11404320}
+      - m_Target: {fileID: 11414758}
         m_MethodName: OnClickMenuBtn
         m_Mode: 1
         m_Arguments:
@@ -682,6 +659,28 @@ MonoBehaviour:
   m_FillAmount: 1
   m_FillClockwise: 1
   m_FillOrigin: 0
+--- !u!114 &11414758
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 108664}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f5f10407b245e4b9e8569223db38a142, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  hintBtn: {fileID: 11436034}
+  letters:
+  - {fileID: 11468794}
+  - {fileID: 11451216}
+  - {fileID: 11425100}
+  - {fileID: 11403834}
+  - {fileID: 11428940}
+  tryBtn: {fileID: 11490410}
+  nextBtn: {fileID: 11429632}
+  soundBtn: {fileID: 11464756}
+  objImage: {fileID: 11423386}
 --- !u!114 &11414892
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -851,12 +850,12 @@ MonoBehaviour:
   onValueChanged:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 11484182}
-        m_MethodName: SelectLetter
-        m_Mode: 2
+      - m_Target: {fileID: 11414758}
+        m_MethodName: ToggleChange
+        m_Mode: 1
         m_Arguments:
-          m_ObjectArgument: {fileID: 11425100}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.UI.Toggle, UnityEngine.UI
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
@@ -907,12 +906,12 @@ MonoBehaviour:
   onValueChanged:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 11484182}
-        m_MethodName: SelectLetter
-        m_Mode: 2
+      - m_Target: {fileID: 11414758}
+        m_MethodName: ToggleChange
+        m_Mode: 1
         m_Arguments:
-          m_ObjectArgument: {fileID: 11428940}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.UI.Toggle, UnityEngine.UI
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
@@ -960,8 +959,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 11484182}
-        m_MethodName: onClickNextButton
+      - m_Target: {fileID: 11414758}
+        m_MethodName: NextClick
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -1012,19 +1011,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 11484182}
-        m_MethodName: ShowHint
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-      - m_Target: {fileID: 0}
-        m_MethodName: ShowHint
+      - m_Target: {fileID: 11414758}
+        m_MethodName: OnClickHintBtn
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -1198,12 +1186,12 @@ MonoBehaviour:
   onValueChanged:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 11484182}
-        m_MethodName: SelectLetter
-        m_Mode: 2
+      - m_Target: {fileID: 11414758}
+        m_MethodName: ToggleChange
+        m_Mode: 1
         m_Arguments:
-          m_ObjectArgument: {fileID: 11451216}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.UI.Toggle, UnityEngine.UI
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
@@ -1302,8 +1290,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 11404320}
-        m_MethodName: PlaySound
+      - m_Target: {fileID: 11414758}
+        m_MethodName: SoundClick
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -1357,12 +1345,12 @@ MonoBehaviour:
   onValueChanged:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 11484182}
-        m_MethodName: SelectLetter
-        m_Mode: 2
+      - m_Target: {fileID: 11414758}
+        m_MethodName: ToggleChange
+        m_Mode: 1
         m_Arguments:
-          m_ObjectArgument: {fileID: 11468794}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.UI.Toggle, UnityEngine.UI
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
@@ -1514,7 +1502,7 @@ MonoBehaviour:
   m_FillAmount: 1
   m_FillClockwise: 1
   m_FillOrigin: 0
---- !u!114 &11484182
+--- !u!114 &11485750
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
@@ -1522,10 +1510,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 108664}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 025d356df50ad904bb125f59154a8a70, type: 3}
+  m_Script: {fileID: 11500000, guid: dfe67e3b760434069935c84b6b06e75c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  view: {fileID: 11404320}
+  view: {fileID: 11414758}
+  isVowels: 1
 --- !u!114 &11489074
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1577,8 +1566,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 11484182}
-        m_MethodName: SubmitLetter
+      - m_Target: {fileID: 11414758}
+        m_MethodName: TryClick
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -1898,9 +1887,9 @@ RectTransform:
   m_Children: []
   m_Father: {fileID: 22403634}
   m_RootOrder: 6
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 465, y: 72}
+  m_AnchorMin: {x: 0.74256223, y: 0.55}
+  m_AnchorMax: {x: 0.74256223, y: 0.55}
+  m_AnchoredPosition: {x: -1, y: 0}
   m_SizeDelta: {x: 230, y: 230}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!224 &22449428
@@ -1949,10 +1938,10 @@ RectTransform:
   m_Children: []
   m_Father: {fileID: 22403634}
   m_RootOrder: 5
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 468, y: 74}
-  m_SizeDelta: {x: 225.05, y: 225.05}
+  m_AnchorMin: {x: 0.74256223, y: 0.55}
+  m_AnchorMax: {x: 0.74256223, y: 0.55}
+  m_AnchoredPosition: {x: 2, y: 2}
+  m_SizeDelta: {x: 225.04999, y: 225.05}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!224 &22455760
 RectTransform:
@@ -1966,10 +1955,10 @@ RectTransform:
   m_Children: []
   m_Father: {fileID: 22403634}
   m_RootOrder: 0
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: -430.19998}
-  m_SizeDelta: {x: 1921, y: 580}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 1, y: 0.40286222}
+  m_AnchoredPosition: {x: 0, y: -0.19998169}
+  m_SizeDelta: {x: 1, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!224 &22460222
 RectTransform:
@@ -1983,9 +1972,9 @@ RectTransform:
   m_Children: []
   m_Father: {fileID: 22403634}
   m_RootOrder: 7
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 25.00003, y: 518.52}
+  m_AnchorMin: {x: 0.512, y: 0.8555117}
+  m_AnchorMax: {x: 0.512, y: 0.8555117}
+  m_AnchoredPosition: {x: 2.0000305, y: 6.5200195}
   m_SizeDelta: {x: 277, y: 277}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!224 &22471722
@@ -2006,9 +1995,9 @@ RectTransform:
   m_Father: {fileID: 22403634}
   m_RootOrder: 4
   m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: -511}
-  m_SizeDelta: {x: 0, y: -1022}
+  m_AnchorMax: {x: 1, y: 0.296}
+  m_AnchoredPosition: {x: 0, y: -4}
+  m_SizeDelta: {x: 0, y: -8}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!224 &22478632
 RectTransform:
@@ -2041,9 +2030,9 @@ RectTransform:
   - {fileID: 22434450}
   m_Father: {fileID: 22403634}
   m_RootOrder: 3
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0.000013351, y: 101}
+  m_AnchorMin: {x: 0.5, y: 0.56600004}
+  m_AnchorMax: {x: 0.5, y: 0.56600004}
+  m_AnchoredPosition: {x: 0.00001335144, y: 6}
   m_SizeDelta: {x: 490, y: 408}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!224 &22491388

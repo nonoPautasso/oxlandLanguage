@@ -1,10 +1,12 @@
 ﻿using System;
 using Assets.Scripts.App;
 
+//THIS INCLUDES VOWELS ORAL TOO. MONODEVELOP WONT LET ME CHANGE CLASS NAMES, IT'S SO BROKE....
 namespace Assets.Scripts.Levels.ConsonantsOral {
 	public class ConsonantsOralController : LevelController {
 		private ConsonantsOralModel model;
 		public ConsonantsOralView view;
+		public bool isVowels;
 
 		public override void NextChallenge () {
 			if (model.GameEnded ()) EndGame (model.MinSeconds, model.PointsPerSecond, model.PointsPerError);
@@ -20,7 +22,7 @@ namespace Assets.Scripts.Levels.ConsonantsOral {
 
 		public override void InitGame () {
 			MetricsManager.instance.GameStart();
-			model = new ConsonantsOralModel();
+			model = new ConsonantsOralModel(isVowels);
 			view.Controller (this);
 			model.StartGame();
 
