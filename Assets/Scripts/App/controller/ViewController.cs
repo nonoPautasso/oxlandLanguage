@@ -44,7 +44,7 @@ namespace Assets.Scripts.App{
 //				};
 
 			//TEMPORARY ORDER FOR TESTING PURPOSES ONLY
-			levels = new string[]{"OracionesPictogramas","OrderWordsDictionary","OrderLetters","IdentifyInitialSound","SoundsInWords","LettersComposeWords",
+			levels = new string[]{"VowelsOral","CompleteVowel","OrderLetters","IdentifyInitialSound","SoundsInWords","LettersComposeWords",
 				"OrderLetters","OrderWordsDictionary","CreateSentence","CompleteConsonant","SoundsInWords",
 				"CombineSounds","CombineSounds","SoundsInWords","LettersComposeWords","OrderLetters",
 				"ListenAndWrite","FindError","CreateSentence",
