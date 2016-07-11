@@ -10,7 +10,7 @@ namespace Assets.Scripts.MainMenu{
 public class MainMenuView : MonoBehaviour {
 
 	
-
+	public const int TOTAL_LEVELS = 21;
 	public Button settingsBtn,metricsBtn;
 	public List<Button> levelBtns;
 	public Text welcomeText,vladimirText;
@@ -31,7 +31,11 @@ public class MainMenuView : MonoBehaviour {
 
 	void Start(){
 			//Positions in 
-			selectorPositions = new float[] {0, 0.09f, 0.2835f, 0.385f, 0.4165f,0.45f,0.50f,0.565f,0.619f,0.65f,0.718f,0.75f,0.80f,0.816f,0.831f,0.85f,};
+			selectorPositions = new float[] {0, 0.09f, 0.2835f, 0.385f, 0.4165f,
+				0.45f,0.50f,0.565f,0.619f,0.65f,
+				0.718f,0.75f,0.80f,0.816f,0.831f,
+				0.85f,0.85f,0.85f,0.85f,0.85f,
+				0.85f};
 			SoundManager.instance.PlayMusic ();
 			if (SettingsController.instance.GetLanguage () == 0) {
 				welcomeText.text = "¡BIENVENIDO!";
@@ -43,7 +47,7 @@ public class MainMenuView : MonoBehaviour {
 
 
 			if (SettingsController.instance.GetMode () == 0) {
-				AppController.instance.SetMaxLevelPossible (21);
+				AppController.instance.SetMaxLevelPossible (TOTAL_LEVELS);
 			} else {
 				AppController.instance.SetMaxLevelPossible (GetMaxLevel ());
 				ResetSelectorPosition ();

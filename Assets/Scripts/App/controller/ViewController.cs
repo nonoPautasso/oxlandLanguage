@@ -36,20 +36,20 @@ namespace Assets.Scripts.App{
 
 			DontDestroyOnLoad(transform.root.gameObject);
 			//TODO: UNCOMMENT FOR REAL GAME ORDEN
-//			levels = new string[]{"Vowels","VowelsOral","StartWithVowel","CompleteVowel","OracionesPictogramas",
-//				"Consonants","ConsonantsOral","ABCWords","CompleteConsonant","ABCOrder",
-//				"CountLetters","CombineSounds","SoundsInWords",
-//				"LettersComposeWords","OrderLetters", "ListenAndWrite","FindError","CreateSentence",
-//				"MayusMin","SplitSentences","IdentifyLettersInWords","ABCBonus","Syllables"
-//				};
+			levels = new string[]{"Vowels","VowelsOral","StartWithVowel","CompleteVowel","OracionesPictogramas",
+				"Consonants","ConsonantsOral","ABCWords","CompleteConsonant","ABCOrder",
+				"CountLetters","CombineSounds","IdentifyInitialSound","MemotestEnding","SoundsInWords",
+				"LettersComposeWords","OrderLetters", "ListenAndWrite","FindError","OrderWordsDictionary",
+				"CreateSentence"
+				};
 
 			//TEMPORARY ORDER FOR TESTING PURPOSES ONLY
-			levels = new string[]{"VowelsOral","CompleteVowel","OrderLetters","IdentifyInitialSound","SoundsInWords","LettersComposeWords",
-				"OrderLetters","OrderWordsDictionary","CreateSentence","CompleteConsonant","SoundsInWords",
-				"CombineSounds","CombineSounds","SoundsInWords","LettersComposeWords","OrderLetters",
-				"ListenAndWrite","FindError","CreateSentence",
-				"MayusMin","SplitSentences","IdentifyLettersInWords","ABCBonus","Syllables"
-			};
+//			levels = new string[]{"VowelsOral","CompleteVowel","OrderLetters","IdentifyInitialSound","SoundsInWords","LettersComposeWords",
+//				"OrderLetters","OrderWordsDictionary","CreateSentence","CompleteConsonant","SoundsInWords",
+//				"CombineSounds","CombineSounds","SoundsInWords","LettersComposeWords","OrderLetters",
+//				"ListenAndWrite","FindError","CreateSentence",
+//				"MayusMin","SplitSentences","IdentifyLettersInWords","ABCBonus","Syllables"
+//			};
 
 			instructions = new string[]{"VowelsInstructions","VowelsOralInstructions","StartWithVowelInstructions","CompleteVowelInstructions","ABCOrderInstructions",
 				"ConsonantsInstructions","ConsonantsOralInstructions","ABCWordsInstructions","VowelsInstructions","ABCOrderInstructions",

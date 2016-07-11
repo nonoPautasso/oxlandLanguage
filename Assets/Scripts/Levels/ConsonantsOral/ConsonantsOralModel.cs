@@ -54,7 +54,7 @@ namespace Assets.Scripts.Levels.ConsonantsOral {
 		}
 
 		private string GetCorrect () {
-			return currentWord.Name () [0].ToString ();
+			return currentWord.AudioName () [0].ToString ();
 		}
 
 		private void SetLetters (string correct) {

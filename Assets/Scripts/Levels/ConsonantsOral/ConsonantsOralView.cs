@@ -16,6 +16,7 @@ namespace Assets.Scripts.Levels.ConsonantsOral {
 		private ConsonantsOralController controller;
 
 		public void NextChallenge (Word word, List<string> letters) {
+			Debug.Log ("Word" + word.Name ());
 			objImage.sprite = word.Sprite ();
 			EnableHint ();
 			SetText ("");

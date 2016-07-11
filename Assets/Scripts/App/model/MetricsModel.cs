@@ -8,6 +8,7 @@ namespace Assets.Scripts.App{
 	{
         private const int MAX_SCORE = 10000;
         private const int MIN_SCORE = 500;
+		private const int TOTAL_LEVELS = 21;
 		public List<List<GameMetrics>> metrics;
 
 		public MetricsModel(){
@@ -18,7 +19,7 @@ namespace Assets.Scripts.App{
 			
 			metrics = new  List<List<GameMetrics>> ();
 			//TODO: Check why using GetLevelAmount throws error
-			for (int i = 0; i < 20; i++) {
+			for (int i = 0; i < TOTAL_LEVELS; i++) {
                 metrics.Add (new List<GameMetrics>());
 			}
 		}

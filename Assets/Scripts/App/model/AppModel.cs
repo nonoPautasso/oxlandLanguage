@@ -7,6 +7,8 @@ namespace Assets.Scripts.App{
 
 	public class AppModel  {
 
+		private const int TOTAL_LEVELS = 21;
+
 		private int currentLevel;
 		private int maxLevelPossible;
 		private List<string> gameTitlesSpanish;
@@ -32,7 +34,7 @@ namespace Assets.Scripts.App{
 
 			JSONNode data = JSON.Parse(JSONstring.text);
 
-			for (int i = 0; i < 16; i++) {
+			for (int i = 0; i < TOTAL_LEVELS; i++) {
 				gameTitlesSpanish.Add (data["activities"][i]["nameSpanish"]);
 				gameTitlesEnglish.Add (data["activities"][i]["nameEnglish"]);
 				gameInfoSpanish.Add (data["activities"][i]["infoSpanish"]);
@@ -73,7 +75,7 @@ namespace Assets.Scripts.App{
 
         internal void NextLvl()
         {
-            currentLevel += currentLevel == 16 ? 0 : 1;
+			currentLevel += currentLevel == TOTAL_LEVELS ? 0 : 1;
         }
 
         public List<string> GameTitlesSpanish {

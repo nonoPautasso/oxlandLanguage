@@ -21,6 +21,10 @@ namespace Assets.Scripts.Common {
 			return realWriteName == null ? audio.name.ToUpper () : realWriteName.ToUpper ();
 		}
 
+		public string AudioName(){
+			return audio.name.ToUpper ();
+		}
+
 		public int SpriteNumber(){
 			return spriteNumber;
 		}
@@ -40,7 +44,8 @@ namespace Assets.Scripts.Common {
 		}
 
 		public string StartLetter () {
-			return StartLetters (1);
+			return AudioName().Substring (0, 1);
+//			return StartLetters (1);
 		}
 
 		public string StartLetters (int quantity) {
