@@ -99,6 +99,7 @@ namespace Assets.Scripts.Levels.MemotestEnding {
 		}
 
 		public void RefreshClick(){
+			PlaySoundClick ();
 			ActiveButtons (true, false);
 			WrongCardsDone ();
 			EnableHint ();

@@ -101,6 +101,7 @@ namespace Assets.Scripts.Levels.CountLetters {
 		}
 
 		public void NextClick(){
+			PlaySoundClick ();
 			controller.NextChallenge ();
 		}
 

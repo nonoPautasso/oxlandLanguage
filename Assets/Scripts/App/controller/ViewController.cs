@@ -51,9 +51,11 @@ namespace Assets.Scripts.App{
 //				"MayusMin","SplitSentences","IdentifyLettersInWords","ABCBonus","Syllables"
 //			};
 
-			instructions = new string[]{"VowelsInstructions","VowelsOralInstructions","StartWithVowelInstructions","CompleteVowelInstructions","ABCOrderInstructions",
-				"ConsonantsInstructions","ConsonantsOralInstructions","ABCWordsInstructions","VowelsInstructions","ABCOrderInstructions",
-				"CountLettersInstructions","VowelsInstructions","VowelsInstructions","VowelsInstructions"};
+			instructions = new string[]{"VowelsInstructions","VowelsOralInstructions","StartWithVowelInstructions","CompleteVowelInstructions","OracionesPictogramasInstructions",
+				"ConsonantsInstructions","ConsonantsOralInstructions","ABCWordsInstructions","CompleteConsonantInstructions","ABCOrderInstructions",
+				"CountLettersInstructions","CombineSoundsInstructions","IdentifyInitialSoundInstructions","MemotestEndingInstructions","SoundsInWordsInstructions",
+				"LettersComposeWordsInstructions","OrderLettersInstructions","ListenAndWriteInstructions","FindErrorInstructions","OrderWordsDictionaryInstructions",
+				"CreateSentenceInstructions"};
 			LoadCover();
 		}
 

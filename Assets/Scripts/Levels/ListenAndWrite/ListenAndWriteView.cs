@@ -160,8 +160,11 @@ namespace Assets.Scripts.Levels.ListenAndWrite
 		}
 
 		public void UpdateLowerCaseText(){
-			input.text = input.text.ToUpper ();
+//			input.text = input.text.ToUpper ();
+			string newText =  input.text.ToUpper ();
+			input.text = newText;
 		}
+
 
         private void UpdateLettersOnKeyboard()
         {

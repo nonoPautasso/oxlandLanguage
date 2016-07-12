@@ -63,6 +63,7 @@ namespace Assets.Scripts.Levels.CompleteConsonant {
 		}
 
 		public void ToggleChange(){
+			//PlaySoundClick ();
 			UnpaintLetters ();
 
 			foreach (Toggle letter in letters) {
@@ -83,11 +84,13 @@ namespace Assets.Scripts.Levels.CompleteConsonant {
 		}
 
 		public void NextClick(){
+			PlaySoundClick ();
 			controller.NextChallenge ();
 		}
 
 		public void SoundClick(){
 			soundBtn.enabled = false;
+			SpeakerScript.instance.PlaySound (txt.text.Length / 3);
 			controller.PlayWord ();
 		}
 

@@ -78,7 +78,7 @@ namespace Assets.Scripts.Levels.StartWithVowel {
 		}
 
 		public bool IsCorrect (Tuple<Word, bool> tuple, string currentLetter) {
-			string clickedWord = tuple.Item1.Name ();
+			string clickedWord = tuple.Item1.AudioName ();
 			return currentLetter == clickedWord.ToUpper ().ToCharArray () [0].ToString ();
 		}
 

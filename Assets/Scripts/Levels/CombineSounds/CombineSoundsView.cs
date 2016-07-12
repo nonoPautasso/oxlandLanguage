@@ -72,6 +72,7 @@ namespace Assets.Scripts.Levels.CombineSounds {
 		}
 
 		public void SubLetterClick(Button subLetter){
+			PlaySoundClick ();
 			PaintSubLetters (Color.white);
 			subLetter.GetComponentInChildren <Text>().text = "";
 			tryBtn.interactable = false;
@@ -94,6 +95,7 @@ namespace Assets.Scripts.Levels.CombineSounds {
 		}
 
 		public void NextClick(){
+			PlaySoundClick ();
 			controller.NextChallenge ();
 		}
 

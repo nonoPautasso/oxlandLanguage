@@ -40,7 +40,7 @@ namespace Assets.Scripts.Levels.OracionesPictogramas {
 		public void PlaySentenceAudios () {
 			List<AudioClip> audios = model.SentenceAudios;
 			SoundManager.instance.ConcatenateAudios (audios, AudioDone);
-			SpeakerScript.instance.PlaySound (audios.Count);
+			SpeakerScript.instance.PlaySound (audios.Count*2);
 		}
 
 		public void AudioDone(){

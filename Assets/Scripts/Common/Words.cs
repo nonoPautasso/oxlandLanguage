@@ -70,7 +70,7 @@ namespace Assets.Scripts.Common {
 
 				}
 
-				extraWords [firstLetter].Add (new Word (extraWordAudio, GetWord(word ["position"].Value).SpriteNumber(), GetRealWordWrite (extraWordsJson, extraWordAudio)));
+				extraWords [firstLetter].Add (new Word (extraWordAudio, GetWord(word ["position"].Value).SpriteNumber(), GetRealWordWrite (extraWordsJson, extraWordAudio),word["position"].Value));
 			}
 
 		}

@@ -85,6 +85,7 @@ namespace Assets.Scripts.Levels.IdentifyInitialSound {
 		}
 
 		public void NextClick(){
+			PlaySoundClick ();
 			controller.NextChallenge ();
 		}
 

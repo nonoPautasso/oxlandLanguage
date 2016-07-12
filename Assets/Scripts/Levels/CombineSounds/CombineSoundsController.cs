@@ -34,7 +34,7 @@ namespace Assets.Scripts.Levels.CombineSounds {
 			string round = model.GetCurrentRound ();
 			List<AudioClip> audios = Words.GetPhonemes (round);
 			SoundManager.instance.ConcatenateAudios (audios, AudioDone);
-			SpeakerScript.instance.PlaySound (2);
+			SpeakerScript.instance.PlaySound (audios.Count*2);
 		}
 
 		public void AudioDone(){

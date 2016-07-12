@@ -22,7 +22,8 @@ namespace Assets.Scripts.Levels.CountLetters {
 			List<AudioClip> audios = new List<AudioClip> ();
 			Word word = model.GetCurrentWord ();
 			audios.Add (word.GetAudio ());
-			audios.AddRange (Words.GetPhonemes (word.Name ()));
+			audios.AddRange (Words.GetPhonemes (word.AudioName ()));
+			SpeakerScript.instance.PlaySound(audios.Count*2);
 			SoundManager.instance.ConcatenateAudios (audios, AudioDone);
 		}
 
