@@ -29,7 +29,8 @@ namespace Assets.Scripts.Levels.ConsonantsVowels {
 		}
 
 		public void RoundEnd () {
-			NextChallenge ();
+			if(!isVowels) view.RoundEnd ();
+			else NextChallenge ();
 		}
 
 		public override void RestartGame () { InitGame (); }

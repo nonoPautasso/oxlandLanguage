@@ -14,13 +14,16 @@ namespace Assets.Scripts.Levels.ConsonantsVowels {
 		private Randomizer letterRandomizer;
 		private Randomizer otherRandomizer;
 		private Randomizer randomRandomizer;
+		public Button nextBtn;
 
 		public List<Text> letterTexts;
 		public List<Button> bubbles;
 
 		public void NextChallenge (List<string> letters, List<string> others) {
 			this.letters = new List<string> (letters);
+			Views.SetActiveButtons (bubbles, true);
 			this.others = others;
+			if(nextBtn != null) nextBtn.gameObject.SetActive (false);
 			immutableLetters = new List<string> (letters);
 			randomRandomizer = Randomizer.New (10);
 			letterRandomizer = Randomizer.New (letters.Count - 1);
@@ -70,6 +73,18 @@ namespace Assets.Scripts.Levels.ConsonantsVowels {
 
 		private void ResetLetters () {
 			foreach (Text letter in letterTexts) letter.text = "";
+		}
+
+		public void RoundEnd () {
+			nextBtn.gameObject.SetActive (true);
+			nextBtn.interactable = true;
+			Views.SetActiveButtons (bubbles, false);
+			DisableHint ();
+		}
+
+		public void NextClick(){
+			PlaySoundClick ();
+			controller.NextChallenge ();
 		}
 
 		public void BubbleClick(int index){
