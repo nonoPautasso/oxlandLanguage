@@ -16,6 +16,8 @@ namespace Assets.Scripts.Levels.SoundsInWords {
 		private AudioClip syllable;
 		private Randomizer wordRandomizer;
 
+		private static int MAX_LENGTH = 7;
+
 		public static int ROUNDS = 10;
 
 		public override void StartGame () {
@@ -33,10 +35,12 @@ namespace Assets.Scripts.Levels.SoundsInWords {
 			TextAsset JSONstring = Resources.Load<TextAsset> (I18n.Msg ("syllables.fileName"));
 			JSONClass data = JSON.Parse (JSONstring.text) as JSONClass;
 			foreach (KeyValuePair<string, JSONNode> word in data) {
-				List<string> l = new List<string> ();
-				foreach (JSONNode syllables in word.Value.AsArray)
-					l.Add (syllables.Value);
-				words.Add (word.Key, l);
+				if(word.Key.Length <= MAX_LENGTH){
+					List<string> l = new List<string> ();
+					foreach (JSONNode syllables in word.Value.AsArray)
+						l.Add (syllables.Value);
+					words.Add (word.Key, l);
+				}
 			}
 			wordRandomizer = Randomizer.New (words.Count - 1);
 		}
