@@ -30,7 +30,7 @@ namespace Assets.Scripts.Levels.OrderLetters {
 
 		private void SetWord (Word word) {
 			clickEnabled = true;
-			List<char> wordChars = Randomizer.RandomizeList (new List<char> (word.Name ().ToUpper ()));
+			List<char> wordChars = GetRandomized (word.Name ().ToUpper ());
 			for (int i = 0; i < letters.Count; i++) {
 				Button letter = letters [i];
 				Image slot = slots [i];
@@ -46,6 +46,23 @@ namespace Assets.Scripts.Levels.OrderLetters {
 					slot.GetComponentInChildren <Text>().text = "";
 				}
 			}
+		}
+
+		private List<char> GetRandomized(string word){
+			List<char> randomized = Randomizer.RandomizeList (new List<char> (word));
+			return isRandom(randomized, word) ? randomized : GetRandomized (word);
+		}
+
+		private bool isRandom (List<char> chars, string word) {
+			return GetAsWord(chars) != word;
+		}
+
+		private string GetAsWord (List<char> chars) {
+			string aux = "";
+			foreach (char ch in chars) {
+				aux += ch.ToString ();
+			}
+			return aux;
 		}
 
 		private void ActiveButtons (bool tryB, bool next, bool sound) {
