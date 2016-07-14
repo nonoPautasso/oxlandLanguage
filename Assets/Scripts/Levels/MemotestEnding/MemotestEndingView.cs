@@ -31,11 +31,13 @@ namespace Assets.Scripts.Levels.MemotestEnding {
 		}
 
 		public void CardClick(Button card){
-			PlaySoundClick ();
+			
 			if(activeCards.Contains (card)){
-				ResetCard (card);
-				activeCards.Remove (card);
+				//this is to enable deselecting cards.
+				//ResetCard (card);
+				//activeCards.Remove (card);
 			} else if(activeCards.Count < 2){
+				PlaySoundClick ();
 				ShowCard (card);
 				activeCards.Add (card);
 			}
