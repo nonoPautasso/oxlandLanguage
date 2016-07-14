@@ -36,6 +36,7 @@ namespace Assets.Scripts.Levels.CreateSentences {
 		}
 
 		public void NextClick(){
+			PlaySoundClick ();
 			tryBtn.gameObject.SetActive (true);
 			nextBtn.gameObject.SetActive (false);
 			controller.NextChallenge ();
