@@ -9,6 +9,8 @@ namespace Assets.Scripts.Levels.LettersComposeWords {
 		private int currentRound;
 		private List<Word> rounds;
 
+		private List<string> prohibited = new List<string> {"QU", "GU", "LL", "RR", "CH"};
+
 		public static int ROUNDS = 7;
 
 		const int MIN_LENGTH = 5;
@@ -32,10 +34,18 @@ namespace Assets.Scripts.Levels.LettersComposeWords {
 				if (!rounds.Contains(round) && 
 					round.Name ().Length >= MIN_LENGTH && 
 					GetAnswer (round.Name ()).Count <= MAX_ANSWER_LENGTH && 
-					Words.RipSymbols (round.Name ()) == round.Name ()) {
+					Words.RipSymbols (round.Name ()) == round.Name () &&
+					HasNoProhibited(round.Name ())) {
 						rounds.Add (round);
 				}
 			}
+		}
+
+		private bool HasNoProhibited (string w) {
+			foreach (string pr in prohibited) {
+				if (w.Contains (pr)) return false;
+			}
+			return true;
 		}
 
 		public override void NextChallenge () {
