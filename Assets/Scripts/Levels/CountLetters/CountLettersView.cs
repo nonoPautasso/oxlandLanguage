@@ -23,12 +23,20 @@ namespace Assets.Scripts.Levels.CountLetters {
 		public void NextChallenge (Word word) {
 			EnableHint ();
 			objImage.sprite = word.Sprite ();
+			CloseShells ();
 			HideBubbles ();
 			Views.TogglesEnabled (clams.ToArray (), true);
 			Views.TogglesOff (clams.ToArray ());
 			ActiveButtons (true, false, true);
 			tryBtn.interactable = false;
 			controller.PlayWord ();
+		}
+
+		private void CloseShells(){
+			foreach(Toggle toggle in clams){
+				toggle.transform.GetChild (0).GetComponent <Image>().sprite = Resources.LoadAll<Sprite>("Sprites/shell")[0];
+			}
+
 		}
 
 		private void HideBubbles () {

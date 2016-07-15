@@ -53,9 +53,9 @@ namespace Assets.Scripts.App{
 
 			instructions = new string[]{"VowelsInstructions","VowelsOralInstructions","StartWithVowelInstructions","CompleteVowelInstructions","OracionesPictogramasInstructions",
 				"ConsonantsInstructions","ConsonantsOralInstructions","ABCWordsInstructions","CompleteConsonantInstructions","ABCOrderInstructions",
-				"CountLettersInstructions","CombineSoundsInstructions","IdentifyInitialSoundInstructions","MemotestEndingInstructions","SoundsInWordsInstructions",
+				"CountLettersInstructions","CombineSoundsInstructions","IdentifyInitialSoundInstructions","MemotestInstructions","SoundsInWordsInstructions",
 				"LettersComposeWordsInstructions","OrderLettersInstructions","ListenAndWriteInstructions","FindErrorInstructions","OrderWordsDictionaryInstructions",
-				"CreateSentenceInstructions"};
+				"CreateSentencesInstructions"};
 			LoadCover();
 		}
 
