@@ -10,10 +10,9 @@ namespace Assets.Scripts.Levels.ListenAndWrite
     public class ListenAndWriteView : LevelView
     {
 
+        
         [SerializeField]
-        private Text sentence;
-        [SerializeField]
-        private InputField input;
+		private InputField inputText;
         [SerializeField]
         private List<Button> keyboardButtons;
         [SerializeField]
@@ -36,19 +35,26 @@ namespace Assets.Scripts.Levels.ListenAndWrite
         // Use this for initialization
         void Start()
         {
+			// Sets the MyValidate method to invoke after the input field's default input validation invoke (default validation happens every time a character is entered into the text field.)
+			inputText.onValidateInput += delegate(string input, int charIndex, char addedChar) { return MyValidate( addedChar ); };
 
         }
 
-//        internal void SetSentence(string sentence)
-//        {
-//            this.sentence.text = sentence;
-//        }
+
+		private char MyValidate(char charToValidate)
+		{
+			
+			return charToValidate.ToString().ToUpper().ToCharArray()[0];
+		}
+
+
 
         internal void NextChallenge()
         {
+			
             ticBtn.interactable = false;
 			deleteButton.interactable = false;
-            input.text = "";
+            inputText.text = "";
 
             hintBtn.interactable = true;
             UnpaintAllKeyboard();
@@ -94,7 +100,7 @@ namespace Assets.Scripts.Levels.ListenAndWrite
         public void OnClickTic()
         {
 			SoundManager.instance.PlayClickSound ();
-            ListenAndWriteController.GetController().CheckAnswer(input.text);
+            ListenAndWriteController.GetController().CheckAnswer(inputText.text);
         }
 
         public void OnClickLetter(string letter)
@@ -105,28 +111,28 @@ namespace Assets.Scripts.Levels.ListenAndWrite
                 switch (letter[0])
                 {
                     case 'a':
-                        input.text += "Á" ;
+                        inputText.text += "Á" ;
                         break;
                     case 'e':
-                        input.text += "É" ;
+                        inputText.text += "É" ;
                         break;
                     case 'i':
-                        input.text +=  "Í";
+                        inputText.text +=  "Í";
                         break;
                     case 'o':
-                        input.text +=  "Ó" ;
+                        inputText.text +=  "Ó" ;
                         break;
                     case 'u':
-                        input.text +=  "Ú" ;
+                        inputText.text +=  "Ú" ;
                         break;
                 }
             } else if (diaresisOn && letter[0] == 'u')
             {
-                input.text +=  "Ü";
+                inputText.text +=  "Ü";
             }
             else
             {
-                input.text += letter.ToUpper();
+                inputText.text += letter.ToUpper();
             }
             tildeOn = false;
             diaresisOn = false;
@@ -155,14 +161,14 @@ namespace Assets.Scripts.Levels.ListenAndWrite
 		public void OnClickDelete()
 		{
 			SoundManager.instance.PlayClickSound ();
-			string newString = input.text.Substring (0, input.text.Length - 1);
-			input.text = newString;
+			string newString = inputText.text.Substring (0, inputText.text.Length - 1);
+			inputText.text = newString;
 		}
 
 		public void UpdateLowerCaseText(){
 //			input.text = input.text.ToUpper ();
-			string newText =  input.text.ToUpper ();
-			input.text = newText;
+			string newText =  inputText.text.ToUpper ();
+			inputText.text = newText;
 		}
 
 
@@ -192,8 +198,8 @@ namespace Assets.Scripts.Levels.ListenAndWrite
 
         public void UpdateButtons()
         {
-            ticBtn.interactable = input.text.Length > 0;
-			deleteButton.interactable = input.text.Length > 0;
+            ticBtn.interactable = inputText.text.Length > 0;
+			deleteButton.interactable = inputText.text.Length > 0;
 
         }
 

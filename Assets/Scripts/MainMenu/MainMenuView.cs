@@ -14,6 +14,7 @@ public class MainMenuView : MonoBehaviour {
 	public Button settingsBtn,metricsBtn;
 	public List<Button> levelBtns;
 	public Text welcomeText,vladimirText;
+	public Text[] levelNumbers;
 
 	// 0:blocked  1:blank  2:*  3:**  4:***
 	public List<Sprite> levelStateSprites;
@@ -34,8 +35,9 @@ public class MainMenuView : MonoBehaviour {
 			selectorPositions = new float[] {0, 0.0943f, 0.3207f, 0.4339f, 0.4698f,
 				0.5094f,0.5660f,0.6415f,0.6981f,0.7169f,
 				0.7358f,0.7736f,0.8113f,0.8358f,0.8698f,
-				0.8868f,0.9075f,0.9283f,0.9396f,0.9547f,
+				0.8886f,0.9075f,0.9283f,0.9396f,0.9547f,
 				0.9716f};
+			
 			SoundManager.instance.PlayMusic ();
 			if (SettingsController.instance.GetLanguage () == 0) {
 				welcomeText.text = "¡BIENVENIDO!";
@@ -44,12 +46,13 @@ public class MainMenuView : MonoBehaviour {
 				welcomeText.text = "WELCOME!";
 				vladimirText.text = "I'm Jacques Bulla";
 			}
-
-
+				
 			if (SettingsController.instance.GetMode () == 0) {
 				AppController.instance.SetMaxLevelPossible (TOTAL_LEVELS);
+				ShowLevelNumbers (true);
 			} else {
 				AppController.instance.SetMaxLevelPossible (GetMaxLevel ());
+				ShowLevelNumbers (false);
 				ResetSelectorPosition ();
 			}
 
@@ -66,6 +69,13 @@ public class MainMenuView : MonoBehaviour {
 			selectorAnimator.Play("levelTwoTransition",-1, pos);
 
 	}
+
+		void ShowLevelNumbers (bool showLevels)
+		{
+			foreach (Text txt in levelNumbers) {
+				txt.gameObject.SetActive (showLevels);
+			}
+		}
 
 		void ResetSelectorPosition(){
 			//VER QUE PASA CON ESTO

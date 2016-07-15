@@ -8,7 +8,7 @@ namespace Assets.Scripts.Levels
     {
         public static SpeakerScript instance;
         public Animator animator;
-		public Button soundButton;
+		 public Button soundButton;
 
         void Awake() {
             if (instance == null) instance = this;
@@ -21,16 +21,16 @@ namespace Assets.Scripts.Levels
 
         public void PlaySound(int digits)
         {
-			//if (soundButton) {
-				soundButton.enabled = false;
+//			if (soundButton) {
+				 soundButton.enabled = false;
 				animator.SetBool("isPlayingSound", true);        
 			Invoke("silence", digits * 0.6f); 
-			//}         
+//			}         
         }
 
         void silence()
         {
-			soundButton.enabled = true;
+			 soundButton.enabled = true;
            animator.SetBool("isPlayingSound", false);
         }
     }

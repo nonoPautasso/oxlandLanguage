@@ -36,7 +36,6 @@ public class AppController : AppElement {
 
 
 
-
         private string GetLevelName(int level)
         {
 			
@@ -51,43 +50,44 @@ public class AppController : AppElement {
 				case 4:
 					return "CompleteVowel"; 
 				case 5:
-					return "ABCOrder";
+					return "OracionesPictogramas";
 				}
 			} else if (level < 12) {
 				switch (level) {
 				case 6:
-					return "ABCWords";
+					return "Consonants";
 				case 7:
-					return "ABCBonus"; 
+					return "ConsonantsOral"; 
 				case 8:
-					return "Syllables";
+					return "ABCWords";
 				case 9:
-					return "WriteWords";
+					return "CompleteConsonant";
 				case 10:
-					return "MayusMin";
+					return "ABCOrder";
 				case 11:
-					return "CreateSentence";
+					return "CountLetters";
 					
 				}
 			} else if (level < 17) {
 				switch (level) {
 				case 12:
-					return "SplitSentences"; 
+					return "CombineSounds"; 
 				case 13:
-				case 14:
-				case 15:
-				case 16:
-					return ""; 
-		
+					return "IdentifyInitialSound";
+				case 14: return "MemotestEnding";
+				case 15: return "SoundsInWords";
+				case 16: return  "LettersComposeWords";
+					
+				
 				}
 			} else {
 				switch (level) {
-					case 17:
-					case 18:
-					case 19:
-					case 20:
+				case 17:return "OrderLetters";
+				case 18:return "ListenAndWrite";
+				case 19:return "FindError";
+				case 20:return "OrderWordsDictionary";
 					case 21:
-						return ""; 
+					return "CreateSentence";
 				}
 			}
 				
@@ -95,10 +95,7 @@ public class AppController : AppElement {
         }
 
         internal void RestartLvl(){
-			
-//            DestroyLvl(appModel.CurrentLevel);
-//            StartLevel(appModel.CurrentLevel);
-			StartLevel();
+			ViewController.instance.CurrentGameObject.GetComponent<LevelController>().RestartGame();
         }
 
         internal void NextLvl(){

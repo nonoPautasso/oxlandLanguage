@@ -66,6 +66,12 @@ namespace Assets.Scripts.Settings
 
         }
 
+		public void OnClickExitButton()
+		{
+			PlayClicSound();
+			Application.Quit();
+		}
+
         public void OnClicMusicBtn()
         {
             PlayClicSound();
