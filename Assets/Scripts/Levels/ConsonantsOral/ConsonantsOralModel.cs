@@ -17,6 +17,8 @@ namespace Assets.Scripts.Levels.ConsonantsOral {
 		private bool isVowels;
 		private Randomizer vowelRandomizer;
 
+		private List<string> cantStartLetters = new List<string> { "H", "Z", "CI", "LL", "CE", "GE", "GI", "CH", "Q" };
+
 		public ConsonantsOralModel (bool isVowels) { this.isVowels = isVowels; }
 
 		public override void StartGame () {
@@ -46,11 +48,19 @@ namespace Assets.Scripts.Levels.ConsonantsOral {
 					currentWord = Words.GetRandomWordFromLetter (Words.GetVowels () [vowelRandomizer.Next ()]);
 				} else {
 					currentWord = Words.GetRandomWord (false);
+					while(currentStartsWithIncompatible()) currentWord = Words.GetRandomWord (false);
 				}
 			}
 			history.Add (currentWord);
 			SetLetters (GetCorrect ());
 			currentRound++;
+		}
+
+		private bool currentStartsWithIncompatible () {
+			foreach (string l in cantStartLetters) {
+				if (currentWord.Name ().StartsWith (l.ToUpper ())) return true;
+			}
+			return false;
 		}
 
 		private string GetCorrect () {

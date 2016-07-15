@@ -1,7 +1,7 @@
 ﻿using System;
 using Assets.Scripts.App;
 
-//THIS INCLUDES VOWELS ORAL TOO. MONODEVELOP WONT LET ME CHANGE CLASS NAMES, IT'S SO BROKE....
+//THIS INCLUDES VOWELS ORAL TOO. MONODEVELOP WONT LET ME CHANGE CLASS NAMES, IT'S SO BROKEN....
 namespace Assets.Scripts.Levels.ConsonantsOral {
 	public class ConsonantsOralController : LevelController {
 		private ConsonantsOralModel model;
