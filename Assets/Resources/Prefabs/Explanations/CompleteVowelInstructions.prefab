@@ -113,7 +113,7 @@ GameObject:
   - 222: {fileID: 22224980}
   - 114: {fileID: 11401600}
   m_Layer: 0
-  m_Name: zorro
+  m_Name: vaca
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -328,7 +328,7 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  m_Sprite: {fileID: 21300040, guid: abe7af179dd1d0a4cb30d439f1d267af, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 7c602e05d067445469ca4c062e48d4b1, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -794,7 +794,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.1634948, g: 0.9264706, b: 0.7054707, a: 1}
+  m_Color: {r: 0.35705018, g: 0.9338235, b: 0.8144911, a: 1}
   m_RaycastTarget: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
@@ -1158,10 +1158,10 @@ RectTransform:
   - {fileID: 22403930}
   m_Father: {fileID: 22432036}
   m_RootOrder: 2
-  m_AnchorMin: {x: 0.10656326, y: 0.26163602}
-  m_AnchorMax: {x: 0.89000005, y: 0.4472236}
-  m_AnchoredPosition: {x: -4, y: -11}
-  m_SizeDelta: {x: 282, y: 144}
+  m_AnchorMin: {x: 0.1051018, y: 0.19100001}
+  m_AnchorMax: {x: 0.89000005, y: 0.3805729}
+  m_AnchoredPosition: {x: -6.9999657, y: -8}
+  m_SizeDelta: {x: 279, y: 138}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!224 &22436586
 RectTransform:
@@ -1229,10 +1229,10 @@ RectTransform:
   - {fileID: 22400804}
   m_Father: {fileID: 22432036}
   m_RootOrder: 1
-  m_AnchorMin: {x: 0.081686415, y: 0.73650295}
-  m_AnchorMax: {x: 0.9214379, y: 0.85916764}
-  m_AnchoredPosition: {x: -3, y: -4}
-  m_SizeDelta: {x: 4, y: 0}
+  m_AnchorMin: {x: 0.5, y: 0.79331326}
+  m_AnchorMax: {x: 0.5, y: 0.79331326}
+  m_AnchoredPosition: {x: 0, y: 2}
+  m_SizeDelta: {x: 1616, y: 176}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!224 &22459276
 RectTransform:
