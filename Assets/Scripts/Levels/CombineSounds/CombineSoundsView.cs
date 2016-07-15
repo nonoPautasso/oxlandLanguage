@@ -26,7 +26,7 @@ namespace Assets.Scripts.Levels.CombineSounds {
 			deleteButton.interactable = true;
 			ActiveButtons (true, false, true);
 			tryBtn.interactable = false;
-			controller.PlayRound ();
+			SoundClick ();
 			EmptyLetters ();
 		}
 
