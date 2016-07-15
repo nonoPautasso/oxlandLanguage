@@ -30,7 +30,9 @@ namespace Assets.Scripts.Levels.OrderLetters {
 
 		public void PlayWord () {
 			Word word = model.GetCurrentWord ();
+			SpeakerScript.instance.PlaySound (word.Name().Length > 5 ? 1 : 2);
 			word.PlayWord ();
+		
 			Invoke("AudioDone", word.AudioLength ());
 		}
 

@@ -88,10 +88,12 @@ public class MainMenuView : MonoBehaviour {
 			float pos = 1;
 			if (level > 5 && level < 9)
 				pos = 0.75f;
-			else if (level>8&&level < 12)
+			else if (level > 8 && level < 11)
 				pos = 0.5f;
-			else if(level>10)
+			else if (level > 10 && level < 17)
 				pos = 0.25f;
+			else if (level > 16)
+				pos = 0.1f;
 			
 			scrollRect.verticalNormalizedPosition = pos;
 		}

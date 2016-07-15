@@ -30,6 +30,7 @@ namespace Assets.Scripts.Levels.SoundsInWords {
 
 		public void PlaySyllable () {
 			AudioClip clip = model.GetSyllable ();
+			SpeakerScript.instance.PlaySound (1);
 			SoundManager.instance.PlayClip (clip);
 			Invoke ("AudioDone", clip.length);
 		}

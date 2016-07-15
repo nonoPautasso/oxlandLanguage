@@ -54,6 +54,7 @@ namespace Assets.Scripts.Levels.CreateSentences {
 		public void PlaySentence () {
 			AudioClip audioClip = model.GetSentenceAudio ();
 			SoundManager.instance.PlayClip (audioClip);
+			SpeakerScript.instance.PlaySound (3);
 			Invoke ("HintAudioDone", audioClip.length);
 		}
 

@@ -185,6 +185,7 @@ namespace Assets.Scripts.Levels.ListenAndWrite
         public void OnClickSoundBtn()
         {
             ListenAndWriteController.GetController().PlayCurrentWord();
+			SpeakerScript.instance.PlaySound (2);
 //          soundButton.GetComponent<Animator>().SetBool("play", true);
             soundButton.enabled = false;
             Invoke("EnableSoundButton", 1.5f);

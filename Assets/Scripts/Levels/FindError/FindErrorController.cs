@@ -18,6 +18,7 @@ namespace Assets.Scripts.Levels.FindError {
 		public void PlaySound () {
 			Word word = model.GetCurrentRound ();
 			word.PlayWord ();
+			SpeakerScript.instance.PlaySound (word.Name().Length>5 ? 1 : 2);
 			Invoke ("AudioDone", word.AudioLength ());
 		}
 
