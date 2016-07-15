@@ -30,12 +30,12 @@ public class MainMenuView : MonoBehaviour {
 	private float[] selectorPositions;
 
 	void Start(){
-			//Positions in 
-			selectorPositions = new float[] {0, 0.09f, 0.2835f, 0.385f, 0.4165f,
-				0.45f,0.50f,0.565f,0.619f,0.65f,
-				0.718f,0.75f,0.80f,0.816f,0.831f,
-				0.85f,0.85f,0.85f,0.85f,0.85f,
-				0.85f};
+			//Position stops in animation currentFrame/totalFrames
+			selectorPositions = new float[] {0, 0.0943f, 0.3207f, 0.4339f, 0.4698f,
+				0.5094f,0.5660f,0.6415f,0.6981f,0.7169f,
+				0.7358f,0.7736f,0.8113f,0.8358f,0.8698f,
+				0.8868f,0.9075f,0.9283f,0.9396f,0.9547f,
+				0.9716f};
 			SoundManager.instance.PlayMusic ();
 			if (SettingsController.instance.GetLanguage () == 0) {
 				welcomeText.text = "¡BIENVENIDO!";
