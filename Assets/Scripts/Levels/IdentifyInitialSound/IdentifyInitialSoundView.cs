@@ -20,7 +20,7 @@ namespace Assets.Scripts.Levels.IdentifyInitialSound {
 		public void NextChallenge (List<Word> objs) {
 			EnableHint ();
 			PaintTextBox (Color.white);
-			Views.ButtonsEnabled (keyboard.ToArray (), true);
+			Views.ButtonsEnabled (keyboard.ToArray (), false);
 			deleteButton.interactable = true;
 			ActiveButtons (true, false, true);
 			tryBtn.interactable = false;
@@ -92,11 +92,13 @@ namespace Assets.Scripts.Levels.IdentifyInitialSound {
 		public void SoundClick(){
 			soundBtn.enabled = false;
 			tryBtn.interactable = false;
+			Views.ButtonsEnabled (keyboard.ToArray (), false);
 			controller.PlayRound ();
 		}
 
 		public void AudioDone () {
 			soundBtn.enabled = true;
+			Views.ButtonsEnabled (keyboard.ToArray (), true);
 			CheckTryBtn ();
 		}
 
@@ -142,7 +144,7 @@ namespace Assets.Scripts.Levels.IdentifyInitialSound {
 
 		void OnGUI() {
 			Event e = Event.current;
-			if (e.isKey && e.type == EventType.KeyUp) {
+			if (e.isKey && e.type == EventType.KeyUp && keyboard[0].isActiveAndEnabled) {
 				if (!nextBtn.IsActive ()) {
 					if (e.keyCode >= KeyCode.A && e.keyCode <= KeyCode.Z) {
 						Debug.Log ("Detected key code: " + e.keyCode);
