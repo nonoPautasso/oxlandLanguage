@@ -28,10 +28,16 @@ namespace Assets.Scripts.Levels.CompleteConsonant {
 
 		public override void StartGame () {
 			currentRound = 0;
+			if (isVowels) {
+				minSeconds = 50;
+				pointsPerError = 500;
+				pointsPerSecond = 100;
+			} else {
+				minSeconds = 60;
+				pointsPerError = 500;
+				pointsPerSecond = 100;
+			}
 
-			minSeconds = 15;
-			pointsPerError = 200;
-			pointsPerSecond = 13;
 
 			LoadWords("easy");
 		}

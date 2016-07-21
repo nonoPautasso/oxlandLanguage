@@ -14,9 +14,9 @@ namespace Assets.Scripts.Levels.FishNet {
 		public static int ROUNDS = 6;
 
 		public override void StartGame () {
-			minSeconds = 15;
-			pointsPerError = 200;
-			pointsPerSecond = 13;
+			minSeconds = 60;
+			pointsPerError = 1000;
+			pointsPerSecond = 100;
 
 			words = new List<Word>();
 			string startLetter = Words.RandomLetter (ROUNDS);

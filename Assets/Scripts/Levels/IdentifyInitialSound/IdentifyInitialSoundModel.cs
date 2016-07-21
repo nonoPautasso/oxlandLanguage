@@ -16,9 +16,9 @@ namespace Assets.Scripts.Levels.IdentifyInitialSound {
 		public override void StartGame () {
 			currentRound = 0;
 
-			minSeconds = 15;
-			pointsPerError = 200;
-			pointsPerSecond = 13;
+			minSeconds = 60;
+			pointsPerError = 500;
+			pointsPerSecond = 100;
 
 			SetRounds();
 		}

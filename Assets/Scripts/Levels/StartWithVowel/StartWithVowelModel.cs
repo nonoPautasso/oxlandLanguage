@@ -14,9 +14,9 @@ namespace Assets.Scripts.Levels.StartWithVowel {
 		public override void StartGame () {
 			currentPage = 0;
 
-			minSeconds = 15;
+			minSeconds = 120;
 			pointsPerError = 200;
-			pointsPerSecond = 13;
+			pointsPerSecond = 100;
 
 			LoadModel();
 		}

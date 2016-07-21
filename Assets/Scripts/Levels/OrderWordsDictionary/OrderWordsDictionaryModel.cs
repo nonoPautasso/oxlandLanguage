@@ -15,9 +15,9 @@ namespace Assets.Scripts.Levels.OrderWordsDictionary {
 		public override void StartGame () {
 			currentRound = 0;
 
-			minSeconds = 15;
-			pointsPerError = 200;
-			pointsPerSecond = 13;
+			minSeconds = 180;
+			pointsPerError = 400;
+			pointsPerSecond = 100;
 		}
 
 		public override void NextChallenge () {

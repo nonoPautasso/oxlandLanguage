@@ -20,9 +20,9 @@ namespace Assets.Scripts.Levels.LettersComposeWords {
 		public override void StartGame () {
 			currentRound = 0;
 
-			minSeconds = 15;
-			pointsPerError = 200;
-			pointsPerSecond = 13;
+			minSeconds = 90;
+			pointsPerError = 600;
+			pointsPerSecond = 100;
 
 			SetRounds();
 		}

@@ -17,9 +17,9 @@ namespace Assets.Scripts.Levels.AbcOrder {
 		public override void StartGame () {
 			currentRound = 0;
 
-			minSeconds = 15;
-			pointsPerError = 200;
-			pointsPerSecond = 13;
+			minSeconds = 120;
+			pointsPerError = 400;
+			pointsPerSecond = 100;
 		}
 
 		public void RoundFinish () {

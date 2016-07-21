@@ -50,8 +50,7 @@ namespace Assets.Scripts.Levels.ListenAndWrite
 
 
         internal void NextChallenge()
-        {
-			
+        {	
             ticBtn.interactable = false;
 			deleteButton.interactable = false;
             inputText.text = "";
@@ -175,10 +174,8 @@ namespace Assets.Scripts.Levels.ListenAndWrite
         private void UpdateLettersOnKeyboard()
         {
             for (int i = 0; i < 27; i++)
-            {
-                
+            {  
                  keyboardButtons[i].GetComponentInChildren<Text>().text = keyboardButtons[i].GetComponentInChildren<Text>().text.ToUpper();
-               
             }
         }
 

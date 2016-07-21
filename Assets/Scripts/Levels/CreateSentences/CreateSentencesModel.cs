@@ -21,9 +21,9 @@ namespace Assets.Scripts.Levels.CreateSentences {
 		public override void StartGame () {
 			currentRound = 0;
 
-			minSeconds = 15;
+			minSeconds = 180;
 			pointsPerError = 200;
-			pointsPerSecond = 13;
+			pointsPerSecond = 100;
 			MetricsManager.instance.GameStart ();
 
 			LoadSentences();

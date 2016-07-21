@@ -24,9 +24,16 @@ namespace Assets.Scripts.Levels.ConsonantsOral {
 		public override void StartGame () {
 			currentRound = 0;
 
-			minSeconds = 15;
-			pointsPerError = 200;
-			pointsPerSecond = 13;
+			if (isVowels) {
+				minSeconds = 60;
+				pointsPerError = 1000;
+				pointsPerSecond = 100;
+			} else {
+				minSeconds = 60;
+				pointsPerError = 800;
+				pointsPerSecond = 100;
+			}
+
 
 			if (isVowels) vowelRandomizer = Randomizer.New (Words.GetVowels ().Length - 1);
 

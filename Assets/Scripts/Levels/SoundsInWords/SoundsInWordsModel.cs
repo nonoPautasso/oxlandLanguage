@@ -23,9 +23,9 @@ namespace Assets.Scripts.Levels.SoundsInWords {
 		public override void StartGame () {
 			currentRound = 0;
 
-			minSeconds = 15;
-			pointsPerError = 200;
-			pointsPerSecond = 13;
+			minSeconds = 50;
+			pointsPerError = 600;
+			pointsPerSecond = 100;
 
 			LoadWords();
 		}

@@ -35,6 +35,7 @@ namespace Assets.Scripts.Levels.ListenAndWrite
         public override void InitGame()
         {
 			MetricsManager.instance.GameStart();
+
 			listenAndWriteModel = new ListenAndWriteModel();
             TextAsset JSONstring = Resources.Load("listenAndWrite") as TextAsset;
             JSONNode data = JSON.Parse(JSONstring.text);

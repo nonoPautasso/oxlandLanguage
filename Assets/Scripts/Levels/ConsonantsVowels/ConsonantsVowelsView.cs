@@ -88,6 +88,7 @@ namespace Assets.Scripts.Levels.ConsonantsVowels {
 		}
 
 		public void BubbleClick(int index){
+			SoundManager.instance.StopSound ();
 			RemoveHint ();
 			Button bubble = bubbles [index];
 			string letter = bubble.GetComponentInChildren<Text> ().text;

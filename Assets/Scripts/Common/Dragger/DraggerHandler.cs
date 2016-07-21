@@ -12,28 +12,38 @@ namespace Assets.Scripts.Common.Dragger {
 		public bool activeOnDrop;
 		private Vector3 startPosition;
 		private bool dropped;
+		private bool active = true;
+
+		public void SetActive(bool isActive){
+			active = isActive;
+		}
 
 		public void OnBeginDrag(PointerEventData eventData) {
-			SoundManager.instance.PlayClickSound();
-			itemBeingDragged = this;
-			startPosition = transform.position;
-			GetComponent<CanvasGroup>().blocksRaycasts = false;
+			if (active) {
+				SoundManager.instance.PlayClickSound ();
+				itemBeingDragged = this;
+				startPosition = transform.position;
+				GetComponent<CanvasGroup> ().blocksRaycasts = false;
+			}
 		}
 
 		public void OnDrag(PointerEventData eventData) {
-			transform.position = Input.mousePosition;
+			if (active) 
+				transform.position = Input.mousePosition;
 		}
 
 		public void OnEndDrag(PointerEventData eventData) {
-			SoundManager.instance.PlayClickSound();
-			itemBeingDragged = null;
-			GetComponent<CanvasGroup>().blocksRaycasts = true;
+			if (active) {
+				SoundManager.instance.PlayClickSound ();
+				itemBeingDragged = null;
+				GetComponent<CanvasGroup> ().blocksRaycasts = true;
 
-			transform.position = startPosition;
+				transform.position = startPosition;
 
-			if(dropped && !activeOnDrop){
-				dropped = false;
-				gameObject.SetActive(false);
+				if (dropped && !activeOnDrop) {
+					dropped = false;
+					gameObject.SetActive (false);
+				}
 			}
 		}
 

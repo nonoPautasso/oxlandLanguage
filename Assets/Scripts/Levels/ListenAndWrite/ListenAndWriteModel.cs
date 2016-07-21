@@ -29,7 +29,10 @@ namespace Assets.Scripts.Levels.ListenAndWrite
 
         public override void StartGame()
         {
-            //throw new NotImplementedException();
+			minSeconds = 90;
+			pointsPerError = 1000;
+			pointsPerSecond = 100;
+
         }
 
         internal void AddWord(LWWord aWord)

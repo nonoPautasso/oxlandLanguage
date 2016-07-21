@@ -35,7 +35,7 @@ namespace Assets.Scripts.App{
 				Destroy(gameObject);
 
 			DontDestroyOnLoad(transform.root.gameObject);
-			//TODO: UNCOMMENT FOR REAL GAME ORDEN
+
 			levels = new string[]{"Vowels","VowelsOral","StartWithVowel","CompleteVowel","OracionesPictogramas",
 				"Consonants","ConsonantsOral","ABCWords","CompleteConsonant","ABCOrder",
 				"CountLetters","CombineSounds","IdentifyInitialSound","MemotestEnding","SoundsInWords",

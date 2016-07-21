@@ -100,6 +100,7 @@ namespace Assets.Scripts.Levels.OracionesPictogramas {
 			DisableHint ();
 			ActiveButtons(false, true,false);
 			DraggablesEnabled(draggables.ToArray(), false);
+
 		
 		//	nextBtn.interactable = false;
 		
@@ -134,6 +135,7 @@ namespace Assets.Scripts.Levels.OracionesPictogramas {
 	private void ResetView(){
 		EnableHint ();
 		ResetSlotImages ();
+		ShowDraggables (draggables.ToArray(),true);
 		DraggablesEnabled (draggables.ToArray(),true);
 		SlotsEnabled (slots.ToArray(),true);
 	}
@@ -183,21 +185,48 @@ namespace Assets.Scripts.Levels.OracionesPictogramas {
 		soundBtn.enabled = false;
 		
 		controller.PlaySentenceAudios ();
+			DisableAllButtons ();
+	}
+
+	void DisableAllButtons ()
+	{
+		ActiveButtons (false, false, false);
+		DisableHint ();
+		DraggablesEnabled(draggables.ToArray(), false);
+		SlotsEnabled (slots.ToArray(),false);
+	}
+
+	void EnableAllButtons(){
+		EnableHint ();
+		ActiveButtons (true, false, true);
+		DraggablesEnabled (draggables.ToArray(),true);
+		SlotsEnabled (slots.ToArray(),true);		
 	}
 	
 	public void AudioDone () {
 		soundBtn.enabled = true;
+		EnableAllButtons ();
 		CheckTryButton ();
 	}
 
 	public static void DraggablesEnabled(Button[] buttons, bool isActive) {
 			for (int i = 0; i < buttons.Length; i++)
-				buttons[i].gameObject.SetActive (isActive);
+				buttons [i].GetComponent<DraggerHandler> ().SetActive (isActive);
+				//buttons[i].enabled=isActive;
+				//buttons[i].gameObject.SetActive (isActive);
+
 	}
 
-		public static void SlotsEnabled(DraggerSlot[] slots, bool isActive) {
+	public static void ShowDraggables(Button[] buttons, bool isActive) {
+			for (int i = 0; i < buttons.Length; i++)
+				buttons[i].gameObject.SetActive (isActive);
+		
+	}
+
+	public static void SlotsEnabled(DraggerSlot[] slots, bool isActive) {
 			for (int i = 0; i < slots.Length; i++)
-				slots[i].gameObject.SetActive (isActive);
+				slots[i].enabled= isActive;
+				//slots[i].gameObject.SetActive (isActive);
 	}
 
 	public override void EndGame () { }

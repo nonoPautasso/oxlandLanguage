@@ -15,9 +15,9 @@ namespace Assets.Scripts.Levels.CombineSounds {
 		public override void StartGame () {
 			currentRound = 0;
 
-			minSeconds = 15;
-			pointsPerError = 200;
-			pointsPerSecond = 13;
+			minSeconds = 120;
+			pointsPerError = 700;
+			pointsPerSecond = 100;
 
 			SetRounds();
 		}

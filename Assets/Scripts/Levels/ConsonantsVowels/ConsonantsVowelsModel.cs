@@ -17,9 +17,16 @@ namespace Assets.Scripts.Levels.ConsonantsVowels {
 		public override void StartGame () {
 			currentRound = 0;
 
-			minSeconds = 15;
-			pointsPerError = 200;
-			pointsPerSecond = 13;
+			if (isVowels) {
+				minSeconds = 30;
+				pointsPerError = 1200;
+				pointsPerSecond = 100;
+			} else {
+				minSeconds = 60;
+				pointsPerError = 1500;
+				pointsPerSecond = 100;
+			}
+
 
 			SetRounds ();
 			SetOthers ();

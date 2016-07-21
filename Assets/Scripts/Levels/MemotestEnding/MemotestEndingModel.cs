@@ -16,9 +16,9 @@ namespace Assets.Scripts.Levels.MemotestEnding {
 		public override void StartGame () {
 			pairCount = 0;
 
-			minSeconds = 15;
-			pointsPerError = 200;
-			pointsPerSecond = 13;
+			minSeconds = 180;
+			pointsPerError = 100;
+			pointsPerSecond = 100;
 
 			SetRounds();
 		}
