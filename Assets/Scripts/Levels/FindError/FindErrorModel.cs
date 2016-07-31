@@ -9,7 +9,7 @@ namespace Assets.Scripts.Levels.FindError {
 		private List<Word> levels;
 		private List<string> others;
 
-		private static int ROUNDS = 7;
+		private static int ROUNDS = 10;
 		private static int EASY = 3;
 		private static int EASY_LENGTH = 5;
 		private static int HARD_LENGTH = 6;

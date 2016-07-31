@@ -66,7 +66,7 @@ namespace Assets.Scripts.Levels.FindError {
 		private void SetActiveButtons (bool tryB, bool nextB, bool soundB) {
 			Views.SetActiveButton (tryBtn, tryB);
 			Views.SetActiveButton (nextBtn, nextB);
-			soundBtn.interactable = soundB;
+			Views.SetActiveButton (soundBtn, soundB);
 		}
 
 		public void ToggleChange(){
@@ -84,7 +84,7 @@ namespace Assets.Scripts.Levels.FindError {
 		}
 
 		private Toggle SelectedToggle () {
-			soundBtn.interactable = false;
+			Views.SetActiveButton (soundBtn, false);
 			return toggles.Find ((Toggle obj) => obj.isOn);
 		}
 
@@ -135,7 +135,7 @@ namespace Assets.Scripts.Levels.FindError {
 
 		public override void ShowHint () {
 			DisableHint ();
-			soundBtn.interactable = true;
+			Views.SetActiveButton (soundBtn, true);
 			controller.ShowHint ();
 		}
 
