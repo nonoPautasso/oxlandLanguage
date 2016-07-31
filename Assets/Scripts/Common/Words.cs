@@ -309,7 +309,7 @@ namespace Assets.Scripts.Common {
 			return Resources.Load<AudioClip> ("Audio/" + I18n.Msg ("words.locale") + "/Letters/" + rippedLetter);
 		}
 
-		public static List<AudioClip> LetterClips (string[] letters) {
+		public static List<AudioClip> LetterClips (List<string> letters) {
 			List<AudioClip> result = new List<AudioClip> ();
 			foreach (string letter in letters) {
 				result.Add (LetterClip (letter));

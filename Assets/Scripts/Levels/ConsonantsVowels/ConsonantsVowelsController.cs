@@ -10,18 +10,12 @@ namespace Assets.Scripts.Levels.ConsonantsVowels {
 
 		public override void NextChallenge () {
 			if (model.GameEnded ()) {
-				if(isVowels){
-					SoundManager.instance.ConcatenateAudios (Words.LetterClips(Words.GetVowels ()), GameEnd);
-				} else GameEnd ();
+				EndGame (model.MinSeconds, model.PointsPerSecond, model.PointsPerError);
 			}
 			else {
-				view.NextChallenge (model.GetLetters (), model.GetOthers ());
 				model.NextChallenge ();
+				view.NextChallenge (model.GetLetters (), model.GetOthers ());
 			}
-		}
-
-		private void GameEnd () {
-			EndGame (model.MinSeconds, model.PointsPerSecond, model.PointsPerError);
 		}
 
 		public override void ShowHint () {
@@ -38,10 +32,11 @@ namespace Assets.Scripts.Levels.ConsonantsVowels {
 		}
 
 		public void RoundEnd () {
-			if(!isVowels) view.RoundEnd ();
-			else {
-				view.VowelEnd ();
-				NextChallenge ();
+			view.RoundEndFirst ();
+			if(isVowels){
+				SoundManager.instance.ConcatenateAudios (Words.LetterClips(model.GetLetters ()), NextChallenge);
+			} else {
+				SoundManager.instance.ConcatenateAudios (Words.LetterClips(model.GetLetters ()), view.RoundEnd);
 			}
 		}
 

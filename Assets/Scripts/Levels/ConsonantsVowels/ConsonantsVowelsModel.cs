@@ -64,7 +64,7 @@ namespace Assets.Scripts.Levels.ConsonantsVowels {
 		}
 
 		public List<string> GetLetters(){
-			return levels [currentRound];
+			return levels [currentRound - 1];
 		}
 
 		public List<string> GetOthers(){

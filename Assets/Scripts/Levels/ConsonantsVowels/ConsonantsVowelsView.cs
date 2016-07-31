@@ -22,7 +22,7 @@ namespace Assets.Scripts.Levels.ConsonantsVowels {
 		public void NextChallenge (List<string> letters, List<string> others) {
 			this.letters = new List<string> (letters);
 			Views.SetActiveButtons (bubbles, true);
-			foreach (Button bubble in bubbles) Views.PaintButton (bubble, Color.white);
+			foreach (Text txt in letterTexts) Views.PaintImage (txt.transform.parent.GetComponentInChildren<Image>(), Color.white);
 			this.others = others;
 			if(nextBtn != null) nextBtn.gameObject.SetActive (false);
 			immutableLetters = new List<string> (letters);
@@ -79,11 +79,9 @@ namespace Assets.Scripts.Levels.ConsonantsVowels {
 		public void RoundEnd () {
 			nextBtn.gameObject.SetActive (true);
 			nextBtn.interactable = true;
-			Views.SetActiveButtons (bubbles, false);
-			DisableHint ();
 		}
 
-		public void VowelEnd () {
+		public void RoundEndFirst () {
 			DisableHint ();
 			Views.SetActiveButtons (bubbles, false);
 			foreach (Text txt in letterTexts) Views.PaintImage (txt.transform.parent.GetComponentInChildren<Image>(), new Color32 (81, 225, 148, 225));
