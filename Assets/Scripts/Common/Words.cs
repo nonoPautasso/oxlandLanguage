@@ -160,11 +160,26 @@ namespace Assets.Scripts.Common {
 			List<Word> result = GetRandomWordsFromLetter(letter, correct);
 			for (int i = 0; i < quantity - correct; i++) {
 				Word w = GetRandomWord(includeVowels);
-				while (result.Contains (w)) w = GetRandomWord (includeVowels);
+				while (result.Contains (w) || FulfillsBVCQK(letter, w)) w = GetRandomWord (includeVowels);
 				result.Add(w);
 			}
 
 			return Randomizer.RandomizeList(result);
+		}
+
+		private static bool FulfillsBVCQK (string letter, Word w) {
+			if(letter == "B"){
+				return w.StartLetter () == "V";
+			} else if(letter == "V"){
+				return w.StartLetter () == "B";
+			} else if(letter == "C"){
+				return w.StartLetter () == "Q" || w.StartLetter () == "K";
+			} else if(letter == "Q"){
+				return w.StartLetter () == "C" || w.StartLetter () == "K";
+			} else if(letter == "K"){
+				return w.StartLetter () == "Q" || w.StartLetter () == "C";
+			}
+			return false;
 		}
 
 		public static string[] GetVowels(){
