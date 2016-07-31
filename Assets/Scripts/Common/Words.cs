@@ -300,9 +300,21 @@ namespace Assets.Scripts.Common {
 		}
 
 		public static void PlayLetter (string letter) {
-			string rippedLetter = RipSymbols (letter);
-			AudioClip clip = Resources.Load<AudioClip>("Audio/" + I18n.Msg ("words.locale") + "/Letters/" + rippedLetter);
+			var clip = LetterClip (letter);
 			SoundManager.instance.PlayClip(clip);
+		}
+
+		public static AudioClip LetterClip (string letter) {
+			string rippedLetter = RipSymbols (letter);
+			return Resources.Load<AudioClip> ("Audio/" + I18n.Msg ("words.locale") + "/Letters/" + rippedLetter);
+		}
+
+		public static List<AudioClip> LetterClips (string[] letters) {
+			List<AudioClip> result = new List<AudioClip> ();
+			foreach (string letter in letters) {
+				result.Add (LetterClip (letter));
+			}
+			return result;
 		}
 
 		public static string RipSymbols(string s){

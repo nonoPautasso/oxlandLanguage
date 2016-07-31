@@ -1,5 +1,6 @@
 ﻿using System;
 using Assets.Scripts.App;
+using Assets.Scripts.Common;
 
 namespace Assets.Scripts.Levels.ConsonantsVowels {
 	public class ConsonantsVowelsController : LevelController {
@@ -8,11 +9,19 @@ namespace Assets.Scripts.Levels.ConsonantsVowels {
 		private ConsonantsVowelsModel model;
 
 		public override void NextChallenge () {
-			if (model.GameEnded ()) EndGame (model.MinSeconds, model.PointsPerSecond, model.PointsPerError);
+			if (model.GameEnded ()) {
+				if(isVowels){
+					SoundManager.instance.ConcatenateAudios (Words.LetterClips(Words.GetVowels ()), GameEnd);
+				} else GameEnd ();
+			}
 			else {
 				view.NextChallenge (model.GetLetters (), model.GetOthers ());
 				model.NextChallenge ();
 			}
+		}
+
+		private void GameEnd () {
+			EndGame (model.MinSeconds, model.PointsPerSecond, model.PointsPerError);
 		}
 
 		public override void ShowHint () {
@@ -30,7 +39,10 @@ namespace Assets.Scripts.Levels.ConsonantsVowels {
 
 		public void RoundEnd () {
 			if(!isVowels) view.RoundEnd ();
-			else NextChallenge ();
+			else {
+				view.VowelEnd ();
+				NextChallenge ();
+			}
 		}
 
 		public override void RestartGame () { InitGame (); }

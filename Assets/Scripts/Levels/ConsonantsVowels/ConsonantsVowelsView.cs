@@ -22,6 +22,7 @@ namespace Assets.Scripts.Levels.ConsonantsVowels {
 		public void NextChallenge (List<string> letters, List<string> others) {
 			this.letters = new List<string> (letters);
 			Views.SetActiveButtons (bubbles, true);
+			foreach (Button bubble in bubbles) Views.PaintButton (bubble, Color.white);
 			this.others = others;
 			if(nextBtn != null) nextBtn.gameObject.SetActive (false);
 			immutableLetters = new List<string> (letters);
@@ -82,6 +83,12 @@ namespace Assets.Scripts.Levels.ConsonantsVowels {
 			DisableHint ();
 		}
 
+		public void VowelEnd () {
+			DisableHint ();
+			Views.SetActiveButtons (bubbles, false);
+			foreach (Text txt in letterTexts) Views.PaintImage (txt.transform.parent.GetComponentInChildren<Image>(), new Color32 (81, 225, 148, 225));
+		}
+
 		public void NextClick(){
 			PlaySoundClick ();
 			controller.NextChallenge ();
@@ -97,13 +104,16 @@ namespace Assets.Scripts.Levels.ConsonantsVowels {
 			if(isCorrect){
 				letters.Remove (letter);
 				letterRandomizer = Randomizer.New (letters.Count - 1);
-				PlayRightSound ();
 				SetCorrect (letter);
 				bubble.interactable = false;
 				bubble.enabled = false;
 				bubble.image.color = new Color32 (81, 225, 148, 225);
 				if (letters.Count == 0)
 					controller.RoundEnd ();
+				else {
+					if (controller.isVowels) Words.PlayLetter (letter);
+					else PlayRightSound ();
+				}
 			} else {
 				PlayWrongSound ();
 				SetBubble (bubble);
