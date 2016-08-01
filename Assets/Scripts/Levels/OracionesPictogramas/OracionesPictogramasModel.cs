@@ -48,11 +48,14 @@ namespace Assets.Scripts.Levels.OracionesPictogramas {
 
 		public bool IsCorrect (List<string> playerAnswers)
 		{
-			foreach (string answer in playerAnswers) {
-				if (answerSprites.IndexOf (answer) == -1)
+			for (int i = 0; i < 3; i++) {
+				if (answerSprites [i] != playerAnswers [i]) {
 					return false;
+				}
+					
 			}
 			return true;
+
 		}
 
 	
@@ -181,11 +184,9 @@ namespace Assets.Scripts.Levels.OracionesPictogramas {
 			answerSprites = new List<string> ();
 
 			foreach (JSONNode structureWord in array) {
-				//sentenceStructure.Add (structureWord.Value);
 				string word = getSentenceWord(structureWord.Value);
 				sentenceStructure.Add(word);
 				currentSentence += (word+" ");
-				//Debug.Log (word);
 			}
 
 			Debug.Log (currentSentence);
@@ -239,12 +240,10 @@ namespace Assets.Scripts.Levels.OracionesPictogramas {
 				return word;
 				
 			} else if (isConector (value)) {
-			//	Debug.Log (currentStructure [value]);
 				sentenceAudios.Add(GetAudioByName(currentStructure [value]));
 				return currentStructure [value];
 
 			} else {
-				//Debug.Log (currentStructure [value] [currentGender]);
 				sentenceAudios.Add(GetAudioByName(currentStructure [value][currentGender]));
 				return currentStructure [value] [currentGender];
 			}

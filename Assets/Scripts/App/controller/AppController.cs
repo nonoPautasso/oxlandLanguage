@@ -86,8 +86,7 @@ public class AppController : AppElement {
 				case 18:return "ListenAndWrite";
 				case 19:return "FindError";
 				case 20:return "OrderWordsDictionary";
-					case 21:
-					return "CreateSentence";
+				case 21:return "CreateSentence";
 				}
 			}
 				
@@ -97,6 +96,10 @@ public class AppController : AppElement {
         internal void RestartLvl(){
 			ViewController.instance.CurrentGameObject.GetComponent<LevelController>().RestartGame();
         }
+
+		internal void RestartCompletedLvl(){
+			StartLevel ();
+		}
 
         internal void NextLvl(){
 	       appModel.NextLvl();

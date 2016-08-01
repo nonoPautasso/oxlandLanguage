@@ -20,7 +20,7 @@ namespace Assets.Scripts.Common.Dragger {
 
 		public void OnBeginDrag(PointerEventData eventData) {
 			if (active) {
-				SoundManager.instance.PlayClickSound ();
+//				SoundManager.instance.PlayClickSound ();
 				itemBeingDragged = this;
 				startPosition = transform.position;
 				GetComponent<CanvasGroup> ().blocksRaycasts = false;

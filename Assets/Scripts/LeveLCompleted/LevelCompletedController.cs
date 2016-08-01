@@ -26,7 +26,7 @@ namespace Assets.Scripts.LevelCompleted
 
         internal void RetryLvl()
         {
-            AppController.instance.RestartLvl();
+			AppController.instance.RestartCompletedLvl();
         }
 
         internal void MainMenu()

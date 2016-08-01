@@ -19,6 +19,8 @@ namespace Assets.Scripts.App{
 	    public AudioSource musicSource;
 	    public List<List<AudioClip>> instructionSounds;
 
+		private bool concatenatingAudios = false;
+
 
     //Awake is always called before any Start functions
         void Awake()
@@ -97,6 +99,7 @@ namespace Assets.Scripts.App{
         public void StopSound()
             {
 	            mySource.Stop();
+				concatenatingAudios = false;
             }
 
 		//Trying to concatenate audios!
@@ -113,6 +116,7 @@ namespace Assets.Scripts.App{
 		}
 
 		public void ConcatenateAudios(List<AudioClip> audios, Action f){
+			concatenatingAudios = true;
 			action = f;
 			currentAudio = null;
 			playingAudios = audios;
@@ -120,21 +124,26 @@ namespace Assets.Scripts.App{
 		}
 
 		public void PlayCurrentAudios(){
-			if (currentAudio == null) {
-				currentAudio = playingAudios [0];
-				currentAudioIndex = 0;
-			}
-			else if (currentAudioIndex == playingAudios.Count - 1) {
-				currentAudio = null;
-				action.Invoke ();
-				return;
-			} else {
-				currentAudioIndex++;
-				currentAudio = playingAudios [currentAudioIndex];
+			if (concatenatingAudios) {
+				if (currentAudio == null) {
+					currentAudio = playingAudios [0];
+					currentAudioIndex = 0;
+				}
+				else if (currentAudioIndex == playingAudios.Count - 1) {
+					currentAudio = null;
+					concatenatingAudios = false;
+					action.Invoke ();
+					return;
+				} else {
+					currentAudioIndex++;
+					currentAudio = playingAudios [currentAudioIndex];
+				}
+				SoundManager.instance.PlayClip(currentAudio);
+				Invoke ("PlayCurrentAudios", currentAudio.length);
 			}
 
-			SoundManager.instance.PlayClip(currentAudio);
-			Invoke ("PlayCurrentAudios", currentAudio.length);
+
+
 		}
 
     }

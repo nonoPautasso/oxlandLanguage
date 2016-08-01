@@ -17,6 +17,7 @@ namespace Assets.Scripts.Levels.CompleteConsonant {
 		public void NextChallenge (Word word, List<string> letters, List<string> answer) {
 			EnableHint ();
 			UnpaintLetters ();
+			Debug.Log (word);
 			objImage.sprite = word.Sprite ();
 			nextBtn.interactable = true;
 			ActiveButtons (true, false, true);
