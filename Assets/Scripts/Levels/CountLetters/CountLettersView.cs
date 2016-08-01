@@ -95,9 +95,11 @@ namespace Assets.Scripts.Levels.CountLetters {
 		}
 
 		public void BubbleDone(){
-			int first = playingBubbles [0];
-			playingBubbles.Remove (first);
-			littleBubbles [first].gameObject.SetActive (false);
+			if (playingBubbles.Count > 0) {
+				int first = playingBubbles [0];
+				playingBubbles.Remove (first);
+				littleBubbles [first].gameObject.SetActive (false);
+			}
 		}
 
 		public void TryClick(){
