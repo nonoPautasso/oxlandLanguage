@@ -24,6 +24,7 @@ namespace Assets.Scripts.Levels.LettersComposeWords {
 			EnableHint ();
 			hintEnabled = false;
 			Views.ButtonsEnabled (keyboard.ToArray (), true);
+			PaintKeys (keyboard, Color.white);
 			Views.ButtonsEnabled (clams.ToArray (), true);
 			ActiveButtons (true, false, true);
 			tryBtn.interactable = false;
@@ -67,11 +68,13 @@ namespace Assets.Scripts.Levels.LettersComposeWords {
 			if(current.Contains (letter)){
 				current.Remove (letter);
 				RedrawClams (current);
+				PaintKey (letter, Color.white);
 			} else {
 				foreach (Button clam in clams) {
 					if(clam.GetComponentInChildren <Text>().text == ""){
 						clam.GetComponentInChildren <Text>().text = letter;
 						Views.SetActiveButton (clam, true);
+						PaintKey (letter, Color.cyan);
 						break;
 					}
 				}
@@ -79,6 +82,21 @@ namespace Assets.Scripts.Levels.LettersComposeWords {
 
 			if(hintEnabled) CheckHint ();
 			CheckTryBtn ();
+		}
+
+		private void PaintKeys (List<Button> letters, Color c) {
+			foreach (Button letter in letters) {
+				letter.image.color = c;
+			}
+		}
+
+		private void PaintKey (string letter, Color c) {
+			foreach (Button letterBtn in keyboard) {
+				if(letterBtn.GetComponentInChildren <Text>().text == letter) {
+					letterBtn.image.color = c;
+					return;
+				}
+			}
 		}
 
 		private void CheckHint () {
@@ -142,6 +160,7 @@ namespace Assets.Scripts.Levels.LettersComposeWords {
 			PlayWrongSound ();
 			tryBtn.interactable = false;
 			RedrawClams ();
+			PaintKeys (keyboard, Color.white);
 		}
 
 		public void Correct(){
