@@ -160,24 +160,28 @@ namespace Assets.Scripts.Common {
 			List<Word> result = GetRandomWordsFromLetter(letter, correct);
 			for (int i = 0; i < quantity - correct; i++) {
 				Word w = GetRandomWord(includeVowels);
-				while (result.Contains (w) || FulfillsBVCQK(letter, w)) w = GetRandomWord (includeVowels);
+				while (result.Contains (w) || FulfillsBV_CQK_CSZ(letter, w)) w = GetRandomWord (includeVowels);
 				result.Add(w);
 			}
 
 			return Randomizer.RandomizeList(result);
 		}
 
-		private static bool FulfillsBVCQK (string letter, Word w) {
+		private static bool FulfillsBV_CQK_CSZ (string letter, Word w) {
 			if(letter == "B"){
 				return w.StartLetter () == "V";
 			} else if(letter == "V"){
 				return w.StartLetter () == "B";
 			} else if(letter == "C"){
-				return w.StartLetter () == "Q" || w.StartLetter () == "K";
+				return w.StartLetter () == "Q" || w.StartLetter () == "K" || w.StartLetter () == "S" || w.StartLetter () == "Z";
 			} else if(letter == "Q"){
 				return w.StartLetter () == "C" || w.StartLetter () == "K";
 			} else if(letter == "K"){
 				return w.StartLetter () == "Q" || w.StartLetter () == "C";
+			} else if(letter == "S"){
+				return w.StartLetter () == "C" || w.StartLetter () == "Z";
+			} else if(letter == "Z"){
+				return w.StartLetter () == "C" || w.StartLetter () == "S";
 			}
 			return false;
 		}
