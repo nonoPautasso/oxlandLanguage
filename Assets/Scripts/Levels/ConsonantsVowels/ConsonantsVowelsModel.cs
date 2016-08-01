@@ -10,6 +10,8 @@ namespace Assets.Scripts.Levels.ConsonantsVowels {
 		private List<List<string>> levels;
 		private List<string> others;
 
+		private int audioIndex;
+
 		private static int LETTER_QUANTITY = 5;
 
 		public ConsonantsVowelsModel (bool isVowels) { this.isVowels = isVowels; }
@@ -57,6 +59,22 @@ namespace Assets.Scripts.Levels.ConsonantsVowels {
 			if(isVowels) others.AddRange (Words.GetConsonants());
 			else others = new List<string> (Words.GetVowels ());
 			others.AddRange (Words.GetNumbers ());
+		}
+
+		public void ResetAudioIndex () {
+			audioIndex = 0;
+		}
+
+		public int AudioIndex () {
+			return audioIndex;
+		}
+
+		public string AudioLetter(){
+			return GetLetters () [audioIndex++];
+		}
+
+		public bool AudiosEnded () {
+			return audioIndex == GetLetters ().Count;
 		}
 
 		public override void NextChallenge () {

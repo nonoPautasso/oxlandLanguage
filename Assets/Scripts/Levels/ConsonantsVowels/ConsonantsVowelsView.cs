@@ -84,7 +84,10 @@ namespace Assets.Scripts.Levels.ConsonantsVowels {
 		public void RoundEndFirst () {
 			DisableHint ();
 			Views.SetActiveButtons (bubbles, false);
-			foreach (Text txt in letterTexts) Views.PaintImage (txt.transform.parent.GetComponentInChildren<Image>(), new Color32 (81, 225, 148, 225));
+		}
+
+		public void PaintText(int index){
+			Views.PaintImage (letterTexts[index].transform.parent.GetComponentInChildren<Image>(), new Color32 (81, 225, 148, 225));
 		}
 
 		public void NextClick(){
@@ -109,8 +112,7 @@ namespace Assets.Scripts.Levels.ConsonantsVowels {
 				if (letters.Count == 0)
 					controller.RoundEnd ();
 				else {
-					if (controller.isVowels) Words.PlayLetter (letter);
-					else PlayRightSound ();
+					Words.PlayLetter (letter);
 				}
 			} else {
 				PlayWrongSound ();

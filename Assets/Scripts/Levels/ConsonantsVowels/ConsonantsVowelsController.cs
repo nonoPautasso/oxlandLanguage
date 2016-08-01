@@ -1,6 +1,7 @@
 ﻿using System;
 using Assets.Scripts.App;
 using Assets.Scripts.Common;
+using UnityEngine;
 
 namespace Assets.Scripts.Levels.ConsonantsVowels {
 	public class ConsonantsVowelsController : LevelController {
@@ -33,10 +34,22 @@ namespace Assets.Scripts.Levels.ConsonantsVowels {
 
 		public void RoundEnd () {
 			view.RoundEndFirst ();
-			if(isVowels){
-				SoundManager.instance.ConcatenateAudios (Words.LetterClips(model.GetLetters ()), NextChallenge);
+			model.ResetAudioIndex ();
+			NextAudio ();
+		}
+
+		private void NextAudio() {
+			if(model.AudiosEnded()){
+				if(isVowels){
+					NextChallenge ();
+				} else {
+					view.RoundEnd ();
+				}
 			} else {
-				SoundManager.instance.ConcatenateAudios (Words.LetterClips(model.GetLetters ()), view.RoundEnd);
+				view.PaintText (model.AudioIndex());
+				AudioClip letter = Words.LetterClip (model.AudioLetter ());
+				SoundManager.instance.PlayClip (letter);
+				Invoke ("NextAudio", letter.length);
 			}
 		}
 
