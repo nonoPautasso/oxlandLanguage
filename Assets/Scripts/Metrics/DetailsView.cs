@@ -22,35 +22,18 @@ namespace Assets.Scripts.Metrics
 
         public GameObject lineRenderer;
 
-        public List<Image> points;
+		public List<Toggle> points;
 
         private List<GameMetrics> metricsPoints;             
 
-        private void UpdateLanguage(int language)
-        {
-            switch (language)
-            {
-                case 0:
-                    //dateLabel.text = "Fecha:";
-                    //correctLabel.text = "Correctas:";
-                    //incorrectLabel.text = "Inorrectas:";
-                    //hintsLabel.text = "Pistas:";
-                    break;
-                case 1:
-                    //dateLabel.text = "Date:";
-                    //correctLabel.text = "Correct:";
-                    //incorrectLabel.text = "Inorrect:";
-                    //hintsLabel.text = "Hints:";
-                    break;
-            }
-        }  
+       
 
         private void PlayClicSound()
         {
             SoundManager.instance.PlayClickSound();
         }
 
-        internal void showDetailsOf(string activity, string username, List<GameMetrics> metrics)
+        internal void ShowDetailsOf(string activity, string username, List<GameMetrics> metrics)
         {
             metricsPoints = new List<GameMetrics>();
             this.activity.text = activity;
@@ -60,45 +43,47 @@ namespace Assets.Scripts.Metrics
             //joinPoints(points, metricsPoints.Count);
         }
 
-       
-       // void OnGUI()
-       // {
-        //    Debug.Log("OX");
-        //    Rect recr = new Rect(0, 0, 200, 10);
-         //   GUIUtility.RotateAroundPivot(30, ):
-
-         //   GUI.Box(recr, "Agus Pardo");
-            //GUI.Box(new Rect(0, 0, Screen.width, Screen.height), "This is a title");
-       // }
-
-        private void joinPoints(List<Image> points, int count)
-        {
-            for(int i = 0; i < count && i - 1 < points.Count - 1 ; i++)
-            {
-                points[i].GetComponent<LineRenderer>().SetVertexCount(2);
-                Vector3 pos = points[i].transform.position;
-                pos.z = -10;
-
-                Vector3 pos1 = points[i+1].transform.position;
-                pos1.z = -10;
+      
+//        private void joinPoints(List<Image> points, int count)
+//        {
+//            for(int i = 0; i < count && i - 1 < points.Count - 1 ; i++)
+//            {
+//                points[i].GetComponent<LineRenderer>().SetVertexCount(2);
+//                Vector3 pos = points[i].transform.position;
+//                pos.z = -10;
+//
+//                Vector3 pos1 = points[i+1].transform.position;
+//                pos1.z = -10;
+//
+//
+//                points[i].GetComponent<LineRenderer>().SetPosition(0, pos);
+//                points[i].GetComponent<LineRenderer>().SetPosition(1, pos1);
+//            }
+//        }    
 
 
-                points[i].GetComponent<LineRenderer>().SetPosition(0, pos);
-                points[i].GetComponent<LineRenderer>().SetPosition(1, pos1);
-            }
-        }    
+		public void ResetChart(){
+			for (int j = 0; j < points.Count; j++){
+				points[j].GetComponent<Toggle>().isOn = false;
+			}
+		}
 
         private void makeChart()
         {
+
             float MAX_Y = points[1].transform.position.y;
             float MIN_Y = points[0].transform.position.y;
+
+
             for (int i = 0; i < metricsPoints.Count; i++){
-                Vector3 pos = points[i].transform.position;
+				points[i].gameObject.SetActive(true);
+				Vector3 pos = points[i].transform.position;
                 pos.y = calculateY(metricsPoints[i].score, MAX_Y, MIN_Y);
                 points[i].transform.position = pos;
-                points[i].gameObject.SetActive(true);
+              
             }
-
+			Debug.Log ("INDEX:"+(metricsPoints.Count-1));
+			Debug.Log ("ARRAY COMP:"+points[metricsPoints.Count-1]);
             points[metricsPoints.Count - 1].GetComponent<Toggle>().isOn = true;
 
             for(int i = metricsPoints.Count; i < MAX_COLUMNS; i++){
@@ -148,13 +133,16 @@ namespace Assets.Scripts.Metrics
 
         public void ShowInfoOf(int pointNumber)
         {
-            GameMetrics currentMetric = metricsPoints[pointNumber];
-            date.text = currentMetric.date;
-            score.text = "" +currentMetric.score;
-            time.text = "" + currentMetric.lapsedTime + " s";
-            correctQuantity.text = "" + currentMetric.rightAnswers;
-            incorrectQuantity.text = "" + currentMetric.wrongAnswers;
-            hintsQuantity.text = "" + currentMetric.hints;
+			if (pointNumber < metricsPoints.Count) {
+				GameMetrics currentMetric = metricsPoints[pointNumber];
+				date.text = currentMetric.date;
+				score.text = "" +currentMetric.score;
+				time.text = "" + currentMetric.lapsedTime + " s";
+				correctQuantity.text = "" + currentMetric.rightAnswers;
+				incorrectQuantity.text = "" + currentMetric.wrongAnswers;
+				hintsQuantity.text = "" + currentMetric.hints;
+			}
+
         }
     }
 }

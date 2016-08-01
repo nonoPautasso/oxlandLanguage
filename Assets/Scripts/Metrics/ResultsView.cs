@@ -53,12 +53,14 @@ namespace Assets.Scripts.Metrics
 
         public void OnClickCrossBtn(){
             PlaySoundClick();
-            ViewController.instance.LoadMainMenu();
+
+			ViewController.instance.LoadMainMenu();
         }
 
         public void OnClickViewDetailsCrossBtn()
         {
             PlaySoundClick();
+//			detailsView.ResetChart ();
             detailsView.SetActive(false);
             resultsView.SetActive(true);
         }
@@ -106,8 +108,8 @@ namespace Assets.Scripts.Metrics
             Debug.Log("View details of " + v);
             resultsView.SetActive(false);
             detailsView.SetActive(true);
-            string activity = SettingsController.instance.GetLanguage() == 0 ? AppController.instance.appModel.GameTitlesSpanish[AppController.instance.GetCurrentLevel() - 1] : AppController.instance.appModel.GameTitlesEnglish[AppController.instance.GetCurrentLevel() - 1];
-            ((DetailsView)detailsView.GetComponent<DetailsView>()).showDetailsOf(activity, SettingsController.instance.GetUsername(), MetricsManager.instance.GetMetricsByLevel(AppController.instance.GetCurrentLevel() - 1));
+			string activity = SettingsController.instance.GetLanguage() == 0 ? AppController.instance.appModel.GameTitlesSpanish[v] : AppController.instance.appModel.GameTitlesEnglish[v];
+			((DetailsView)detailsView.GetComponent<DetailsView>()).ShowDetailsOf(activity, SettingsController.instance.GetUsername(), MetricsManager.instance.GetMetricsByLevel(v));
         }
 
         private void updateArrows(){

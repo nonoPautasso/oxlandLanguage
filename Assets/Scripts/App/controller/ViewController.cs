@@ -83,9 +83,8 @@ namespace Assets.Scripts.App{
 		}
 
 		public void LoadLevel(int level){
-			//Debug.Log (level);
-			//Debug.Log (levels[level-1]);
 			ChangeCurrentObject (LoadPrefab("Levels/"+levels [level-1]));
+			ShowInstructions ();
 		}
 
 		public GameObject LoadInGamePrefab(string screen){
