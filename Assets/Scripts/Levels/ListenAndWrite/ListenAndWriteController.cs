@@ -37,7 +37,7 @@ namespace Assets.Scripts.Levels.ListenAndWrite
 			MetricsManager.instance.GameStart();
 
 			listenAndWriteModel = new ListenAndWriteModel();
-            TextAsset JSONstring = Resources.Load("listenAndWrite") as TextAsset;
+            TextAsset JSONstring = Resources.Load("jsons/listenAndWrite") as TextAsset;
             JSONNode data = JSON.Parse(JSONstring.text);
 			JSONNode level = data["listenAndWrite"]["levels"][0];       
 //            listenAndWriteView.SetSentence(level["sentence"].Value);
