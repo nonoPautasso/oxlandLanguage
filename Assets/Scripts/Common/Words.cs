@@ -182,6 +182,10 @@ namespace Assets.Scripts.Common {
 				return w.StartLetter () == "C" || w.StartLetter () == "Z";
 			} else if(letter == "Z"){
 				return w.StartLetter () == "C" || w.StartLetter () == "S";
+			} else if(letter == "G"){
+				return w.StartLetter () == "J";
+			} else if(letter == "J"){
+				return w.StartLetter () == "G";
 			}
 			return false;
 		}
