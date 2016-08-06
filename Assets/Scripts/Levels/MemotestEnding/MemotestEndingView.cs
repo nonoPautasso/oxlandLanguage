@@ -47,9 +47,13 @@ namespace Assets.Scripts.Levels.MemotestEnding {
 		private void SetWordSpritesAndText (List<Word> objs) {
 			for (int i = 0; i < objs.Count; i++) {
 				innerImages [i].sprite = objs [i].Sprite ();
-				cards [i].GetComponentInChildren <Text> (true).text = objs [i].Name ();
+				cards [i].GetComponentInChildren <Text> (true).text = MarkLastTwo (objs[i].Name ());
 				ResetCard (cards [i]);
 			}
+		}
+
+		private static string MarkLastTwo (string name) {
+			return name.Remove (name.Length - 2, 2) + "<color=green>" + name.Substring (name.Length - 2, 2) + "</color>";
 		}
 
 		private void ResetCard (Button card) {

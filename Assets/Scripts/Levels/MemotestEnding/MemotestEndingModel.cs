@@ -10,7 +10,7 @@ namespace Assets.Scripts.Levels.MemotestEnding {
 		private int pairCount;
 		private List<Word> pairs;
 
-		public static int PAIRS = 8;
+		public static int PAIRS = 6;
 		public static int PAIR_NUMBER = 2;
 
 		public override void StartGame () {
