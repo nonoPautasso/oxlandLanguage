@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using Assets.Scripts.App;
+using Assets.Scripts.Common;
 
 namespace Assets.Scripts.Levels.ListenAndWrite
 {
@@ -15,8 +16,10 @@ namespace Assets.Scripts.Levels.ListenAndWrite
 		private InputField inputText;
         [SerializeField]
         private List<Button> keyboardButtons;
-        [SerializeField]
+//        [SerializeField]
        // private Toggle shiftToggle;
+		[SerializeField]
+		private Image wordImage;
 
         private bool tildeOn;
         private bool diaresisOn;
@@ -27,6 +30,8 @@ namespace Assets.Scripts.Levels.ListenAndWrite
         private Button ticBtn;
 		[SerializeField]
 		private Button deleteButton;
+		public Image textBox;
+		public Button nextButton;
        
        
 
@@ -49,13 +54,15 @@ namespace Assets.Scripts.Levels.ListenAndWrite
 
 
 
-        internal void NextChallenge()
+		internal void NextChallenge(LWWord word)
         {	
             ticBtn.interactable = false;
 			deleteButton.interactable = false;
             inputText.text = "";
-
+			wordImage.sprite = word.GetSprite ();
             hintBtn.interactable = true;
+			EnableNextButton (false);
+			PaintTextBox (Color.white);
             UnpaintAllKeyboard();
             OnClickSoundBtn();
         }
@@ -67,10 +74,6 @@ namespace Assets.Scripts.Levels.ListenAndWrite
                 keyboardButtons[i].GetComponent<Image>().color = Color.white;
             }
 
-//            for (int i = 0; i < shiftToggle.GetComponentsInChildren<Image>().Length; i++)
-//            {
-//                shiftToggle.GetComponentsInChildren<Image>()[i].color = Color.white;
-//            }
         }
 
 
@@ -84,14 +87,6 @@ namespace Assets.Scripts.Levels.ListenAndWrite
 
         public void PaintKeyboardButton(int index)
         {
-//            if (index == 27) {
-//                for (int i = 0; i < shiftToggle.GetComponentsInChildren<Image>().Length; i++)
-//                {
-//                    shiftToggle.GetComponentsInChildren<Image>()[i].color = highlitedColor;
-//                }
-//                
-//            }
-//            else keyboardButtons[index].GetComponent<Image>().color = highlitedColor;
 			keyboardButtons[index].GetComponent<Image>().color = highlitedColor;
         }
 
@@ -102,8 +97,11 @@ namespace Assets.Scripts.Levels.ListenAndWrite
             ListenAndWriteController.GetController().CheckAnswer(inputText.text);
         }
 
+
+
         public void OnClickLetter(string letter)
         {
+			PaintTextBox (Color.white);
 			SoundManager.instance.PlayClickSound ();
             if (tildeOn && (letter[0] == 'a' || letter[0] == 'e' || letter[0] == 'i' || letter[0] == 'o' || letter[0] == 'u') )
             {
@@ -159,6 +157,7 @@ namespace Assets.Scripts.Levels.ListenAndWrite
 
 		public void OnClickDelete()
 		{
+			PaintTextBox (Color.white);
 			SoundManager.instance.PlayClickSound ();
 			string newString = inputText.text.Substring (0, inputText.text.Length - 1);
 			inputText.text = newString;
@@ -168,6 +167,10 @@ namespace Assets.Scripts.Levels.ListenAndWrite
 //			input.text = input.text.ToUpper ();
 			string newText =  inputText.text.ToUpper ();
 			inputText.text = newText;
+		}
+
+		public void PaintTextBox (Color color) {
+			textBox.color = color;
 		}
 
 
@@ -193,6 +196,10 @@ namespace Assets.Scripts.Levels.ListenAndWrite
 //            soundButton.GetComponent<Animator>().SetBool("play", false);
             soundButton.enabled = true;
         }
+
+		public void EnableNextButton(bool enable){
+			nextButton.gameObject.SetActive(enable);
+		}
 
         public void UpdateButtons()
         {

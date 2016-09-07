@@ -24,7 +24,7 @@ namespace Assets.Scripts.Levels.IdentifyInitialSound {
 			deleteButton.interactable = true;
 			ActiveButtons (true, false, true);
 			tryBtn.interactable = false;
-			controller.PlayRound ();
+			//controller.PlayRound ();
 			EmptyLetters ();
 			SetWordSprites (objs);
 		}

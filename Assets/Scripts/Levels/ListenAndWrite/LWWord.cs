@@ -2,6 +2,7 @@
 using SimpleJSON;
 using System.Collections.Generic;
 using Assets.Scripts.App;
+using Assets.Scripts.Common;
 using I18N;
 
 namespace Assets.Scripts.Levels.ListenAndWrite
@@ -12,6 +13,7 @@ namespace Assets.Scripts.Levels.ListenAndWrite
         private AudioClip audio;
         private string audioPath;
         private string text;
+		private Sprite sprite;
         private List<char> lettersHint;
         
         public LWWord(string audioPath, string text,  JSONArray lettersHint)
@@ -41,5 +43,10 @@ namespace Assets.Scripts.Levels.ListenAndWrite
         {
             return text;
         }
+
+		internal Sprite GetSprite()
+		{
+			return Words.GetWord(text).Sprite();
+		}
     }
 }

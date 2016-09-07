@@ -41,7 +41,7 @@ namespace Assets.Scripts.Levels.ListenAndWrite
             JSONNode data = JSON.Parse(JSONstring.text);
 			JSONNode level = data["listenAndWrite"]["levels"][0];       
 //            listenAndWriteView.SetSentence(level["sentence"].Value);
-            TO_WIN = 5;
+            TO_WIN = 10;
 //            instruction = (Resources.Load("ListenAndWrite/" + level["instructionAudio"]) as AudioClip);
             FillWordsList(level);
             listenAndWriteModel.StartGame();
@@ -73,23 +73,32 @@ namespace Assets.Scripts.Levels.ListenAndWrite
                 Debug.Log("Correct");
 				SoundManager.instance.PlayRightAnswerSound ();
 				LogAnswer (true);
+				listenAndWriteView.PaintTextBox (new Color32(81,225,148,225));
+				if (GameIsEnded())
+				{
+					EndGame (listenAndWriteModel.MinSeconds, listenAndWriteModel.PointsPerSecond, listenAndWriteModel.PointsPerError);
+				} else
+				{
+					listenAndWriteView.EnableNextButton (true);
+					//Invoke("NextChallenge", 1f);
+					//NextChallenge();
+				}
               
             } else
             {
                 Debug.Log("Wrong");
 				SoundManager.instance.PlayFailureSound ();
+				listenAndWriteView.PaintTextBox (new Color32 (251, 96, 96, 255));
 				LogAnswer (false);
             }
 
-            if (GameIsEnded())
-            {
-				EndGame (listenAndWriteModel.MinSeconds, listenAndWriteModel.PointsPerSecond, listenAndWriteModel.PointsPerError);
-            } else
-            {
-                Invoke("NextChallenge", 1f);
-                //NextChallenge();
-            }
+           
         }
+
+		public void OnClickNext()
+		{
+			NextChallenge ();
+		}
 
         private bool GameIsEnded()
         {
@@ -120,7 +129,7 @@ namespace Assets.Scripts.Levels.ListenAndWrite
         public override void NextChallenge()
         {
             listenAndWriteModel.NextChallenge();
-            listenAndWriteView.NextChallenge();
+			listenAndWriteView.NextChallenge(listenAndWriteModel.GetCurrentWord());
         }
 
         public static ListenAndWriteController GetController()

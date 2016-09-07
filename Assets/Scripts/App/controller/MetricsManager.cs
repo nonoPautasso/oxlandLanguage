@@ -58,15 +58,15 @@ public class MetricsManager : MonoBehaviour {
 
         private void saveToDisk(){
             BinaryFormatter bf = new BinaryFormatter();
-            FileStream file = File.Create(Application.persistentDataPath + "/"+ SettingsController.instance.GetUsername() + ".dat");
+            FileStream file = File.Create(Application.persistentDataPath + "/"+ SettingsController.instance.GetUsername() + ".2dat");
             bf.Serialize(file, metricsModel);
             file.Close();
         }
 
         public void LoadFromDisk(){
-            if(File.Exists(Application.persistentDataPath + "/" + SettingsController.instance.GetUsername() + ".dat")){
+            if(File.Exists(Application.persistentDataPath + "/" + SettingsController.instance.GetUsername() + ".2dat")){
                 BinaryFormatter bf = new BinaryFormatter();
-                FileStream file = File.Open(Application.persistentDataPath + "/" + SettingsController.instance.GetUsername() + ".dat", FileMode.Open);
+                FileStream file = File.Open(Application.persistentDataPath + "/" + SettingsController.instance.GetUsername() + ".2dat", FileMode.Open);
                 metricsModel = (MetricsModel) bf.Deserialize(file);
                 file.Close();
             } else
