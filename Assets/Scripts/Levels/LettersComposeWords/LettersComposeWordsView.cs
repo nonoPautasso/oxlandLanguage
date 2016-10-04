@@ -8,7 +8,7 @@ using UnityEngine.EventSystems;
 
 namespace Assets.Scripts.Levels.LettersComposeWords {
 	public class LettersComposeWordsView : LevelView {
-		public List<Button> keyboard;
+		public List<Toggle> keyboard;
 		public Button tryBtn;
 		public Button nextBtn;
 		public Button soundBtn;
@@ -23,8 +23,8 @@ namespace Assets.Scripts.Levels.LettersComposeWords {
 		public void NextChallenge (Word word) {
 			EnableHint ();
 			hintEnabled = false;
-			Views.ButtonsEnabled (keyboard.ToArray (), true);
-			PaintKeys (keyboard, Color.white);
+			Views.TogglesEnabled (keyboard.ToArray (), true);
+			//PaintKeys (keyboard, Color.white);
 			Views.ButtonsEnabled (clams.ToArray (), true);
 			ActiveButtons (true, false, true);
 			tryBtn.interactable = false;
@@ -43,9 +43,11 @@ namespace Assets.Scripts.Levels.LettersComposeWords {
 			soundBtn.enabled = sound;
 		}
 
-		public void KeyboardClick(Button key){
+		public void KeyboardClick(Toggle key){
 			KeyboardClick (key.GetComponentInChildren <Text>().text);
 		}
+
+
 
 		private void RedrawClams (List<string> current = null) {
 			if(!hintEnabled) Views.SetActiveButtons(clams, false);
@@ -68,13 +70,13 @@ namespace Assets.Scripts.Levels.LettersComposeWords {
 			if(current.Contains (letter)){
 				current.Remove (letter);
 				RedrawClams (current);
-				PaintKey (letter, Color.white);
+				//PaintKey (letter, Color.white);
 			} else {
 				foreach (Button clam in clams) {
 					if(clam.GetComponentInChildren <Text>().text == ""){
 						clam.GetComponentInChildren <Text>().text = letter;
 						Views.SetActiveButton (clam, true);
-						PaintKey (letter, Color.cyan);
+						//PaintKey (letter, Color.cyan);
 						break;
 					}
 				}
@@ -90,14 +92,14 @@ namespace Assets.Scripts.Levels.LettersComposeWords {
 			}
 		}
 
-		private void PaintKey (string letter, Color c) {
-			foreach (Button letterBtn in keyboard) {
-				if(letterBtn.GetComponentInChildren <Text>().text == letter) {
-					letterBtn.image.color = c;
-					return;
-				}
-			}
-		}
+//		private void PaintKey (string letter, Color c) {
+//			foreach (Button letterBtn in keyboard) {
+//				if(letterBtn.GetComponentInChildren <Text>().text == letter) {
+//					letterBtn.image.color = c;
+//					return;
+//				}
+//			}
+//		}
 
 		private void CheckHint () {
 			for (int i = 0; i < clams.Count; i++) {
@@ -127,11 +129,8 @@ namespace Assets.Scripts.Levels.LettersComposeWords {
 		}
 
 		public void ClamClick(Button clam){
-			List<string> current = CurrentLetters ();
-			current.Remove (clam.GetComponentInChildren <Text>().text);
-			clam.GetComponentInChildren <Text>().text = "";
-			RedrawClams (current);
-			CheckTryBtn ();
+			Toggle keyToggle = GetToggleByLetter (clam.GetComponentInChildren <Text> ().text);
+			keyToggle.isOn = false;
 		}
 
 		public void TryClick(){
@@ -144,6 +143,7 @@ namespace Assets.Scripts.Levels.LettersComposeWords {
 		}
 
 		public void NextClick(){
+			ClearClams ();
 			controller.NextChallenge ();
 		}
 
@@ -159,14 +159,21 @@ namespace Assets.Scripts.Levels.LettersComposeWords {
 		public void Wrong () {
 			PlayWrongSound ();
 			tryBtn.interactable = false;
-			RedrawClams ();
-			PaintKeys (keyboard, Color.white);
+			ClearClams ();
+//			PaintKeys (keyboard, Color.white);
+		}
+
+		void ClearClams ()
+		{
+			foreach (Toggle key in keyboard) {
+				key.isOn = false;
+			}
 		}
 
 		public void Correct(){
 			PlayRightSound ();
 			DisableHint ();
-			Views.ButtonsEnabled (keyboard.ToArray (), false);
+			Views.TogglesEnabled (keyboard.ToArray (), false);
 			Views.ButtonsEnabled (clams.ToArray (), false);
 			ActiveButtons (false, true, false);
 		}
@@ -199,7 +206,9 @@ namespace Assets.Scripts.Levels.LettersComposeWords {
 				if (!nextBtn.IsActive ()) {
 					if (e.keyCode >= KeyCode.A && e.keyCode <= KeyCode.Z) {
 						Debug.Log ("Detected key code: " + e.keyCode);
-						KeyboardClick (e.keyCode.ToString ());
+						Toggle keyToggle = GetToggleByLetter (e.keyCode.ToString ());
+						bool toggleIsOn = keyToggle.isOn;
+						keyToggle.isOn = !toggleIsOn;
 					} else if (e.keyCode == KeyCode.Return) {
 						Debug.Log ("Detected key code: Enter");
 						TryClick ();
@@ -211,6 +220,15 @@ namespace Assets.Scripts.Levels.LettersComposeWords {
 					}
 				}
 			}
+		}
+
+		public Toggle GetToggleByLetter(string letter){
+			foreach (Toggle key in keyboard) {
+				if (letter == key.GetComponentInChildren <Text> ().text) {
+					return key;
+				}
+			}
+			return null;
 		}
 
 		public override void EndGame () { }
