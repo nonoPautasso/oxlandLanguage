@@ -24,7 +24,8 @@ namespace Assets.Scripts.App
                 Destroy(gameObject);
             //Sets this to not be destroyed when reloading scene
             DontDestroyOnLoad(transform.root.gameObject);
-            settingsModel = new SettingsModel();
+			SystemLanguage systemLanguage = Application.systemLanguage;
+			settingsModel = new SettingsModel(systemLanguage);
         }
 
 		public int GetLanguage(){ return settingsModel.language;}

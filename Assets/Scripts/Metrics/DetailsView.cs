@@ -73,7 +73,7 @@ namespace Assets.Scripts.Metrics
 
             float MAX_Y = points[1].transform.position.y;
             float MIN_Y = points[0].transform.position.y;
-
+			Debug.Log ("min" + MIN_Y + "max" + MAX_Y);
 
             for (int i = 0; i < metricsPoints.Count; i++){
 				points[i].gameObject.SetActive(true);

@@ -17,11 +17,11 @@ namespace Assets.Scripts.App
         // Indica si la musica esta activada o no
         public bool music;
 
-        public SettingsModel()
+		public SettingsModel(SystemLanguage systemLanguage)
         {
             currentMode = 0;
             userName = "";
-            language = 0; // Por default es espaniol
+			language = systemLanguage == SystemLanguage.Spanish ? 0 : 1;
             soundEffects = true;
             music = true;
         }
